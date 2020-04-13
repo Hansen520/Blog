@@ -1,0 +1,8 @@
+语法:
+UPDATE table_name
+SET column1=value, column2=value2,...
+WHERE some_column=some_value
+
+注释：请注意 UPDATE 语法中的 WHERE 子句。
+WHERE 子句规定了哪些记录需要更新。
+如果您想省去 WHERE 子句，所有的记录都会被更新！

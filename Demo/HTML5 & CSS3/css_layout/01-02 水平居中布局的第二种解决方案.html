@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>水平居中布局的第一种解决方案</title>
+  <style>
+    #parent {
+      width: 100%;
+      height: 200px;
+      background: #ccc;
+    }
+
+    #child {
+      width: 200px;
+      height: 200px;
+      background: #c9394a;
+      /* display的值为table和block */
+      display: table;
+      /* 
+        margin属性:外边距
+        * 一个值 - 上右下左
+        * 二个值 - 第一个表示上下，第二个表示左右
+          * auto - 表示根据浏览器自动分配
+        * 三个值 - 第一个表示上，第二个表示左右，第三个表示下
+        * 四个值 - 上右下左
+       */
+      margin: 0 auto;
+
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 定义父级元素 -->
+  <div id="parent">
+    <!-- 定义子级元素 -->
+    <div id="child">居中布局</div>
+  </div>
+</body>
+
+</html>

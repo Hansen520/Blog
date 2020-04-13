@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>php教程</title>
+        <link>http://www.php.cn</link>
+        <description>学的不仅技术，更新梦想！！</description>
+        <item>
+            <title>RSS 教程</title>
+            <link>http://www.php.cn/rss/rss-tutorial.html</link>
+            <description>通过使用 RSS，您可以浏览与您的工作相关的新闻</description>
+        </item>
+        <item>
+            <title>XML 教程</title>
+            <link>http://www.php.cn/xml/xml-tutorial.html</link>
+            <description>XML 指可扩展标记语言（eXtensible Markup Language)</description>
+        </item>
+    </channel>
+</rss>

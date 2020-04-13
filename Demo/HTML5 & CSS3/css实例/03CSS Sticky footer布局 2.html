@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css sticcky footer</title>
+  <style>
+  /*基本配置，不是关键部分*/
+  *{
+    margin: 0;
+    padding: 0;
+    color:#fff
+  }
+  p{color:#fff}
+
+  /*开始表演 最重要的还是100%*/
+  /* .mask{
+    width:100%;
+    height:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+    overflow: auto;
+    background: rgba(7, 17, 27, 0.8);
+  }
+  .content{
+    min-height: 100%;
+    margin-bottom:-64px;
+  }
+  .content:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .footer{
+    text-align: center;
+    
+  }
+  .footer, .content:after{
+    height:64px;
+  } */
+
+.mask {
+    width:100%;
+    height:100%;
+    background: rgba(7, 17, 27, 0.8);
+    min-height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content:center; */
+    text-align: center;
+}
+.content {
+    flex: 1;
+}
+.footer {
+    flex: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="mask">
+    <div class="content">
+      <p>Percy’s visual testing platform makes it easy to test your UI across browsers and screens on every pull request.</p>
+      <p>Percy’s visual testing platform makes it easy to test your UI across browsers and screens on every pull request.</p>
+    </div>
+    <div class="footer">X</div>
+  </div>
+</body>
+</html>

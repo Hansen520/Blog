@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>圣杯布局</title>
+  <style>
+    #parent {
+      height: 300px;
+      /* 对应的是left元素的宽度 */
+      margin-left: 300px;
+      /* 对应的是right元素的宽度 */
+      margin-right: 300px;
+    }
+
+    #left,
+    #center,
+    #right {
+      height: 300px;
+
+      float: left;
+    }
+
+    #left,
+    #right {
+      width: 300px;
+    }
+
+    #left {
+      background-color: #c9394a;
+      /* 将当前元素从当前行，移动上一行同一个位置 */
+      margin-left: -100%;
+
+      position: relative;
+      /* 将当前元素移动到理想位置 */
+      left: -300px;
+    }
+
+    #center {
+      /* 为父级元素宽度的100% */
+      width: 100%;
+      background-color: green;
+    }
+
+    #right {
+      background-color: #cccccc;
+
+      margin-left: -300px;
+
+      position: relative;
+      right: -300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="center"></div>
+    <div id="left"></div>
+    <div id="right"></div>
+  </div>
+</body>
+
+</html>

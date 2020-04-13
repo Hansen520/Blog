@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登入与注册</title>
+    <style>
+        input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+    #box{
+        width:300px;
+        margin:0 auto;
+    }
+    #box .choose{
+        
+    }
+    #box .choose span{
+        cursor: pointer;
+        display: inline-block;
+        width:70px;
+        height:35px;
+        border:1px solid #ccc;
+        text-align: center;
+        font-size:14px;
+        line-height: 35px;
+        border-bottom: none;
+    }
+    #box .choose span.active{
+        background: #000;
+        color: rgb(233, 175, 16);
+    
+    }
+    #box .around_main{
+        border:1px solid #ccc;
+    }
+
+    #box .around_main  .main label{
+        display: block;
+        margin-top:20px;
+    }
+    #box .around_main  .main span{
+        display: inline-block;
+        width:100px;
+        font-size:14px;
+     
+    }
+    #box .around_main .main input{
+        display: inline-block;
+
+    }
+    #box .around_main .main .submit{
+        width:75px;
+        height:35px;
+        border:1px solid #ccc;
+        margin:45px 0 0 95px;
+    }
+
+    #box .around_main .main:nth-child(2){
+        display: none;
+    }
+    </style>
+</head>
+<body>
+<hr size="1">
+<div id="box">
+    <div class="choose">
+        <span class="active">登入</span><span>注册</span>
+    </div>
+    <div class="around_main">
+        <div class="main">
+            <form action="success.php" method="post" id="login">
+                <label for=""><span>用户：</span><input type="text" name="username" id="username" class="username"  autofocus autocomplete="off"/></label> 
+                <label for=""><span>密码：</span><input type="password" name="password" id="password" class="password" autocomplete="off"/></label>   
+                <input type="submit" name="login" value="登入" class="submit">
+            </form>
+        </div>
+        <div class="main">
+            <form action="add.php" method="post" id="register">
+                <label for=""><span>用户：</span><input type="text" name="username" id="username" class="username"  autofocus autocomplete="off"/></label> 
+                <label for=""><span>密码：</span><input type="password" name="password" id="password" class="password" autocomplete="off"/></label>   
+                <label for=""><span>确认密码：</span><input type="password" name="repassword" id="repassword" class="repassword" autocomplete="off"/></label> 
+                <input type="submit" name="register" value="注册" class="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+oSpan = document.querySelectorAll(".choose span");
+oMain = document.querySelectorAll(".around_main .main");
+oSpan[0].onclick = function(){
+    this.className = "active";
+    oSpan[1].className = "";
+    oMain[0].style.display = "block";
+    oMain[1].style.display = "none";
+
+}
+oSpan[1].onclick = function(){
+    this.className = "active";
+    oSpan[0].className = "";
+    oMain[0].style.display = "none";
+    oMain[1].style.display = "block";
+}
+</script>
+</body>
+</html>

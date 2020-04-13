@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS3的多列布局</title>
+  <style>
+    #parent,
+    #parent2,
+    #parent3 {
+      /* column-count: 4;
+      column-width: 300px; */
+
+      columns: 4 300px;
+
+      column-gap: 20px;
+
+      /* column-rule-width: 5px;
+      column-rule-color: tomato;
+      column-rule-style: double; */
+
+      column-rule: 5px tomato double;
+    }
+
+    .col1,
+    .col2,
+    .col3,
+    .col4,
+    .col5 {
+      height: 300px;
+    }
+
+    .col1,
+    .col6 {
+      background-color: hotpink;
+    }
+
+    .col2,
+    .col7 {
+      background-color: lightblue;
+    }
+
+    .col3.col8 {
+      background-color: green;
+    }
+
+    .col4,
+    .col9 {
+      background-color: yellow;
+    }
+
+    .col5 {
+      background-color: tomato;
+
+      column-span: all;
+    }
+
+    .col6,
+    .col7,
+    .col8,
+    .col9 {
+      column-fill: balance;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 作为父级容器 -->
+  <div id="parent">
+    <div class="col1"></div>
+    <div class="col2"></div>
+    <div class="col3"></div>
+    <div class="col4"></div>
+  </div>
+  <div id="parent2">
+    <div class="col5"></div>
+  </div>
+  <div id="parent3">
+    <div class="col6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum possimus aliquid nostrum provident
+      est esse necessitatibus mollitia error, tempore voluptate nobis odio alias, ab animi reprehenderit repellat
+      perferendis voluptas rerum!</div>
+    <div class="col7">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, quibusdam vel! Provident consequatur
+      voluptates quibusdam consectetur architecto! Ut eaque aspernatur quibusdam incidunt nobis ipsam quidem, quod
+      ullam, velit officia necessitatibus!
+    </div>
+    <div class="col8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dicta officia porro error
+      suscipit. Nostrum, deleniti laborum. Sed odit, nemo, ducimus dolores rem reprehenderit soluta ipsam nesciunt id
+      unde accusamus.</div>
+    <div class="col9">imooc</div>
+  </div>
+</body>
+
+</html>

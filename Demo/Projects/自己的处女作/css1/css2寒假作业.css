@@ -1,0 +1,132 @@
+@charset "utf-8";
+#han{width:980px;
+	
+	margin:0px auto;} 
+
+.tou{height:168px;
+background-color:#CCFFCC;
+}
+ img{margin-left:30px;
+ height:22px;}
+ 
+.zuo{width:200px;
+     float:left;
+	 height:168px;
+	 background-color:#6600FF;}
+	 
+.zuo ul{
+margin:0px;
+padding:0px;}
+
+.zuo li{
+	height:35px;
+	line-height:35px;
+	text-align:center;
+	list-style:none;
+
+}
+	
+
+.you{width:780px;
+      float:left; 
+	 }
+	 
+.you ul{margin:0px;
+padding:0px;
+background-color:#669900;
+height:28px;}
+
+.you li{color:#330000;
+        font-size:16px;
+		margin:20px;
+
+        display:inline;
+		list-style:none;
+		padding:4px;
+		text-align:center;} 
+		
+.you1{text-align:center;
+background-color:#CC6600;
+height:170px;
+	 }
+	 
+.xia{background-color:#CCFF33;
+height:640px;
+       }
+.zuo11{width:200px;
+     float:left;
+	 height:300px;
+	 background-color:#CC3366;
+	 margin-top:20px;}
+	 
+.zuo111{width:200px;
+         height:50px;
+		 background-color:#66CC00;
+		 color:#000033;
+		 font-size:36px;
+		 text-align:center;}
+	
+.zuo112{width:200px;
+        height:250px;
+		background-color:#996600;}
+
+.zuo112 ul{padding:0px;
+           margin:0px auto}	
+		   
+.zuo112 li{color:#330000;
+        font-size:20px;
+		line-height:42px;
+		list-style:none;
+		text-align:center;}
+
+.zuo22{width:200px;
+     float:left;
+	 height:300px;
+	 background-color:#0000FF;
+	 margin-top:20px;}
+	 
+.zuo221{width:200px;
+         height:50px;
+		 background-color:#66CC00;
+		 color:#000000;
+		 font-size:36px;
+		 text-align:center;}
+		 
+.zuo222 li{color:#000033;
+           font-weight:bold;
+        font-size:20px;
+		line-height:42px;
+		list-style:none;
+		text-align:center;}
+		
+.youa{width:780px;
+      float:left; 
+	 }
+	 
+.youa11{
+        background-color:#999999;
+		margin-top:20px;
+		}
+
+
+h1{font-size:36px;
+    font-style:normal;
+	font-weight:bold;}
+	
+	
+	
+h2{font-size:16px;
+    font-style:normal;
+	font-weight:bold;
+	}
+
+	
+	.youa33{background-color:#000000;
+	color:#FFFFFF;
+	font-size:9px;}	
+
+
+
+.wei{background-color:#999999;
+font-size:54px;
+font-weight:bold;}			   			 

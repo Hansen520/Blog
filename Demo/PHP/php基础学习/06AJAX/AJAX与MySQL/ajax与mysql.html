@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Title</title>
+ 
+     <script>
+         function showUser(str)
+         {
+             if (str=="")
+             {
+                 document.getElementById("txtHint").innerHTML="";
+                 return;
+             }
+             if (window.XMLHttpRequest)
+             {
+                 // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                 xmlhttp=new XMLHttpRequest();
+             }
+             else
+             {
+                 // IE6, IE5 浏览器执行代码
+                 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+             }
+             xmlhttp.onreadystatechange=function()
+             {
+                 if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                 {
+                     document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                 }
+             }
+             xmlhttp.open("GET","getuser.php?q="+str,true);
+             xmlhttp.send();
+         }
+     </script>
+ </head>
+ <body>
+ <form>
+     <select name="users" onchange="showUser(this.value)">
+         <option value="">Select a person:</option>
+         <option value="1">John Doe</option>
+         <option value="2">tom Mary</option>
+         <option value="3">lijing liuqi</option>
+         <option value="4">liu li</option>
+         <option value="5">liu li</option>
+         <option value="6">liu li</option>
+     </select>
+ </form>
+ <br>
+ <div id="txtHint"><b>数据库信息展示在这</b></div>
+ 
+ </body>
+ </html>

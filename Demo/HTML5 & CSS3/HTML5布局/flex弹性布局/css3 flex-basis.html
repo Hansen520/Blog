@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <style>
+        #main{
+            width:350px;
+            height:100px;
+            background:#ccc;
+            display:flex;
+        }
+        #main div{flex-basis:40px;}
+        #main div:nth-of-type(2){flex-basis:80px;}
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <div style="background-color:coral;"></div>
+    <div style="background-color:lightblue;"></div>
+    <div style="background-color:khaki;"></div>
+    <div style="background-color:pink;"></div>
+    <div style="background-color:green;"></div>
+</div>
+<pre>
+通过flex-basis属性设置第一、第三、第四和第五个div长度为40px，第二div长度为80px。
+此时它的作用与width是一直的，关于两者区别可以参阅flex-basis与width区别一章节。
+可以看到容器还有剩余的空间，那么我们可以在通过flex-basis属性设置的"基准"尺寸的基础上进行扩展。
+下面看一个代码实例，演示了如何在"基准"尺寸的基础上瓜分容器剩余空间，代码实例如下：
+</pre>
+</body>
+</html>

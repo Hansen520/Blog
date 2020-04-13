@@ -1,0 +1,35 @@
+/*style css*/
+
+*{margin: 0;padding: 0;}
+input,button{border:none;outline:none;}
+li{list-style: none;}
+body{background:#F1F1F1;}
+/*body::-webkit-scrollbar{width:0;height:0;}*/
+#wrap{width:1000px;margin:100px auto 0;border-radius:6px;background:#FFF;overflow: hidden;}
+#wrap h1{font:400 28px/68px "微软雅黑";text-align: center;color: #999;border-bottom:1px solid #F1F1F1;}
+#wrap .area{width:100%;overflow: hidden;}
+#wrap .area article{height:160px;margin:20px;background:#F1F1F1;float: left;}
+#upload{width:260px;cursor: pointer;position:relative;}
+#wrap .area #drag{width:680px;color:#9f9f9f;text-align: center;font:100 16px/160px "微软雅黑";margin-left:0;}
+#upload span{width:260px;height:120px;display: block;background: url('../img/image.png') no-repeat center center;background-size:100px 100px;position: relative;}
+#upload .file{display:block;width:100%;height:40px;background:#6bc30d;font:400 18px/40px "微软雅黑";color:#FFF;text-align: center;transition:all 0.3s;}
+#upload input{opacity: 0;width:100%;height:100%;position: absolute;top:0;left:0;}
+#upload:hover .file{background:#5db103;}
+
+#wrap .info{width:960px;height:50px;padding:0 20px;line-height:50px;}
+#wrap .info p{display: block;float:left;}
+#wrap .info article{float: right;}
+#wrap .info div{cursor: pointer;width:130px;height:40px;font:400 18px/40px "微软雅黑";color:#FFF;border-radius:3px;text-align: center;transition:all 0.3s;margin:5px;float: left;}
+#wrap .info div.file{background:#9f9f9f;position: relative;}
+#wrap .info div.file:hover{background:#7f7f7f;}
+#wrap .info div.file input{opacity: 0;width:100%;height:100%;position: absolute;top:0;left:0;}
+#wrap .info div.upload{background:#6bc30d}
+#wrap .info div.upload:hover{background:#5db103;}
+
+#wrap .list{width:960px;margin:20px;border:1px solid #F1F1F1;overflow:hidden;}
+#wrap .list ul{width:960px;min-height:200px;display:flex;flex-flow:row wrap;padding:5px 0 0 10px;}
+#wrap .list ul li{width:180px;height:auto;overflow: hidden;position:relative;margin-bottom:5px;margin-right:10px;}
+#wrap .list ul li img{width:100%;}
+#wrap .list ul li p{transition:0.5s;overflow:hidden;width:180px;height:0px;background:rgba(0,0,0,0.6);color:#F0F0F0;font: 100 16px/30px "微软雅黑";position: absolute;top:0;left: 0;text-indent:0.5em;}
+#wrap .list ul li p i{display:block;width:30px;height:30px;background:url('../img/del.png') rgba(0,0,0,.6) no-repeat center center;position: absolute;top: 0;right: 0;text-align:center;cursor: pointer;transition:all 0.3s;}
+#wrap .list ul li p i:hover{background:url('../img/del.png') #ff3d3d no-repeat center center;border-radius:0;}

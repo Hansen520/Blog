@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>PHP中文网(php.cn)</title>
+     <script>
+         function showRSS(str)
+         {
+             if (str.length==0)
+             {
+                 document.getElementById("rssOutput").innerHTML="";
+                 return;
+             }
+             if (window.XMLHttpRequest)
+             {
+                 // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                 xmlhttp=new XMLHttpRequest();
+             }
+             else
+             {
+                 // IE6, IE5 浏览器执行代码
+                 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+             }
+             xmlhttp.onreadystatechange=function()
+             {
+                 if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                 {
+                     document.getElementById("rssOutput").innerHTML=xmlhttp.responseText;
+                 }
+             }
+             xmlhttp.open("GET","getrss.php?q="+str,true);
+             xmlhttp.send();
+         }
+     </script>
+ </head>
+ <body>
+ 
+ <form>
+     <select onchange="showRSS(this.value)">
+         <option value="">选择一个 RSS-feed:</option>
+         <option value="rss">读取 RSS 数据</option>
+     </select>
+ </form>
+ <br>
+ <div id="rssOutput">RSS-feed 数据列表...</div>
+ </body>
+ </html>

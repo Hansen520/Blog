@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>等分布局的第二种解决方法</title>
+  <style>
+    #parent-fix {
+      overflow: hidden;
+    }
+
+    #parent {
+      width: 1434px;
+      /* <table> */
+      display: table;
+
+      margin-left: -10px;
+    }
+
+    .col1,
+    .col2,
+    .col3,
+    .col4 {
+      height: 300px;
+
+      display: table-cell;
+
+      box-sizing: border-box;
+      padding-left: 10px;
+    }
+
+    .inner {
+      height: 300px;
+    }
+
+    .col1 .inner {
+      background-color: hotpink;
+    }
+
+    .col2 .inner {
+      background-color: lightblue;
+    }
+
+    .col3 .inner {
+      background-color: green;
+    }
+
+    .col4 .inner {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent-fix">
+    <!-- 作为父级容器 -->
+    <div id="parent">
+      <div class="col1">
+        <div class="inner"></div>
+      </div>
+      <div class="col2">
+        <div class="inner"></div>
+      </div>
+      <div class="col3">
+        <div class="inner"></div>
+      </div>
+      <div class="col4">
+        <div class="inner"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

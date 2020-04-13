@@ -1,0 +1,326 @@
+body {
+    font-family: tahoma, helvetica, arial, sans-serif;
+    font-size: 11px;
+    text-align: center;
+}
+
+th, td {
+    font-size: 11px;
+}
+
+img { border: 0; }
+
+#wrapper {
+    margin: 17px auto;
+    text-align: left;
+    width: 630px;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
+    padding: 17px 0 5px 0;
+    line-height: 1;
+}
+
+h2 {
+    margin: 0 0 5px 0;
+    padding: 5px 0 0 0;
+    font-size: 12px;
+}
+
+.nav {
+    width: 129px;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.nav h2 {
+    color: #fff;
+    margin-top: 0;
+    padding: 6px 0 6px 30px;
+    border-bottom: 1px solid #fff;
+    line-height: 1;
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0 0 0 30px;
+    line-height: 1.4;
+}
+
+.nav li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul a {
+    color: white;
+    font-weight: bold;
+}
+
+ul a:visited {
+    color: #fefefe;
+}
+
+ul a:hover, a:hover {
+    text-decoration: none;
+}
+#menu {
+    background: url(images/menu_bg.gif);
+}
+
+
+* html #menu {
+    background: white;
+}
+
+#header {
+    position: absolute;
+    background: #276196 url(images/header_bg.gif) repeat-x;
+    top: 0px;
+    left: 128px;
+    width: 502px;
+    height: 167px;
+}
+
+#header h2 {
+    margin: 57px 0 0 126px;
+}
+
+#header a {
+    color: white;
+}
+
+#header ul {
+    margin: 0;
+    padding: 12px 0 0 0;
+}
+
+#header li {
+    margin: 0;
+    padding: 0 0 0 129px;
+    list-style: none;
+    line-height: 1.7;
+}
+
+#header #navtop {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+#header #navtop li {
+    display: inline;
+    padding: 0 0 0 18px;
+}
+
+#header #navtop a {
+    text-decoration: none;
+}
+
+#girl {
+    position: absolute;
+    background: url(images/header_girl.gif) no-repeat;
+    top: 0px;
+    right: 0px;
+    width: 158px;
+    height: 167px;
+}
+
+#books {
+    position: absolute;
+    background: url(images/header_books.gif) no-repeat;
+    top: 41px;
+    left: 0px;
+    width: 84px;
+    height: 126px;
+}
+
+#navblue {
+    margin: 0;
+    padding: 0;
+    width: 127px;
+    background: #bfdbfa;
+}
+
+#navblue li {
+    margin: 0 0 1px 0;
+    padding: 0 0 0 30px;
+    list-style: none;
+    line-height: 30px;
+    background: blue url(images/blue_bg.gif);
+}
+
+* html #navblue li {
+    line-height: 28px;
+    l\ine-height: 30px;
+    padding: 0 0 0 16px;
+    padd\ing: 0 0 0 30px;
+}
+
+#navblue a {
+    text-decoration: none;
+    display: block;
+}
+
+#navblue a:hover {
+    text-decoration: underline;
+}
+
+* html #navblue a {
+    width: 100%;
+    w\idth: 96px;
+}
+
+#searchbar {
+    background: url(images/olive_bg.gif);
+    position: absolute;
+    top: 172px;
+    left: 128px;
+    width: 502px;
+    height: 2.2em;
+    color: #fff;
+    border-bottom: 2px solid white;
+}
+
+* html #searchbar {
+    height: 2.4em;
+    he\ight: 2.2em;
+}
+
+#searchbar form {
+    margin: 0;
+    padding: 2px 0 0 30px;
+}
+
+#searchbar .submit {
+    border: 1px solid #e6ead5;
+    background: #72765c;
+    font-size: 11px;
+    padding: 0 3px;
+    height: 19px;
+    color: #fff;
+}
+
+#searchbar .text {
+    border: 0px none;
+}
+
+#orangerow .col {
+    padding-top: 2.3em;
+}
+
+#greenrow .col {
+    float: left;
+    width: 487px;
+    margin-left: 6px;
+    margin-bottom: 5px;
+}
+
+.divider {
+    background: #1a508c;
+    height: 3px;
+    margin: 1px 0;
+    padding: 0;
+    font-size: 1px;
+}
+
+.col .divider {
+    background: none;
+    border-top: 1px solid #999;
+}
+
+#orangerow {
+    background: url(images/orange_bg.gif) repeat-y;
+}
+
+#greenrow {
+    background: url(images/green_bg.gif) repeat-y;
+}
+
+.left {
+    float: left;
+    margin: 5px 5px 0 0;
+}
+
+.clear {
+    clear: both;
+    background: #fff;
+    margin: 0 1px 0 0;
+}
+
+.clear div {
+    margin: 0 4px 0 130px;
+    border-top: 1px solid #999;
+    height: 1px;
+    font-size: 1px;
+    margin-bottom: -1px;
+}
+
+* html .clear div {
+    margin-bottom: -2px;
+}
+
+#greenrow .clear {
+    height: 3px;
+    font-size: 1px;
+    margin-bottom: -2px;
+}
+
+#authormonth {
+    width: 222px;
+    float: left;
+    margin-left: 6px;
+}
+
+#bookmonth {
+    width: 236px;
+    float: right;
+    margin-right: 10px;
+    display: inline;
+}
+
+.readmore {
+    text-align: right;
+    margin-top: -0.8em;
+}
+
+#footer {
+    text-align: right;
+    background: #828282;
+    color: #dbd1d1;
+}
+
+* html #footer {
+    height: 1%;
+}
+
+#footeri {
+    padding: 5px 3px 7px 13px;
+}
+
+#footer .copyright {
+    float: left;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.books {
+    float: right;
+    width: 200px;
+    margin: 0 10px;
+}
+
+.col .books a {
+    color: maroon;
+}
+
+.col a {
+    color: #ed5411;
+}

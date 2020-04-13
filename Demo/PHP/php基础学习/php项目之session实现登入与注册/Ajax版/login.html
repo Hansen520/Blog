@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登入与注册</title>
+    <style>
+        input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+    #box{
+        width:300px;
+        margin:0 auto;
+    }
+    #box .choose span{
+        cursor: pointer;
+        display: inline-block;
+        width:70px;
+        height:35px;
+        border:1px solid #ccc;
+        text-align: center;
+        font-size:14px;
+        line-height: 35px;
+        border-bottom: none;
+    }
+    #box .choose span.active{
+        background: #000;
+        color: rgb(233, 175, 16);
+    
+    }
+    #box .around_main{
+        border:1px solid #ccc;
+    }
+
+    #box .around_main  .main label{
+        display: block;
+        margin-top:20px;
+    }
+    #box .around_main  .main span{
+        display: inline-block;
+        width:100px;
+        font-size:14px;
+     
+    }
+    #box .around_main .main input{
+        display: inline-block;
+
+    }
+    #box .around_main .main .submit{
+        width:75px;
+        height:35px;
+        border:1px solid #ccc;
+        margin:45px 0 0 95px;
+    }
+
+    #box .around_main .main:nth-child(2){
+        display: none;
+        
+    }
+
+    .error_message{
+        width:100%;
+        height:35px;
+        color:red;
+        font-size:14px;
+        background: #eee;
+        line-height:35px;
+        text-align: center;
+    }
+    .success{
+        color:#fff;
+        background: #000;
+    }
+    </style>
+</head>
+<body>
+<hr size="111">
+<div id="box">
+    <div class="choose">
+        <span class="active">登入</span><span>注册</span>
+    </div>
+    <div class="around_main">
+        <div class="main">
+            <div class="error_message"></div>
+            <label for=""><span>用户：</span><input type="text" name="username" id="username2" class="username"  autofocus/></label> 
+            <label for=""><span>密码：</span><input type="password" name="password" id="password2" class="password"/></label>   
+            <input type="submit" name="login" value="登入" id="login" id="submit" class="submit">
+        </div>
+        <div class="main">
+             <!--用于提示表单验证信息-->
+            <div class="error_message"></div>
+            <!-- 用了AJAX不能用form 不然因为有提交导致html页面不能显示文字innerHTM信息，除非你用php返回echo-->
+            <label for=""><span>用户：</span><input type="text" name="username" id="username1" class="username"  autofocus/></label> 
+            <label for=""><span>密码：</span><input type="password" name="password" id="password1" class="password"/></label>   
+            <label for=""><span>确认密码：</span><input type="password" name="repassword" id="repassword1" class="repassword"/></label> 
+            <input type="submit" name="register" value="注册" id="submit" class="submit"> 
+        </div>
+    </div>
+</div>
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+
+// 下面是注册登入页面交换代码
+oSpan = document.querySelectorAll(".choose span");
+oMain = document.querySelectorAll(".around_main .main");
+oSpan[0].onclick = function(){
+    this.className = "active";
+    oSpan[1].className = "";
+    oMain[0].style.display = "block";
+    oMain[1].style.display = "none";
+
+}
+oSpan[1].onclick = function(){
+    this.className = "active";
+    oSpan[0].className = "";
+    oMain[0].style.display = "none";
+    oMain[1].style.display = "block";
+}
+
+
+//下面是注册页面代码
+var oSubmit = document.getElementById("submit");
+var oError = document.querySelectorAll(".error_message");
+oSubmit.onclick = function(){
+    var oUsername1 = document.getElementById("username1").value;
+    var oPassword1 = document.getElementById("password1").value;
+    var oRepassword1 = document.getElementById("repassword1").value;
+    // 上面三行一定要写在里面，因为一点击就压获得value的值
+    var isNotError = true;
+    if(oUsername1 == ""){
+        oError[1].innerHTML = "警告:用户名不能为空！"
+        isNotError = false;
+        return;//这个是返回false，就是isNotError，后面就不用执行了！
+    }else if(oPassword1 == ""){
+        oError[1].innerHTML = "警告:密码不能为空！";
+        isNotError = false;
+        return;
+    }else if(oRepassword1 == ""){
+        oError[1].innerHTML = "警告:确认密码不能为空！";
+        isNotError = false;
+        return;
+    }
+    else if(oRepassword1 != oPassword1){
+        oError[1].innerHTML = "两次密码不一致！请重新输入！";
+        isNotError = false;
+        return;
+    }
+
+    //注册ajax的jq写法
+    $.get("add.php",{
+        "username":oUsername1,
+        "password":oPassword1
+    },function(data){
+        var data_json = JSON.parse(data);
+        if(data_json[0]["code"] == 1){
+            alert(data_json[0]["message"]);
+        }
+        if(data_json[0]["code"] == 2){
+            alert(data_json[0]["message"]);
+        }
+        if(data_json[0]["code"] == 3){
+            alert(data_json[0]["message"]);
+        }
+        location.href = "login.html";
+        
+        
+    })
+}
+
+//下面是登入页面代码
+var oLogin = document.getElementById("login");
+oLogin.onclick = function(){
+    var oUsername2 = document.getElementById("username2").value;
+    var oPassword2 = document.getElementById("password2").value;
+    // alert(oUsername2 +'--'+ oPassword2);
+    var isNotError = true;
+    if(oUsername2 == ""){
+        oError[0].innerHTML = "用户名不能为空";
+        isNotError = false;
+        return;
+    }else if(oPassword2 == ""){
+        oError[0].innerHTML = "密码不能为空";
+        isNotError = false;
+        return;
+    }
+
+    $.get("success.php",{
+        "username":oUsername2,//这个username是给后端的，password也是同理
+        "password":oPassword2
+    },function(data){
+        var data_json = JSON.parse(data);
+        // console.log(data_json[0]["code"]);
+        if(data_json[0]["code"] == 1){
+            alert(data_json[0]["message"]);
+        }else if(data_json[0]["code"] == 2){
+            alert(data_json[0]["message"]);
+            oError[0].className += " success";
+            oError[0].innerHTML = "用户名："+data_json[0]["session"]+"---"+"<a href='logout.php'>注销</a>"; 
+        }else if(data_json[0]["code"] == 3){
+            alert(data_json[0]["message"]);//登录成功
+            oError[0].className += " success";
+            oError[0].innerHTML =  "您好！"+data_json[0]["session"]+",欢迎回来！<a href='logout.php'>注销</a>";
+        }else if(data_json[0]["code"] == 4){
+            alert(data_json[0]["message"]);//没有此用户,请重新登录
+            location.href='login.html';
+                     }
+    });
+
+
+}
+
+
+
+</script>
+</body>
+</html>

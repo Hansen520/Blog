@@ -1,0 +1,34 @@
+<CATALOG>
+    <CD>
+        <TITLE>Empire Burlesque</TITLE>
+        <ARTIST>Bob Dylan</ARTIST>
+        <COUNTRY>USA</COUNTRY>
+        <COMPANY>Columbia</COMPANY>
+        <PRICE>10.90</PRICE>
+        <YEAR>1985</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Maggie May</TITLE>
+        <ARTIST>Rod Stewart</ARTIST>
+        <COUNTRY>UK</COUNTRY>
+        <COMPANY>Pickwick</COMPANY>
+        <PRICE>8.50</PRICE>
+        <YEAR>1990</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Black angel</TITLE>
+        <ARTIST>Savage Rose</ARTIST>
+        <COUNTRY>EU</COUNTRY>
+        <COMPANY>Mega</COMPANY>
+        <PRICE>10.90</PRICE>
+        <YEAR>1995</YEAR>
+    </CD>
+    <CD>
+        <TITLE>The dock of the bay</TITLE>
+        <ARTIST>Otis Redding</ARTIST>
+        <COUNTRY>USA</COUNTRY>
+        <COMPANY>Atlantic</COMPANY>
+        <PRICE>7.90</PRICE>
+        <YEAR>1987</YEAR>
+    </CD>
+</CATALOG>

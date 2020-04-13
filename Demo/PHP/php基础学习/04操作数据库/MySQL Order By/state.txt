@@ -1,0 +1,12 @@
+ORDER BY 关键词用于对记录集中的数据进行排序
+
+排序用到的关键词：
+    关键词	    说明
+    asc	        升序排列，从小到大（默认）
+    desc	    降序排列，从大到小
+语法示例：
+    类别	        详细解释
+   基本语法	        select 字段 from 表 order by 字段 排序关键词
+   示例	            select id,Age from Myguests order by Age desc;
+   示例说明	        询Myguests表中的id, Age字段，按照降序排序
+如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax与mysql</title>
+</head>
+<body>
+    <form action="">
+        <select name="users" onchange="showUser(this.value)">
+            <option value="">请选择你要的东西！</option>
+            <option value="1">aa</option>
+            <option value="2">bb</option>
+            <option value="3">cc</option>
+            <option value="4">dd</option>
+            <option value="5">ee</option>
+            <option value="6">ff</option>
+        </select>
+    </form>
+    <br>
+    <div id="txtHint">数据库信息的展示地</div>
+
+    <script src="../jquery-1.8.3.min.js"></script>
+    <script>
+    function showUser(str){
+        if (str==""){
+            document.getElementById("txtHint").innerHTML="";
+            return;
+        }
+    
+        if (window.XMLHttpRequest){
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else{
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        // alert(str);
+            $.get('getuser.php',{"q":str},function(data){
+                //地址，参数名q，回调函数
+                // 这里相当于getuser.php?q=str,q相当于给后面的参数
+                // alert(data);
+                $('#txtHint').html(data);
+            })
+      
+    }
+    </script>
+</body>
+</html>

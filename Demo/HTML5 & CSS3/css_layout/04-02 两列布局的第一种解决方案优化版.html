@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两列布局的第一种解决方案优化版</title>
+  <style>
+    #left,
+    #right {
+      height: 300px;
+    }
+
+    #left {
+      /* 定宽 */
+      width: 400px;
+      background-color: #c9394a;
+      /* 当前元素脱离文档流 */
+      float: left;
+      /* 设置显示层级更高 */
+      position: relative;
+    }
+
+    /* 自适应 */
+    #right-fix {
+      /* 设置为浮动，导致默认宽度值为 0 */
+      float: right;
+      width: 100%;
+      margin-left: -400px;
+
+      background-color: hotpink;
+    }
+
+    #right {
+      background-color: #cccccc;
+    }
+
+    #inner {
+      background-color: green;
+      height: 300px;
+
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left"></div>
+  <!-- 为自适应元素定位父级元素 -->
+  <div id="right-fix">
+    <div id="right">
+      <div id="inner"></div>
+    </div>
+  </div>
+</body>
+
+</html>

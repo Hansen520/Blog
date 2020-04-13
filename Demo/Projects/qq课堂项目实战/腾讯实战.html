@@ -1,0 +1,1829 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>腾讯项目实战-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;height:2000px;}
+			img{border:0;}
+			/*toubu start*/
+			#toubu{width:1200px;height:95px;padding-top:15px;margin:0px auto;}
+			#toubu h1{float:left;}
+
+			#toubu .zhong{float:left;margin-left:220px;}
+			#toubu .zhong .tou_input{width:450px;height:36px;border:2px solid #188eee;/*占位置隐藏*/position:relative;}
+			#toubu .zhong .tou_input .s_text{width:370px;height:30px;line-height:30px;font-size:14px;font-family:"微软雅黑";color:#545454;
+			padding-top:2px;padding-left:10px;border:0px;}
+			#toubu .zhong .tou_input a{width:57px;height:36px;display:block;background:#0066FF;position:absolute;
+			top:0px;right:0px;}
+			#toubu .zhong .tou_input a i{width:20px;height:20px;background-image:url("images/icon-search-white.png");
+			display:block;/*将行内元素转为块元素，不然图片出不来*/margin:6px auto;}
+
+			#toubu .loop{font-size:12px; float:right; line-height:40px;margin-left:185px;}
+			#toubu .loop a{text-decoration:none;color:#333;}
+			/*end toubu*/
+			
+			/*第二部分开始*/
+			/*导航开始上部+图片的布局*/
+			#banner{width:100%;height:350px;}
+			#banner .b_qj{width:1200px;height:50px;margin:0px auto;position:relative;}
+			#banner .b_qj a{position:absolute;left:220px;top:0px;}
+			/*导航结束上部+图片的布局*/
+			
+			/*图片下部布局开始*/
+			#banner .bottom{height:300px;background:#9900CC;z-index:1;/*设置图层等级为1*/}
+			#banner .bottom .b_dh{width:1200px;height:300px;margin:0px auto;position:relative;z-index:2;/*设置图层等级为2*/}
+			#banner .bottom .b_dh .b_left{width:220px;height:476px;background:#188ccc;position:absolute;top:-49px;left:0px;z-index:4;/*设置图层等级为4*/}
+			#banner .bottom .b_dh .b_conter{width:760px;height:300px;background-color: rgb(77, 
+			78,155);position:absolute;left:220px;top:0px;background-image:url("images/icon.png") no-repeat;}
+			#banner .bottom .b_dh .b_right{width:220px;height:300px;	background: rgba(0,0,0,0.4);
+			 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);float:right; 
+			 position:absolute;right:0;top:0;}
+			 /*图片下部布局结束*/
+
+			 /*全部课程开始*/
+			 #banner .bottom .b_dh .b_left ul.b_list{width:220px;}
+			 #banner  .bottom .b_dh .b_left ul li.b_list_first{width:220px;height:50px;background:#188eee;list-style:none;}
+			 #banner .bottom .b_dh .b_left ul li.b_list_first a{width:190;height:50px;font-size:16px;color:white;line-height:50px;padding-left:22px;
+			 text-decoration:none;display:block;}
+			 #banner .bottom .b_dh .b_left ul li.b_list_first a i{width:20px;height:20px;margin-right:8px;display:inline-block;}
+			 #banner  .bottom .b_dh .b_left ul li.b_list_first a:hover{text-decoration:underline;}
+			 /*i的图片已有<*/
+			 /*全部课程结束*/
+			 
+			 /*一级导航开始*/
+			#banner .bottom .b_dh .b_left ul li.b_list_nr{width:220px;height:70px;border-bottom:1px solid 
+			#1681c4;background:#0477c0;list-style:none;position:relative;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh i{width:6px;height:15px;float:right;display:block;margin-right:10px;margin-top:18px;background:url("images/icon.png") no-repeat -146px -163px;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh i:hover{}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh a.b_list_nr_zdh_neir{height:24px;line-height:24px;color:white;text-decoration:none;
+			font-size:16px;padding:11px 15px 0;display:block;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh a.b_list_nr_zdh_neir:hover{text-decoration:underline;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh_xm a.b_list_nr_zdh_neir_xm_neiro{display:inline-block;text-decoration:none;
+			padding: 4px 0px 0px 15px;color:#97d2f7;text-align:center;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .b_list_nr_zdh_xm a.b_list_nr_zdh_neir_xm_neiro:hover{text-decoration:underline;}
+			/*一级导航结束*/
+
+			/*二级导航开始*/
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .show_menu{width:444px;height:282px;
+			position:absolute;top:0px;left:220px;/*定位于li*/z-index:4;/*设置图层等级为4*/display:none;}
+			#banner .bottom .b_dh .b_left ul li.b_list_nr .show{display:block;}
+			/*二级导航结束*/
+			
+			/*中间轮播图样式开始*/
+			#banner .bottom .b_dh .b_conter{width:760px;height:300px;background-color: rgb(77, 78, 155);
+			z-index:3;overflow:hidden;/*只隐藏后面的图片，对第一张无影响*/position:absolute;top:0px;left:220px;/*为了是z-index出作用*/}
+			#banner .bottom .b_dh .b_conter .b_pic{position:relative;}
+			#banner .bottom .b_dh .b_conter .b_pic li{list-style:none;/*因为图片使用了ul li标签，所以使用这个属性是必要的*/}
+			#banner .bottom .b_dh .b_conter .b_btn{height:24px;position:absolute;bottom:10px;left:50%;margin-left:-70px;}
+			#banner .bottom .b_dh .b_conter  .b_btn ul{background:#000;display:inline-block;padding:7px
+			28px;opacity:0.4;filter:alpha(opacity=40); border-radius:15px;}
+			#banner .bottom .b_dh .b_conter .b_btn ul li{width:8px;height:8px;border-radius:10px;border:1px solid 
+			#fff;float:left;list-style:none;margin:0 3px;}
+			#banner .bottom .b_dh .b_conter .b_btn ul li.on{background:#fff;}
+			/*出现轮播图的左右耳朵↓*/
+			#banner .bottom .b_dh .b_conter .f_ear{width:46px;height:70px;display:block;background:url("images/icon.png") no-repeat;
+			position:absolute;z-index:4px;}
+			#banner .bottom .b_dh .b_conter:hover .pre{left:10px;top:110px;background-position:-74px 0;}
+			#banner .bottom .b_dh .b_conter:hover .pre{background-position:-172px 0;}
+			#banner .bottom .b_dh .b_conter:hover .next{right:10px;top:110px;background-position:-123px 0;}
+			#banner .bottom .b_dh .b_conter:hover .next{background-position:0 -57px;}
+			
+			
+		/*↑*/	
+			/*中间轮播图样式结束*/
+
+			/*右边新闻栏目开始*/
+			#banner .bottom  .b_dh .b_right .b_new{width:220px;height:150px;}
+			#banner .bottom  .b_dh .b_right .b_new ul{margin-left:20px;padding-left:15px;}
+			#banner .bottom  .b_dh .b_right .b_new ul li{padding:18px 10px 0 0;color:#fff;/*使方点变白*/}
+			#banner .bottom  .b_dh .b_right .b_new ul li a{text-decoration:none;color:#fff;font-size:14px;}
+			#banner .bottom  .b_dh .b_right .b_new ul li a:hover{text-decoration:underline;}
+
+			#banner .bottom  .b_dh .b_right
+			.b_tm{width:220px;height:113px;margin-top:30px;opacity:0.4;background:#000;
+			filter:alpha(opacity=40);position:absolute;right:0;bottom:0px;z-index:-1;}
+			#banner .bottom  .b_dh .b_right .b_down{width:220px;height:110px;margin-top:30px;/*注意细节*/
+			color:#fff;position:relative;}
+			#banner .bottom  .b_dh .b_right .b_down .down_qq{width:110px;height:110px;display:block;text-align:center;
+			font-size:12px;color:#fff;text-decoration:none;float:left;position:relative;position:absolute;top:0px;left:0px;}
+			#banner .bottom  .b_dh .b_right .b_down .down_qq .desc{font-size:16px;}
+			#banner .bottom  .b_dh .b_right .b_down .down_qq i{width:44px;height:44px;display:block;position:absolute;top:10px;left:32px;
+			background:url("images/icon.png") no-repeat -123px -73px;}
+			#banner .bottom  .b_dh .b_right .b_down .down_qq .d_all{position:absolute;left:32px;bottom:10px;}
+					   
+			#banner .bottom  .b_dh .b_right .b_sys{width:110px;height:110;float:left;}
+			#banner .bottom  .b_dh .b_right .b_sys i{width:44px;height:44px;display:block;position:absolute;top:10px;left:143px;
+			background:url("images/icon.png") no-repeat -172px -73px;}
+			#banner .bottom  .b_dh .b_right .b_sys .s_all{width:60px;height:60px;font-size:12px;position:absolute;left:146px;top:60px;}
+			#banner .bottom  .b_dh .b_right .b_sys .desc{font-size:16px;}
+			/*本使用js↓*/
+			/*#banner .bottom  .b_dh .b_right .b_sys .code:hover{width:126px;height:126px;position:absolute;left:0px;top:-9px;display:none;}*/
+			#banner .bottom  .b_dh .b_right .b_sys:hover{width:126px;height:126px;background:url("images/bg-board-qr.png")
+			no-repeat;position:absolute;left:0px;top:0px;z-index:4;}
+			/*↑，若使用js将下面图片不注释*/
+			/*结束右边新闻栏目*/
+					   
+			/*第二部分结束*/
+			/*第三部分开始*/
+			/*active开始*/
+			.active{width:980px;height:125px;margin:0px auto;padding-left:220px;border-right:1px solid #eaeaea;
+			border-bottom:1px solid #eaeaea; font-size:0px;/*1.??*/}
+			.active a.card{width:326px;height:125px;display:inline-block;border:0px;}
+			/*结束active*/
+			/*第三部分结束*/
+
+
+			/*第四部分热门课程开始*/
+			.host{width:1230px;height:331px;margin:0px auto;padding-top:40px;}
+			.host .h_box{width:1230px;height:221px;margin:0px auto;}
+			.host .h_box .h_nav{height:40px;border-bottom:1px solid #eaeaea;}
+			.host .h_box .h_nav a{width:220px;height:40px;display:block;color:#202020;text-decoration:none;float:left;font-size:22px;}
+			.host .h_box .h_nav a:hover{color:#188eee;}
+			.host .h_box .h_nav .live{width:940px;line-height:36px;margin-top:3px;float:left;}
+			.host .h_box .h_nav .live li{float:left;list-style:none;width:120px;text-align:center;font-size:14px;}
+			.host .h_box .h_nav .live li.l_set{border-bottom:2px solid #188eee;color:#188eee;}
+
+			.host .h_box .h_all{height:250px;font-size:14px;padding-top:50px;}
+			.host .h_box .h_all .list_live{height:200px;}
+			.host .h_box .h_all .list_vedio{height:200px;display:none;}
+            
+			.host .h_box .h_all li{width:244px;height:200px;list-style:none;float:left;margin-left:1px;}
+			.host .h_box .h_all .h_all_1{width: 221px;height: 175px;padding:10px 11px 8px 8px;}
+			.host .h_box .h_all .h_all_1:hover{border:1px solid #dddddd;box-shadow:#ececec 0 1px 1px;padding:9px 11px 7px 7px;
+			/*使图片固定 这一点为细节*/}
+			.host .h_box .h_all li a.h_first{display:block;}
+			.host .h_box .h_all li a.h_two{display:block;color:#333;margin-bottom:5px;}
+			.host .h_box .h_all li p span{display: block;width: 43px;height: 21px;border-right: 1px solid #999;float: left;color:#5fb41b;}
+			.host .h_box .h_all li p a{display:block;width:154px;height:21px;float:left;margin-left:6px;}
+			/*结束第四部分热门课程*/
+
+			/*第五部分开始*/
+			.content{width:100%;height:540px;background:#f9f9f9;padding: 36px 0 40px 0;}
+			.content .c_list{width:1200px;height:540px;margin:0px auto;}
+			.content .c_list .c_list_box{width:1200px;}
+			.content .c_list .c_list_box .c_nav{width:1200px;height:40px;border-bottom:1px solid #eaeaea;}
+			.content .c_list .c_list_box .c_nav
+			a{width:220px;height:40px;display:block;color:#202020;text-decoration:none;float:left;font-size:22px;}
+			.content .c_list .c_list_box .c_nav a:hover{color:#188eee;}
+			.content .c_list .c_list_box .c_nav ul{width:940px;line-height:36px;margin-top:3px;/*边框下调*/float:left;}
+			.content .c_list .c_list_box .c_nav ul li{float:left;list-style:none;width:120px;text-align:center;font-size:14px;}
+			.content .c_list .c_list_box .c_nav ul li.c_set{border-bottom:2px solid #188eee;color:#188eee;}
+
+			.content .c_list .c_list_box .list_all{padding-top:30px;position:relative;}
+			.content .c_list .c_list_box .list_all a.cc_list/*要点*/{width:240px;height:420px;display:block;position:absolute;top:-2px;left:-21px;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph{width:980px;height:390px;margin-left:220px;display:none;}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech{width:722px;padding-left:10px;float:left;/*左1*/}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li{list-style:none;width:235px;height:200px;float:left;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1{width: 221px;height: 175px;padding:10px 11px 8px 8px;}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1:hover{border:1px solid #dddddd;box-shadow:#ececec 0 1px 1px;padding:9px 
+			11px 7px 7px;
+			/*使图片固定 这一点为细节*/}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1 a.h_first{display:block;}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1 a.h_two{display:block;color:#333;margin-bottom:5px;}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1 p span{display:block;width:43px;height:21px;border-right:1px solid 
+			#999;float:left;color:#5fb41b;font-size:14px;}
+			.content .c_list .c_list_box .list_all .c_list_ph ul.c_kech li .h_all_1 p a{display:block;width:154px;height:21px;float:left;margin-left:7px;font-size:14px;}
+
+			/*排行↓*/
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph{width:242px;height:420px;float:right;/*右1*/}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list{width:242px;height:390px;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_up{width:242px;height:30px;border-bottom:1px solid #eaeaea;margin-top:-1px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_up ul li{width:107px;height:29px;list-style:none;font-size:16px;color:#333;text-align:center;float:left;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_up ul li.p_sel{border-bottom:2px solid #188eee;}
+
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down{width:242px;height:361px;padding-top:10px;display:none;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li{width:218px;height:39px;padding:0px 12px;list-style:none;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li:hover{background:#e5e5e5;}
+			
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li a.d_title{display:block;float:left;text-decoration:none;font-size:13px;color:#666;float:left;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first .p_con_text .p_desc a.d_pic{float:left;margin-top:3px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first .p_con_text .p_desc .p_text{float:left;margin-top:10px;margin-left:8px;display:block;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first .p_con_text .p_desc .p_text .p_num{color:#e85308;font-size:15px;display:block;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first .p_con_text .p_desc .p_text .p_name{margin-top:5px;font-size:13px;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first{height:75px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li{height:30px;margin-top:5px;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.p_n{display:block;width:18px;height:18px;background:url("images/icon.png") no-repeat;float:left;margin-right:10px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .p_n{display:block;width:18px;height:18px;background:url("images/icon.png") no-repeat;float:left;margin-right:10px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .ttt{text-decoration:none;font-size:13px;color:#666;}
+
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li.li_first .number_1{background-position:-105px -163px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_2{background-position:-84px -163px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_3{background-position:-21px -163px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_4{background-position:-174px -130px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_5{background-position:-49px -57px ;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_6{background-position:0 -163px;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_7{background-position:-63px -163px ;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_8{background-position:-42px -163px ;}
+			.content .c_list .c_list_box .list_all .c_list_ph .tx_ph .tx_list .tx_down ul li .number_9{background-position:-195px -130px ;}
+
+
+			
+	
+			/*排行↑*/
+
+			/*结束第五部分*/
+		</style>
+
+	</head>
+	<body>
+	<!--头部开始-->
+	<div id="toubu">
+		<h1>
+			<a href="#"><img src="images/logo.png" alt="腾讯课堂" width="288" height="38"/></a>
+		<h1>
+
+		<div class="zhong">
+			<div class="tou_input">
+			<input type="text" class="s_text" value="搜索课程"/>
+			<a href="#"><i></i></a>
+			</div>
+		</div>
+
+		<div class="loop">
+			<a href="#">登入</a>|<a href="#">帮助</a>
+		</div>
+	</div>
+	<!--结束头部-->
+
+    <!--导航开始-->
+	<div id="banner">
+		<div class="b_qj">
+			<a href="#">
+			<img src="images/banner-top.jpg" alt="群聚学习" width="760" height="50"/></a><!--采用定位-->
+		</div>
+
+		<div class="bottom">
+			<div class="b_dh">
+
+			 <div class="b_left">
+			<!--左边文字导航-->
+			<ul class="b_list">
+				<li class="b_list_first">
+					<a href="#">
+					<i><img src="images/icon-hamburg_ie6.png" alt="" width="18" height="14"/></i>
+					全部课程
+					</a>
+				</li>
+			
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">职业技能</a>
+				</div>
+				<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">职场技能</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">sns营销</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">公务员</a>
+				</div>
+				<div class="show_menu"><img src="images/class-one.png" alt="" width="" height=""/></div>
+			</li>
+
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">IT培训</a>
+				</div>
+				<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">网站制作</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">手机开发</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">游戏制作</a>
+				</div>
+				<div class="show_menu"><img src="images/class-two.png" alt="" width="" height=""/></div>
+			</li>
+
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">语言学习</a>
+				</div>
+				<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">英语口语</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">日语</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">韩语</a>
+				</div>
+				<div class="show_menu"><img src="images/class-four.png" alt="" width="" height=""/></div>
+			</li>
+
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">中小学/大学</a>
+				</div>
+					<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">考研/自考</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">中考备战</a>
+				</div>
+				<div class="show_menu"><img src="images/class-four.png" alt="" width="" height=""/></div>
+			</li>
+
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">兴趣爱好</a>
+				</div>
+				<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">投资理财</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">美妆</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">摄影</a>
+				</div>
+				<div class="show_menu"><img src="images/class-five.png" alt="" width="" height=""/></div>
+			</li>
+
+			<li class="b_list_nr">
+				<div class="b_list_nr_zdh">
+					<i></i><!--小耳朵-->
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir">亲子课堂</a>
+				</div>
+				<div class="b_list_nr_zdh_xm">
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">幼儿教育</a>
+					<a href="#" target="_blank" class="b_list_nr_zdh_neir_xm_neiro">家长训练营</a>
+				</div>
+				<div class="show_menu"><img src="images/class-six.png" alt="" width="" height=""/></div>
+			</li>
+			</ul>
+			<!--左边文字导航结束-->
+
+		</div>
+
+
+			<!--中间图片轮播图开始-->
+			<div class="b_conter">
+			        <ul class="b_pic">
+					      <li>
+								<a href="#">
+											<img src="images/banner-6.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a>
+											<img src="images/banner-1.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a href="#">
+											<img src="images/banner-3.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a href="#">
+											<img src="images/banner-2.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a href="#">
+											<img src="images/banner-4.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a href="#">
+											<img src="images/banner-7.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+						  <li>
+								<a href="#">
+											<img src="images/banner-5.jpg" alt="潭州学院" width="760" height="300" />
+								</a>
+						  </li>
+					</ul>
+
+					<div class="b_btn">
+						<ul>
+							<li class="on" data-color="rgb(248, 210, 46)"></li>
+							<li data-color="rgb(255, 181, 101)"></li>
+							<li data-color="#6365ce"></li>
+							<li data-color="#523484"></li>
+							<li data-color="#009ee7"></li>
+							<li data-color="#FF3300"></li>
+							<li data-color="#33FFFF"></li>
+						</ul>
+					</div>
+					<div>
+						<a href="" class="f_ear pre"></a>
+						<a href="" class="f_ear next"></a>
+					</div>
+
+			</div>
+			<!--中间图片轮播图结束end-->
+			<!--右边新闻栏目开始-->
+			<div class="b_right">
+					<div class="b_new">
+					<ul type="square">
+							<li><a href="#">手把手教你做小霸王游戏</a></li>
+							<li><a href="#">2015考研英语名师解析</a></li>
+							<li><a href="#">网站制作达人分享</a></li>
+							<li><a href="#">海归型男的中秋邂逅</a></li>
+					</ul>
+					</div>
+
+					<div class="b_tm"></div>
+					<div class="b_down">
+						<a href="#" class="down_qq">
+							<i></i>
+							<span class="d_all"><span class="desc">下载</span><br />专用QQ</span>
+						</a>
+
+						<div class="b_sys">
+						<i></i>
+						<span class="s_all"><span class="desc">扫一扫</span><br />腾讯公众号</span>	
+						<!--<div class="code"><img src="images/bg-board-qr.png" alt="QQ二维码" width="126" height="126"/></div>-->
+					    </div>
+					
+					</div>
+					
+			</div><!--右边新闻栏结束-->
+			</div><!--b_dh结束-->
+		</div><!--bottom结束-->
+	</div><!--banner结束-->
+
+	<!--结束导航-->
+
+	<!--active开始-->
+	<div class="active">
+		<a href="#" class="card"><img src="images/7a2acabd.youtu.jpg" alt="挑灯夜读" width="326" height="125"/></a>
+		<a href="#" class="card"><img src="images/14170b7b_yb_326_125.jpg" alt="校园直通车" width="326" height="125"/></a>
+		<a href="#" class="card"><img src="images/13eef47a.youtu.jpg" alt="1元学韩语" width="326" height="125"/></a>
+	</div>
+	<!--结束active-->
+
+	<!--热门课程开始-->
+	<div class="host">
+		<div class="h_box">
+			<div class="h_nav">
+				<a href="#">腾讯课堂</a>
+				<ul class="live">
+					<li class="l_set">直播课</li>
+					<li>录播课</li>
+				</ul>
+			</div>
+
+			<div class="h_all">
+				<ul class="list_live">
+					<li>
+					     <div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+						<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (1).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+						<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+						<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+						<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+				</ul>
+
+				<!--隐藏的图5张-->
+
+				<ul class="list_vedio">
+					<li>
+					<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (5).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+					<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+					<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+					<li>
+					<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+						  <li>
+					<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--热门课程结束-->
+
+	<!--职业技能开始-->
+	<div class="content">
+		<div class="c_list">
+			<div class="c_list_box">
+				<div class="c_nav">
+					<a href="#">职业技能</a>
+					<ul>
+						<li class="c_set">直播课</li>
+						<li>职场/求职</li>
+						<li>职业类考试</li>
+						<li>市场营销</li>
+						<li>最新发布</li>
+					</ul>
+				</div>
+				<!--下侧布局开始-->
+				<div class="list_all">
+					<a href="#" class="cc_list"><!--class一定要加，不然有重复出错-->
+						<img src="images/c2f9ccf4_yb_240_420.png"  alt="" width="240" height="420"/>
+					</a>
+				<!--c_list_ph 开始-->
+			<div class="c_list_ph" style="display:block">
+				<ul class="c_kech"><!--避免选择器的重复使用-->
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+					</li>
+
+
+					<div style="clear:both"></div>
+				</ul>
+
+                <!--右侧小排行开始-->
+					<div class="tx_ph">
+						<div class="tx_list">
+
+							<div class="tx_up">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+
+							<div class="tx_down" style="display:block">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="tx_down">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							</div>
+						</div>
+						
+
+				<!--右侧小排行结束-->
+					</div>
+
+
+
+						<div class="c_list_ph" >
+				<ul class="c_kech"><!--避免选择器的重复使用-->
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+					</li>
+
+
+					<div style="clear:both"></div>
+				</ul>
+
+                <!--右侧小排行开始-->
+					<div class="tx_ph">
+						<div class="tx_list">
+
+							<div class="tx_up">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+
+							<div class="tx_down" style="display:block">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="tx_down">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							</div>
+						</div>
+						
+
+				<!--右侧小排行结束-->
+					</div><div class="c_list_ph" >
+				<ul class="c_kech"><!--避免选择器的重复使用-->
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+					</li>
+
+
+					<div style="clear:both"></div>
+				</ul>
+
+                <!--右侧小排行开始-->
+					<div class="tx_ph">
+						<div class="tx_list">
+
+							<div class="tx_up">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+
+							<div class="tx_down" style="display:block">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="tx_down">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							</div>
+						</div>
+						
+
+				<!--右侧小排行结束-->
+					</div><div class="c_list_ph">
+				<ul class="c_kech"><!--避免选择器的重复使用-->
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+					</li>
+
+
+					<div style="clear:both"></div>
+				</ul>
+
+                <!--右侧小排行开始-->
+					<div class="tx_ph">
+						<div class="tx_list">
+
+							<div class="tx_up">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+
+							<div class="tx_down" style="display:block">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="tx_down">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							</div>
+						</div>
+						
+
+				<!--右侧小排行结束-->
+					</div><div class="c_list_ph" >
+				<ul class="c_kech"><!--避免选择器的重复使用-->
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (6).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (4).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (3).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220 (2).jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>		
+
+					</li>
+
+					<li>
+								<div class="h_all_1">
+					    <a class="h_first">
+						<img src="images/220.jpg" width="220" height="124"/>
+						</a>
+
+						<a class="h_two" title="子晴老师看动漫学日语（甜甜起司猫）【海贝日语】">子晴老师看动漫学日语（甜甜起...</a>
+						<p>
+							<span>免费</span>
+							<a>海贝网校</a>
+						</p>
+				          </div>
+					</li>
+
+
+					<div style="clear:both"></div>
+				</ul>
+
+                <!--右侧小排行开始-->
+					<div class="tx_ph">
+						<div class="tx_list">
+
+							<div class="tx_up">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+
+							<div class="tx_down" style="display:block">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="tx_down">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number_1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">	
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_2"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+										<div style="clear:both"></div>
+									</li>
+									<li>
+										<span class="p_n number_3"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_4"></span>
+										<a href="#" class="ttt"> AutoCAD机械制图精髓讲</a>
+									</li>
+									<li>
+										<span class="p_n number_5"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_6"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_7"></span>
+										<a href="#" class="ttt">网页开发大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_8"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+									<li>
+										<span class="p_n number_9"></span>
+										<a href="#" class="ttt">小苗ps新手 哦、0基础大讲堂</a>
+									</li>
+								</ul>
+							</div>
+
+							</div>
+						</div>
+						
+
+				<!--右侧小排行结束-->
+					</div>		
+
+								
+						<!--结束 c_list_ph-->
+				</div>
+				<!--下侧布局结束-->
+
+
+			</div>
+			
+		</div>
+	</div>
+	<!--结束职业技能-->
+
+
+
+     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+         $(function(){
+		   //左侧菜单栏切换
+		$(".b_left").find("li.b_list_nr").mouseover(function(){
+			$(this).find(".show_menu").addClass("show");
+		}).mouseout(function(){
+			$(this).find(".show_menu").removeClass("show");
+		});	
+
+	
+              // 焦点图切换
+		var index = 0;
+		// 轮展图切换
+		$(".b_btn").find("li").mouseover(function(){
+			// 控制小按钮
+			$(this).addClass("on").siblings().removeClass("on");
+			var _index = $(this).index(); // 获取当前选中的索引
+			index = _index; // 重新赋值
+			$(".b_pic").find("li").eq(_index).fadeIn("slow").siblings().hide(); // 联动切换
+			// 切换背景颜色
+			var background = $(this).data("color");
+			$(this).parents(".bottom").css("background",background);
+		});
+
+		// 下一张
+		$(".next").click(function(){
+			index++;
+			var length = $(".b_pic").find("li").length;
+			if(index >= length){
+				index = 0;
+			}
+			// 切换背景颜色
+			var background = $(".b_btn").find("li").eq(index).data("color");
+			$(this).parents(".bottom").css("background",background);
+			// 联动小按钮
+			$(".b_btn").find("li").eq(index).addClass("on").siblings().removeClass("on");
+			$(".b_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换
+		});
+
+		// 上一张
+		$(".pre").click(function(){
+			index--;
+			var length = $(".b_pic").find("li").length;
+			if(index < 0){
+				index = length - 1;
+			}
+			// 切换背景颜色
+			var background = $(".b_btn").find("li").eq(index).data("color");
+			$(this).parents(".bottom").css("background",background);
+			// 联动小按钮
+			$(".b_btn").find("li").eq(index).addClass("on").siblings().removeClass("on");
+			$(".b_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换
+		});
+
+		// 自动切换,一般不使用setTimeout只执行一次
+		setInterval(function(){
+			index++;
+			var length = $(".b_pic").find("li").length;
+			if(index >= length){
+				index = 0;
+			}
+			// 切换背景颜色
+			var background = $(".b_btn").find("li").eq(index).data("color");
+			$(".bottom").css("background",background);
+			// 联动小按钮
+			$(".b_btn").find("li").eq(index).addClass("on").siblings().removeClass("on");
+			$(".b_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换			
+		},2000);
+
+
+
+
+	$(".live").find("li").hover(function(){
+			$(this).addClass("l_set").siblings().removeClass("l_set");
+			var _index = $(this).index();
+			$(".h_all").find("ul").hide().eq(_index).fadeTo(300,1);
+		});
+
+
+		/*第五部分*/
+		$(".c_nav").find("li").hover(function(){
+			$(this).addClass("c_set").siblings().removeClass("c_set");
+			$(".list_all").find(".c_list_ph").hide().eq($(this).index()).fadeTo(300,1);
+		});
+
+
+		$(".tx_up").find("li").hover(function(){
+			$(this).addClass("p_sel").siblings().removeClass("p_sel");
+			$(".tx_list").find(".tx_down").hide().eq($(this).index()).fadeTo(300,1);
+		});
+
+		});
+
+
+
+
+	
+
+	</script>
+
+	</body>
+
+	</html>

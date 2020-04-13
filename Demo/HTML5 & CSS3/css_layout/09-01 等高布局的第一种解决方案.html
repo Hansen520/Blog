@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>等高布局的第一种解决方案</title>
+  <style>
+    #parent {
+
+      display: table;
+    }
+
+    #left,
+    #right {
+      width: 300px;
+      /* 表格的单元格默认是等高的 */
+      display: table-cell;
+    }
+
+    #left {
+      background-color: #c9394a;
+    }
+
+    #right {
+      background-color: #cccccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="left">imooc</div>
+    <div id="right">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit amet eaque assumenda neque
+      repudiandae ad ratione nulla quae quod soluta, debitis tempore aliquid recusandae cupiditate, in maiores
+      distinctio obcaecati a?</div>
+  </div>
+</body>
+
+</html>

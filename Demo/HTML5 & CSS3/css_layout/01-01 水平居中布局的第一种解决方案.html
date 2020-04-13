@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>水平居中布局的第一种解决方案</title>
+  <style>
+    #parent {
+      width: 100%;
+      height: 200px;
+      background: #ccc;
+      /* 
+        text-align属性:是为文本内容设置对齐方式
+        * left:左对齐
+        * center:居中对齐
+        * right:右对齐
+       */
+      text-align: center;
+    }
+
+    #child {
+      width: 200px;
+      height: 200px;
+      background: #c9394a;
+      /* 
+        display属性:
+        * block:块级元素
+        * inline:内联元素(text-align属性有效)
+          * width和height属性是无效的
+        * inline-block:行内块级元素(块级+内联)
+          * width和height属性是有效的
+       */
+      display: inline-block;
+
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 定义父级元素 -->
+  <div id="parent">
+    <!-- 定义子级元素 -->
+    <div id="child">居中布局</div>
+  </div>
+</body>
+
+</html>

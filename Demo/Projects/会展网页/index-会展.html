@@ -1,0 +1,1212 @@
+
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>会展网-徒手写</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="会展网">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;font-size:12px;font-family:"微软雅黑";font-style:normal;}
+		img{border:0px;}
+		body{height:3000px;}
+		/*登入界面开始*/
+		.login{width:100%;height:45px;box-shadow: #666 3px 1px 8px;background: #fff;/*css3阴影效果*/}
+		.login .login_dengr{width:1000px;height:45px;margin:0px auto;}
+		.login .login_dengr .dengr_left{width:176px;height:44px;float:left;}
+		.login .login_dengr .dengr_left span{font-size:13px;font-family:"微软雅黑";font-weight:bold;color:#666;line-height:44px;}
+		.login .login_dengr .dengr_right{width:380px;height:44px;float:right;}
+		.login .login_dengr .dengr_right span{font-size:13px;font-family:"微软雅黑";font-weight:bold;color:#666;line-height:44px;}
+		.login .login_dengr .dengr_right .user{width:74px;height:18px;margin-left:5px;outline:none;}
+		.login .login_dengr .dengr_right .password{width:74px;height:18px;margin-left:5px;outline:none;}
+		.login .login_dengr .dengr_right .r_go{width:50px;height:21px;border:1px solid #666;color:#668;margin-left:15px;background:#fff;text-align:center;font-size:13px;font-family:"微软雅黑";border-radius:5px;outline:none;}
+		.login .login_dengr .dengr_right .r_go:hover{color:#FF9900;font-weight:bold;}
+		.login .login_dengr .dengr_right .zhuc{width:50px;height:21px;border:1px solid #666;color:#668;margin-left:15px;background:#fff;text-align:center;font-size:13px;font-family:"微软雅黑";border-radius:5px;outline:none;}
+		.login .login_dengr .dengr_right .zhuc:hover{color:#FF9900;font-weight:bold;}
+		/*登入界面结束*/
+
+		/*logo页面开始*/
+			body .logo{width:1000px;height:110px;margin:10px auto;}
+		  .logo .logo_left{width:300px;height:51px;margin:20px 0;float:left;}
+		  .logo .logo_center{width:400px;height:51px;float:left;margin:20px 25px;}
+		  .logo .logo_center .cen_chaz{width:300px;height:30px;border:1px solid #666;margin:12px 0px;border-radius:5px;position:relative;}
+		  .logo .logo_center .cen_chaz .soso{width:30px;height:30px;float:left;position:relative;}
+		  .logo .logo_center .cen_chaz .soso i{width:20px;height:20px;display:block;background-image:url("images/soso.jpg");position:absolute;top:3px;left:2px;}
+		  .logo .logo_center .cen_chaz .search1{width:268px;height:25px;line-height:25px;color:#666;padding-top:4px;border:0;font-size:14px;outline:none;}
+		  .logo .logo_center .cen_chaz .search2{width:70px;height:31px;color:#666;font-size:14px;position:absolute;top:-1px;right:-83px;}
+
+		  .logo .logo_right{width:240px;height:51px;float:right;margin:20px 0;}
+		  .logo .logo_right span{font-size:15px;font-family:"微软雅黑";color:#666;line-height:44px;text-align:center;display:block;}
+		/*logo页面结束*/
+
+		/*导航界面开始*/
+		  .daoh{width:1000px;height:40px;margin:0px auto;background:url("images/small-1.png") repeat-x;}
+		  .daoh .dao_list{width:990px;height:31px;margin:4px auto;background:url("images/small-2.jpg") repeat-x;position:relative;}
+		  .daoh .dao_list ul{width:740px;height:20px;float:left;position:absolute;top:8px;left:34px;}
+		  .daoh .dao_list ul li{width:90px;height:20px;float:left;list-style:none;border-right:1px solid #fff;}
+		  .daoh .dao_list ul li a{width:85px;height:20px;text-decoration:none;font-size:16px;color:#fff;font-family:"微软雅黑";display:block;text-align:center;line-height:20px;margin-left:2px;}
+		  .daoh .dao_list ul li a.none{border:0px;}
+		  .daoh .dao_list ul li a.have:hover{background:#fff;color:#00C;height:40px;}
+		  .daoh .dao_list ul li a.none:hover{background:#fff;color:#00C;height:40px;}
+		/*二级导航开始*/
+		  .daoh .dao_list .menu{width:1000px;height:39px;background:#fff;box-shadow: #CC9 1px 1px 2px;position:absolute;top:32px;left:-39px;display:none;}
+		  .daoh .dao_list .menu ul.me_two{width:800px;height:30px;}
+		  .daoh .dao_list .menu ul.me_two li{height:30px;margin-left:10px;}
+		  .daoh .dao_list .menu ul.me_two li i img{width:13px;height:14px;margin-left:10px;margin-top:7px;display:block;float:left;}
+		  .daoh .dao_list .menu ul.me_two li a{width:110px;color:#000;font-size:13px;padding-top:5px;margin-left:-35px;text-decoration:none;}
+		  .daoh .dao_list .menu ul.me_two li a:hover{text-decoration:underline;}
+		/*二级导航结束*/
+
+		/*站内搜索开始*/
+		  .daoh .dao_list .soso-1{width:190px;height:22px;border:1px solid #666;background:#fff;float:right;position:absolute;top:5px;right:0px;
+												position:relative;}
+		  .daoh .dao_list .soso-1 .soso-2{width:16px;height:16px;margin:2px 0 0 2px;display:block;background:url("images/small-3.jpg");}
+		  .daoh .dao_list .soso-1 .search3{height:22px;width:140px;position:absolute;top:0px;left:18px;border:0px;text-indent:10px;color:#666;outline:none;}
+		  .daoh .dao_list .soso-1 .search4{width:16px;height:16px;background:url("images/small-4.jpg");position:absolute;right:7px;top:3px;border:0px;outline:none;}
+		/*站内搜索结束*/
+
+		/*导航界面结束*/
+
+		/*banner开始*/
+		  .banner{width:1000px;height:136px;margin:50px auto;}
+		  .banner h2.left{width:580px;height:136px;float:left;}
+		  .banner h2.right{width:370px;height:136px;float:right;}
+		/*banner结束*/
+
+		/*New+轮播图开始*/
+		  .new{width:1000px;height:290px;/*高度，下面写多少，就伸多少*/margin:0px auto;}
+		  .new .new_left{width:327px;height:290px;float:left;}
+		  .new .new_left .nleft_top{width:327px;height:30px;/*文字*/background:url("images/small-1.png") repeat-x;}
+		  .new .new_left .nleft_top .top_small-2{width:320px;height:23px;background:url("images/small-2.jpg") repeat-x;margin:4px auto;}
+		  .new .new_left .nleft_top .top_small-2 i{width:9px;height:8px;display:block;background:url("images/small-0.jpg") repeat-x;}
+		  .new .new_left .nleft_top .top_small-2 h2.tim{width:200px;font-size:14px;color:#fff;font-weight:bold;margin-left:20px;margin-top:-6px;padding-bottom:15px;}
+		  .new .new_left .nleft_down{width:327px;height:233px;/*图片*/}/*290-263=27*/
+		  .new .new_left .nleft_down ul.le_prc{width:327px;height:233px;}
+		  .new .new_left .nleft_down ul.le_prc li{list-style:none;position:relative;display:none;}
+		  .new .new_left .nleft_down ul.le_prc li .toum{width:327px;height:32px;position:absolute;left:0px;bottom:0px;background:#000;opacity:0.7;filter:alpha(opacity=70) ;display:none;}
+		  .new .new_left .nleft_down ul.le_prc li .toum a{font-size:15px;text-decoration:none;color:#fff;display:block;text-align:center;line-height:32px;}
+		/*方块开始*/
+		  .new .new_left .nleft_down ul.le_qie{width:327px;height:21px;}
+		  .new .new_left .nleft_down ul.le_qie li{width:35px;height:9px;background:#999;list-style:none;float:left;margin:6px 10px 0 13px;}
+		  .new .new_left .nleft_down ul.le_qie li.n_set{background:#ec6c00;}
+		/*方块结束*/
+
+		/*分 new right开始*/
+		  .new .new_right{width:655px;height:290px;float:right;}
+		  .new .new_right .zongx{width:655px;height:145px;}
+		  .new .new_right .zongx .zong_zhan-1{width:310px;height:135px;float:left;border:1px solid #dcdcdc;}
+		  .new .new_right .zongx .zong_zhan-1 h2{width:310px;height:22px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .new .new_right .zongx .zong_zhan-1 h2 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .new .new_right .zongx .zong_zhan-1 h2 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .new .new_right .zongx .zong_zhan-1 h2 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		  .new .new_right .zongx .zong_zhan-1 h3{width:310px;height:113px;}
+		  .new .new_right .zongx .zong_zhan-1 h3 ul.n_text{width:310px;height:113px;margin-left:18px;}
+		  .new .new_right .zongx .zong_zhan-1 h3 ul.n_text li{width:292px;height:22px;padding:4px 0px;}
+		  .new .new_right .zongx .zong_zhan-1 h3 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		  .new .new_right .zongx .zong_zhan-1 h3 ul.n_text li a:hover{color:#ed6d00;}
+
+		  .new .new_right .zongx .zong_zhan-2{width:310px;height:135px;border:1px solid #dcdcdc;float:right;}
+		  .new .new_right .zongx .zong_zhan-2 h2{width:310px;height:22px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .new .new_right .zongx .zong_zhan-2 h2 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .new .new_right .zongx .zong_zhan-2 h2 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .new .new_right .zongx .zong_zhan-2 h2 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		  .new .new_right .zongx .zong_zhan-2 h3{width:310px;height:113px;}
+		  .new .new_right .zongx .zong_zhan-2 h3 ul.n_text{width:310px;height:113px;margin-left:18px;}
+		  .new .new_right .zongx .zong_zhan-2 h3 ul.n_text li{width:292px;height:22px;padding:4px 0px;}
+		  .new .new_right .zongx .zong_zhan-2 h3 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		  .new .new_right .zongx .zong_zhan-2 h3 ul.n_text li a:hover{color:#ed6d00;}
+		
+		  .new .new_right .zhis{width:655px;height:135px;}
+		  .new .new_right .zhis .zhis_zhan-3{width:310px;height:135px;border:1px solid #dcdcdc;float:left;}
+		  .new .new_right .zhis .zhis_zhan-3 h2{width:310px;height:22px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .new .new_right .zhis .zhis_zhan-3 h2 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .new .new_right .zhis .zhis_zhan-3 h2 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .new .new_right .zhis .zhis_zhan-3 h2 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		  .new .new_right .zhis .zhis_zhan-3 h3{width:310px;height:113px;}
+		  .new .new_right .zhis .zhis_zhan-3 h3 ul.n_text{width:310px;height:113px;margin-left:18px;}
+		  .new .new_right .zhis .zhis_zhan-3 h3 ul.n_text li{width:292px;height:22px;padding:4px 0px;}
+		  .new .new_right .zhis .zhis_zhan-3 h3 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		  .new .new_right .zhis .zhis_zhan-3 h3 ul.n_text li a:hover{color:#ed6d00;}
+		
+		
+		  .new .new_right .zhis .zhis_zhan-4{width:310px;height:135px;border:1px solid #dcdcdc;float:right;}
+		  .new .new_right .zhis .zhis_zhan-4 h2{width:310px;height:22px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .new .new_right .zhis .zhis_zhan-4 h2 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .new .new_right .zhis .zhis_zhan-4 h2 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .new .new_right .zhis .zhis_zhan-4 h2 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		  .new .new_right .zhis .zhis_zhan-4 h3{width:310px;height:113px;}
+		  .new .new_right .zhis .zhis_zhan-4 h3 ul.n_text{width:310px;height:113px;margin-left:18px;}
+		  .new .new_right .zhis .zhis_zhan-4 h3 ul.n_text li{width:292px;height:22px;padding:4px 0px;}
+		  .new .new_right .zhis .zhis_zhan-4 h3 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		  .new .new_right .zhis .zhis_zhan-4 h3 ul.n_text li a:hover{color:#ed6d00;}
+
+		/*分 new right结束*/
+		/*New+轮播图结束*/
+
+		/*十大企业开始*/
+		  .company{width:1000px;height:200px;margin:25px auto;}
+		  .company ul{width:998px;height:180px;margin:10px auto;}
+		  .company ul li{width:190px;height:75px;list-style:none;float:left;margin:4px 3px;}
+		  .company ul li a{width:190px;height:75px;display:block;}
+		  .company ul li a:hover{background:#000;opacity:0.7;filter:alpha(opacity=70);}
+		/*十大企业结束*/
+
+		/*热门建议开始*/
+		  .hot{width:1000px;height:310px;margin:25px auto;}
+		  .hot .hot_left{width:350px;height:310px;border:1px solid #dcdcdc;float:left;}
+		/*今日、近期会展导航↓*/
+		  .hot .hot_left ul.back{width:350px;height:30px;padding-left:2px;}
+		  .hot .hot_left ul.back li{width:113px;height:30px;border-right:1px solid #dcdcdc;border-bottom:2px solid #dcdcdc;background:url("images/hei-1.jpg") repeat-x;list-style:none;float:left;}
+		  .hot .hot_left ul.back li.oh_no{border-right:0px;}
+		  .hot .hot_left ul.back li.h_slp{width:112px;height:30px;background:#fff;border-bottom:0px;}
+		  .hot .hot_left ul.back li a{text-decoration:none;color:#414141;font-size:16px;display:block;text-align:center;line-height:30px;font-weight:800;}
+		  .hot .hot_left ul.back li a:hover{color:#053969;}
+		/*今日、近期会展导航↑*/
+
+		  .hot .hot_left ul.come{width:350px;height:280px;}
+		  .hot .hot_left ul.come li{width:350px;height:280px;list-style:none;display:none;}
+		  .hot .hot_left ul.come li .video{width:180px;height:270px;float:left;margin-top:2px;}
+		  .hot .hot_left ul.come li .video h2{width:155px;height:104px;background:url("images/luntan.jpg") no-repeat;margin:10px auto;position:relative;}
+		  .hot .hot_left ul.come li .video h2 .yiny-3{width:155px;height:20px;background:#000;display:none;opacity:0.7;filter:alpha(opacity=70);position:absolute;left:0px;bottom:0px;}
+		  .hot .hot_left ul.come li .video h2 .yiny-3 a{font-size:12px;color:#fff;line-height:20px;font-family:"黑体";text-decoration:none;}
+		  .hot .hot_left ul.come li .video h3{width:155px;height:130px;border:1px solid #dcdcdc;background:#f4f4f4;margin:10px auto;}
+		  .hot .hot_left ul.come li .video h3 span{display:block;width:155px;height:18px;line-height:20px;}
+		  .hot .hot_left ul.come li .video h3 span a{text-decoration:none;color:#555;}
+		  .hot .hot_left ul.come li .video h3 span a:hover{text-decoration:underline;}
+		  .hot .hot_left ul.come li .video h3 i{width:51px;height:17px;display:block;margin:10px;}
+
+		/*text右侧↓*/
+		  .hot .hot_left ul.come li .text{width:146px;height:245px;float:right;margin-top:12px;margin-right:10px;}
+		  .hot .hot_left ul.come li .text h2.biaoti{width:146px;height:30px;font-size:20px;color:#ef6b00;text-align:center;font-family:"宋体";line-height:30px;}
+		  .hot .hot_left ul.come li .text p.xinxi{width:146px;height:190px;font-size:14px;font-family:"宋体";font-weight:500;line-height:30px;overflow:hidden;height:200px;}
+		  .hot .hot_left ul.come li .text p.xinxi i{width:51px;height:17px;display:block;margin:3px;}
+		/*text右侧↑*/
+
+
+
+		  .hot .hot_right{width:635px;height:310px;background:#01284f;float:right;border:1px solid #dcdcdc;}
+		  .hot .hot_right .small-7{width:635px;height:38px;background:url("images/small-1.png") repeat-x;position:relative;}
+		  .hot .hot_right .small-7 .small-8{width:610px;height:30px;background:url("images/small-2.jpg") repeat-x;position:absolute;top:4px;left:16px;}
+		  .hot .hot_right .small-7 .small-8 i{display:block;width:9px;height:8px;background:url("images/small-0.jpg");float:left;}
+		  .hot .hot_right .small-7 .small-8 h2.hangy{width:200px;height:30px;color:#fff;text-indent:15px;font-size:18px;font-weight:100;line-height:30px;float:left;}
+
+		  .hot .hot_right .small-7 .small-8 .huiyi{width:320px;height:30px;float:right;}
+		  .hot .hot_right .small-7 .small-8 .huiyi h4{width:50px;height:18px;line-height:18px;text-align:center;background:#01172e;color:#fff;border-radius:5px;margin-left:10px;margin-top:5px;float:left;}
+		  .hot .hot_right .small-7 .small-8 .huiyi span{color:#fff;float:left;margin-top:5px;}
+		  .hot .hot_right .small-7 .small-8 .huiyi .wen_more{float:right;}
+		  .hot .hot_right .small-7 .small-8 .huiyi .wen_more a{font-size:13px;text-decoration:none;color:#fff;}
+		  .hot .hot_right .small-7 .small-8 .huiyi .wen_more a:hover{text-decoration:underline;}
+
+
+
+		  .hot .hot_right .hot_case{width:620px;height:272px;background:#fff;float:right;}
+		  .hot .hot_right .hot_case .case_bore{width:580px;height:260px;margin:9px 16px;position:relative;}
+		  .hot .hot_right .hot_case .case_bore .bo_L{width:280px;height:260px;float:left;}
+		  .hot .hot_right .hot_case .case_bore .bo_L .h_zhanlan{width:280px;height:120px;border:1px solid #dcdcdc;margin-bottom:10px;}
+		  .hot .hot_right .hot_case .case_bore .bo_R{width:280px;height:255px;float:right;}
+		  .hot .hot_right .hot_case .case_bore .bo_R .h_zhanlan{width:280px;height:80px;border:1px solid #dcdcdc;margin-bottom:5px;}
+
+
+		  .hot .hot_right .hot_case  .case_bore .bo_L .host-1 {height:26px;width:280px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .hot .hot_right .hot_case  .case_bore .bo_L .host-1 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .hot .hot_right .hot_case .case_bore .bo_L .host-1 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .hot .hot_right .hot_case .case_bore .bo_L .host-1 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		  .hot .hot_right .hot_case .case_bore p.qusert{width:280px;height:92px;}
+
+		  .hot .hot_right .hot_case .case_bore .bo_R .host-1{height:26px;width:280px;border-bottom:1px solid #dcdcdc;position:relative;}
+		  .hot .hot_right .hot_case .case_bore .bo_R .host-1 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		  .hot .hot_right .hot_case .case_bore  .bo_R .host-1 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		  .hot .hot_right .hot_case .case_bore  .bo_R .host-1 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+
+
+		   .hot .hot_right .hot_case .case_bore .bo_L .host-2 ul.n_text{width:310px;height:113px;}
+		   .hot .hot_right .hot_case .case_bore .bo_L  .host-2 ul.n_text li{width:263px;height:22px;margin-left:15px;}
+		   .hot .hot_right .hot_case .case_bore .bo_L .host-2 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		   .hot .hot_right .hot_case .case_bore .bo_L .host-2 ul.n_text li a:hover{color:#ed6d00;}
+
+		   .hot .hot_right .hot_case .case_bore .bo_R .host-2 ul.n_text{width:310px;}
+		   .hot .hot_right .hot_case .case_bore .bo_R  .host-2 ul.n_text li{width:263px;height:22px;margin-left:15px;}
+		   .hot .hot_right .hot_case .case_bore .bo_R .host-2 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		   .hot .hot_right .hot_case .case_bore .bo_R .host-2 ul.n_text li a:hover{color:#ed6d00;}
+
+		  
+		/*热门建议结束*/
+
+		/*高效服务开始*/
+			.action{width:1000px;height:235px;margin:0 auto;}
+			.action .ser{float: left;height: 235px;width: 356px;border:1px solid #dcdcdc;}
+			.action .ser .ac_ground{height: 207px;width: 355px;margin:8px 17px;}
+			.action .ser .ac_ground .ground_text{height: 207px;width: 355px;}
+			.action .ser .ac_ground .ground_text li{height: 45px;width: 99px;border: 1px solid #dcdcdc;list-style:none;float:left;margin-left:5px;margin-top:10px;background:#f4f4f4;box-shadow:#dcdcdc 3px 1px 8px;}
+			.action .ser .ac_ground .ground_text li a{text-decoration:none;line-height:45px;display:block;color:#eb6d00;font-weight:bold;text-align:center;font-size:14px;}
+			.action .ser .ac_ground .ground_text li a:hover{text-decoration:underline;}
+			
+			.action .ser .ac_sky{background-image: url("images/small-9.jpg");background-repeat: repeat-x;height: 28px;width: 355px;position: relative;}.action .ser .ac_sky .sky_embed{background-image: url("images/small-10.jpg");background-repeat: repeat-x;height: 22px;width: 334px;position: absolute;left: 11px;top: 3px;}
+			.action .ser .ac_sky .sky_embed .fuwu {font-size: 16px;color: #FFFFFF;text-indent: 30px;height: 20px;width: 200px;text-indent:30px;text-decoration:none;display:block;}
+
+			/*右侧服务开始*/
+			.action .sch{border:1px solid #fdfdfd;float: right;height: 117px;width: 635px;}
+			.action .sch .sch_top1{width:635px;height:28px;background:url("images/hei-2.jpg") repeat-x;border-bottom:1px solid #dcdcdc;}
+			.action .sch .sch_top1 .key4{width:33px;height:26px;background:url(images/small-5.jpg) repeat-x;display:block;float:left;}
+			.action .sch .sch_top1 .more4{width:77px;height:26px; background:url(images/small-6.jpg) no-repeat;display:block;float:right;margin-top:5px;}
+			.action .sch .sch_top1 span{display:block;width:150px;height:18px;float:left;} 
+			.action .sch .sch_top1 span a{display:block;text-decoration:none;color:#043867;font-size:15px;font-weight:bold;text-indent:10px;}
+
+			.action .sch .sch_down1{width:635px;height:89px;}
+			.action .sch .sch_down1 ul{width:635px;height:89px;}
+			.action .sch .sch_down1 ul li{list-style:none;width:205px;height:43px;float:left;margin:20px 2px;}
+			/*明星企业↓*/
+			.action .sch .star{width:635px;height:117px;border:1px solid #fdfdfd;margin-top:3px;}
+			.action .sch .star .sch_left1{width:310px;height:117px;border:1px solid #dcdcdc;float:left;}
+			.action .sch .star .sch_left1 .sch_le_top1{width:310px;height:25px;background:url("images/small-1.png") repeat-x;position:relative;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1{width:290px;height:18px;background:url("images/small-2.jpg") repeat-x;position:absolute;top:4px;left:9px;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 i{display:block;width:9px;height:8px;background:url("images/small-0.jpg") repeat-x;float:left;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 .ws{width:100px;height:18px;float:left;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 .ws a{text-decoration:none;color:#fff;font-weight:bold;font-family:"宋体";}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi{width:50px;height:18px;float:right;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi a{text-decoration:none;color:#fff;}
+			.action .sch .star .sch_left1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi a:hover{text-decoration:underline;}
+
+
+			.action .sch .star .sch_le_down1{width:310px;height:92px;}
+			.action .sch .star .sch_le_down1 .text-1{width:130px;height:80px;margin-top:4px;margin-left:4px;float:left;}
+			.action .sch .star .sch_le_down1 .text-1 .wertyu{color:#000;}
+			.action .sch .star .sch_le_down1 .text-1 .wertyu:hover{color:#eb6d00;}
+			.action .sch .star .sch_le_down1 .photo-1{width:170px;height:59px;float:right;margin-top:10px;}
+			/*明星企业↑*/
+
+			/*招聘信息↓*/
+			.action .sch .star .sch_right1{width:310px;height:117px;border:1px solid #dcdcdc;float:right;}
+			.action .sch .star .sch_right1 .sch_le_top1{width:310px;height:25px;background:url("images/small-1.png") repeat-x;position:relative;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1{width:290px;height:18px;background:url("images/small-2.jpg") repeat-x;position:absolute;top:4px;left:9px;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 i{display:block;width:9px;height:8px;background:url("images/small-0.jpg") repeat-x;float:left;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 .ws{width:100px;height:18px;float:left;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 .ws a{text-decoration:none;color:#fff;font-weight:bold;font-family:"宋体";}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi{width:50px;height:18px;float:right;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi a{text-decoration:none;color:#fff;}
+			.action .sch .star .sch_right1 .sch_le_top1 .sch_le_top1_neiqie1 .mingxi a:hover{text-decoration:underline;}
+
+			.action .sch .star .sch_right1 .sch_ri_down1{width:308px;height:92px;;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul{width:308px;height:92px;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul li{width:308px;height:30px;list-style:none;position:relative;background:#f4f4f4;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul li:hover{background:#fff;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul li i{display:block;width:10px;height:9px;position:absolute;top:4px; left:11px;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul li a{display:block;width:275px;height:30px;line-height:30px;color:#666;margin-top:-10px;text-decoration:none;margin-left:10px;}
+			.action .sch .star .sch_right1 .sch_ri_down1 ul li.diffence{border-top:1px solid #dcdcdc;border-bottom:1px solid #dcdcdc;}
+			/*招聘信息↑*/
+			/*右侧服务结束*/
+
+		/*高效服务结束*/
+
+		/*think blue banner部分开始*/
+			.bannerr{width:1000px;height:141px;margin:40px auto;}
+			.bannerr .bannerr_left{width:644px;height:140px;float:left;}
+			.bannerr .bannerr_right{width:344px;height:140px;float:right;}
+			.bannerr .clear{clear:both;}
+		/*think blue banner部分结束*/
+
+
+		/*法规、研究、杂志部分开始*/
+		.magazine{width:1000px;height:135px;margin:30px auto;}
+		.magazine .zong_zhan-1{width:310px;height:135px;float:left;border:1px solid #dcdcdc;margin-left:20px;}
+		.magazine .zong_zhan-1 h2{width:310px;height:22px;border-bottom:1px solid #dcdcdc;position:relative;}
+		.magazine .zong_zhan-1 h2 i.key{display:block;width:30px;height:21px;background:url("images/small-5.jpg") no-repeat;/*align:absmiddle;用于图片对齐*/float:left;}
+		.magazine .zong_zhan-1 h2 a{display:block;width:170px;height:20px;color:#053768;text-decoration:none;line-height:20px;text-indent:40px;}
+		.magazine .zong_zhan-1 h2 i.more{display:block;width:76px;height:20px;background:url("images/small-6.jpg") no-repeat;position:absolute;top:0px;right:0px;}
+		.magazine .zong_zhan-1 h3{width:310px;height:113px;}
+		.magazine .zong_zhan-1 h3 ul.n_text{width:310px;height:113px;margin-left:18px;}
+		.magazine .zong_zhan-1 h3 ul.n_text li{width:292px;height:15px;padding:4px 0px;}
+		.magazine .zong_zhan-1 h3 ul.n_text li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		.magazine .zong_zhan-1 h3 ul.n_text li a:hover{color:#ed6d00;}
+
+		.magazine .zong_zhan-1 h3 span.under{display:block;background:url("images/weiruan.jpg") no-repeat;width:70px;height:78px;float:left;margin-top:10px;}
+		.magazine .zong_zhan-1 h3 ul.n_text-1{width:200px;height:113px;margin-right:0px;float:right;}
+		.magazine .zong_zhan-1 h3 ul.n_text-1 li{width:292px;height:15px;padding:4px 0px;}
+		.magazine .zong_zhan-1 h3 ul.n_text-1 li a{color:#4d4d4d;text-decoration:none;font-size:13px;line-height:22px;font-family:"黑体";}
+		.magazine .zong_zhan-1 h3 ul.n_text-1 li a:hover{color:#ed6d00;}
+
+		.magazine .zong_zhan-1 h3 ul.n_text-2{width:310px;height:113px;}
+		.magazine .zong_zhan-1 h3 ul.n_text-2 li{width:61px;height:87px;margin-left:13px;margin-top:10px;list-style:none;float:left;}
+		/*法规、研究、杂志部分结束*/
+
+
+		/*结束了1*/
+		.end1{width:1000px;height:65px;margin:20px auto;}
+		.end1 .end_tt{width:1000px;height:55px;border-bottom:3px solid #00F;}
+		.end1 dt{width:980px;margin:0px auto;}
+		.end1 dt dl{font-size:14px;}
+		.end1 dt dl dd{margin-top:5px;}
+		.end1 dt dl dd a{width:80px;display:block;font-size:12px;color:#666;float:left;text-decoration:none;}
+		.end1 dt dl dd a:hover{text-decoration:underline;}
+		/*结束了1*/
+
+		/*结束了2*/
+		.end2{width:900px;height:180px;margin:0px auto;}
+		.end2 .end_left{width:210px;height:180px;float:left;}
+		.end2 .end_left a{width:190px;height:35px;display:block;margin:67px 9px;}
+
+		.end2 .end_center{width:500px;height:180px;float:left;margin-left:10px;}
+		.end2 .end_center .end_top{width:500px;height:60px;}
+		.end2 .end_center .end_top ul{width:500px;height:40px;}
+		.end2 .end_center .end_top ul li{width:88px;height:20px;border-right:1px solid #666;list-style:none;float:left;}
+		.end2 .end_center .end_top ul li.no-border{border-right:0px;}
+		.end2 .end_center .end_top ul li a{text-decoration:none;color:#4c82ae;display:block;text-align:center;line-height:20px;}
+		
+
+		.end2 .end_center .end_down{width:350px;height:80px;margin-left:35px;}
+		.end2 .end_center .end_down ul{width:350px;height:80px;}
+		.end2 .end_center .end_down ul li{width:350px;height:19px;margin-top:5px;list-style:none;}
+		.end2 .end_center .end_down ul li span{color:#666;}
+
+		.end2 .end_right{width:170px;height:180px;float:right;}
+		.end2 .end_right h2{width:41px;height:51px;margin:28px 26px;}
+		.end2 .end_right span{display:block;color:#666;margin-top:-10px;text-indent:10px;}
+		/*结束了2*/
+
+
+			/*top start*/
+			#top{width:60px;height:50px;position: fixed;right:15px;bottom:100px;display:none;}
+			#top span{width:60px;height:50px;display:block;background:url("images/icon_top.png") no-repeat center #000;border-radius: 5px;cursor: pointer;box-shadow: 0 1px 3px rgba(0,0,0,.2);}
+			/*end top*/
+
+
+        </style>
+
+	</head>
+	<body>
+	<!--登入界面开始-->
+	<div class="login">
+		<div class="login_dengr">
+			<div class="dengr_left"><span>你好，欢迎来到会展网！</span></div>
+			<div class="dengr_right">
+				<form>
+					<span>会员登入</span>
+					<input type="text" name="user"placeholder="用户名" class="user" />
+					<input type="password" name="password" placeholder="密码" class="password"/>
+					<input type="button" name="go" value="登入" class="r_go"border="0">
+					<input type="button" name="zhuc" value="注册" class="zhuc"border="0">
+				</form>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	<!--登入界面结束-->
+	
+	<!--logo页面开始-->
+	<div class="logo">
+		<h2 class="logo_left"><img src="images/logo.png" alt="浙江会展网" height="51" width="300"/></h2>
+		<div class="logo_center">
+			<div class="cen_chaz">
+				<form>
+					<div class="soso">
+						<i></i>
+					</div>
+					<input type="text" name="search1" placeholder="请输入要查找的内容" class="search1" border="0" autocomplete="off"/>
+					<input type="button" name="search2" value="搜   索" class="search2" border="0"/>
+				</form>
+			</div>
+		</div>
+		<div class="logo_right"><span>天气预报</span></div>
+	</div>
+	<!--logo页面结束-->
+
+	<!--导航界面开始-->
+	<div class="daoh">
+		<div class="dao_list">
+			<ul>
+				<li>
+					<a href="#">首 页</a>
+				</li>
+				<li>
+					<a href="#" class="have">行业会展</a>
+					<div class="menu">
+
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">演艺</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">展览</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">节目活动</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">赛事</a>
+							</li>
+						</ul>
+						
+					</div>
+				</li>
+				<li>
+					<a href="#" class="have">会展资讯</a>
+					<div class="menu">
+
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">aaaa</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">bbbb</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">cccc</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">dddd</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">eeee</a>
+							</li>
+						</ul>	
+						
+					</div>
+				</li>
+				<li>
+					<a href="#" class="have">会展场馆</a>
+					<div class="menu">
+					
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">ffff</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">dddd</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">gggg</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">hhhh</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">iiii</a>
+							</li>
+						</ul>					
+					
+					</div>
+				</li>
+				<li>
+					<a href="#" class="have">会展服务</a>
+					<div class="menu">
+					
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">qqqq</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">wwww</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">eeee</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">rrrr</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">tttt</a>
+							</li>
+						</ul>					
+					
+					</div>
+				</li>
+				<li>
+					<a href="#" class="have">会展人才</a>
+					<div class="menu">
+					
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">演艺</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">展览</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">节目活动</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">赛事</a>
+							</li>
+						</ul>					
+					
+					</div>
+				</li>
+				<li>
+					<a href="#" class="have">协会专区</a>
+					<div class="menu">
+					
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">cder</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">wsss</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">wdsd</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">sdcr</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">qxcd</a>
+							</li>
+						</ul>					
+					
+					</div>
+				</li>
+				<li>
+					<a href="#" class="none">会展杂志</a>
+					<div class="menu">
+
+						<ul class="me_two">
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">erty</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">qwer</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">asdf</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">iioo</a>
+							</li>
+							<li>
+								<i><img src="images/jt.png" alt="" width="13" height="14"/></i>
+								<a href="#">rrrr</a>
+							</li>
+						</ul>
+
+
+					</div>
+				</li>
+			</ul>
+			<div class="soso-1">
+				<form>
+					<div class="soso-2"></div>
+					<input type="text" name="search3" placeholder="站内信息搜索" class="search3" autocomplete="on"/>
+					<input type="button" name="search4" class="search4">
+				</form>
+			</div><!--end soso-1-->
+		</div><!--end dao_list-->
+	</div>
+	<!--导航界面结束-->
+
+	<!--banner开始-->
+	<div class="banner">
+		<h2 class="left"><a href="#"><img src="images/banner-1.jpg" alt="" width="580" height="136"/></a></h2>
+		<h2 class="right"><a href="#"><img src="images/banner-2.jpg" alt="" width="370" height="136"/></a></h2>
+	</div>
+	<!--banner结束-->
+
+	<!--New+轮播图开始-->
+	<div class="new">
+		<div class="new_left">
+
+				<div class="nleft_top">
+					<div class="top_small-2">
+						<i></i>
+						<h2 class="tim">动态新闻</h2>
+					</div>
+				</div>
+
+			<div class="nleft_down">
+					<ul class="le_prc">
+						<li style="display:block">
+							<img src="images/scoll-1.jpg" alt="" width="327" height="233"/>
+							<div class="toum"><a href="#">品牌展会圆桌隆重举行</a></div>
+						</li>
+						<li>
+							<img src="images/ii1.jpg" alt="" width="327" height="233"/>
+							<div class="toum"><a href="#">1234567890</a></div>
+						</li>
+						<li>
+							<img src="images/ii2.jpg" alt="" width="327" height="233"/>
+							<div class="toum"><a href="#">0987654321</a></div>
+						</li>
+						<li>
+							<img src="images/ii3.jpg" alt="" width="327" height="233"/>
+							<div class="toum"><a href="#">13579oiuyyyttt</a></div>
+						</li>
+						<li>
+							<img src="images/ii2.jpg" alt="" width="327" height="233"/>
+							<div class="toum"><a href="#">qscvgynmlo</a></div>
+						</li>
+				</ul>
+				<ul class="le_qie">
+					<li class="n_set"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="new_right">
+			<div class="zongx">
+				<div class="zong_zhan-1">
+					<h2>
+						<i class="key"><i>
+						<a href="#">展会新闻</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+						<ul class="n_text"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+							<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕[12/6/6]</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+						</ul>
+					</h3>
+				</div>
+				<div class="zong_zhan-2">
+					<h2>
+						<i class="key"><i>
+						<a href="#">场馆中心</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+						<ul class="n_text"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+							<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕[12/6/6]</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+						</ul>
+					</h3>					
+				</div>
+			</div>
+			<div class="zhis">
+				<div class="zhis_zhan-3">
+					<h2>
+						<i class="key"><i>
+						<a href="#">展会知识</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+						<ul class="n_text"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+							<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕[12/6/6]</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+						</ul>
+					</h3>				
+				</div>
+				<div class="zhis_zhan-4">
+					<h2>
+						<i class="key"><i>
+						<a href="#">协会专区</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+						<ul class="n_text"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+							<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕[12/6/6]</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+						</ul>
+					</h3>				
+				</div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<!--New+轮播图结束-->
+
+	<!--是大企业开始-->
+	<div class="company">
+		<ul>
+			<li><a href="#"><img src="images/qi-1.jpg" alt="领袖论坛" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-2.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-6.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-4.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-5.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-6.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-7.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-2.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-9.jpg" alt="" width="190" height="75"/></a></li>
+			<li><a href="#"><img src="images/qi-10.jpg" alt="" width="190" height="75"/></a></li>
+		</ul>
+	</div>
+	<!--是大企业结束-->
+
+	<!--热门建议开始-->
+	<div class="hot">
+		<div class="hot_left">
+				<ul class="back">
+					<li class="h_slp"><a href="#">今日会展</a></li>
+					<li><a href="#">近期会展</a></li>
+					<li class="oh_no"><a href="#">会展回顾</a></li>
+					<div style="clear:both"></div>
+				</ul>
+				<ul class="come">
+					<li style="display:block">
+						<div class="video">
+							<h2>
+								<div class="yiny-3">
+									<a href="#">育英会展视频</a>
+								</div>
+							</h2>
+							<!--内部浏览会展开始-->
+							<h3>
+									<span><a href="#">第四届四川进口商品展会..</a></span>
+									<span><a href="#">第十九届广东国际照明展..</a></span>
+									<span><a href="#">郑州汽车后市场博览会..</a></span>
+									<span><a href="#">云南财大设立会展学院..</a></span>
+									<span><a href="#">第十四届中国-亚欧博览会..</a></span>
+									<i><a href="#"><img src="images/more.jpg" alt="" width="51" height="17"/></a></i>
+							</h3>
+							<!--内部浏览会展结束-->
+
+						</div>
+						<div class="text">
+							<h2 class="biaoti">2019世博园<h2>
+							<p class="xinxi">惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边了惊呆了只能邻居家那边能邻居家能邻居家能邻居家能邻居家能邻居家了惊呆了只能邻居家那边了
+							<p>
+							<i><a href="#"><img src="images/more.jpg" alt="" width="51" height="17"/></a></i>
+						</div>
+					</li>
+					<li>
+						<img src="images/ii2.jpg" width="350"/>
+					</li>
+					<li>
+						<img src="images/ii3.jpg"width="350"/>
+					</li>
+				</ul>
+		</div>
+		<div class="hot_right">
+			<!--热们推荐↓-->
+			<div class="small-7">
+				<div class="small-8">
+					<h2 class="hangy">
+					<i></i>
+					行业会展
+					</h2>
+					<div class="huiyi">
+						<h4>热门推荐</h4>
+						<span>2014年亚洲博鳌会议 北京汽车博览会</span>
+						<span class="wen_more"><a href="#">更多&gt;&gt;</a></span>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<!--热们推荐↑-->
+
+			<div class="hot_case">
+				<div class="case_bore">
+					<div class="bo_L">
+						<h2 class="h_zhanlan">
+							<div class="host-1">
+								<i class="key"><i>
+								<a href="#">展览</a>
+								<i class="more"></i>
+							</div>
+							<div class="host-2">
+								<ul class="n_text"><!--限定18字-->
+									<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+									<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+									<li><a href="#">2012中国·上海安国际雕塑展闭幕</a></li>
+									<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+								</ul>
+							</div>
+						</h2>
+						<h2 class="h_zhanlan">
+							<div class="host-1">
+								<i class="key"><i>
+								<a href="#">会议</a>
+								<i class="more"></i>
+							</div>
+								<p class="qusert">
+								111111111113313333333331
+								</p>
+						</h2>
+					</div>
+					<div class="bo_R">
+						<h2 class="h_zhanlan">
+							<div class="host-1">
+								<i class="key"><i>
+								<a href="#">节事</a>
+								<i class="more"></i>
+							</div>
+							<div class="host-2">
+								<ul class="n_text"><!--限定18字-->
+									<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+									<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+								</ul>
+							</div>
+								<div style="clear:both"></div>
+						</h2>
+						<h2 class="h_zhanlan">
+							<div class="host-1">
+								<i class="key"><i>
+								<a href="#">赛事</a>
+								<i class="more"></i>
+							</div>
+							<div class="host-2">
+								<ul class="n_text"><!--限定18字-->
+									<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+									<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+								</ul>
+								</div>
+								<div style="clear:both"></div>
+						</h2>
+						<h2 class="h_zhanlan">
+							<div class="host-1">
+								<i class="key"><i>
+								<a href="#">演艺</a>
+								<i class="more"></i>
+							</div>
+							<div class="host-2">
+								<ul class="n_text"><!--限定18字-->
+									<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+									<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+								</ul>
+							</div>
+								<div style="clear:both"></div>
+							</h2>
+					</div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div style="clear:both"></div>
+
+	<!--热门建议结束-->
+
+	<!--会展服务高效开始-->
+	<div class="action">
+		<div class="ser">
+        	<div class="ac_sky">
+            	<div class="sky_embed">
+                	<a href="#" class="fuwu">会展服务</a>
+                </div>
+            </div>
+            
+            <div class="ac_ground">
+            	<ul class="ground_text">
+					<li><a href="#">会展主办</a></li>
+					<li><a href="#">广告礼品</a></li>
+					<li><a href="#">礼仪模特</a></li>
+					<li><a href="#">酒店宾馆</a></li>
+					<li><a href="#">旅游服务</a></li>
+					<li><a href="#">展具租赁</a></li>
+					<li><a href="#">展品运输</a></li>
+					<li><a href="#">会展设计</a></li>
+					<li><a href="#">电视媒体</a></li>
+                </ul>
+            </div>
+        </div>
+		<div class="sch">
+			<div class="sch_top1">
+				<i class="key4"></i>
+				<span><a href="#">会展高校</a></span>
+				<i class="more4"><a href="#"></a></i>
+			</div>
+			<div class="sch_down1">
+			<ul>
+				<li><a href="#"><img src="images/yuying.jpg" title="浙江育英职业技术学院" width="200" height="43"/></a></li>
+				<li><a href="#"><img src="images/naoyi.jpg" title="浙江经贸" width="200" height="43"/></a></li>
+				<li><a href="#"><img src="images/city.jpg" title="浙江城市学院" width="200" height="43"/></a></li>
+			</ul>
+			</div>
+			<!--明星企业 招聘企业开始-->
+			<div class="star">
+				<div class="sch_left1">
+					<div class="sch_le_top1">
+						<div class="sch_le_top1_neiqie1">
+							<i></i>
+							<div class="ws"><a href="#">明星企业</a></div>
+							<div class="mingxi"><a href="#">更多&gt;&gt;</a></div>
+							</div>
+						</div>
+					<div class="sch_le_down1">
+						<div class="text-1">
+							<p class="wertyu">
+								3月24日，广东市常务政府会议审议通过了《呵呵，艰难的网页制作，今天终于大功告成了，辛苦了》
+							</p>
+						</div>
+						<div class="photo-1">
+							<img src="images/cefco.jpg" title="CEFCO" width="170" height="59"/>
+						</div>
+					</div>
+				</div>
+				<div class="sch_right1">
+
+						<div class="sch_le_top1">
+							<div class="sch_le_top1_neiqie1">
+								<i></i>
+								<div class="ws"><a href="#">招聘信息</a></div>
+								<div class="mingxi"><a href="#">更多&gt;&gt;</a></div>
+							</div>
+						</div>
+
+						<div class="sch_ri_down1">
+							<ul>
+								<li>
+									<i><img src="images/small-11.jpg" width="10" height="9"/><i>
+									<a href="#">辰山植物园正式启动2013国际兰展筹备工作</a>
+								</li>
+								<li class="diffence">
+									<i><img src="images/small-11.jpg" width="10" height="9"/><i>
+									<a href="#">辰山植物园正式启动2013国际兰展筹备工作</a>
+								</li>
+								<li>
+									<i><img src="images/small-11.jpg" width="10" height="9"/><i>
+									<a href="#">辰山植物园正式启动2013国际兰展筹备工作</a>
+								</li>
+							</ul>
+						</div>
+				</div>
+				</div>
+		</div>
+		<!--<!--明星企业 招聘企业结束-->
+    </div>
+	<!--会展服务高效结束-->
+
+	<!--think blue banner部分开始-->
+	<div class="bannerr">
+		<h2 class="bannerr_left"><a href="#"><img src="images/meikuang.jpg" alt="国际煤炭" width="638" height="140"/></a></h2>
+		<h2 class="bannerr_right"><a href="#"><img src="images/think.jpg" alt="Think Blue" width="348" height="140"/></a></h2>
+		<div class="clear"></div>
+	</div>
+	<!--think blue banner部分结束-->
+	
+	<!--法规、研究、杂志部分开始-->
+	<div class="magazine">
+					<div class="zong_zhan-1">
+					<h2>
+						<i class="key"><i>
+						<a href="#">展会新闻</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+		  <ul class="n_text"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年[12/6/6]</a></li>
+							<li><a href="#">辰山植物园正式作展[12/6/6]</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕[12/6/6]</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行[12/6/16]</a></li>
+						</ul>
+					</h3>
+				</div>
+
+					<div class="zong_zhan-1">
+					<h2>
+						<i class="key"><i>
+						<a href="#">展会研究</a>
+						<i class="more"></i>
+					</h2>
+					<h3>
+						<span class="under"></span>
+						<ul class="n_text-1"><!--限定18字-->
+							<li><a href="#">世博会纪念展明年将续展一年</a></li>
+							<li><a href="#">辰山植物园正式作展</a></li>
+							<li><a href="#">2012中国·上海安国际雕塑展闭幕</a></li>
+							<li><a href="#">上海安国际休闲雕塑展举行</a></li>
+						</ul>
+					</h3>
+				</div>
+
+					<div class="zong_zhan-1">
+					<h2>
+						<i class="key"><i>
+						<a href="#">会展杂志</a>
+						<i class="more"></i>
+					</h2>
+					<h3 class="">
+						<ul class="n_text-2"><!--限定18字-->
+							<li><img src="images/yunge.jpg" alt="" width="61" height="87"/></li>
+							<li><img src="images/xinxi.jpg" alt="" width="61" height="87"/></li>
+							<li><img src="images/cishan.jpg" alt="" width="61" height="87"/></li>
+							<li><img src="images/huizhan-2.jpg" alt="" width="61" height="87"/></li>
+						</ul>
+					</h3>
+				</div>
+	</div>
+	<!--法规、研究、杂志部分结束-->
+
+	<!--end1 start-->
+	<div class="end1">
+		<div class="end_tt">
+			<dt>
+				<dl>友情链接
+					<dd>
+						<a href="#">新浪科技</a><a href="#">腾讯科技</a><a href="#">千龙科技</a><a href="#">MSN中文网</a>
+						<a href="#">51CTO</a><a href="#">中国计世网</a><a href="#">第三媒体</a><a href="#">驱动中国</a>
+						<a href="#">CIO时代</a><a href="#">世界网支点网</a><a href="#">CSND速途网</a><a href="#">中国制造网</a>
+					</dd>
+				</dl>
+			<dt>
+		</div>
+	</div>
+	<!--end1 end-->
+
+	<!--end2 start-->
+	<div class="end2">
+		<div class="end_left"><a href="#"><img src="images/b_logo.png" alt="" width="190" height="35"/></a></div>
+		<div class="end_center">
+			<div class="end_top">
+				<ul>
+					<li><a href="#">联系我们</a></li>
+					<li><a href="#">网站导航</a></li>
+					<li><a href="#">网站简介</a></li>
+					<li><a href="#">产品中心</a></li>
+					<li class="no-border"><a href="#">后台管理</a></li>
+				</ul>
+			</div>
+			<div class="end_down">
+				<ul>
+					<li ><span>Copyright &copy; 2088-2099 &nbsp;&nbsp; 浙江会展网&nbsp;版权所有</span></li>
+					<li><span>地址</span></li>
+					<li><span>电话:0571-</span>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span  class="one">传真：0571-</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="end_right">
+			<h2><img src="images/b_beian.png" alt="" width="41" height="50"/></h2>
+			<span>浙ICP证010391号</span>
+		</div>
+	</div>
+	<!--end2 end--> 
+
+		<!--top start-->
+	<div id="top">
+		<span></span>
+	</div>
+	<!--end top-->
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+	<script type="text/javascript">
+
+
+		//二级菜单的实现
+		$(".daoh .dao_list ul li").hover(function(){
+			$(this).find(".menu").show();//显示 .menu 盒子
+			$(this).addClass("hover");//给li添加 class="hover"
+		},function(){
+			$(this).find(".menu").hide();//隐藏
+			$(this).removeClass("hover");//移除 li class="hover"
+		});
+
+
+		var titleDom=$(".daoh .dao_list ul li");
+				titleDom.onkeydown=$(".daoh .dao_list ul li");
+
+
+
+			//切换1
+
+			$("ul.le_qie").find("li").click(function(){
+				$("li").removeClass("n_set");
+				$(this).addClass("n_set");
+				var _index = $(this).index(); // 获取当前选中的索引
+				index = _index; // 重新赋值
+				$("ul.le_prc li").hide().eq($(this).index()).show();// 联动切换			
+				});
+					
+
+
+		//透明2
+				$(".video").hover(function(){
+				$(".yiny-3").fadeTo(300,1);
+			},function(){
+				$(".yiny-3").hide();
+			});
+
+				//透明1
+				$(".le_prc li").hover(function(){
+				$(".toum").fadeTo(300,1);
+			},function(){
+				$(".toum").hide();
+			});
+
+
+			//切换2
+			$("ul.back").find("li").hover(function(){
+				$("li").removeClass("h_slp");
+				$(this).addClass("h_slp");
+				var _index = $(this).index(); // 获取当前选中的索引
+				index = _index; // 重新赋值
+				$("ul.come li").hide().eq($(this).index()).show();// 联动切换			
+				});
+
+
+		//轮播计时
+		var index =  0;
+		setInterval(function(){
+			index++;
+			var length = $(".le_qie").find("li").length;
+			if(index >= length ){
+				index = 0;
+				}
+			$(".le_prc").find("li").eq(index).fadeTo(1000,1).siblings().hide();
+			$(".le_qie").find("li").eq(index).addClass("n_set").siblings().removeClass("n_set");
+		// 联动小按钮
+		},3000);
+
+
+	// 滑动鼠标滚轮
+	$(window).scroll(function(){
+		// 判断隐藏显示
+		if($(window).scrollTop() >= 100){
+			$("#top").fadeIn(300);
+		} else {
+			$("#top").stop(true,true).fadeOut("300");
+		}
+	});
+	// 点击回到顶部时
+	$("#top").click(function(){
+		$("html,body").animate({
+			scrollTop:0
+		},1000);
+	});
+	</script>
+	</html>

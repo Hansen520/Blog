@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两列布局的第三种解决方案</title>
+  <style>
+    #parent {
+      /* 表格的单元格的宽度会自动分配 */
+      display: table;
+      table-layout: fixed;
+
+      width: 100%;
+    }
+
+    #left,
+    #right {
+      height: 300px;
+
+      display: table-cell;
+    }
+
+    #left {
+      /* 定宽 */
+      width: 400px;
+      background-color: #c9394a;
+    }
+
+    #right {
+      background-color: #cccccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="right"></div>
+  </div>
+</body>
+
+</html>

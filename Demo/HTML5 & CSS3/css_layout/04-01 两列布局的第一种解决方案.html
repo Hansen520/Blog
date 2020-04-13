@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两列布局的第一种解决方案</title>
+  <style>
+    #left,
+    #right {
+      height: 300px;
+    }
+
+    #left {
+      /* 定宽 */
+      width: 400px;
+      background-color: #c9394a;
+      /* 当前元素脱离文档流 */
+      float: left;
+    }
+
+    #right {
+      background-color: #cccccc;
+
+      margin-left: 400px;
+    }
+
+    #inner {
+      height: 300px;
+      background-color: green;
+
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left"></div>
+  <div id="right">
+    <div id="inner"></div>
+  </div>
+</body>
+
+</html>

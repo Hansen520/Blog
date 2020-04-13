@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=EmulateIE8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+	.q{width:300px;height:800px;background: #789456;margin:0px auto;}
+	.q p:nth-child(1):before{
+	content: '是个该奋斗时候了！';
+	font-size: 20px;font-family: "微软雅黑";font-weight: bold;
+
+}   
+@media only screen and (max-width: 800px) {
+.q{width:300px;height:800px;background: green;} 
+.q p:nth-child(1):before{
+	content: '陈希+这个人老傻了！';
+	font-size: 20px;font-family: "微软雅黑";font-weight: bold;
+
+}   
+}
+@media only screen and (max-width: 700px) {
+.q{width:300px;height:800px;background: yellow;}
+.q p:nth-child(1):before{
+	content: '浙江大公+是家教育机构！';
+	font-size: 20px;font-family: "微软雅黑";font-weight: bold;；
+}  
+}
+@media only screen and (max-width: 600px) {
+.q{width:300px;height:800px;background: pink;}
+.q p:nth-child(1):before{
+	content: '杭州+是个美丽的地方！';
+	font-size: 20px;font-family: "微软雅黑";font-weight: bold;
+} 
+}
+	</style>
+</head>
+<body>
+<div class="q">
+	<p></p>
+
+</div>
+</body>
+</html>

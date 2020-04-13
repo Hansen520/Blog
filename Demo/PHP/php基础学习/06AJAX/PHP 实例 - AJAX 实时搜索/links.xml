@@ -1,0 +1,30 @@
+<pages>
+    <link>
+        <title>HTML DOM alt Property</title>
+        <url>
+            http://php.cn/htmldom/prop_img_alt.asp
+        </url>
+    </link>
+    <link>
+        <title>HTML DOM height Property</title>
+        <url>
+            http://php.cn/htmldom/prop_img_height.asp
+        </url>
+    </link>
+    <link>
+        <title>HTML a tag</title>
+        <url>http://php.cn/tags/tag_a.asp</url>
+    </link>
+    <link>
+        <title>HTML br tag</title>
+        <url>http://php.cn/tags/tag_br.asp</url>
+    </link>
+    <link>
+        <title>JavaScript Date() Method</title>
+        <url>http://php.cn/jsref/jsref_date.asp</url>
+    </link>
+    <link>
+        <title>JavaScript anchor() Method</title>
+        <url>http://php.cn/jsref/jsref_anchor.asp</url>
+    </link>
+</pages>

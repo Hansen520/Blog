@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两列布局的第二种解决方案</title>
+  <style>
+    #left,
+    #right {
+      height: 300px;
+    }
+
+    #left {
+      /* 定宽 */
+      width: 400px;
+      background-color: #c9394a;
+
+      float: left;
+    }
+
+    #right {
+      background-color: #cccccc;
+      /* 开启BFC模式 - 当前元素的内部环境与外界完全隔离 */
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left"></div>
+  <div id="right"></div>
+</body>
+
+</html>
