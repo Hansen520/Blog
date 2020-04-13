@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 5s;
+    }
+</style>
+<body>
+<!-- 这部分为动画与过度的结合 style标签里面为过度-->
+<div id="app">
+    <transition name="fate"
+        type="transition"
+        appear
+        :duration="{enter:3000,leave:5000}"
+        enter-active-class="animated bounceInDown fade-enter-active" 
+        leave-active-class="animated zoomOutLeft fade-leave-active"
+        appear-active-class="animated bounceInDown"
+    >
+        <div v-if='show'>
+            hello 我的祖国！
+        </div>
+    </transition>
+    <button @click="handleFate">显示/消失</button>
+</div>
+<script>
+//4.若想一加载就有动画效果需加入appear属性和自定义class：appear-active-class="自定义类名"
+// 5.同时存在过渡动画和其他动画，但时长不一样时，可以设置type属性来决定以谁为准，如：type="transition"则以过渡动画的时长为准
+// 6. 当要自定义时长时可以这样， ：duration="3000" 以毫秒计，这样的话不会以动画时长为准，
+//    而是自己定义的时长；更复杂点可以设置入场和出场动画时长，:duration="{enter:5000, leave:10000}"
+var vm = new Vue({
+    el:'#app',
+    data:{
+        show:true
+    },
+    methods:{
+        handleFate:function(){
+            this.show = !this.show
+        }
+    }
+})
+
+</script>  
+</body>
+</html>

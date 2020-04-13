@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue的插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child>
+        <!-- <div class="header" slot="header">头部</div>
+        <div class="footer" slot="footer">尾部</div> -->
+        <!-- 下面是新语法 -->
+        <template v-slot:header>
+            <div class="head">头</div>
+        </template>
+        <template v-slot:footer>
+            <div class="foot">脚</div>
+        </template>
+    </child>
+</div>
+<script>
+// 插槽就是在html组件内部定义div
+// 组件的template里可以在任意位置添加<slot></slot>,<slot></slot>里面可以写默认值
+// 具名插槽，slot标签可以添加name属性,然后在html定义slot用与区分组件中不同插槽
+// <slot name="header"></slot>
+// <div slot="header"></div> 这样就会把这个标签下的，包括这个标签，
+// 所有html元素替换到<slot name="header></slot>的位置，本质上跟v-html没什么区别，但是要看起来直观方便的多
+Vue.component('child',{
+    template:
+            `<div>
+                <slot name="header"></slot>
+                <div class="content">中间内容</div>
+                <slot name="footer"></slot>
+            </div>`
+})
+var vm = new Vue({
+    el:'#app',
+
+});
+</script> 
+</body>
+</html>

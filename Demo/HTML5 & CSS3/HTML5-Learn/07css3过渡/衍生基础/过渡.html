@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>过渡</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="2015年01月12日">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3000px;}
+		h4{margin-top:30px;}
+		.zao{width:100px;height:100px;background:#69C;}
+		.zao:hover{width:800px;background:#93F;}
+
+		.hou{width:100px;height:100px;background:#69C;
+			transition:width 1s,background 1s ease;
+
+		}
+		.hou:hover{width:800px;background:#93F;
+
+		}
+
+		.what{width:900px;border:2px solid #ddd;font-weight:600;}
+
+
+
+		/*案例一*/
+		.an1{width:680px;}
+		.an1 .content1{ width:330px; height:300px;border:5px dotted #ddd;float:left;overflow:hidden;}
+
+
+		.an1 .content1 img.t1{
+			width:330px;
+			height:300px;
+			transition:transform 1s;
+			-moz-transition:-moz-transform 1s;
+			-o-transition:-o-transform 1s;
+			-webkit-transition:-webkit-transform 1s;
+			-ms-transition:-ms-transform 1s;
+						}
+		.an1 .content1 img.t1:hover{
+				transform:rotate(-5deg) scale(1.2);
+				-moz-transform:rotate(-5deg) scale(1.2);
+				-o-transform:rotate(-5deg) scale(1.2);
+				-webkit-transform:rotate(-5deg) scale(1.2);
+				-ms-transform:rotate(-5deg) scale(1.2);
+							}
+
+
+		.an1 .content2{
+			width:100px;
+			height:100px;
+			float:right;
+			background:#03F;
+			transition:transform 1s;
+			-moz-transition:-moz-transform 1s;
+			-o-transition:-o-transform 1s;
+			-webkit-transition:-webkit-transform 1s;
+			-ms-transition:-ms-transform 1s;
+								}
+		.an1 .content2:hover{
+			background:#F00;
+			transform:translate(-100px,150px) rotate(45deg) scale(2);
+			-moz-transform:translate(-100px,150px) rotate(45deg) scale(2);
+			-o-transform:translate(-100px,150px) rotate(45deg) scale(2);
+			-webkit-transform:translate(-100px,150px) rotate(45deg) scale(2);
+			-ms-transform:translate(-100px,150px) rotate(45deg) scale(2);
+								}	
+
+			/*案例二*/
+			.qiu{width:100px;height:100px;background:#0099CC;margin-left:100px;border-radius:100px;box-shadow: #666 3px 1px 8px;
+			transition:transform 5s,margin-left 5s;
+			-moz-transition:-moz-transform 5s,margin-left 5s;
+			-o-transition:-o-transform 5s,margin-left 5s;
+			-webkit-transition:-webkit-transform 5s,margin-left 5s;
+			-ms-transition:-ms-transform 5s,margin-left 5s;
+			}
+			.qiu:hover{
+			width:100px;height:100px;transform:rotate(360deg);margin-left:800px;
+			-moz-transform:rotate(360deg);
+			-o-transform:rotate(360deg);
+			-webkit-transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+			}
+								
+
+		</style>
+
+	</head>
+	<body>
+	<h2>1.什么是过渡？</h2>
+	<p>过渡其实是给元素的改变添加一个过程,也就是元素从一种样式逐渐改变为另一种的效果。</p>
+
+	<h4>早期的css2版本的元素形态改变:hover</h4>
+	<div class="zao"></div>
+
+	<h4>在css3中能够为:hover改变的样式添加一个过程。 我们把这个过程叫做css3过渡</h4>
+	<div class="hou"></div><br/><br/><hr/><hr/><!--1.什么是过渡？ end-->
+
+	<h2>2.过渡效果由哪几部分组成？</h2>
+	<div class="what">
+		<p>transition:属性 时间</p>
+
+		<p>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。 要实现这一点，必须规定两项内容：</p> 
+		<p>•规定您希望把效果添加到哪个 CSS 属性上</p>
+		<p>•规定效果的时长</p>
+		<p>•语法： </p>
+		<p>1.普通写法:<br/>
+			transition-property:属性;</br>
+			transition-duration:过渡时间;<br/>
+			transition-timing-function:过渡效果动画(ease,linear,ease-in,ease-out,ease-in-out cubic-bezier);<br/>
+			transition-timing-delay:延迟时间;(一般不会用到)
+		</p>
+		<p>2.复合写法：transition:属性 时间</p>
+		<p>3.多属性写法：transition:属性 时间，属性 时间，属性 时间，属性 时间，属性 时间，属性 时间;</p>
+		<p>4.全选写法：transition:all 时间</p>
+	</div><br/><br/><hr/><hr/><!--2.过渡效果由哪几部分组成？ end-->
+
+	<h2>3.过渡能做些什么？</h2>
+	<h4>案例一：旋转缩放</h4>
+	<div class="an1">
+		<div class="content1"><img src="images/那些年.jpg" width="330" height="300" alt="" class="t1"/></div>
+		<div class="content2"></div>
+		<div style="clear:both"></div>
+	</div>
+
+	<h4>案例二:圆球滚动</h4>
+	<div class="qiu">球</div>
+
+		
+
+
+
+	</body>
+
+	</html>

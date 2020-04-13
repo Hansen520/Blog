@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中多个元素或组件的过度</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .fate-enter,.fate-leave-to{
+            opacity: 0;
+        }
+        .fate-enter-active,.fate-leave-active{
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 在div外包裹transition-group，当增加item想时，其实是给每一项都加入transition -->
+        <transition-group name='fate'>
+            <div v-for="item of list" key="item.id">{{item.title}}</div>
+        </transition-group>
+        <button @click="handleFate">add</button>
+    </div>
+    <script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            list:[] 
+        },
+        methods:{
+            handleFate:function(){
+                var count = 0
+                this.list.push({
+                    id:count++,
+                    title:'我们都是好孩子'
+
+                })
+            },    
+        }
+    })
+    
+    </script>     
+</body>
+</html>

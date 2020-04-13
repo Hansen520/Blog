@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+    <pre>
+      一、HTML5拖拽事件
+
+      				图片自带拖拽功能
+      				其他元素可设置draggable属性
+      				draggable ：true
+      					拖拽元素(被拖拽的元素)事件 :
+      				ondragstart : 	拖拽的一瞬间触发
+      				ondrag :	拖拽前、拖拽结束之间，连续触发
+      				ondragend :	拖拽结束触发
+      					目标元素(拖拽元素被拖到的地方)事件 :
+      				ondragenter :	进入目标元素触发
+      				ondragover :	进入目标、离开目标之间，连续触发
+      				ondragleave :	离开目标元素触发
+      				ondrop :在目标元素上释放鼠标触发
+      				默认状态下，一个元素不能放另一元素的上面，需要在ondragover事件里面阻止默认事件
+
+      二、拖拽兼容问题
+
+      				火狐浏览器下需设置dataTransfer对象才可以拖拽除图片外的其他标签
+      					dataTransfer对象
+      					setData() :
+      						设置数据 key和value(必须是字符串)
+      					getData() :
+      						获取数据，根据key值，获取对应的value
+      					effectAllowed :
+      						设置光标样式(none, copy, copyLink, copyMove, link, linkMove, move, all 和 uninitialized)
+
+      					// 拖拽元素的图标
+      					setDragImage ：  三个参数（指定的元素，坐标X，坐标Y）
+
+      					files： 		获取外部拖拽的文件，返回一个filesList列表
+
+      					filesList下有个type属性，返回文件的类型
+
+      三、读取文件信息
+
+      				FileReader(读取文件信息)
+      				 readAsDataURL
+      				参数为要读取的文件对象
+      				onload当读取文件成功完成的时候触发此事件
+      				this. result 获取读取的文件数据
+    </pre>
+  </body>
+</html>

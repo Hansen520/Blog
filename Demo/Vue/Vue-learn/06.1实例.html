@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<script>
+// 当一个 Vue 实例被创建时，它将 obj 对象中的所有的属性加入到 Vue 的响应式系统中。
+// 当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。
+//创建对象了
+var obj = {
+    a : 1
+};
+
+// 这里唯一的例外是使用 Object.freeze()，这会阻止修改现有的属性，也意味着响应系统无法再追踪变化。
+// Object.freeze(obj)
+
+//该对象被加入到一个Vue实例中
+var vm = new Vue({
+    data : obj
+});
+
+
+
+
+</script>  
+</body>
+</html>

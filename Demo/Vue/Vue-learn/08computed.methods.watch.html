@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed/methods/watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{fullname}}
+        {{age}}
+    </div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstname : 'jin',
+            lastname : 'hs',
+            fullname:'jin hs',
+            age:20
+        },
+
+        //第三种
+        //watch：跟computed类似，但代码比起computed来说不够简洁
+        //watch是侦听器
+        watch:{
+            firstname:function(){
+                console.log(1);
+                return this.fullname = this.firstname + " " + this.lastname;
+            },
+            lastname:function(){
+                console.log(2);
+                return this.fullname = this.firstname + " " + this.lastname;
+            }
+        }
+        //第二种
+        // methods:数据发生变化就会执行methods里的方法，无论发生变化的是不是其所依赖的数据
+        //比如浏览器重新赋值age，methods里面的方法也会被重新渲染
+        // methods:{
+        //     fullname:function(){
+        //         console.log("走一次")
+        //         return this.firstname + " " + this.lastname
+        //     }
+        // }
+
+
+        // 第一种
+        //computed: 有缓存 只监听所依赖的数据，
+        //其他不相关的数据发生改变并不会影响到computed里的方法，
+        //只有所依赖的数据发生改变才会触发computed里相应的方法
+        // computed:{
+        //     fullname:function(){
+        //         console.log('走一次');
+        //         return this.firstname + " " + this.lastname;
+        //     }
+        // }
+
+    });
+
+// 所以一个需求如用computed、methods、watch都可以实现的话，推荐用computed、性能高
+</script>   
+</body>
+</html>

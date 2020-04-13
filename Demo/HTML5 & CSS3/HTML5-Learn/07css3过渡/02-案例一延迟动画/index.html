@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>延迟动画-dream</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="">
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            list-style: none;
+        }
+
+		#bq{
+			width: 1000px;
+			height: 5px;
+			box-shadow: 0 2px 5px #000;
+			margin: 50px auto;
+		}
+
+		#box{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		#box ul{
+
+		}
+		#box ul li{
+			width:214px;
+			height:300px;
+			float:left;
+			margin: 0 18px;
+			background-image: url("images/bg_icon.png");
+			background-repeat: no-repeat;
+			position: relative;
+			overflow: hidden;
+
+		}
+
+        #box ul li div{
+            transition: 1s;
+            color:#fff;
+        }
+
+        #box ul li .icon{
+            width: 80px;
+            height: 80px;
+            margin: 40px auto;
+        }
+        #box ul li .more{
+            left:214px;
+        }
+		#box ul li .info{
+			transition-delay: 0.3s;
+		}
+
+        #box ul li:hover .icon{ transform: rotate(360deg) }
+        #box ul li:hover .info{
+            bottom: -140px;
+        }
+        #box ul li:hover .more{
+            left: 0px;
+            transition-delay: 1s;
+        }
+
+
+		#box ul li:nth-child(1){background-color: #5CC8B0}
+        #box ul li:nth-child(2){background-color: #00A0EA}
+        #box ul li:nth-child(3){background-color: #ED9644}
+        #box ul li:nth-child(4){background-color: #97C412}
+
+        #box ul li .info,#box ul li .more{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 140px;
+            background: rgba(0,0,0,0.5);
+        }
+
+	</style>
+</head>
+<body>
+	<div id="bq"></div>
+	<div id="box">
+		<ul>
+			<li>
+				<div class="icon"><img src="images/dome.png" width="100%" height="100%"></div>
+				<div class="info">清水流阶前,明月当空挂(打安徽省市县名)</div>
+				<div class="more">谜底: 青阳县</div>
+			</li>
+			<li>
+				<div class="icon"><img src="images/js.png" width="100%" height="100%"></div>
+				<div class="info">小轮胎，大履带，农业动力声音响（打一农业工具）</div>
+				<div class="more">谜底: 拖拉机</div>
+			</li>
+			<li>
+				<div class="icon"><img src="images/html.png" width="100%" height="100%"></div>
+				<div class="info">旭日东升,猜一字</div>
+				<div class="more">九</div>
+			</li>
+			<li>
+				<div class="icon"><img src="images/html5.png" width="100%" height="100%"></div>
+				<div class="info">男女同眠,猜一个字</div>
+				<div class="more"> 谜底: 好</div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

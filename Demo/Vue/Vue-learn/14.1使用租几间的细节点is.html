@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>细节点</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <!-- <table>
+            <tr is="row"></tr>
+            <tr is="row"></tr>
+            <tr is="row"></tr>
+        </table> -->
+        <ul>
+            <li is="row"></li>
+            <li is="row"></li>
+            <li is="row"></li>
+        </ul>
+    </div>
+</div>
+<script>
+// <!-- 有些标签有特殊的规则，
+// 如tbody里面包含的要是tr，
+// 如果是自定义组件，则通过<tr is="自定义组件">来编写（另：如ul、select） -->
+Vue.component('row',{
+    // template:'<tr><td>This is a apple</td></tr>'
+    template:'<li>this is a banana!</li>'
+})
+var vm = new Vue({
+    el:"#app"
+});
+</script>
+</body>
+</html>

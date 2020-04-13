@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态指令与v-once指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 动态组件绑定原理
+        <child-one v-if="type==='child-one'"></child-one>
+        <child-two v-if="type==='child-two'"></child-two>
+    -->
+    {{type}}
+    <!--根据 is 属性绑定data数据中的数据名，动态的切换组件，然后自动加载不同的组件 -->
+    <!-- Vue内置组件 -->
+    <component :is="type"></component>
+    <button @click = "handleChange">change</button><br/>
+</div>
+<script>
+// 动态组件
+// 子组件1
+Vue.component('child-one',{
+    template:'<div>child-one</div>'
+})
+// 子组件2
+Vue.component('child-two',{
+    template:'<div>child-two</div>'
+})
+var vm = new Vue({
+    el:'#app',
+    data () {
+        return {
+            type: 'child-two'
+        }
+    },
+    methods:{
+        handleChange:function(){
+            this.type = (this.type === 'child-one' ? 'child-two' : 'child-one')
+        }
+    }
+});
+</script>
+</body>
+</html>

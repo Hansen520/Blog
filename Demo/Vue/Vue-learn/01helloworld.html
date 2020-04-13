@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello-world</title>
+</head>
+<body>
+    <div id="app">{{content}}</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+var app = new Vue({
+    el : '#app',
+    data : {
+        content:'hello vue1'
+    }
+});
+setTimeout(function(){
+    app.$data.content = '帅哥哥！'
+}, 2000);
+</script>
+
+</body>
+</html>

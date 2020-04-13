@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>video-dream总结</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3500px;}
+		span{color:red;font-size:16px;font-weight:bold;}
+		td{border:1px solid #333;height:40px;text-align:center;}
+		</style>
+
+	</head>
+	<body>
+	<h2>1.视频、音频简介</h2>
+	<pre>
+	常见的视频格式
+		视频的组成部分：画面、音频、编码格式
+		视频编码：H.264、Theora、VP8(google开源)
+
+	常见的音频格式
+		视频编码：ACC、MP3、Vorbis
+	</pre>
+
+	<h2>2.HTML5支持的格式</h2>
+	<pre>
+	HTML5能在完全脱离插件的情况下播放音视频
+	但是不是所有格式都支持。
+
+	<em>HTML5支持的视频格式：</em>
+	<b>Ogg</b>=带有Theora视频编码+Vorbis音频编码的Ogg文件
+
+	<b>MEPG4</b>=带有H.264视频编码+AAC音频编码的MPEG4文件
+
+	<b>WebM</b>=带有VP8视频编码+Vorbis音频编码的WebM格式
+	</pre>
+
+	<h2>3.&lt;Video&gt;的使用</h2>
+	<pre>
+	1.<span>单独用法</span>
+		&lt;video src="文件地址" controls="controls"&gt;&lt;/video&gt;
+	2.<span>带提示用法</span>
+		&lt; video src="文件地址" controls="controls"&gt;
+			您的浏览器暂不支持video标签。播放视频
+		&lt;/ video &gt;
+	3.<span>兼容用法</span>
+		&lt; video  controls="controls"  width="300"&gt;
+			&lt;source src="move.ogg" type="video/ogg" &gt;
+			&lt;source src="move.mp4" type="video/mp4" &gt;
+			您的浏览器暂不支持video标签。播放视频
+		&lt;/ video &gt;
+
+	<h2>4.Video的常见属性</h2>
+	<table>
+		<tr>
+			<td>属性</td>
+			<td>值</td>
+			<td>描述</td>
+		</tr>
+		<tr>
+			<td>Autoplay</td>
+			<td>Autoplay</td>
+			<td>视频就绪自动播放</td>
+		</tr>
+		<tr>
+			<td>controls</td>
+			<td>controls</td>
+			<td>向用户显示播放控件</td>
+		</tr>
+		<tr>
+			<td>Width</td>
+			<td>Pixels(像素)</td>
+			<td>设置播放器宽度</td>
+		</tr>
+		<tr>
+			<td>Height</td>
+			<td>Pixels(像素)	</td>
+			<td>设置播放器高度</td>
+		</tr>
+		<tr>
+			<td>Loop</td>
+			<td>Loop</td>
+			<td>播放完是否继续播放该视频，循环播放</td>
+		</tr>
+		<tr>
+			<td>Preload</td>
+			<td>load{auto,meta,none}</td>
+			<td>规定是否预加载视频</td>
+		</tr>
+		<tr>
+			<td>Src</td>
+			<td>url</td>
+			<td>视频url地址</td>
+		</tr>
+		<tr>
+			<td>Poster</td>
+			<td>Imgurl</td>
+			<td>加载等待的画面图片</td>
+		</tr>
+		<tr>
+			<td>Autobuffer</td>
+			<td>Autobuffer</td>
+			<td>设置为浏览器缓冲方式，不设置autoply才有效</td>
+		</tr>
+	</table>
+
+	<h2>5.Video的API方法</h2>
+	<table>
+		<tr>
+			<td>方法</td>
+			<td>属性</td>
+			<td>事件</td>
+		</tr>
+		<tr>
+			<td>play()</td>
+			<td>currentSrc</td>
+			<td>play</td>
+		</tr>
+		<tr>
+			<td>pause()</td>
+			<td>currentTime</td>
+			<td>pause</td>
+		</tr>
+		<tr>
+			<td>load()</td>
+			<td>videoWidth</td>
+			<td>progress</td>
+		</tr>
+		<tr>
+			<td>canPlayType()</td>
+			<td>videoHeight</td>
+			<td>error</td>
+		</tr>	
+	</table>
+
+	<table>
+		<tr>
+			<td></td>
+			<td>全屏</td>
+			<td>退出全屏</td>
+		</tr>
+		<tr>
+			<td>Webkit (Safari5.1 /Chrome 15)</td>
+			<td>element.webkitRequestFullScreen();</td>
+			<td>document.webkitCancelFullScreen(); </td>
+		</tr>
+		<tr>
+			<td>Firefox (works in nightly)</td>
+			<td>element.mozRequestFullScreen();</td>
+			<td>document.mozCancelFullScreen(); </td>
+		</tr>
+		<tr>
+			<td>W3C 提议</td>
+			<td>element.requestFullscreen();</td>
+			<td>document.exitFullscreen();</td>
+		</tr>
+	</table>
+	<h4>案例展示</h4>
+		<video  controls="controls"  width="400" height="300">
+			<source src="sound/崔子格 - 卜卦.mkv" type="video/mp4" >
+			<source src="崔子格 - 卜卦.ogg" type="video/ogg" >
+		</video>
+
+	<h2>6.HTML5支持的音频格式</h2>
+	<pre>
+	HTML5在不使用插件的情况下也可以原生的支持音频格式文件的播放，当然支持格式是有限的
+
+	HTML5支持的音频格式：
+	Ogg		   MP3		   Wav	
+	</pre>
+	<h4>代码案例</h4>
+	<pre>
+			&lt;audio controls="controls"  width="500"&gt;
+			&lt;source src="sound/潘松和 - 闪电冲线.mp3" type="audio/mp3" /&gt;
+			&lt;/audio&gt;
+	</pre>
+
+	<h2>8.音频属性</h2>
+	<table>
+	<tr>
+		<td>属性</td>
+		<td>值</td>
+		<td>描述</td>
+	</tr>
+	<tr>
+		<td>autoplay</td>
+		<td>autoplay</td>
+		<td>如果出现该属性，则音频在就绪后马上播放。</td>
+	</tr>
+	<tr>
+		<td>loop</td>
+		<td>loop</td>
+		<td>如果出现该属性，则每当音频结束时重新开始播放。</td>
+	</tr>
+	<tr>
+		<td>preload</td>
+		<td>preload</td>
+		<td>如果出现该属性，则音频在页面加载时进行加载，并预备播放。<br/>
+				如果使用 "autoplay"，则忽略该属性。
+		</td>
+	</tr>
+	<tr>
+		<td>src</td>
+		<td>url</td>
+		<td>要播放的音频的 URL</td>
+	</tr>
+	</table>
+
+	<h4>代码案例</h4>
+	   <audio controls="controls"  width="500">
+    	<source src="sound/潘松和 - 闪电冲线.mp3" type="audio/mp3" />
+    </audio>
+
+	</body>
+
+	</html>

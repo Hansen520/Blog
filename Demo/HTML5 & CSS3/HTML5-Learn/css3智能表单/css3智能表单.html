@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07_input</title>
+    <base target="blank">
+    <style>
+        #konwledege{
+            position: fixed;
+            right: 2%;
+            top:2%;
+            text-decoration:underline;
+            color:inherit;
+            outline: none;
+            color: orange;
+            font-size: 12px;
+        }
+        #toTop{
+            position: fixed;
+            right: 2%;
+            bottom: 2%;
+            box-shadow: 1px 1px 1px rgba(0,0,0,.5);
+            border-radius: 100%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+            color: red;
+        }
+        *{margin:0;padding: 0;}
+        body{
+            font-family: 'Microsoft yahei', Verdana, '仿宋',Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            margin: auto;
+            position: relative;
+        }
+        a{text-decoration:none;color:inherit;outline: none;}
+        img{border:none;vertical-align: middle;outline:none;}
+        li{list-style:none;}
+
+        section{
+            position: relative;
+            margin:50px auto;
+        }
+        section>h2{
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        /*------------------------------login-----------------------------------*/
+        .c-28a{color:#28a956;}
+        .login{
+            position: relative;
+            width: 100%;
+            height: 730px;
+            background-color: #ccc;
+        }
+        .login>.wrap{
+            width: 100%;
+            height: 100%;
+        }
+        .login>.wrap>p{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            color:#fff;
+            z-index: 9;
+            line-height: 60px;
+
+        }
+        .login>.wrap>figure{
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+        .login>.wrap>figure>video{
+            width: 100%;
+        }
+        .login>.wrap>.content{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.5);
+            z-index: 2;
+        }
+        .login>.wrap>.content>.main{
+            position: absolute;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 600px;
+            height: 300px;
+            color:#fff;
+            text-align: center;
+        }
+        .login>.wrap>.content>.main>hgroup{
+            box-sizing: border-box;
+            padding: 20px ;
+            font-size: 28px;
+            font-weight:0;
+        }
+        .login>.wrap>.content>.main>hgroup>h3{
+            font-size: 20px;
+        }
+        .login>.wrap>.content>.main input{
+            outline: none;
+            border:none;
+            border-radius: 2px;
+        }
+        .login>.wrap>.content>.main>.sub-down {
+            width: 80%;
+            height: 140px;
+            margin:auto;
+            display: flex;
+            flex-flow:column;
+            justify-content:space-between;
+        }
+        .login>.wrap>.content>.main>.sub-down a{
+            text-decoration:underline;
+        }
+        .login>.wrap>.content>.main>.sub-down >.txt{
+            display: flex;
+            justify-content:space-between;
+        }
+        .login>.wrap>.content>.main>.sub-down >.txt>input{
+            width: 48%;
+            height: 35px;
+            outline: none;
+            text-indent:1em;
+            border:1px solid transparent;
+        }
+        .login>.wrap>.content>.main>.sub-down >.txt>input:focus{
+            border-color:#0ff;
+        }
+        .login>.wrap>.content>.main>.sub-down >.link{
+            font-size: 12px;
+        }
+        .login>.wrap>.content>.main>.sub-down >input{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: #28a956;
+            cursor: pointer;
+            color:#fff;
+            font-size:14px;
+            font-weight:bold;
+            letter-spacing:3px;
+        }
+        .login>.wrap>.content>.main>.sub-down > p{
+            font-size: 12px;
+        }
+        .login>.wrap>.content> .trangle{
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            right:0;
+            margin:auto;
+            width: 20px;
+            height: 20px;
+            border:2px solid transparent;
+            border-color:#fff #fff transparent transparent;
+            transform:rotate(135deg);
+            animation:move 2s ease-in infinite alternate both;
+        }
+        @keyframes move{
+            50%{bottom: 100px}
+            100%{bottom: 80px}
+        }
+    </style>
+</head>
+<body>
+<div id="konwledege"><a href="baseKnowledege.html" target="_self">基本知识</a></div>
+<a href="#" id='toTop'>Top</a>
+<section class='login'>
+    <div class="wrap">
+        <figure>
+            <video autoplay="autoplay" loop="loop">
+                <source src='https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video.webm' type='video/webm'/>
+            </video>
+        </figure>
+        <div class="content">
+            <form class="main" action="https://app.yinxiang.com/Registration.action?register=&amp;_sourcePage=TRewqUBoP0TiMUD9T65RG_YvRLZ-1eYO3fqfqRu0fynRL_1nukNa4gH1t86pc1SP" id="create-account" method="post">
+                <hgroup>
+                    <h1>记住一切</h1>
+                    <h3>现代生活喧嚣繁杂，印象笔记帮你轻松简化一切，让生活更美好，让工作更省力。</h3>
+                </hgroup>
+                <div class="sub-down">
+                    <div class="txt">
+                        <input type="email" placeholder='邮箱' autofocus='true' required="true" autocomplete='true'>
+                        <input type="password" placeholder="密码" autocomplete="off" required='true' pattern="\w{6,}">
+                    </div>
+                    <div class="link">
+                        点击注册即表明你同意本 <a href="javascript:">服务条款</a>和<a href="javascript:">隐私条款</a>。
+                    </div>
+                    <input type="submit" value="免费注册">
+                    <p>或<a href="https://app.yinxiang.com/Home.action">登录</a></p>
+                </div>
+            </form>
+            <div class="trangle"></div>
+        </div>
+        <p>与<span class="c-28a">数亿</span>名用户一起，用印象笔记成就更多</p>
+    </div>
+</section>
+<script>
+
+</script>
+</body>
+</html>

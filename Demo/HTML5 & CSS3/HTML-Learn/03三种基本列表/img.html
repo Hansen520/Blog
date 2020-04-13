@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>html模板</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		p{font-size:18px;font-weight:bold;}
+		h4{margin-top:20px;}
+
+		</style>
+
+	</head>
+	<body bgcolor="#FFFFCC">
+	<h2>一.图片标签</h2>
+	<h4>1.图片标签基本语法</h4>
+	<pre>&lt;img/ src="" alt="" width="" height="" /&gt;</pre>
+	
+
+		<h4>2.图片四要素</h4>
+			<pre>
+	<p>
+		img src="图片的地址" 
+		alt="有利于SEO搜索引擎优化" 
+		width="图片宽度" 
+		height="图片高度"
+	</p>
+			</pre>
+
+		<h4>3.图片的其他属性</h4>
+			<pre>
+	<p>
+		title="图片标题" 
+		align="设置或获取对象针对其邻接文本如何排列；"
+		border="设置或获取绘制对象周围边框的宽度"
+	</p>
+			</pre>
+
+	<br/><br/><hr/>
+
+	<h2>二.图像img标签 ；常见图片格式；<h2/>
+
+	<h4>1.jpg图片</h4>
+
+	<img src="1.jpg" alt="bag" width="128" height="128" title="bag"/>
+
+
+   <h4>2.gif图片</h4>
+    <img src="2.gif" alt="动画" width="24" height="35" title="动画"/>
+	   <pre>
+	<p>
+	gif (Graphics Interchange Format)的原义是“图像互换格式”
+	特点一：支持无损耗压缩和透明度；
+	特点二：在一个GIF文件中可以存多幅彩色图像，如果把存于一个文件中的多幅图像数据逐幅读出并显示到屏幕上，
+	就可构成一种最简单的动画，易于使用许多 GIF 动画程序创建。
+	缺点：详细的图片和写实摄影图像会丢失颜色信息
+	</p>
+       </pre>
+
+	 <h4>3.png图片</h4>
+	 <img src="3.png" alt="惊讶" width="128" height="128" title="惊讶"/>
+		<pre>
+	<p>
+	优点：PNG 支持高级别无损耗压缩（支持透明度，）；
+	确定：ＩＥ６不支持透明
+	</p>
+		<pre/><hr/>
+	
+
+
+
+
+	<h2>三.路径知识（绝对路径、相对路径)；</h2>
+
+	<h3>1.绝对路径</h3>
+	     <pre>
+	<p>
+	同一个目录的文件引用：
+	如果源文件和引用文件在同一个目录里，直接写引用文件名即可，
+	这时引用文件的方式就是使用相对路径。
+	</p>
+        </pre>
+	<img src="G:\网页制作\自己动手写写\javaweb\9-3-dream-No4\images\5.jpg" width="293" height="220" border="2"/>本地绝对路径<br/>
+	<img src="http://img0.bdstatic.com/img/image/%E5%B7%B4%E8%A5%BF.jpg" />网上绝对路径
+
+
+	<h4>2.相对路径</h4>
+		<pre>
+	<p>
+	完整的描述文件位置的路径就 是绝对路径
+	不需要知道其他任何信息就可以根据绝对路径判断出文件的位置；
+	</p>
+		</pre>
+	<img src="images/5.jpg"  width="293" height="220" alt="闹钟"/>相对路径
+
+	<h4>3图片链接</h4>
+	<a href="http://www.baidu.com" ><img src="6.jpg" alt="热语" width="200" height="200"/></a><br/>
+	<h5>代码展示：</h5>
+	&lt;a href="#"&gt;&lt;img src="" alt="" width="" height=""/&gt;&lt;/a&gt;
+	
+
+
+	</body>
+
+	</html>
