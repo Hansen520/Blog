@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>数组笔记整理-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:4000px; background:url("images/background2.png");}
+		div{width:1000px;display:none;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:#5E486F;font-weight:600;font-size:17px;margin-left:20px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+		em{color:#000;font-size:18px;font-family:"微软雅黑";}
+		
+		h5{color:#CC6633;margin-left:20px;margin-top:20px;}
+		.biji{color:blue;font-weight:bold;font-size:20px;}
+		.biji2{color:red;font-weight:bold;}
+		.type{color:green;font-weight:bold;margin-left:20px;}
+		</style>
+
+	</head>
+	<body>
+	<h2>1.数组的相关知识</h2>
+	<pre class="biji">
+1. 数组是一种引用类型
+2. 数组是一种简单的数据结构，线性的机构
+3. 数组是一个容器，可以用来存储其他元素，
+4. 数组也是可以存储任意数据类型的元素
+5. 数组分为:一维数组，二维数组，三维数组，多维数组
+6. 数组中的存储的元素类型 是统一的
+7. 数组的长度是不可变的，数组一旦创建长度就是不可变的，固定的
+	</pre><hr/><!--1.数组的相关知识-->
+
+	<h2>2.声明数组的语法</h2>
+	<pre class="biji">
+&lt;1&gt;. 数组元素的类型[] 变量名称
+&lt;2&gt;. 数组元素的类型 变量名称[]	
+	</pre><hr/><!--2.声明数组的语法-->
+
+	<h2>3.数组的三种定义类型</h2>
+	<h4>---------------第一种:定义方式---------------</h4>
+	<pre class="biji">比如：声明一个一维数组，用来存储int类型，这种方式称之为“静态初始化的一维数组”</pre>
+	<p>int[] counts = {1,2,3,4,5,6,7,8,9,10};<span class="type">//整数类型</span></p>
+	<p>float[] menoys = {1.5f,10,1.9f};</p><span class="type">//浮点数类型</span>
+	<p>char[] cs = {'A','中','1','C'};<span class="type">//字符类型</span></p>
+	<p>byte[] k = {1,2,3};<span class="type">//byte类型</span></p>
+	<p>String[] strs = {"潭州学院","潭州农业学院","我就是吃西葫芦"};<span class="type">String类型</span></p>
+	<p>boolean[] j = {true,false,true,false};<span class="type">boolean 类型的数组</span></p>
+	<p>Object o1 = new Object();<span class="type">//Object数组</span></p>
+	<p>Object o2 = new Object();</p>
+	<p>Object o3 = new Object();</p>	
+	<p>Object[] bojs = {o1,o2,o3};</p><!--3.数组的三种定义类型-->
+
+
+	<h4>---------------第二种:初始化后赋值---------------</h4>
+	<p>int[] numbers = new int[3];</p>
+	<p>numbers[0] = 1;</p>
+	<p>numbers[1] = 2;</p>
+	<p>numbers[2] = 3;</p><!--第二种:初始化后赋值-->
+
+	<h4>---------------第三种:第一方式-------------------</h4>
+	<p>int[] numbs = new int[]{1,2,3};</p><br/><br/><hr/><!--第三种:第一方式-->
+
+	<h2>4.采用第二种方法赋值应用</h2>
+	<input type="button" class="demo1" value="代码展示"/>
+	<div class="action1">
+	&nbsp;<b>int</b>[] data = <b>new int</b>[<span>5</span>];<br/>
+	&nbsp;data[<span>0</span>] = <span>16;</span><br/>
+	&nbsp;data[<span>1</span>] = <span>17;</span><br/>
+	&nbsp;data[<span>2</span>] = <span>10;</span><br/>
+	&nbsp;data[<span>3</span>] = <span>90;</span><br/>
+	&nbsp;data[<span>4</span>] = <span>50;</span><br/>
+	&nbsp;<span>System</span>.out.println("数组的长度为："+data.<b>length</b>);<br/>
+	&nbsp;<b>for</b>(<b>int</b> i = 0; i < data.<b>length</b>; i ++){<br/>
+	&nbsp;<span>System</span>.out.println("下标为："+ i +" 的值：" + data[i]);<br/>
+	&nbsp;}<br/><br/><br/>
+	输出:<br/>16<br/>17<br/>10<br/>90<br/>50<br/>
+	<p class="biji2">注意：如果数组的下标越界就会报错，错误异常为ArrayIndexOutOfBoundsException</p><!--4.采用第二种方法赋值应用--><br/>
+	</div><br/><br/>
+	<hr/>
+
+
+	<h2>5.引用类型的数组应用</h2>
+	<p class="biji">	NullPointerException 出现了空指针, 因为引用类型的数组，它采用null作为默认的初始化值,所以必须初始化值</p>
+	&nbsp;<b>public class</b> ArrayTest03{<br/><br/>
+	&nbsp;<b>public static void</b> main(<span>String</span>[] args){</br/><br/>
+	&nbsp;Student[] student = <b>new</b> Student[<span>2</span>];<br/><br/>
+	&nbsp;student[<span>0</span>].id = <span>100</span>;<br/>
+	&nbsp;student[<span>0</span>].name = "arry";<br/><br/>	
+	&nbsp;student[<span>1</span>].id = <span>200</span>;<br/>
+	&nbsp;student[<span>2</span>].name = "keke";<br/><br/>
+	&nbsp;	}<br/>
+&nbsp;}<br/>
+
+<b>class</b> Student{<br/>
+	<b>int</b> id;<br/>
+	<span>String</span> name;<br/>
+}<br/><br/><br/><hr/>
+
+	<h2>6.如何解决5.中的空指针问题</h2>
+	<h4>------------------方式一-----------我的选择-------</h4>
+	&nbsp;Student[] student = <b>new</b> Student[<span>2</span>];<span class="type">//声明数组</span><br/><br/>
+	&nbsp;student[<span>0</span>] = <b>new</b> Student();<br/>
+	&nbsp;student[<span>0</span>].id = <span>100</span>;<br/>
+	&nbsp;student[<span>0</span>].name = "dream";<br/><br/>
+	
+	&nbsp;student[<span>1</span>] =<b>new</b> Student();<br/>
+	&nbsp;student[<span>1</span>].id = <span>100</span>;<br/>
+	&nbsp;student[<span>1</span>].name = "tony";<br/><br/>
+
+	&nbsp;<span>System</span>.out.println("id[<span>0</span>] = "+student[0].id + "  name[0] = " + student[0].name);<br/>
+	&nbsp;<span>System</span>.out.println("id[<span>1</span>] = "+student[1].id + "  name[1] = " + student[1].name);<br/><br/>
+	输出：<br/>
+	id[0] =100&nbsp;&nbsp; name[0] =dream<br/>
+	id[1] =100200&nbsp;&nbsp; name[1] =tony<br/><br/><br/>
+
+	<h4>------------------方式二------------------</h4>
+	&nbsp;Student[] student = <b>new </b> Student[<span>2</span>];<br/><br/>
+	&nbsp;Student arry = <b>new </b>Student();<br/>
+	&nbsp;arry.id = <span>1111</span>;<br/>
+	&nbsp;arry.name = "Arry老师";<br/>
+	&nbsp;student[<span>0</span>] = arry;<br/><br/>
+		
+	&nbsp;Student keke = <b>new </b> Student();<br/>
+	&nbsp;keke.id = <span>2222</span>;<br/>
+	&nbsp;keke.name = "Keke老师";<br/>
+	&nbsp;student[<span>1</span>] = keke;<br/><br/>
+
+	&nbsp;<b>for</b>(<b>int</b> i = <span>0</span>; i < student.<b>length</b>; i ++){<br/>
+	&nbsp;<span>System</span>.out.println("id = " + student[i].id + " name = " + student[i].name);<br/>
+	输出：<br/>
+	&nbsp;id = 1111 name = Arry;<br/>
+	&nbsp;id = 2222 name = Keke;<br/><br/><hr/>
+
+	<h2>7.初始化数组的方式</h2>
+	<pre class="biji">
+1. 数组中存储元素的类型是统一的；
+2. 每一个元素在内存中所占的空间大小是相同的；
+3. 知道数组的首元素的内存地址，要查找元素只要知道下标就可以快速的计算出 偏移量
+通过首元素的内存地址加上 偏移量 快速计算出要查找的内存地址
+可以通过内存地址快速定位该元素，所以 数组查找元素的效率非常高
+4. 随机的对数组进行增删元素： 
+	当增加元素的时候，为了保证数组中的元素在空间存储上是有序；
+	所以被添加元素位置后面的所有元素都要向后移动。
+	再删除元素时，后面的元素要向前移动，所以数组的增删元素的效率比较低	
+
+初始化一维数组有两种方式
+	1. 静态初始化
+	2. 动态初始化
+	</pre>
+
+	<pre class="biji2">
+什么时候使用动态初始化，什么时候使用静态初始化？	
+1. 无论静态初始化还是动态初始化，最终的内存分布都是一样的	
+2. 如果在创建数组的时候，知道数组中应该存储什么数据，这个时候 当然采用静态初始化方式；		
+	如果在创建数组时，无法预测到数组中的存储什么数据，只是先开辟空间，就是用动态初始化的方式	
+	</pre>
+
+	<h5 class="exact">附加内容:</h5>
+	<p>System.out.println("获取数组的第一个值："+counts[0]);<span class="type">//获取数组的第一个值 ，数组的下标是从:0开始</span></p><br/><br/>
+	<p>int length = counts.length;<span class="type">//数组数组的最后一个值</span></p>
+	<p>System.out.println("数组的长度是:"+length);</p>
+	<p>System.out.println("数组的最后一个值是:"+counts[length-1]);</p><br/><br/><!--附加内容:--><br/><br/><hr/><hr/><hr/>
+
+	<h2>8.二维数组</h2>
+	<pre class="biji">
+1. 二维数组 是一个特殊的一维数组
+2. 特殊的一维数组，特殊在这个一维数组中每一个元素都是“一维数组”	
+	</pre>
+
+		&nbsp;int[][] m = new int[2][3];<span class="type">//声明二维数组,m的长度，以前面为主为长度2</span><br/><br/>
+		
+		&nbsp;m[<span>0</span>][<span>0</span>] = <span>2</span>;<br/>
+		&nbsp;m[<span>0</span>][<span>1</span>] = <span>3</span>;<br/>
+		&nbsp;m[<span>0</span>][<span>2</span>] = <span>4</span>;<br/><br/>
+		
+		&nbsp;m[<span>1</span>][<span>0</span>] = <span>5</span>;<br/>
+		&nbsp;m[<span>1</span>][<span>1</span>] = <span>6</span>;<br/>
+		&nbsp;m[<span>1</span>][<span>2</span>] = <span>7</span>;<br/>
+
+		&nbsp;<b>for</b>(<b>int</b> i =0;i < m.<b>length</b>;i++){<br/>
+		&nbsp;<b>for</b><b>int</b> j =0;j < m[i].<b>length</b>;j++){<span class="type">//m[i]的分别长度为3</span><br/>
+		
+		&nbsp;<span>System</span>.out.println(m[i][j]);<br/>
+		&nbsp;&nbsp;}<br/>
+		&nbsp;&nbsp;}<br/><br/><br/><hr/>
+
+		<h2>9.多维数组</h2>
+		<p class="biji">多维数组: 当数组元素的类型是数组时就成了多维数</p>
+		<input type="button" class="demo2" value="代码展示"/>
+		<div class="action2">
+		<pre>
+<b>public class</b>Test03{
+	<b>public static void</b> main(String[] arge){
+		int[][] b = new int[][]{{2,3,4,100},{5,6,7,200},{8,9,10,300}};
+
+		m(b);//b 相当于 a			
+		}
+		
+	<b>public static void</b>m(int[][] a){
+		for(int i = 0; i &lt; a.<b>length</b>; i++){
+			for(int j = 0; j &lt; a[i].<b>length</b>; j++){
+				System.out.println(a[i][j]);
+				}
+			System.out.print("\n");
+			}
+		}
+	
+}	
+	</div>
+	<input type="button" class="demo3" value="代码输出"/>
+	<div class="action3">
+	<img src="images/多维数组.png" alt="" width="565" height="359"/>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

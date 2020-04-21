@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>对象</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="好无聊哦，一个人在寝室里">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:2px;padding:0px;}
+		body{background:#EDFCD6;height:3000px;}
+		em{font-size:15px;color:red;font-weight:bold;}
+
+		</style>
+
+	</head>
+	<body>
+	<h2>一、对象的使用范围和运用</h2><!--!!-->
+	<p>Javascript除了 数字，字符串，布尔值（true/false），null和undefined值。</p>
+	<p>其他的所有值都是对象。如：数组，object，function,正则表达式Regex,日期Date。</p>
+	
+	<h5>语法:</h5>
+	<b>对象 = {属性：值}</b>
+	<h5>案例:</h5>
+	<b>var emobj = {}; /*空对象*/</b><br/>
+	<b>var book = {"name":"三毛"}；</b><br/>
+	<b>var book = {"name":"三毛","date":"2015-1-19"}；/*对象属性可以多个用英文的逗号间隔*/</b><br/><hr/><hr/>
+
+
+	<h2>二、对象的2种检索修改方式</h2><!--!!-->
+	<h5>方式1:</h5>
+	<p>var people = {"name":"步枪","ages":"2"};</p>
+	<p>document.write("名字:"+people.name+"-----年龄:"+people.ages);</p>
+	<h5>方式2:</h5>
+	<p>var people = {"name":"步枪","ages":"2"};</p>
+	<p>document.write("名字:"+people["name"]+"-----年龄:"+people["ages"]);</p>
+	<em>打印结果都为:名字:步枪-----年龄:2 </em><br/>
+	<b>空对象直接添加属性：book["price"] = 100;</b><br/><hr/><hr/>
+
+	<h2>三、对象的更新</h2><!--!!-->
+	<p>var people = {"name":"步枪","ages":"2"};</p>
+	<p>people.name = "小米";</p>
+	<p>people.ages = "5";</p>
+	<p>document.write("新名字:"+people.name+"-----新年龄:"+people.ages);</p><br/><hr/><hr/>
+
+	<h2>四、返回对象的数据类型typeof</h2><!--!!-->
+	<p>typeof就是返回数据类型</p>
+	<h5>例如:</h5>
+	<pre>
+	var people = {
+	name:"步枪",
+	ages:2,
+	sex:true,
+	health:3.5,
+	date:2015-1-19,
+	test:"",
+	text:function(){}
+	};
+	</pre>
+	<pre>
+	document.write(typeof people);
+	document.write(typeof people.name);
+	document.write(typeof people.ages);
+	document.write(typeof people.sex);
+	document.write(typeof people.health);
+	document.write(+typeof people.date);
+	document.write(+typeof people.test);
+	document.write(typeof people.text);
+	</pre>
+	<pre>
+	<em>
+	object
+	string
+	number
+	boolean
+	number
+	number
+	string
+	function 
+	</em>
+	</pre><br/><hr/><hr/>
+
+	<h2>五、对象的创建</h2><!--!!-->
+	<p>var str = {};</p>
+	<p>str.name = "冠军";</p>
+	<p>str.ages = "25";</p>
+	<p>document.write("名字:"+str.name+"-----年龄："+str.ages);</p>
+	<em>名字冠军-----年龄25 </em><br/><hr/><hr/>
+
+
+	<h2>六、对象的删除</h2><!--!!-->
+	<p>var people = {name:"沧海"};</p>
+	<p>document.write("没有删除前的："+people.name);</p>
+	<p>delete people.name;</p>
+	<p>document.write("删除后的："+people.name);</p>
+	<em>没有删除前的：沧海</em><br/>
+	<em>删除后的：undefined </em><br/><hr/><hr/>
+
+
+	<h2>七、对象的获取方式for、in</h2>
+	<p>var classroom = {room:"教室一",number:48,code:"13210132"};</p>
+	<p>for (key in classroom)</p>
+	<p>{</p>
+		<p>document.write("<br/>key的值是:"+key+"------classroom的值是:"+classroom[key]);</p>
+	<p>}</p>
+	<em>key的值是:room------classroom的值是:教室一</em><br/>
+	<em>key的值是:number------classroom的值是:48</em><br/>
+	<em>key的值是:code------classroom的值是:13210132</em>
+		
+
+
+	
+
+	</body>
+
+	</html>

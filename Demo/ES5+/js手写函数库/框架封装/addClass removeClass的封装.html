@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box" class="on wrap txt"></div>
+    <script>
+
+        var oBox = document.getElementById("box");
+
+        addClass(oBox , 'on oo on');
+        //removeClass(oBox,"on txt wrap");
+        function addClass(ele , cName) {
+            var arr = ele.className.split(" ").concat(cName.split(" "));
+            for (var i = 0; i < arr.length; i++)for (var j = arr.length-1; j > i; j--)if ( arr[i] == arr[j] )arr.splice(j,1);
+            ele.className = arr.join(" ");
+        }
+
+        function removeClass(ele,cName) {
+            var arr = ele.className.split(" "),
+                arr1 = cName.split(" ");
+            for (var i = 0; i < arr1.length; i++) {
+                for (var j = 0; j < arr.length; j++) {
+                    if ( arr1[i] == arr[j] ){
+                        arr.splice(j,1);
+                    }
+                }
+            }
+            ele.className = arr.join(" ");
+        }
+
+//        function addClass(ele , cName) {
+//            var arr1 = ele.className.split(" "),
+//                arr2 = cName.split(" "),
+//                arr3 = arr1.concat(arr2);
+//            for (var i = 0; i < arr3.length; i++) {
+//                for (var j = arr3.length-1; j > i; j--) {
+//                    if ( arr3[i] == arr3[j] ){
+//                        arr3.splice(j,1);
+//                    }
+//                }
+//            }
+//            ele.className = arr3.join(" ");
+//        }
+
+//            for (var i = 0; i < arr3.length; i++) {
+//                for (var j = i+1; j < arr3.length; j++) {
+//                    if ( arr3[i] == arr3[j] ){
+//                        arr3.splice(j,1);
+//                    }
+//                }
+//            }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

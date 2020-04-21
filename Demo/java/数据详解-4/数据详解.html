@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>数据详解-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3000px;}
+		div{display:none;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:blue;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+
+		</style>
+
+	</head>
+	<body>
+	<h3>1.进制换算，字符编码，变量</h3>
+	<input type="button" value="进制换算" class="demo1">
+	<div class="action1"><img src="images/1.png"/></div>
+	<input type="button" value="字符编码" class="demo2">
+	<div class="action2"><img src="images/2.png"/></div>
+	<input type="button" value="变量" class="demo3">
+	<div class="action3"><img src="images/3.png"/></div><br/><br/><br/><hr/>
+
+
+	<h3>2.整数型进制转换</h3>
+	<p>	整数型有三种表示方式</p>
+	<p>1. 十进制</p>
+	<p>2. 八进制 以0开头</p>
+	<p>3. 十六进制 以0x开头</p>
+	<input type="button" value="代码展示" class="demo4"/>
+	<div class="action4">	
+	<b>public static void</b> main(String[] args){<br/>
+	
+		// 十进制<br/>
+		<b>int</b> i = 10; // 常用类型<br/>
+		
+		// 八进制<br/>
+		<b>int</b> j = 010;<br/>
+		
+		// 十六进制<br/>
+		<b>int</b> k = 0x10;<br/>
+		
+		<span>System</span>.out.println("i = "+i);<br/>
+		<span>System</span>.out.println("j = "+j);<br/>
+		<span>System</span>.out.println("k = "+k);<br/>
+	}<br/>
+	</div>
+	<input type="button" value="代码输出结果" class="demo11"/>
+	<div class="action11">
+	<img src="images/cmd1.png" width="420" height="137"/>
+	</div>
+	<br/><br/><hr/>
+
+	<h3>3.Java语言中的整形数据 【int( -2147483648-2147483648)】 【long   (-9233372036854477808-9233372036854477808)】</h3>
+			<p>	byte  1byte(8bit) -128 ~ 127</p>
+			<p>short 2byte</p>
+			<p>int   4byte</p>
+			<p>long  8byte</p><br/>
+	<!--数据类型-->
+	<span>int m = 100;</span><pre>//将一个int类型 100字面值赋值给m变量</pre><br/>
+	<span>long n = 150;</span>
+	<pre>
+		// 将int类型 150字面值赋值给 long类型的n
+		// int类型的容量小于long类型
+		// 默认已经存在数据类转换，只不过是“自动类型转换”
+	</pre><br/>
+	<span>long x = 160L;</span>
+	<pre>
+		// 由于出现了“L” 就会把160看成long类型
+		// 以下程序不存在类型转换，只是一个普通的赋值运算
+	</pre><br/>
+	<span>long y = 234233633;</span>
+	<pre>
+		//long y = 234233633;
+		// 什么时候使用"L"或者“l”，建议使用“L”
+		// 如果该数值大于 2^31-1就用L 并且是 long类型
+	</pre><br/>
+	<input type="button" value="代码展示" class="demo6"/>
+	<div class="action6">
+		<b>public class</b> DataTest{<br/>
+			<b>public static void</b> main(String[] args){<br/>
+			<b>long</b> t = 8797979L; 		<br/>
+			<span>System</span>.out.println("L = " + t);<br/>
+				}<br/>
+					}<br/>
+	</div><br/><br/>
+	<h5>强制转换</h5>
+	<span>long i = 1000L;</span><br/>
+	<span>int j = (int)i;</span><br/>
+	<pre>
+		// 不能自动类型转换
+		// 需要强制类型转换，添加强制类型转换符()
+		// 添加(int)后，编译通过了，但是程序在运行阶段可能损失精度，所以一定要谨慎使用
+		// 大容量long 像小容量转换，需要强制类型转换
+	</pre>
+
+	<br/><hr/>
+
+	<h3>4.char类型 取值范围（0 ~ 65535）</h3>
+	<p>char是字符类型，java中采用UNICODE编码,底层占两个字节</p>
+	<p>char类型涉及到 字符编码方式</p>
+	<span>1. 字符编码方式 是现实世界中的文件和计算机的表示方式的转换规则</span><br/>
+			<span>GB2312 < GBK < GB18030 从容量上看，是包含关系</span><br/>
+	<span>2. 如果字符采用的编码和解码不一致的时候，就会出现乱码</span><br/>
+	<input type="button" value="char代码展示" class="demo5"/>
+	<div class="action5">
+			<b>public static void</b> main(<span>String</span>[] args){<br/>
+	
+		<b>char</b> i = 'a'; // 字符<br/>
+		<b>int</b> j = '0'; <br/>
+		
+		// char k = 'ab'; 错误写法<br/>
+		
+		// 一个汉字占用2个字节，所以java中的char可以存储一个汉字<br/>
+		<b>char</b> m = '中';<br/>
+		
+		<span>System</span>.out.println("i = " + i + " j = " + j + " m= " + m);<br/>
+		
+		
+		}<br/>
+	</div><br/><br/><hr/>
+
+	<h3>5.byte 类型 取值范围（-128 ~ 127）</h3>
+	<span>byte n = 128; 错误写法 超出范围</span><br/>
+	<span>总结：如果整数没有超出byte,short,char取值范围，可以直接将这个整数赋值给byte,short,char</span><br/>
+	<input type="button" value="总结代码展示" class="demo7"/>
+	<div class="action7">
+	<b>public static void</b> main(<span>String</span>[] args){<br/>
+				<b>int</b> v = 58787;	<br/>
+				<b>char</b> w = (char)v;<br/>
+				<span>System</span>.out.println("w = " + w);<br/>
+				}<br/>
+	</div><br/><br/><hr/>
+	<h3>6.short 取值范围（-32768 ~ 32767）</h3>
+	<span>short x = 23423;</span><br/>
+	<span>System.out.println("j = " + j + " u = " + u + "w = " + w);</span><br/><br/><hr/>
+
+	<h3>7.浮点型 float 4个字节  double 8个字节</h3>
+	
+	<input type="button" value="代码展示" class="demo8"/>
+	<div class="action8">
+		<b>public class</b> Data{<br/>
+	<b>public static void</b> main(<span>String</span>[] args){<br/>
+				<b>double</b> i = 1.2;	<br/>
+		// 强制类型转换	<br/>
+		<b>float</b> y = (<b>float</b>)i;	<br/>
+		// 自动赋值运算符<br/>
+		<b>float</b> x = 1.2F;		<br/>
+		<span>System</span>.out.println("i = " + i + " y = " + y + " x = " + x);			<br/>
+	}<br/>
+}<br/>
+	</div><br/><br/><hr/>
+
+	<h3>8.布尔类型</h3>
+	<p>	1. 只有两个值：true/false 没有0和1</p>
+	<p>2. 主要用在 逻辑运算符和条件控制语句中</p>
+	<input type="button" value="代码展示" class="demo9"/>
+	<div class="action9">
+		<b>public class</b> Data04{	<br/>
+		<b>public static void</b> main(<span>String</span>[] args){	<br/>	
+		//boolean i = 1;		<br/>
+		<b>boolean</b> num = <b>true</b>;		<br/>
+		<b>if</b>(num){<br/>
+			<span>System</span>.out.println("succeed");	<br/>	
+		} <b>else</b> {<br/>
+			<span>System</span>.out.println("oh no");	<br/>
+		}		<br/>
+		<span>System</span>.out.println("num = " + num);		<br/>
+	}<br/>
+}<br/>
+	</div><br/><br/><hr/>
+
+	<h3>9.混合计算</h3>
+	<p>byte,short,char做混合运算的时候，需要先各自转换成int在做运算</p>
+	<input type="button" value="代码展示" class="demo10"/>
+	<div class="action10">
+		<b>public static void</b> main(<b>String</b>[] args){	<br/>
+		<b>byte</b> i = 10;	<br/>
+		<b>short</b> j = 20;	<br/>
+		<b>int</b> k = i + j ;	<br/>
+		 <b>byte</b> m = (<b>byte</b>)(i + j);		<br/>
+		<span>System</span>.out.println("k = " + k + "m = " + m);}<br/>
+	</div>
+	<pre>
+				
+			java程序在运行的时候分两个时期
+			1. 编译期
+			2. 运行期
+			
+			在编译阶段只是知道 i+j 是int类型
+			int 类型无法直接赋值给 byte类型
+	</pre>
+	
+	
+
+	
+	<script type="text/javascript" src="js/2.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

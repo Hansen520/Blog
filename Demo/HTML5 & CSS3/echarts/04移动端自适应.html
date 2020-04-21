@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+    <script src="echartsjs/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:500px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            baseOption:{
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 300, 10, 20]
+            }]},
+            media: [
+
+        {
+            query: {
+                minWidth: 200
+            },
+            option: {
+                legend: {                   // legend 放在底部中间。
+                    right: 'center',
+                        bottom: 0,
+                        orient: 'horizontal'    // legend 横向布局。
+                },
+                series: [                   // 两个饼图左右布局。
+                    {
+                        width:'100%'
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                maxWidth: 500               // 当容器宽度小于 500 时。
+            },
+            option: {
+                legend: {
+                    right: 'center',              // legend 放置在右侧中间。
+                        top: '15%',
+                        orient: 'vertical'      // 纵向布局。
+                },
+                series: [                   // 两个饼图上下布局。
+                    {
+                        width:'100%'
+                    }
+                ]
+            }
+        }
+        ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

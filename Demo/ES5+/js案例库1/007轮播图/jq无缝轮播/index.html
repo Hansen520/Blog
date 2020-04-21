@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #banner{
+            width: 970px;
+            height: 480px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #banner .pic{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        /*这里是css样式布局的一个技巧点*/
+        #banner .pic ul{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width:5000%;
+            height: 100%;
+        }
+        #banner .pic ul li{
+            width:2%;
+            height:100%;
+            float: left;
+        }
+        #banner .pic ul li img{
+            width: 100%;
+            height: 100%;
+        }
+
+        #banner .btn{
+            position: absolute;
+            left:40%;
+            bottom:1%;
+        }
+        #banner .btn ul li{
+            width:25px;
+            height: 25px;
+            background: #518dbb;
+            color: #fff;
+            border-radius: 100%;
+            margin:0 5px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            float: left;
+        }
+        #banner .btn ul li.on{
+            border:1px solid #518dbb;
+            background: #fff;
+            color: #518dbb;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="pic">
+            <ul>
+                <li><img src="img/1.jpg" alt=""/></li>
+                <li><img src="img/2.jpg" alt=""/></li>
+                <li><img src="img/3.jpg" alt=""/></li>
+                <li><img src="img/4.jpg" alt=""/></li>
+                <li><img src="img/5.jpg" alt=""/></li>
+                <li><img src="img/6.jpg" alt=""/></li>
+                <li><img src="img/1.jpg" alt=""/></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <ul>
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var index = 0,
+            timer =null,
+            _index,
+            obtnLi = $("#banner .btn ul li"),
+            opicUl = $("#banner .pic ul");
+
+        obtnLi.click(function () {
+        $(this).addClass("on").siblings().removeClass("on");
+        index = $(this).index();//重新赋值
+            opicUl.animate({left:-970 * index});
+    });
+
+
+        auto();
+    function auto() {
+        timer = setInterval(function () {
+            index++;
+            _index = index % obtnLi.length;
+            obtnLi.addClass("on").eq(_index).siblings().removeClass("on");
+            opicUl.animate({left:-970 * index},function () {
+               if(index == 6){
+                   opicUl.css("left","0");
+                   index = 0;
+               }
+
+            });
+        },3000)
+    }
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

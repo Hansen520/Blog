@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>控制语句</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3000px; background:url("images/background2.jpg");}
+		div{display:none;border:1px solid #666;width:600px;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:blue;font-weight:bold;font-size:18px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+		.float{width:333px;height:179px;color:blue;font-weight:bold;font-size:14px;float:left;}
+		em{color:#000;font-size:18px;font-family:"微软雅黑";}
+		</style>
+
+	</head>
+	<body>
+	<h2>1.控制选择结构语句</h2>
+	<h4>❤if  if else语句</h4>	
+	<pre class="float">	
+	第一种：
+		if(boolean表达式){
+			java语句;
+		}
+	</pre>
+	<pre class="float">
+	第二种:
+		if(boolean表达式){
+			java语句;
+		} else{
+			java语句;
+		}	
+	</pre>
+	<pre class="float">
+	第三种：
+		if(boolean表达式){
+			java语句;	
+		}else if(boolean表达式){
+			java语句;
+		}else if(boolean表达式){
+			java语句;
+		}
+	</pre>
+	<pre class="float">
+	第四种：
+		if(boolean表达式){
+			java语句;	
+		}else if(boolean表达式){
+			java语句;
+		}else if(boolean表达式){
+			java语句;
+		} else{
+			java语句;
+		}	
+	</pre>
+	<span style="display:block">注意:在if语句中，只要有一个分支执行，则整个if语句结束
+	上边的结构 2,4,可以保证一定会有一个语句执行，都有else语句</span>
+	<input type="button" value="代码展示" class="demo1"/>
+	<div class="action1">
+	<b>public class</b> IfTest01{<br/>
+	<b>public static void</b> main(String[] args){	<br/>
+			<b>boolean</b> isSucces = <b>false</b>;		<br/>
+			<b>if</b>(isSucces)<br/>
+				<span>System</span>.out.println("登录成功 ！");	<br/>
+			 else <br/>
+			 	<span>System</span>.out.println("登录失败 ！");<br/><br/><br/>
+
+			<span>输出结果：登入失败</span>
+
+			<p>// 在分之语句中，如果只有一条java语句的时候，大括号可以省略</p>
+	</div><br/><br/><br/>
+	<h5>例题展示</h5>
+	<em>
+		问题：<br/>
+		1. 系统给定人的年龄【1 - 100】<br/>
+		2. 通过人的年龄，来判断你是那个阶段的人 ！	<br/>
+		[1-19] 我是青少年哦<br/>
+		[20-35]正在壮年时期，好好努力哦<br/>
+		[36-55]我老爸就在这个年龄段哦<br/>
+		[56-100] 回望人生<br/>
+	</em>
+	<input type="button" value="判断年龄" class="demo2"/>
+	<div class="action2">
+	<b>public class</b> IfTest01{<br/>
+	<b>public static void</b> main(<span>String</span>[] args){<br/>
+				<b>int</b> age = 40;		<br/>
+			<b>if</b>(age >= <span>1</span> && age &lt;= <span>19</span>){<br/>
+				<span>System</span>.out.println("我是青少年哦");	<br/>
+			} else if(age >= 20 && age <= 35){<br/>
+				<span>System</span>.out.println("正在壮年时期，好好努力哦");<br/>
+			} else if(age >= 36 && age <= 55){<br/>
+				<span>System</span>.out.println("我老爸就在这个年龄段哦");<br/>
+			} else if(age >= 56 && age <= 100){<br/>
+				<span>System</span>.out.println("回望人生");<br/>
+			}					<br/>
+	}<br/>
+}<br/>
+
+<span>输出：我老爸就在这个年龄段哦</span>
+	</div><br/></br/><br/><br/><hr/>
+
+	<h4>❤switch 语句</h4>
+	<pre>
+	语法：	
+ switch(int类型){
+    case int类型:
+       java语句;
+       java语句;
+       break;
+
+   case int类型:
+       java语句;
+       java语句;
+      break;
+
+   case int类型:
+      java语句;
+      java语句;
+      break;
+
+   default:
+      java语句;
+                }
+		</pre>
+		<input type="button" value="switch语句展示" class="demo3"/>
+		<div class="action3">
+		<b>public class</b> SwitchTest{<br/>
+
+	<b>public static void</b> main(<span>String</span>[] arge){<br/>
+		
+		<b>char</b> num = 'B';<br/>
+		
+		<b>switch</b>(num){		<br/>
+			<b>case</b> 'B':<br/>
+			<span>System</span>.out.println("做人要行善，多做好事");<br/>
+			<b>break</b>;				<br/>
+			<b>case</b> 'C':<br/>
+			<span>System</span>.out.println("道之道，非常道");<br/>
+			<b>break</b>;			<br/>
+			<b>case</b> 'D':<br/>
+			<span>System</span>.out.println("明可明，非常明");<br/>
+			<b>break</b>;		<br/>
+			<span>default</span>:<br/>
+			System.out.println("神明自在功德心！");<br/>
+			}<br/>
+			}<br/>
+			}<br/>
+		</div><br/>
+		<span>switch后边的括号里边可以填写 byte/short/char类型，因为他们可以自动转换</span><br/>
+		<span>break; 语句是可以没有的</span><br/>
+		<span>default 语句也是可以没有的</span><br/><br/>
+
+		<h5>※switch 的break问题</h5>
+		<p>case 是可以穿透的 直到<span>出现break;语句时 就跳出,没有break;语句 就直接穿透</span></p>
+		<p>如果 default放到最前边 从上到下执行,知道出现break结束跳出</p>
+		<p>从上到下匹配case，条件不满足 最后执行default</p>
+		<input type="button" value="case穿透" class="demo4"/>
+		<div class="action4">
+					<b>public class</b> SwitchTest{<br/>
+
+	<b>public static void</b> main(<span>String</span>[] arge){<br/>
+		
+		<b>char</b> num = 'B';<br/>
+		
+		<b>switch</b>(num){		<br/>
+			<b>case</b> 'B':<br/>
+			<span>System</span>.out.println("做人要行善，多做好事");<br/><br/>
+			<b>case</b> 'C':<br/>
+			<span>System</span>.out.println("道之道，非常道");<br/>
+			<b>break</b>;			<br/><br/>
+			<b>case</b> 'D':<br/>
+			<span>System</span>.out.println("明可明，非常明");<br/>
+			<b>break</b>;		<br/><br/>
+			<span>default</span>:<br/>
+			System.out.println("神明自在功德心！");<br/><br/>
+			}<br/>
+			}<br/>
+			}<br/><br/>
+
+		<span><span>输出结果：</span><br/><span>做人要行善，多做好事</span><br/><span>道之道，非常道</span></span>
+		</div>
+
+		<h5>case的合并问题</h5>
+		<p>case是可以合并的</p>
+		<input type="button" value="case的合并" class="demo5"/>
+		<div class="action5">
+				char i = 'B';<br/>
+		switch(i){<br/>
+			case 'A':case 'B':case 'C':<br/>
+				System.out.println("\n\n"+"祝我今天计算机二级考试顺利通过 ！");<br/>
+				break;	<br/>
+			case 'D':<br/>
+				System.out.println("明白就好");<br/>
+			default:<br/>
+				System.out.println("大家漂亮，才是真的漂亮 ！");	<br/>				
+
+		}<br/>
+
+		<span>输出结果：祝我今天计算机二级考试顺利通过 ！</span>
+		</div>
+
+
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+		$(".demo12").click(function(){$(".action12").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>多态-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		h2{color:#000;font-weight:bold;}
+		h4{color:blue;}
+		input{width:150px;height:25px;list-style:none;color:#6600CC;line-height:25px;text-align:center;cursor: pointer;font-size:16px;font-weight:bold;font-family:"宋体";float:left;border:1px solid #666;border-radius:5px;}
+		body{height:3000px; background:url("images/background2.png");}
+		div{width:1000px;display:none;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:#906;font-weight:bold;font-size:18px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+		em{color:#000;font-size:18px;font-family:"微软雅黑";}
+
+		.od1_on1{width:550px;height:600px;position:absolute;display:block;border:1px solid #666;top:-1000px;/*一定要决定定位 才能在js中使用left.....*/}
+		.od1_on1 .od1_on2{width:550px;height:20px;border-bottom:1px solid #666;display:block;background:#FF3;}
+		.od1_on1 .od1_on2 .shili{color:blue;font-weight:bold;float:left;}
+		.od1_on1 .od1_on2 .quxiao{font-weight:bold;font-size:22px;text-decoration:none;float:right;margin-right:20px;}
+		.od1_on1 .od1_on2 .quxiao:hover{color:red;}
+		.od1_on1 .od1_on3{display:block;padding-left:80px;}
+
+		.od2_on1{width:700px;height:1020px;position:absolute;display:block;border:1px solid #666;top:-1000px;/*一定要决定定位 才能在js中使用left.....*/}
+		.od2_on1 .od2_on2{width:700px;height:20px;border-bottom:1px solid #666;display:block;background:#FF3;}
+		.od2_on1 .od2_on2 .duotai{color:blue;font-weight:bold;float:left;}
+		.od2_on1 .od2_on2 .quxiao1{font-weight:bold;font-size:22px;text-decoration:none;float:right;margin-right:20px;}
+		.od2_on1 .od2_on2 .quxiao1:hover{color:red;}
+		.od2_on1 .od2_on3{display:block;}
+
+
+		</style>
+
+	</head>
+	<body>
+	<h2>实例化与多态化</h2>
+	<h4>
+		注： 无论是向上转型 还是 向下转型，两个类之间必须要有继承关系<br/>
+	
+	使用多态的好处：<br/>
+		1. 使用多态可以使代码之间的耦合度降低<br/>
+		2. 项目的拓展能力增强<br/>
+		
+	多态的条件是：<br/>
+		1. 有继承或实现<br/>
+		2. 有方法的覆盖 或 实现<br/>
+		3. 父类对象（接口）指向子类对象<br/>
+	</h4>
+
+	<h3>父本代码</h3>
+	<input type="button" value="父本Iphone" class="demo1"/><br/>
+	<div class="action1">
+	<b>public class</b> Iphone{<br/>
+	<span>public void</span> sendmessage(){<br/>
+	<span>System</span>.out.println("我是一部dream牌手机，我可以发信息哦");	<br/>
+	}<br/>
+		}<br/><!--父本-->
+	</div>
+
+	<h3>继承代码（继承父本）</h3>
+	<input type="button" value="子本1Liantong" class="demo2"/>
+	<div class="action2" style="width:460px;border:1px solid #666;">
+	<pre>
+<b>public class</b> Liantong <b>extends</b> Iphone{
+<b>public void</b> sendmessage(){  	
+ <span>System</span>.out.println("我是一部联通手机发的短消息");
+  }
+  <b>public void</b> move(){ 	
+  <span>System</span>.out.println("进入wo的世界"); 	
+  	}
+}
+</pre>
+	</div>
+
+	<input type="button" value="子本2Yidong" class="demo3"/>
+	<div class="action3"  style="width:775px;border:1px solid #666;">
+	<pre>
+<b>public class</b> Yidong <b>extends</b> Iphone{
+	<b>public void</b> sendmessage(){	
+		<span>System<span>.out.println("我是大家普遍都使用的手机类型，基站分布最广");	
+		}		
+	<b>public void</b> move(){
+		<span>System</span>.out.println("我是唯一由中国搞起来的");
+		}
+	}
+	</pre>
+	</div>
+	<input type="button" value="子本3Dianxin" class="demo4"/>
+	<div class="action4" style="border:1px solid #666;width:610px;">
+	<pre>
+<b>public class</b> Dianxin <b>extends</b> Iphone{
+	<b>public void</b> sendmessage(){
+		<span>System</span>.out.println("我是一部电信手机发的短消息");
+		}	
+	<b>public void</b> move(){
+		<span>System</span>.out.println("天翼时代 CDMA2000");	
+		}
+}
+</pre>
+	</div><br/><br/>
+
+		
+	<input type="button" value="实例化实现" class="od1" />
+	<div class="od1_on1" >
+	<div class="od1_on2"><span class="shili">实例化实现</span><a href="" class="quxiao">X</a></div>
+	<div class="od1_on3">
+		<pre>
+	<b>public class</b> DreamTest01{
+<b style="color:green">//静态成员方法 ，java入口//采用此方法比较繁琐</b>
+	<b>public static void</b> main(<span>String</span>[] args){
+<b style="color:green">//必须有继承关系</b>
+	
+	
+	Iphone i =<b> new</b> Iphone();
+	i.sendmessage();
+	
+	
+	Liantong l =<b> new</b> Liantong();
+	l.sendmessage();
+	l.move();
+		
+	Dianxin dx =<b> new</b> Dianxin();
+	dx.sendmessage();
+	dx.move();
+	
+	Yidong yd = <b> new</b> Yidong();
+	yd.sendmessage();
+	yd.move();
+			
+	}
+
+}
+</pre>
+	</div>
+	<div style="clear:both"></div>
+	</div>
+	
+	<input type="button" value="多态化实现" class="od2" />
+	<div class="od2_on1">
+		<div class="od2_on2"><span class="duotai">多态化实现</span><a href="" class="quxiao1">X</a></div>
+		<div class="od2_on3">
+		<pre>
+<b>public class</b> DreamTest02{
+
+<b>public static void</b> main(<span>String</span>[] args){
+	<b style="color:green">
+	//向上转型 并且类型一定要与父本Iphone一样，
+	// 向上转型又被称为：自动类型转换
+	// 父类型的引用指向子类对象
+	// 程序分为两个阶段：编译阶段，运行阶段
+	// 程序编译阶段只知道lt是一个Iphone类型
+	// 程序在运行的时候堆中的实际对象 是 Liantong类型
+	</b>
+	Iphone lt = <b>new</b> Liantong();
+
+	<b style="color:green">
+	// 程序在编译阶段a1被编译器看做是 Animal类型
+	// 所以程序在编译阶段 a1引用绑定的是Animal类中的eat方法
+	// 程序在运行的时候堆中的对象实际上是 Cat类型，而Cat已经重写了eat方法
+	// 所以程序在运行时阶段对象绑定的方法是Cat中的eat方法 （动态绑定）
+	</b>
+	lt.sendmessage();
+	
+	Iphone dx = <b>new</b> Dianxin();
+	dx.sendmessage();
+	
+	Iphone yd = <b>new</b> Yidong();
+	yd.sendmessage();
+	
+	
+	<b style="color:green">//向下转型为强制转型 以电信为例 
+	//Iphone a3 = new Dianxin();
+	// Yidong c2 = ( Yidong)a3; //报错java.lang.ClassCastException
+	// 在做强制类型转换的时候，程序是存在风险的 ！
+	// 为了避免 ClassCastException 的发生，Java中使用 instanceof
+	</b>
+
+	Iphone dx1 = <b>new</b> Dianxin();
+	Dianxin xd1 = (Dianxin)dx1;
+	xd1.move();
+	
+	<b style="color:green">
+	用法： 
+		1. instanceof运算符的运算结果是 boolean类型
+		2. （引用 instanceof 类型） ---> true/false
+	</b>
+	Iphone yd1 = <b>new</b> Yidong();
+	if(yd1 <b>instanceof</b> Yidong){
+		<span>System</span>.out.println("正确的！true");
+		Yidong dy1 = (Yidong)yd1;
+		dy1.move();
+				
+		}
+		}
+}
+	</pre>
+
+		
+		</div>
+	</div>
+
+
+
+
+<!--引入jQuery的官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+		$(".demo12").click(function(){$(".action12").toggle("1000");});
+
+
+
+	$(".od1").click(function(){
+		$(".od1_on1").animate({
+		left:"750px",
+		top:"100px",
+		height:"600px",
+		width:"550px",
+		},2000,function(){
+		});
+		$(".quxiao").click(function(){$('.od1_on1').remove("1000");});
+	});
+	
+
+		$(".od2").click(function(){
+		$(".od2_on1").animate({
+		left:"100px",
+		top:"800px",
+		height:"1020px",
+		width:"700px",
+		},2000,function(){
+		});
+		$(".quxiao").click(function(){$('.od2_on1').remove("1000");});
+	});
+	
+
+
+
+
+
+	</script>
+	</body>
+
+	</html>

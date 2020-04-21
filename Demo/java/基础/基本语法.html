@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>基本语法-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		p{color:blue;}
+		span{color:red;}
+		</style>
+
+	</head>
+	<body>
+	<h3>1.大小写敏感</h3>
+		<p>Java是大小写敏感的，这就意味着标识符Hello与hello是不同的。</p>
+		<pre>
+				public class Test{}
+		</pre>
+		<br/>
+		<h3>2.类名</h3>
+		<p>对于所有的类来说，<span>类名的首字母应该大写。</span></p>
+		<p>如果类名由若干单词组成，那么<span>每个单词的首字母应该大写</span>，例如 HelloWorld 。</p></br/>
+		<h3>3.方法名</h3>
+		<p>所有的方法名都应该<span>以小写字母开头。</span></p>
+		<p>	如果方法名含有若干单词，<span>则后面的每个单词首字母大写。</span>getEmailById()</p>
+		<pre>
+		public String getEmailById(int id){
+		return null;	
+			}
+		</pre><br/>
+		<h3>4.源文件名</h3>
+		<p>源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记Java是大小写敏感的），</p>
+		<p>文件名的后缀为.java。（如果文件名和类名不相同则会导致编译错误）。</p><br/>
+		<h3>5.主方法入口</h3>
+		<p>所有的Java 程序由public static void main(String args[])方法开始执行</p>
+
+	</body>
+
+	</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>-sibling、next、nextAll、nextUntil-Dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{font-size:12px;}
+		.hello{width:400px;height:400px;border:1px solid red;margin:10px 10px;}
+		.hello ul.one{width:350px;height:200px;border:1px solid blue;margin:0px auto;}
+		.hello ul.one li{width:200px;height:50px;border:1px solid #66C;}
+		p,div{width:150px;height:15px;border:1px solid #6C9}
+		.hello ul.two{width:350px;height:200px;border:1px solid green;margin:0px auto;}
+		.hello ul.two li{width:200px;height:50px;border:1px solid #09CE09;}
+		</style>
+
+	</head>
+	<body>
+	<div class="hello">
+
+		<ul class="one">ul1
+			<li class="one_one">li1.1
+				<p>p1.1.1</p>
+				<p>p1.1.2</p>
+			</li>
+			<li>li1.2</li>
+			<li>li1.3</li>
+		</ul>
+
+		<p class="first">p_._1</p>
+		<p class="secend">p_._2</p>
+		<p class="tired">p_._3</p>
+		<p class="tieed_1">p_._4</p>
+		<p class="tired_2">p_._5</p>
+		<div class="fouth">xxxx</div>
+
+	</div>
+	
+	<input type="button" id="ok" value="我是sibling哦"/>
+	<input type="button" id="yes" value="我是next哦"/>
+	<input type="button" id="good" value="我是nextAll哦"/>
+	<input type="button" id="hello" value="我是nextUntil哦"/>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("#ok").click(function(){
+			$("ul").siblings("p").css({"background":"#669999"});//必元素必须是ul的同级元素p
+			//$("ul").siblings("p").hide();
+		});
+
+			$("#yes").click(function(){
+				$("ul.one").next("p").css({"background":"red"});
+				//给同级的下一个元素加个类
+		});
+
+			$("#good").click(function(){
+				$("ul.one").nextAll().css({"background":"blue","color":"#fff"});
+				//给同级的下一个元素的全部标签加个类
+		});
+
+			$("#hello").click(function(){
+				$(".first").nextUntil(".fouth").css({"border":"2px solid #60F","marginTop":"10px"});
+				//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止的元素全都选中
+		});
+
+
+	});
+	
+	</script>
+	</body>
+
+	</html>

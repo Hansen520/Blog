@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>配置UltraEdit和jdk和常用命令</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3000px;}
+		.attention{color:blue;font-size:16px;}
+		.attr{color:red;font-weight:bold;font-size:18px;}
+
+		</style>
+
+	</head>
+	<body>
+	<h1>jdk的配置步骤和UltraEdit</h1>
+	<p>假设你的jdk安装在:F:\Program Files\Java\jdk1.6.0_07;</p>
+	<p class="attention">1 JAVA_HOME = F:\Program Files\Java\jdk1.6.0_07;</p>
+	<img src="images/jdk1.jpg" width="385" height="426"/><br/>
+
+	<p  class="attention">2 PATH = %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;或者是直接 %JAVA_HOME%\bin;</p>
+	<img src="images/jdk3.jpg" /><br/>
+
+	<p class="attention">3 CLASSPATH=<span class="attr">.;</span>%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</p>
+	<img src="images/jdk2.jpg" /><br/>
+	<span class="attr">开头“.;”一定不能少，因为它代表当前路径)，系统不同设置不同（例如：Vista系统和XP系统），<br/>在有些系统下，必须用此语句配置，但有些系统可以用完全路径配置。</span><br/><br/>
+
+	<h2>测试</h2>
+	<p>按windows+r打开运行，在运行框输入cmd打开黑窗口</p>
+	<p>1.输入java -version</p>
+	<p>出现<img src="images/cmd1.png" width="620" height="206"/>表示成功</p>
+
+
+	<h1>配置UltraEdit</h1>
+	<h3>1.显示扩展名</h3>
+	<p>①随便打开一个文件夹</p>
+	<p>②  文件夹→组织→文件夹搜索选项→查找→去掉（隐藏已知文件夹类型的括展名）</p>
+	<h3>2.UltraEdit 最好去除备份 </h3>
+	<p>打开UltraEdit→高级→备份→选择不备份</p>
+
+	<h1>常用命令</h1>
+	<p>1.   Cd 目录名称，进入目录</p>
+	<p>2.   Cd .., 退回上级目录</p>
+	<p>3.   cls清空</p>
+	<p>4.   Dir, 显示文件或目录</p>
+	<p>5.   Del 文件名, 删除文件</p>
+
+
+	</body>
+
+	</html>

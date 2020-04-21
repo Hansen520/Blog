@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	#box{border:1px solid #ccc;position:absolute;width:480px;height:240px;}
+	#box h4{margin:0px;padding:3px;background:#141414;color:#fff;height:32px;line-height:32px;font-size:12px;cursor:move}
+  </style>
+ </head>
+ <body  onload="init()">
+	<div id="box" style="left:200px;top:100px;width:480px;height:240px;">
+		<h4 id="title">这是标题</h4>
+	</div>
+	<script type="text/javascript">
+		//onmousedown,onmouseover onmouseup onmousemove onmousepress
+		function $(id){
+			return document.getElementById(id);
+		};
+
+		function init(){
+			//鼠标按下去
+			var titleDom = $("title");
+			/*第一种*/
+			titleDom.onmousedown = mousedown;//鼠标按下去的时候
+			document.onmousemove = mousemove; //鼠标移动的事件
+			document.onmouseup = mouseup;//鼠标松开的事件
+			var boxDom = $("box");
+			var width = parseInt(boxDom.style.width);
+			var height = parseInt(boxDom.style.height);
+			var bodyWidth = getWidth();
+			var bodyHeight = getHeight();
+			var newTop = (bodyHeight - height)/2;
+			var newLeft = bodyWidth /2 - width / 2;
+			boxDom.style.top = newTop+"px";
+			boxDom.style.left = newLeft+"px";
+
+		}
+
+
+		var l = 0,t=0,x=0,y=0;
+		var isOver = false;
+		function mousedown(event){
+			var e = event || window.event;//为了兼容ie和火狐
+			//var e = (event) ? event : ((window.event) ? window.event : null);
+			var boxDom = $("box");
+			x = e.clientX;//鼠标所在的x坐标
+			y = e.clientY;//鼠标所在的y坐标
+			l = parseInt(boxDom.style.left);//距离浏览器左边的位置left
+			t = parseInt(boxDom.style.top);//距离浏览器顶部的位置top
+			isOver = true;
+		};
+		
+
+		function mousemove(event){
+			if(isOver){
+				var e = event || window.event;//为了兼容ie和火狐
+				//var e = (event) ? event : ((window.event) ? window.event : null);
+				var newLeft = l + e.clientX - x;//新的左边距
+				var newTop = t + e.clientY - y;//新的顶部边距
+				var boxDom = $("box");
+				boxDom.style.left = newLeft+"px";
+				boxDom.style.top = newTop+"px";
+			}
+		}
+
+		function mouseup(event){
+			if(isOver){
+				isOver = false;
+			}
+		}
+
+
+		function getHeight() {
+			return window.innerHeight || document.documentElement && document.documentElement.clientHeight || document.body.clientHeight;
+		};
+
+		function getWidth() {
+			return window.innerWidth || document.documentElement && document.documentElement.clientWidth || document.body.clientWidth;
+		}
+	</script>
+ </body>
+</html>

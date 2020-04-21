@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>运算符</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:3000px;}
+		div{display:none;border:1px solid #666;width:600px;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:blue;font-weight:bold;font-size:18px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+
+		</style>
+
+	</head>
+	<body>
+	<h2>1.算术运算符</h2>
+	<img src="images/math1.png" alt="算术运算符" width="732" height="246"/><br/>
+	<input type="button" value="算数运算代码展示" class="demo1"/>
+	<div class="action1">
+	<b>public class</b> Ysuan01{<br/>
+	<b>public static void</b> main(String[] args){<br/>
+		
+		<b>int</b> a = <span>20</span>;<br/>
+		<b>int</b> b = <span>10</span>;<br/>
+		
+		<span>System</span>.out.println("a+b = "+(a+b)); // a+b = 30<br/>
+		<span>System</span>.out.println("a-b = "+(a-b)); // a-b = 10<br/>
+		<span>System</span>.out.println("a*b = "+(a*b)); // a*b = 200<br/>
+		<span>System</span>.out.println("a/b = "+(a/b)); // a/b = 2<br/>
+		<span>System</span>.out.println("a%b = "+(a%b)); // a%b = 0<br/>
+		
+		}<br/>
+}
+	</div>
+	<input type="button" value="算数运算代码输出" class="demo2"/>
+	<div class="action2">
+		<img src="images/cmd-1.png" width="604" height="263"/>
+	</div><br/><br/>
+	<h4>①如果++ 出现在后面时</h4>
+	<p>++ 如果出现在变量的后边的时候，【先赋值 后自动+1】</p>
+	<input type="button" value="++出现后面" class="demo3"/>
+	<div class="action3">
+		<b>int</b> m = <span>10</span>;<br/>
+		<b>int</b> x = m ++;<br/>
+		<span>System</span>.out.println("m = "+m);<br/>
+		<span>System</span>.out.println("x = "+x);<br/><br/><br/>
+
+		<pre>
+输出结果 
+m=11; x =10;
+		</pre>
+	</div><br/><br/>
+	<h4>②如果++ 出现在前边时</h4>
+	<p>++如果出现在变量的前边时，【先自动加1 再赋值】</p>
+	<input type="button" value="++出现前面" class="demo4"/>
+	<div class="action4">
+		<b>int</b> d = <span>10</span>;<br/>
+		<b>int</b> e = ++d; <br/>
+		<span>System</span>.out.println("d = " + d);<br/>
+		<span>System</span>.out.println("e = " + e); <br/>
+
+		<pre>
+输出结果 
+c=11;
+		</pre>
+	</div><br/><br/><br/><hr/>
+
+	<h2>2.关系运算符</h2>
+	<img src="images/math2.png" alt="关系运算符" width="727" height="218"/>
+	<p> 判断两个基本数据类型是否相等，必须使用“==”，"=" 赋值运算符</p>
+	<span>boolean c = !(a == b); </span><b>// 如果不知道运算符的优先级 就加括号；</b><br/>
+	<input type="button" value="关系运算符展示" class="demo5"/>
+	<div class="action5">
+	<b>public class</b> Ysuan02{<br/>
+	<b>public static void</b> main(<span>String</span>[] args){<br/>
+		
+		<b>int</b> a = <span>20</span>;<br/>
+		<b>int</b> b = <span>10</span>;<br/>
+		
+		<b>boolean</b> c = !(a == b);<br/>
+		
+		<span>System</span>.out.println("c = " + c);<br/>
+		<span>System</span>.out.println("a >= b : " + (a >= b));<br/>
+		<span>System</span>.out.println("a < b : " + (a < b));<br/>
+		<span>System</span>.out.println("a <= b : " + (a <= b));<br/>
+		<span>System</span>.out.println("a == b : " + (a == b));<br/>
+		<span>System</span>.out.println("a > b : " + (a > b));<br/>
+		<span>System</span>.out.println("a != b : " + (a != b));<br/>
+		}<br/>
+}<br/>
+	</div>
+	<input type="button" value="关系运算符输出" class="demo6"/>
+	<div class="action6">
+		<img src="images/cmd-2.png" width="618" height="213"/>
+	</div><br/><br/><br/><hr/>
+
+	<h2>3.boolean 布尔运算符 逻辑运算符</h2>
+	<img src="images/math3.png" alt="逻辑运算符" width="727" height="145"/>
+	<p>总结：</p>
+	<p>① & 逻辑与 两边都是 true，结果是 true</p>
+	<p>② | 逻辑或 一边是 true, 结果是 true</p>
+	<p>③ ！逻辑非 取反 !true -->  false</p>
+	<p>④ ^ 逻辑异或 两边只要是不一致 结果就是 true;</p>
+
+	<input type="button" value="& | ! ^代码展示" class="demo7"/>
+	<div class="action7">
+		<b>public class</b> Ysuan04{<br/>
+	<b>public static void</b> main(<span>String</span>[] args){<br/>
+		
+		<span>System</span>.out.println(6>1 & 4>3); // true<br/>
+		<span>System</span>.out.println(3>1 & 2>3); // false<br/>
+		
+		<span>System</span>.out.println(6>1 | 4>3); // true<br/>
+		<span>System</span>.out.println(3>1 | 2>3); // true<br/>
+		
+		<span>System</span>.out.println(!true); // false<br/>
+		
+		<span>System</span>.out.println(true^false); // true<br/>
+		<span>System</span>.out.println(true^true); // false<br/>
+		<span>System</span>.out.println(false^false); // false<br/>
+		
+	}
+}
+	</div><br/><br/><br/>
+	<p>⑤ && 短路与 用法和 & 一样</p>
+	<p>⑥ || 短路或 用法和 | 一样</p>
+	<span> 短路：后边表达式 不执行</span><br/>
+	<input type="button" value="关于 短路与 和 或特殊情况" class="demo8"/>
+	<div class="action8">
+		<b>int</b> i = <span>10</span>;<br/>
+		<b>int</b> j = <span>10</span>;<br/>
+		
+		<span>System</span>.out.println("\n\n" + (i < j & i++ >= j));<br/>
+		<span>System</span>.out.println("i = " + i); // 11<br/><br/><br/>
+
+		<em>什么时候发生短路与？ 第一个结果false时</em><br/>
+		<b>int</b> x = <span>10</span>;
+		<b>int</b> y = <span>10</span>;
+				<span>System</span>.out.println("\n\n" + (x < y && x++ >= y));		
+				<span>System</span>.out.println("x = " + x);          <span>输出为：10</span><br/><br/><br/>
+		<em>什么时候发生短路或？ 第一个结果true时</em><br/>
+				<span>System</span>.out.println("\n\n" + (x = y && x++ >= y));		
+				<span>System</span>.out.println("x = " + x);          <span>输出为：11</span>
+	</div><br/><br/><hr/>
+
+
+	<h2>4.赋值运算符</h2>
+	<img src="images/math4.png" width="728" height="404"/><br/>
+	<input type="button" value="赋值运算符展示" class="demo9"/><br/>
+	<div class="action9">
+		<b>public class</b> Ysuan05{<br/>
+	<b>public static void</b> main(String[] args){		<br/>
+		<b>int</b> i = <span>10</span>;  // 基本赋值运算符	<br/>
+		i += 10;<br/>
+		<span>System</span>.out.println("i = " + i); 		<br/>
+		i -= 5;<br/>
+		<span>System</span>.out.println("i = " + i);	<br/>	
+		i *= 3;<br/>
+		<span>System</span>.out.println("i = " + i);	<br/>	
+		i /= 15;<br/>
+		<span>System</span>.out.println("i = " + i);<br/>
+		i %= 2;<br/>
+		<span>System</span>.out.println("i = " + i);<br/>
+	}<br/>
+}<br/>
+	</div>
+	<input type="button" value="输出结果" class="demo10"/>
+	<div class="action10">
+		<img src="images/cmd-4.png" width="611" height="171"/>
+	</div><br/><br/><hr/>
+
+	<h2>5.条件运算符</h2>
+	<p>条件运算符也被称为三元运算符。</p>
+	<p>基本语法<span>boolean表达式?表达式1:表达式2 （即 表达式?value if true : value if false）</span></p>
+	<span>单个字符用char多个字符用String</span><br/>
+	<input type="button" value="条件运算符" class="demo11"/>
+	<div class="action11">
+		<b>public class</b> Ysuan06{<br/>
+		<b>public static void</b> main(<span>String</span>[] args){<br/>
+		<b>boolean</b> s = false;	<br/>
+		<span>String</span> c = s?("真的帮棒"):("你太差劲了");		<br/>
+		<span>System</span>.out.println("c = " + c);		<br/>
+		<b>boolean</b> isSuccess = true;	<br/>
+		<span>System</span>.out.println(isSuccess?'S':"失败");		<br/>
+	}	<br/>
+
+}<br/>
+
+<span>输出：c=太差劲了   S</span>
+	</div>
+
+	
+
+
+
+	
+	
+	
+
+	
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+		$(".demo12").click(function(){$(".action12").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

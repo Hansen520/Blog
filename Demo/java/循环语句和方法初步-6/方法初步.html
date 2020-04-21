@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>方法初步-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		h2{color:#000;font-weight:bold;}
+		body{height:3000px; background:url("images/background2.jpg");}
+		div{display:none;border:1px solid #666;width:800px;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:#906;font-weight:bold;font-size:18px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+		.float{width:333px;height:179px;color:blue;font-weight:bold;font-size:14px;float:left;}
+		em{color:#000;font-size:18px;font-family:"微软雅黑";}
+		</style>
+
+	</head>
+	<body>
+	<h2>1.方法初步-什么是方法-方法的调用</h2>
+	<p>方法是一段代码的片段，这个片段的代码可以完成特定的功能，并且可以重复利用</p><br/>
+	<em>自定义一个方法,完成整数的求和</em><br/>
+	<input type="button" value="调用方法求和" class="demo1"/>
+	<div class="action1">
+	<b>public class</b> Ffchu{<br/><br/>
+<p>//先定义成一个 public static</p>
+<b>public static void</b> mySum(<b>int</b> a,<b>int</b> b){	<br/>
+	<b>int</b> c=a*b;<br/>
+	<span>System</span>.out.println("c="+c);<br/>
+	}<br/><br/>
+<p>//入口</p>
+<b>public static void</b> main(<span>String</span>[] args){	<br/><br/>
+
+<p>//加有static的方法，调用的时候必须采用“类名.” 的方式调用</p>
+
+	Ffchu.mySum(<span>10</span>,<span>10</span>);	<br/>
+	}	<br/><br/>
+
+}<br/><br/>
+
+<span>输出结果：100</span>
+	</div><br/><br/><hr/>
+
+	<h2>2.方法定义语法-有无形参-return返回值</h2>
+	<pre>
+	定义方法的语法：
+		
+		[方法修饰列表] 返回值类型  方法名（方法参数列表）{
+				
+			方法体
+		
+		}
+		
+		1. 方法修饰列表是可以选项，现在暂时先写成 public static
+		2. 返回值类型 可以是java中的任意类型（基本数据类型，引用数据类型）
+		3. 如果该方法执行后，没有任何返回值 就用 void
+		4. 方法名只要是合法的标识符就可以的
+		5. 方法的形式参数列表，可以有参数，也可以没有参数，如果有多个用“,”逗号隔开
+		</pre>
+	<input type="button" value="有无形参-return返回值" class="demo2"/>
+	<div class="action2">
+public class MethodTest03{<br/>
+	<p>// public static 修饰符</p>
+	<p>// void 无返回值</p>
+	<p>// arry 方法名</p>
+	<p>// 没有形式参数</p>
+	public static void arry(){<br/>
+		System.out.println("我是最帅气的Arry");	<br/>
+	}<br/>
+	<p>// public static 修饰符</p>
+	<p>// void 无返回值</p>
+	<p>// arry1 方法名 </p>
+	<p>// int a,boolean b 是形式参数列表</p>
+	public static void arry1(int a,boolean b){<br/>
+		int i = 0;<br/>
+		if(b){<br/>
+			i = a;<br/>
+		}	<br/>
+		System.out.println("i = "+i);<br/>
+	}<br/>
+	<p>// 该方法有返回值，程序必须使用return 语句返回</p>
+	public static int arry2(int a,int b){		<br/>
+		int c = a + b;<br/>
+		return c; <br/>
+		<p>// 程序执行到return 这行，arry2这个方法就执行结束，并返回值c	</p>	
+		<p>// return语句下边不能再有其他的代码,因为根本就不能执行到,也不能编译通过</p>
+	}
+	public static void main(String[] args){	<br/>
+		MethodTest03.arry();		<br/>
+		MethodTest03.arry1(10,true);		<br/>
+		System.out.println("num = " + MethodTest03.arry2(20,50));		<br/>
+	}<br/>
+	
+}<br/>
+	</div><br/><br/><hr/>
+
+	<h2>3.引用class进行调用</h2>
+	<input type="button" value="class进行调用" class="demo3"/>
+	<div class="action3">
+public class MethodTest04{<br/>
+	public static void main(String[] args){		<br/><br/>
+	<p>// 直接调用方法名：前提是 必须在当前类,类名就可以省掉</p>
+		Dream.m();		<br/>
+		<p>//或者是MethodTest04.T1();</p>
+		T1();<br/>
+	}<br/><br/>
+	public static void T1(){<br/>
+		System.out.println("我是dream！");<br/>
+	}<br/>
+}<br/><br/>
+
+class Dream{<br/>
+	
+	public static void m(){<br/>
+		System.out.println("我是Dream的 ！");	<br/>
+	}<br/>
+
+}<br/>
+<span>输出：<br/>我是dream！<br/>我是Dream的 ！</span>
+	</div><br/><br/><hr/>
+
+	<h2>5.方法的重载</h2>
+	<pre>
+	缺点:
+	1.  程序开发者需要记忆更多的方法名
+	2.	 程序代码不美观（优雅）。
+	</pre>
+	<p>比如:</p>
+	<input type="button" value="方法的重载缺点" class="demo4"/>
+	<div class="action4">
+	<pre>
+public class MethodTest05
+
+		<p>// 主方法</p>
+	public static void main(String[] args){	
+
+		<p>// 对于程序来说，需要记忆三个不同的方法名</p>	
+		System.out.println("int类型："+Arry2.sumInt(10,20));<br/>
+		System.out.println("double类型："+Arry2.sumDouble(1.0,2.0));
+		System.out.println("long类型："+Arry2.sumLong(10L,20L));		
+	}	
+}
+
+class Arry2
+
+	public static int sumInt(int a,int b){
+		return a + b;	
+	}
+	public static double sumDouble(double a,double b){
+		return a + b;	
+	}
+	public static long sumLong(long a,long b){
+		return a + b;	
+	}
+}
+</pre>
+	</div><br/><br/>
+
+<pre>
+	什么时候需要方法重载？
+	
+	1. 发生在同一类中
+	2. 方法名相同
+	3. 参数列表不同（类型、个数、顺序）
+	4. 和返回值类型无关
+	5. 和方法的修饰符也无关
+</pre>
+<p>例如：</p>
+<input type="button" value="方法的重载优点" class="demo5"/>
+<div class="action5">
+<pre>
+public class MethodTest06{
+	<p>// 主方法</p>
+	public static void main(String[] args){		
+		<p>// 对于程序来说，需要记忆三个不同的方法名,而都改成一个就方便了</p>
+		System.out.println("int类型："+Arry6.sum(10,20));
+		System.out.println("double类型："+Arry6.sum(1.0,2.0));
+		System.out.println("long类型："+Arry6.sum(10L,20L));	
+	}
+}
+class Arry6{
+	public static int sum(int a,int b){
+		return a - b;	
+	}	
+	public static double sum(double a,double b){
+		return a * b;	
+	}
+	public static long sum(long a,long b){
+		return a + b;	
+	}
+}
+</pre>
+</div>
+
+
+
+	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+		$(".demo12").click(function(){$(".action12").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

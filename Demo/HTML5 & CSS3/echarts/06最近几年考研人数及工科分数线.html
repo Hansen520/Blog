@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+    <script src="echartsjs/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            title: {
+                text: '近些年考研情况分析图'
+            },
+            tooltip: {},
+            legend: {
+                data:['报考人数','工科国家线A区']
+            },
+            xAxis: {
+                data: ["2011","2012","2013","2014","2015",'2016','2017','2018','2019']
+            },
+            yAxis: {},
+            series: [
+                {
+                name: '报考人数',
+                type: 'line',
+                data: [151.1, 165.6, 176, 172, 165, 177,201,238,290]
+            },
+                {
+                    name: '工科国家线A区',
+                    type: 'line',
+                    data: [  , , , 285, 280,265,265,260,275]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

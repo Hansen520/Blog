@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>循环语句</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		h2{color:#000;font-weight:bold;}
+		body{height:3000px; background:url("images/background2.jpg");}
+		div{display:none;border:1px solid #666;width:800px;}
+		.action{width:600px;height:600px;border:1px solid #666;}
+		p{color:blue;font-weight:bold;font-size:18px;}
+		span{color:red;}
+		b{color:blue;font-weight:100;}
+		.float{width:333px;height:179px;color:blue;font-weight:bold;font-size:14px;float:left;}
+		em{color:#000;font-size:18px;font-family:"微软雅黑";}
+		</style>
+
+	</head>
+	<body>
+	<h2>1.for 循环语句</h2>
+	<pre style="color:blue;font-size:16px;font-weight:bold;">
+	语法：
+	for(表达式1;表达式2;表达式3){
+	java语句;	
+	}
+
+	表达式1: 初始化值，最先执行，只执行一次
+	表达式2：必须是 boolean类型的表达式
+
+	for循环开始执行，最先执行表达式1，只执行一次
+	然后需要判断表达式2的结果，如果是true,则执行java语句；
+	再执行表达式3，然后再判断表达式2的结果，直到表达式2的结果是false,循环结束
+	</pre><br/>
+	<input type="button" value="for循环代码展示" class="demo1"/>
+	<div class="action1">
+	<b>public class</b> ForTest{<br/>
+	<b>public static void</b> main(<span>String</span>[] arge){		<br/>
+		<b>for</b>(int i = 0;i <= 10;i+=2){<br/>
+			<span>System</span>.out.print("i ="+i+"\t");<br/>
+			}		<br/>
+		<span>System</span>.out.print("\n\n");		<br/>
+		<b>for</b>(int j = 5;j >= 0;j--){<br/>
+			<span>System</span>.out.print("j ="+j+"\t");<br/>
+			}<br/>
+		}<br/>
+}<br/>
+	</div>
+	<input type="button" value="输出结果" class="demo2"/>
+	<div class="action2">
+	<img src="images/cmd1.png" alt="" width="598" height="156"/>
+	</div><br/><br/><br/><br/>
+	<em>例题1<br/>利用for循环球1~100的奇数之和</em><br/>
+	<input type="button" value="1~100的奇数之和" class="demo3"/>
+	<div class="action3">
+		<b>public class</b> JshuTest{<br/>
+	<b>public static void</b> main(<span>String</span>[] arge){<br/>
+		<b>int</b> sum = 0;<br/>
+		<b>for</b >(<b>int</b> i = 1; i<=100; i++)<br/>
+		{	<b>if<b/>(i%2 != 0)<br/>
+			sum=sum+i;<br/>
+			}<br/>
+			<span>System</span>.out.println("所有奇数项和为"+sum);<br/>
+		}<br/>
+}<br/>
+	</div>
+	<input type="button" value="奇数和结果" class="demo4"/>
+	<div class="action4">
+		<img src="images/cmd2.png" alt="" width="800" height="90"/>
+	</div><br/><br/><br/><br/><br/>
+
+	<em>例题二:<br/>九九乘法表</em><br/>
+	<input type="button" value="九九乘法表" class="demo5"/>
+	<div class="action5">
+		public class ForTest{<br/>
+	public static void main(String[] args){ <br/>
+		for(int i=1; i &lt;= 9; i++){ <br/>
+			for (int j=1; j &lt;=i; j++ ){ <br/>
+			System.out.print(i+"*"+j+"="+(j*i)+"\t");<br/>
+		}<br/>
+		System.out.print("\n");		<br/>
+		}	<br/>
+	}<br/>
+	}<br/>
+		</div>
+	<input type="button" value="结果输出" class="demo6"/>
+	<div class="action6">
+		<img src="images/cmd3.png" alt="" width="800" height="258"/>
+	</div><br/><br/><br/><hr/>
+
+	<h2>2.while语句</h2>
+	<pre  style="color:blue;font-size:16px;font-weight:bold;">
+	whlie语法
+		while(boolean表达式){
+			java语句;
+		}	
+	</pre>
+	<p>只要boolean为true就会一直执行下去</p>
+	<p>一定先执行一次</p>
+	<input type="button" value="which基本代码" class="demo7"/>
+	<div class="action7">
+		<pre style="color:#000">
+		int i = 0;<br/>
+		while(i&lt;10){<br/>
+			System.out.println("i = " + i);<br/>
+			i++;<br/>
+		}<br/>
+		<pre/>
+		<span>输出：0~10</span>
+	</div><br/></br><hr/>
+
+	<h2>3.do while语句</h2>
+	<pre  style="color:blue;font-size:16px;font-weight:bold;">	
+		语法		
+			do{		
+			java 语句;		
+			}while(boolean);			
+	</pre>
+	<p>至少执行一次，只要布尔值为true就一直执行</p>
+	<input type="button" value="do which基本代码" class="demo8"/>
+	<div class="action8">
+	<pre style="color:#000;">
+		int  i = 0;<br/>
+		do{<br/>
+		<br/>
+			i++;<br/>
+			System.out.println("i = "+i);<br/>
+			
+		}while(i&lt;10);<br/>
+		</pre>
+		<span>输出：0~10</span>
+	</div>
+
+
+
+
+	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".demo1").click(function(){$(".action1").toggle("1000");});
+		$(".demo2").click(function(){$(".action2").toggle("1000");});
+		$(".demo3").click(function(){$(".action3").toggle("1000");});
+		$(".demo4").click(function(){$(".action4").toggle("1000");});
+		$(".demo5").click(function(){$(".action5").toggle("1000");});
+		$(".demo6").click(function(){$(".action6").toggle("1000");});
+		$(".demo7").click(function(){$(".action7").toggle("1000");});
+		$(".demo8").click(function(){$(".action8").toggle("1000");});
+		$(".demo9").click(function(){$(".action9").toggle("1000");});
+		$(".demo10").click(function(){$(".action10").toggle("1000");});
+		$(".demo11").click(function(){$(".action11").toggle("1000");});
+		$(".demo12").click(function(){$(".action12").toggle("1000");});
+	</script>
+	</body>
+
+	</html>

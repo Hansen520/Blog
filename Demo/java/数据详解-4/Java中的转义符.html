@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>java中的转义字符-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:1500px;}
+		p{color:blue;}
+		span{color:red;font-weight:bold;font-size:20px;}
+		</style>
+
+	</head>
+	<body>
+	<h3>1.制表符</h3>
+	<pre>\ 斜线在Java语言中的转移功能，可以将普通t字符，转换成“制表符”</pre>
+	<p>	System.out.println("i = " + i);</p>		
+	<p>System.out.println("abc");</p>
+
+	<h3>2/tab键</h3>
+	<pre>\t相当于电脑的键盘的tab键</pre>
+	<p>	System.out.print("j = " + j);</p>
+	<p>System.out.println("今天又是奋斗的一天 ！");</p>
+
+	<h3>3.单引号</h3>
+	<p>char k = '\'';</p>
+	<p>System.out.println("k = "+k);</p>
+	<span>输出结果：'</span>
+
+	<h3>4.斜线</h3>
+	<p>char l = '\\';</p>
+	<p>System.out.println("l = "+l);</p>
+	<span>输出结果：\</span>
+
+	<h3>5.双引号</h3>
+	<p>char n = '\"';</p>
+	<p>System.out.println("n = "+n);</p>
+	<span>输出结果："</span>
+
+	<h3>6.换行符 </h3>
+	<p>char m = '\n';</p><pre> // 相当于键盘回车键</pre>
+	<p>System.out.println("");</p> // print 不换行，println 换行		
+	<p>System.out.print("今天有是个奋斗的日子 ！");</p>
+
+	</body>
+
+	</html>

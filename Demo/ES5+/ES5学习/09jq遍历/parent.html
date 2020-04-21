@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>遍历-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{font-size:12px;}
+		.hello{width:400px;height:400px;border:1px solid red;margin:10px 10px;}
+		.hello ul.one{width:350px;height:200px;border:1px solid blue;margin:0px auto;}
+		.hello ul.one li{width:200px;height:50px;border:1px solid #66C;}
+		.hello ul.one li p{width:150px;height:10px;border:1px solid #6C9}
+		.hello ul.two{width:350px;height:200px;border:1px solid green;margin:0px auto;}
+		</style>
+
+	</head>
+	<body>
+	<div class="hello">
+		<ul class="one">ul1
+			<li>li1.1
+				<p>p1.1.1</p>
+				<p>p1.1.2</p>
+			</li>
+			<li>li1.2</li>
+			<li>li1.3</li>
+		</ul>
+
+		<ul class="two">ul2
+			<li>li2.1</li>
+			<li>li2.2
+				<span>span2.2.1</span>
+			</li>
+		</ul>
+	</div>
+	
+	<input type="button" id="ok" value="parent找到爸爸"/>
+	<input type="button" id="yes" value="parents点击我吧找到爷爷"/>
+	<input type="button" id="good" value="parentUntil点击我吧,哥哥"/>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+
+	$("#ok").click(function(){
+		$("p").parent().css({"border":"3px solid red"});
+		
+	});//找爸爸
+
+
+	/*function click(){
+		$("p").parent().css({"color"});
+		}*/
+
+	$("#yes").click(function(){
+			$("p").parents("ul").text("傻叉");
+	
+	});//找全部父类
+
+	$("#good").click(function(){
+	
+		$("p").parentsUntil(".hello").css("background","#FFFF99");
+	});//可以直接从p越到div.hello,即p~hello的中间元素改变
+
+	});
+	
+	</script>
+	</body>
+
+	</html>

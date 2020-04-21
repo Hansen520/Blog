@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+
+    </style>
+    <script src="echartsjs/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;border:1px solid #8f8f8f;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'),'essos');
+    myChart.setOption({
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '60%',
+                data:[
+                    {value:235, name:'视频广告'},
+                    {
+                        value:274,
+                        name:'联盟广告',
+                        //自定义特殊itemStyle，仅对该item有效
+                        itemStyle:{
+
+                        }
+
+                    },
+                    {value:310, name:'邮件营销'},
+                    {value:335, name:'直接访问'},
+                    {value:400, name:'搜索引擎'}
+                ],
+
+            }
+        ]
+    })
+</script>
+</body>
+</html>

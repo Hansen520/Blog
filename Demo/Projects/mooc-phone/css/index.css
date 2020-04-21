@@ -1,0 +1,56 @@
+.header{
+  width: 100%;
+  height: 80px;
+  background: #f7f7f7;
+}
+.header .header_wrap{
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header_wrap .header_logo{
+  width:225px;
+  height: 38px;
+  overflow: hidden;
+  background: url("https://moco.imooc.com/html/phone/img/logo.png") no-repeat;
+  background-size: 38px 38px;
+  text-indent: 50px;
+  line-height: 38px;
+  font-size: 28px;
+}
+.header .header_wrap .header_nav{
+  position: relative;
+}
+.header .header_wrap .header_nav .header_nav-item{
+  display: inline-block;
+  padding-left: 40px;
+  width: 30px;
+  font-size: 14px;
+  color: #000;
+}
+.header .header_wrap .header_nav .header_nav-item:not(.header_nav-item_custom_button):hover{
+  color: rgb(39, 100, 144);
+}
+.header .header_wrap .header_nav .header_nav-item_custom_button{
+  width: 90px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 14px 10px;
+  margin-left: 40px;
+  border-radius: 10px;
+}
+.header .header_wrap .header_nav .header_nav-item_status_active{
+  color: rgb(39, 100, 144);
+}
+.header_nav-tip{
+  position: absolute;
+  width: 40px;
+  margin-left: 35px;
+  height: 2px;
+  background: rgb(39, 100, 144);
+  left: 0;
+  bottom: 0px;
+  transition: all .5s;
+}

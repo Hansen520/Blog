@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+		<style>
+		.main{
+			width: 800px;
+			outline: 1px solid red;
+		}
+		ul li{
+			display: flex;
+		}
+		span{
+			flex: 1;
+		}
+		</style>
+		<div class="main">
+			<ul>
+				<h3>一、HTML5拖拽事件</h3>
+				<li><span>图片自带拖拽功能</span><span></span></li>
+				<li><span>其他元素可设置draggable属性</span><span>draggable ：true</span></li>
+				<h4>拖拽元素(被拖拽的元素)事件 :</h4>
+				<li><span>ondragstart</span><span>拖拽的一瞬间触发</span></li>
+				<li><span>ondrag</span><span>拖拽前、拖拽结束之间，连续触发</span></li>
+				<li><span>ondragend</span><span>拖拽结束触发</span></li>
+				<h4>目标元素(拖拽元素被拖到的地方)事件 :</h4>
+				<li><span>ondragenter</span><span>进入目标元素触发</span></li>
+				<li><span>ondragover</span><span>进入目标、离开目标之间，连续触发</span></li>
+				<li><span>ondragleave</span><span>离开目标元素触发</span></li>
+				<li><span>ondrop</span><span>在目标元素上释放鼠标触发</span></li>
+				<span style="color: red">默认状态下，一个元素不能放另一元素的上面，需要在ondragover事件里面阻止默认事件</span>
+				<h3>二、拖拽兼容问题</h3>
+				<li>火狐浏览器下需设置dataTransfer对象才可以拖拽除图片外的其他标签</li>
+				<li>dataTransfer对象</li>
+				<li><span>setData()</span><span>设置数据 key和value(必须是字符串)</span></li>
+				<li><span>getData()</span><span>获取数据，根据key值，获取对应的value</span></li>
+				<li><span>effectAllowed </span><span>设置光标样式(none, copy, copyLink, copyMove, link, linkMove, move, all 和 uninitialized)</span></li>
+				<li>拖拽元素的图标</li>
+				<li><span>setDragImage</span><span>三个参数（指定的元素，坐标X，坐标Y）</span></li>
+				<li><span>files</span><span>获取外部拖拽的文件，返回一个filesList列表</span></li>
+				<li>filesList下有个type属性，返回文件的类型</li>
+				<h3>三、读取文件信息</h3>
+				<li>FileReader(读取文件信息)----readAsDataURL参数为要读取的文件对象</li>
+				<li>onload当读取文件成功完成的时候触发此事件</li>
+				<li>this. result 获取读取的文件数据</li>
+			</ul>
+		</div>     				
+  </body>
+</html>

@@ -1,0 +1,14 @@
+body{
+  font-size: 12px;
+  background-color: #fff;
+}
+a{
+  text-decoration: none;;
+}
+h2,h3{
+  font-weight: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
