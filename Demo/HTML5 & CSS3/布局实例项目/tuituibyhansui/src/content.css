@@ -1,0 +1,55 @@
+/*
+ * @Author: Hansen 
+ * @Date: 2020-08-02 17:18:57 
+ * @Last Modified by: Hansen
+ * @Last Modified time: 2020-09-18 09:52:26
+ */
+/* 内容区 */
+.tt-content{
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+  /* padding-top: 2.3rem;
+  padding-bottom: 2.5rem; */
+}
+/* 这样在默认的情况下内容区是没有上下内边距的，当页面有了标题栏的时候，再用兄弟选择器给 tt-content 元素设置上“padding-top: 2.3rem;” */
+/* 根据header和navbar自动适应内容区高度 ,学到了*/
+.tt-header ~ .tt-content{
+  padding-top: 2.3rem;
+}
+.tt-navbar ~ .tt-content{
+  padding-bottom: 2.5rem;
+}
+/* 内容分区 -- Panel 面板 */
+/* Panel 标题 */
+.tt-content .tt-panel-title{
+  height: 1.8rem;
+  line-height: 1.8rem;
+  padding-left: 1rem;
+  color: #aaa;
+  background: #fff;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  font-weight: normal;
+}
+/* 标题导航 */
+.tt-content .tt-panel-title > .tt-panel-link{
+    float: right;
+    margin-right: 1rem;
+    color: #aaa;
+}
+/* Panel 内容区 */
+.tt-content .tt-panel-body{
+  position: relative;
+  margin-bottom: .6rem;
+  padding: .6rem 1rem;
+  background: #fff;
+  overflow: hidden;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+/* 可手动设置内容区是否有内边距 */
+.tt-content .tt-panel-body.no-padding{
+  padding: 0;
+}

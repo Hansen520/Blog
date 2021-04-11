@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>css样式 -  应用-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		body{height:2000px;}
+		p{color:#F30;font-size:15px;font-family:"微软雅黑"}
+		span{font-size:15px;}
+
+
+		/*1.css基础语法*/
+		h1{font-size:22px;}
+
+
+		/*2.css颜色值*/
+		.o1{color:#6600CC;font-size:13px;}
+		.o2{color:#CC0;font-size:13px;}
+		.o3{color:red;font-size:13px;}
+
+
+                /*3.css样式 - 空格和大小写关于大小写：*/
+		.Q1{
+		        color:  #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                font-family: 微软雅黑, Palatino, serif;
+
+		      }
+
+
+		/*4.css样式 - 选择器的分组*/
+		h2,h3,h4,h5,h6,em{font-size:14px;font-weight:bold;color:#6600CC;}
+
+
+		/*6.css样式 - CSS 类选择器*/
+		.center{color:#6600FF;}
+
+
+		/*7.css样式 - id 选择器*/
+		#w1{color:#990000;background:#CCCC00;}
+		</style>
+
+
+		<!--9.css样式 - 外部引入到样式-->
+		<link rel="stylesheet" type="text/css" href="link.css">
+
+	
+	</head>
+	<body>
+
+
+	<h1 style="font-size:30px">css基础语法</h1>
+	<h1>1.css基础语法</h1>
+	<img src="1.jpg" width="393" height="138"/><br /><br/>
+	<p>*CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明*</p></br/><hr/>
+
+
+	<h1>2.css颜色值</h1>
+	<p class="o1">我是颜色值的十六进制颜色值 color: #ff0000; </p>
+	<p class="o2">我是颜色值得CSS 的缩写形式 color:#CC0</p>
+	<p class="o3">我是颜色值得英文单词 color:red/blue/yellow/pink</p><br/><hr/>
+
+
+	<h1>3.css样式 - 空格和大小写</h1>
+	<span class="Q1"><span><br/><br/>
+	<pre>
+	<p>
+	关于大小写：
+	1. 变量名称都是区分大小写；
+	2. css样式中是不区分大小写，建议统一用小写形式；
+	3. 在css中属性和值之前有空格是不影响效果的；
+	</p>
+     </pre><br/><hr/>
+
+
+	<h1>4.css样式 - 选择器的分组</h1>
+	<span>h2,h3,h4,h5,h6,em</span><br/>
+	<span>结合元素选择器 <b>div.text{}</b>   &lt;div class="text"&gt;</span><br>
+	<span>css多类选择器 &lt;div class="text bg"&gt;</span><br/>
+	<span>后代选择器  <b>.text .center{}</b> &lt;div class="text"&gt;&lt;em class="center"&gt;我是后代选择器哦&lt;/em&gt;&lt;/div&gt;</span><br>
+	<span>子代选择器， > 选择到元素的直接后代</span>
+	<span>
+		选择相邻兄弟 <br/>
+		<b>p+p{color:red;}</b><br/>
+		&lt;p&gt;不变色&lt;/p&gt;<br/>
+		&lt;p&gt;不变色&lt;/p&gt;<br/>
+		&lt;p&gt;不变色&lt;/p&gt;</br>
+	</span>
+	<p>伪类选择器</p>
+	<p>
+		:before,:after在元素内容前面、后面添加内容(相当于行内元素)<br/>
+		::first-line 匹配文本块的首行<br/>
+		::first-letter 选择文本块的第一个字符
+	</p>
+	<hr/>
+
+
+	 <h1>5.css样式 - CSS注释语法</h1>
+	 <pre>
+	 <p>
+	 CSS注释的开始使用/**/
+	 body内部注释&lt;!----&gt;
+	 </p>
+	 </pre><br/><hr/>
+
+
+	 <h1>6.css样式 - CSS 类选择器</h1>
+	 <span>.center{}  &lt;div class="center"&gt;</span>
+     <pre>
+		<p>
+		1.在 CSS 中，类选择器以一个点号显示
+		2.h1 和 p 元素都有 center 类。这意味着两者都将遵守 ".center" 选择器中的规则
+		</p>
+	</pre><hr/>
+
+
+	<h1>7.css样式 - id 选择器</h1>
+	<span>#w1{}  &lt;div id="w1"&gt;</span>
+	<pre>
+		<p>
+			1.id 选择器可以为标有特定 id 的 HTML 元素指定特定的样
+			2.id 选择器以 "#" 来定义
+			3.id 属性只能在每个 HTML 文档中出现一次
+			4.在现代布局中，id 选择器常常用于建立派生选择器
+		</p>
+	</pre><br/><hr/>
+
+
+	<h1>9.css样式 - 外部引入到样式</h1>
+	<span>见上面链接样式</span>
+	<div class="link">我是外部导入样式</div><br/><br/>
+		<pre>
+			&lt;div class="link"&gt;我是外部导入样式&lt;/div&gt;
+			&lt;link rel="stylesheet" type="text/css" href="link.css"&gt;
+		</pre>
+		<hr/>
+
+
+	<h1>10css样式 -  行内样式</h1>
+	<p style="color:#000099; font-size:22px;font-weight:bold;">我是行内样式</p>
+	&lt;p style="color:#000099; font-size:18px;"&gt;&lt;/p&gt;
+	
+
+
+	</body>
+
+	</html>

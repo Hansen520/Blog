@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>拖拽排序</title>
+    <style>
+    *{margin:0;padding: 0;}
+    .sort-drag{
+      margin:0 auto;
+      width: 500px;
+    }
+    /* .sort-drag .wrap{
+      
+    } */
+    .sort-drag > .wrap > ul{
+      position: relative;
+      cursor:pointer;
+    }
+    .sort-drag > .wrap > ul > li{
+      height: 50px;
+      display: flex;
+      line-height: 50px;
+      justify-content:space-between;
+      box-shadow: 1px 1px 2px #000;
+    }
+    .sort-drag > .wrap > ul > li > p{
+      width: 30%;
+      height: 100%;
+      color:#fff;
+      text-align: center;
+    }
+    .sort-drag > .wrap > ul > li > p:nth-child(1){
+      text-align: left;
+      text-indent: 1em;
+    }
+    .sort-drag > img{
+      position: absolute;
+      top:-10000%;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- case2 -->
+    	<section class="sort-drag">
+    		<div class="wrap">
+    			<ul>
+    				<li>
+    					<p>01</p>
+    					<p>越过山丘</p>
+    					<p>杨宗纬</p>
+    				</li>
+    				<li>
+    					<p>02</p>
+    					<p>如果我爱你</p>
+    					<p>周冬雨</p>
+    				</li>
+    				<li>
+    					<p>03</p>
+    					<p>Super Tizzy</p>
+    					<p>Tizzy</p>
+    				</li>
+    				<li>
+    					<p>04</p>
+    					<p>不用去猜</p>
+    					<p>Jony</p>
+    				</li>
+    				<li>
+    					<p>05</p>
+    					<p>非酋</p>
+    					<p>薛爱媛</p>
+    				</li>
+    				<li>
+    					<p>06</p>
+    					<p>清白之年</p>
+    					<p>王珞丹</p>
+    				</li>
+            <li>
+              <p>07</p>
+              <p>奉献</p>
+              <p>韩寒</p>
+            </li>
+    			</ul>
+    		</div>
+    		<img id='cursor-h' src="case/save.png" alt=""><!--鼠标旁边的图片-->
+    	</section>
+      <script type="text/javascript">
+      //case2
+  (function(){
+    var oLi = document.querySelectorAll('.sort-drag > .wrap > ul > li'),
+      // li的所有长度
+      length = oLi.length,
+      // 携带的图片
+      oCursor = document.getElementById('cursor-h'),
+      arr = [],
+      move = null,
+      target = null;
+
+    for (var i = 0; i < length; i++) {
+      oLi[i].style.backgroundColor = randColor();
+      oLi[i].draggable = true;
+
+      arr.push(oLi[i]);
+      oLi[i].ondragstart = function(e){
+        e.dataTransfer.setData('sum', this.index);
+        e.dataTransfer.setDragImage(oCursor, '50px', '50px');
+        e.dataTransfer.effectAllowed = 'link';
+        this.index = arr.indexOf(this);
+        move = this;
+      };
+
+      oLi[i].ondragover = function(e){
+        e = e || window.event;
+        e.preventDefault();
+        e.dataTransfer.setDragImage(oCursor, '50px', '50px');
+        this.style.border = '2px solid #0ff';
+      };
+      oLi[i].ondragleave = function(){
+        this.style.border = '';
+      };
+
+      oLi[i].ondrop = function(){
+        this.index = arr.indexOf(this);
+        target = this;
+        arr.splice(move.index,1,target);
+        arr.splice(target.index,1,move);
+
+        for (var i = 0; i < length; i++) {
+          arr[i].style.border = '';
+          this.parentNode.appendChild(arr[i]);
+        }
+      };
+    }
+    function randColor(){
+      return '#' + (~~(Math.random()*0xffffff)).toString(16);
+    }
+  })();
+      </script>
+  </body>
+</html>

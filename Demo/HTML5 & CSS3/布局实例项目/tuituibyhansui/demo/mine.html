@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../src/hans-ui.css" />
+    <!-- <link rel="stylesheet" href="../css/mine.css" /> -->
+    <title>推推优品-个人中心</title>
+  </head>
+  <body class="page-mine">
+    <div class="tt-navbar">
+      <a class="navbar-item" href="./index.html">
+        <i class="fa fa-home icon"></i>
+        <span class="name">首页</span>
+      </a>
+      <a class="navbar-item" href="./list.html">
+        <i class="fa fa-search icon"></i>
+        <span class="name">发现</span>
+      </a>
+      <a class="navbar-item active">
+        <i class="fa fa-user-o icon"></i>
+        <span class="name">我的</span>
+      </a>
+    </div>
+    <div class="tt-content">
+      <!-- 内容区 -->
+      <!-- 用户个人信息 -->
+      <div class="tt-panel-body user">
+        <img
+          src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1847995214,2223562836&fm=26&gp=0.jpg"
+          alt="用户头像"
+          class="portrait"
+        />
+        <div class="info">
+          <h2 class="nick-name">Hansen</h2>
+          <p class="detail">
+            <a class="detail-item">关注10</a>
+            <a class="detail-item">收藏100万</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 菜单区域 -->
+      <div class="tt-panel-body no-padding">
+        <div class="tt-menu">
+          <a href="#" class="tt-menu-item">
+            <p class="tt-menu-name">我的钱包</p>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+          <a href="#" class="tt-menu-item">
+            <p class="tt-menu-name">我的文章</p>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+          <a href="#" class="tt-menu-item">
+            <p class="tt-menu-name">访问统计</p>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+          <a class="tt-menu-item">
+            <p class="tt-menu-name">我的推广码</p>
+            <i class="fa fa-qrcode tt-menu-value"></i>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+          <a class="tt-menu-item">
+            <p class="tt-menu-name">接收新消息</p>
+            <input class="tt-switch" type="checkbox" checked />
+          </a>
+        </div>
+      </div>
+      <div class="tt-panel-body no-padding">
+        <div class="tt-menu">
+          <a href="#" class="tt-menu-item">
+            <p class="tt-menu-name">设置</p>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+          <a href="#" class="tt-menu-item">
+            <p class="tt-menu-name">意见反馈</p>
+            <i class="fa fa-chevron-right tt-menu-icon"></i>
+          </a>
+        </div>
+      </div>
+      <div class="tt-panel-body no-padding">
+        <span class="tt-btn tt-btn-large logout-btn">退出登录</span>
+      </div>
+    </div>
+
+    <!-- 显示我的推广二维码 -->
+    <div class="tt-modal">
+      <!-- 需要打开二维码时，在tt-modal上添加“show”这个类即可 -->
+      <!-- <div class="tt-modal show"> -->
+      <div class="tt-mask"></div>
+      <div class="tt-modal-wrap">
+        <div class="tt-modal-body no-padding">
+          <img
+            class="tt-modal-img"
+            src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1847995214,2223562836&fm=26&gp=0.jpg"
+            alt=""
+          />
+        </div>
+        <i class="fa fa-close tt-modal-close"></i>
+      </div>
+    </div>
+
+    <!-- 确认关闭新消息提醒 -->
+    <div class="tt-action-sheet">
+      <!-- 需要打开弹窗时，添加“show”这个类即可 -->
+      <!-- <div class="tt-action-sheet show"> -->
+      <div class="tt-mask"></div>
+      <div class="tt-action-sheet-wrap">
+        <div class="tt-action-sheet-header">
+          <h1 class="tt-action-sheet-title">
+            关闭该功能后，您将不再收到新消息的通知，确定要这样做吗？
+          </h1>
+        </div>
+        <div class="tt-action-sheet-body">
+          <a class="tt-action-sheet-menu">关闭新消息提醒</a>
+        </div>
+        <div class="tt-action-sheet-footer">
+          <a class="tt-action-sheet-menu">取消</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let oMenu = document.querySelectorAll('.page-mine .tt-menu-item');
+      for (let i = 0; i < oMenu.length; i++) {
+        oMenu[i].addEventListener(
+          'click',
+          () => {
+            if (oMenu[i].textContent.trim() === '我的推广码') {
+              document.querySelector('.tt-modal').style.display = 'block';
+            }
+          },
+          true
+        );
+      }
+      document.querySelector('.tt-modal-close').onclick = function () {
+        document.querySelector('.tt-action-sheet').classList.add('show');
+      };
+      document.querySelector('.tt-action-sheet-body').onclick = function () {
+        document.querySelector('.tt-action-sheet').classList.remove('show');
+        document.querySelector('.tt-modal').style.display = 'none';
+      };
+      document.querySelector('.tt-action-sheet-footer').onclick = function () {
+        document.querySelector('.tt-action-sheet').classList.remove('show');
+        document.querySelector('.tt-modal').style.display = 'none';
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>二级导航的制作</title>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+      font-size:12px;
+    }
+    html{
+      background: #f1f1f1;
+    }
+    li{
+      list-style: none;
+    }
+    a{
+      text-decoration:none;
+      color:#666;
+    }
+    /* 导航部分布局样式 */
+    .nav{
+      width:800px;
+      margin:30px auto;
+    }
+    .nav>ul{
+      width:200px;
+      background:#2b333b;
+      border-radius: 5px 0 0 5px;
+    }
+    .nav>ul>li{
+      width:200px;
+      border-bottom: 1px dotted rgb(233, 191, 191);
+      cursor: pointer;
+      position: relative;
+    }
+    .nav>ul>li:last-child{
+      border-bottom: none;
+    }
+    .nav>ul>li .first-nav{
+      line-height: 20px;
+      text-align: center;
+      vertical-align: middle;
+      padding:8px 5px;
+    }
+    .nav>ul>li .first-nav span{
+      color:#fff;
+      font-size:16px;
+    }
+    /* 二级导航部分样式 */
+    .nav>ul>li .second-nav{
+      width:120px;
+      position: absolute;
+      top: 0px;
+      left: 200px;
+      display: none;
+    }
+    .nav>ul>li .second-nav ul li{
+      width:120px;
+      text-align: center;
+      background:#2b333b;
+      padding:3px;
+      border-bottom:1px dotted #fff;
+    }
+    .nav>ul>li .second-nav ul li:last-child{
+      border-bottom:none;
+    }
+    .nav>ul>li .second-nav ul li a{
+      color:#fff;
+    }
+    /* 导航鼠标滑动后的hover事件 */
+    .nav>ul>li:hover{
+      background: #fff;
+    }
+    .nav>ul>li:hover .first-nav span{
+      color:#000;
+    }
+    .nav>ul>li:hover .second-nav{
+      display: block;
+    }
+    .nav>ul>li:hover .second-nav ul li:hover{
+      background: #fff;
+    }
+    .nav>ul>li:hover .second-nav ul li:hover a{
+      color:#000;
+    }
+  </style>
+</head>
+<body>
+  <section>
+      <div class="nav">
+        <ul>
+          <li>
+              <div class="first-nav"><span>前沿/区块链/人工智能</span></div>
+              <div class="second-nav">
+                <ul>
+                  <li><a href="#">微服务</a></li>
+                  <li><a href="#">区块链</a></li>
+                  <li><a href="#">区块</a></li>
+                </ul>
+              </div>
+          </li>
+          <li>
+              <div class="first-nav"><span>前端/小程序/JS</span></div>
+              <div class="second-nav">
+                  <ul>
+                      <li><a href="#">html</a></li>
+                      <li><a href="#">区块链</a></li>
+                      <li><a href="#">以太坊</a></li>
+                  </ul>
+              </div>
+          </li>
+          <li>
+              <div class="first-nav"><span>后端/JAVA/PYTHON</span></div>
+              <div class="second-nav">
+                  <ul>
+                      <li><a href="#">JAVA</a></li>
+                      <li><a href="#">爬虫</a></li>
+                      <li><a href="#">Python</a></li>
+                  </ul>
+              </div>
+          </li>
+        </ul>
+      </div>
+  </section>
+</body>
+</html>

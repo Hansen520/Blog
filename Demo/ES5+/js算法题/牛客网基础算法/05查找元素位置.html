@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    function findAllOccurrences(arr, target) {
+		var newIndex = [];
+		var newArr = arr.split("");
+		newArr.forEach(function (item, index) {
+			if (item == target) {
+				newIndex.push(index);
+			}
+		});
+		return newIndex;
+//		console.log(newIndex);
+	}
+
+//function findAllOccurrences(arr, target) {
+//	var a = [];
+//	for(var i = 0; i < arr.length; i++){
+//		if(target == arr[i])
+//			a.push(i);
+//	}
+//	console.log(a);
+
+	findAllOccurrences('abcdefabc','a');
+    </script>
+</body>
+</html>

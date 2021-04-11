@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css变量</title>
+  </head>
+  <body>
+    <style>
+      .bar {
+        height: 20px;
+        width: 300px;
+        background-color: #f5f5f5;
+      }
+      .bar::before {
+        display: block;
+        counter-reset: progress var(--percent);
+        content: counter(progress) '%\2002';
+        width: calc(1% * var(--percent));
+        color: #fff;
+        background-color: #2486ff;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    </style>
+    <h2>案例一：</h2>
+    <label for="">图片1:</label>
+    <div class="bar" style="--percent: 60"></div>
+    <label for="">图片2:</label>
+    <div class="bar" style="--percent: 40"></div>
+    <label for="">图片3:</label>
+    <div class="bar" style="--percent: 20"></div>
+
+    <style>
+      .yw-tab-tab {
+        position: relative;
+        display: flex;
+        max-width: 414px;
+        justify-content: space-between;
+        border-bottom: 1px solid #717678;
+        background-color: #fff;
+        margin: 30px auto;
+      }
+      .yw-tab-tab::before,
+      .yw-tab-tab::after {
+        position: absolute;
+        width: calc(var(--target-width, 0) * 1px);
+        left: calc(var(--target-left, -299) * 1px);
+        color: #2a80eb;
+      }
+      .yw-tab-tab[style]::before,
+      .yw-tab-tab[style]::after {
+        content: '';
+      }
+      .yw-tab-tab::before {
+        background-color: currentColor;
+        height: calc(var(--target-height) * 1px);
+        mix-blend-mode: overlay;
+      }
+      .yw-tab-tab::after {
+        border-bottom: solid;
+        bottom: -2px;
+        transition: left 0.2s, width 0.2s;
+      }
+      .yw-tab-a {
+        color: #717678;
+        padding: 10px 0;
+        text-decoration: none;
+      }
+    </style>
+    <h2>案例二:</h2>
+    <div class="yw-tab-tab">
+      <a href="javascript:;" class="yw-tab-a">QQ阅读</a>
+      <a href="javascript:;" class="yw-tab-a">起点读书</a>
+      <a href="javascript:;" class="yw-tab-a">红袖读书</a>
+      <a href="javascript:;" class="yw-tab-a">飞读免费小说</a>
+    </div>
+    <!-- <style>
+      .btn {
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        background: #4f9a51;
+        line-height: 30px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+        border: none;
+        outline: 0;
+        user-select: none;
+        cursor: unset;
+      }
+      .btn::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        transition: 0.2s;
+        background: #fff;
+        opacity: 0;
+      }
+      .btn:not([disabled]):active::after {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.3;
+        transition: 0s;
+      }
+      .btn::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: var(--x, 0);
+        top: var(--y, 0);
+        pointer-events: none;
+        background: radial-gradient(
+          circle,
+          currentColor 10%,
+          transparent 10.01% no-repeat
+        );
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.8s;
+      }
+    </style>
+    <h3>案例三:按钮</h3>
+    <button class="btn" disabled>按钮</button> -->
+    <script>
+      document.addEventListener('mousedown', function (event) {
+        var target = event.target;
+        var body = document.body;
+        var html = document.documentElement;
+        // 设置自定义属性值
+        body.style.setProperty('--pagex', event.pageX);
+        body.style.setProperty('--pagey', event.pageY);
+
+        html.style.setProperty('--clientx', event.clientX);
+        html.style.setProperty('--clienty', event.clientY);
+        html.style.setProperty('--scrolly', window.pageYOffset);
+
+        target.style.setProperty('--offsetx', event.offsetX);
+        target.style.setProperty('--offsety', event.offsetY);
+        target.parentElement.style.setProperty(
+          '--target-width',
+          target.clientWidth
+        );
+        target.parentElement.style.setProperty(
+          '--target-height',
+          target.clientHeight
+        );
+        target.parentElement.style.setProperty(
+          '--target-left',
+          target.offsetLeft
+        );
+        target.parentElement.style.setProperty(
+          '--target-top',
+          target.offsetTop
+        );
+      });
+    </script>
+  </body>
+</html>

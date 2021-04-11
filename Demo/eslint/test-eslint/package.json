@@ -1,0 +1,16 @@
+{
+  "name": "test-eslint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-plugin-vue": "^7.8.0"
+  },
+  "dependencies": {}
+}

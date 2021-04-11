@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+		function insert(arr, item, index) {
+			var newArr = arr.slice(0);
+			newArr.splice(index,0,item);
+			console.log(arr);
+			return newArr;
+		}
+		console.log(insert([1, 2, 3, 4], 'z', 2));
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+		function duplicates(arr) {
+		var newArr=[];
+		arr.sort();//[1, 1, 2, 3, 3, 3, 4, 4, 5]
+		 for(var i=0;i<arr.length;i++){
+		if(arr[i]==arr[i+1] && newArr.indexOf(arr[i])==-1){
+        //newArr.indexOf(arr[i])==-1 意思说newArr里面没有这个元素才放进去，有就不放了，保证newArr里面元素不重复
+		newArr.push(arr[i]);
+		i++;
+		}
+		}
+		 console.log(newArr);
+
+		}
+    duplicates([1, 2, 4, 4, 3, 3, 1, 5]);
+
+
+	function duplicates(arr) {
+		var a=[];
+		for(var i=0;i<arr.length-1;i++) {
+			for(var j=i+1;j<arr.length;j++) {
+				if(arr[i]==arr[j]&&a.indexOf(arr[i])==-1)  {
+					a.push(arr[i]);
+				}
+			}
+		}
+		console.log(a.sort());
+	}
+
+    </script>
+</body>
+</html>

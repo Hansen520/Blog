@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+		function fizzBuzz(num) {
+			if(num === null || num === "" || isNaN(num)){
+				return false;
+			}else if((num%3==0) && (num%5==0)){
+				return 'fizzbuzz';
+			}else if(num%3==0){
+				return 'fizz';
+			}else if(num%5==0){
+				return 'buzz';
+			}else{
+				return num;
+			}
+		}
+		fizzBuzz('123');
+    </script>
+</body>
+</html>

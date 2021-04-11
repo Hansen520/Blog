@@ -1,0 +1,83 @@
+/*
+ * @Author: Hansen 
+ * @Date: 2020-09-18 16:41:21 
+ * @Last Modified by: Hansen
+ * @Last Modified time: 2020-09-18 17:48:01
+ */
+
+ /* 网格组件 */
+ .tt-grid{
+   display: flex;
+   flex-wrap: wrap;
+   border-top: 1px solid #ddd;
+ }
+ /* 网格中的格子 */
+ .tt-grid > .tt-grid-item{
+   position: relative;
+   box-sizing: border-box;
+   text-align: center;
+   border-right: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   background: #fff;
+ }
+
+ /* grid内容区 */
+ .tt-grid > .tt-grid-item > .tt-grid-icon{
+   font-size: 1.5rem;
+   color: #aaa;
+   margin-bottom: 0.5rem;
+ }
+ .tt-grid > .tt-grid-item > .tt-grid-label{
+   font-size: 0.6rem;
+   color: #333;
+ }
+ /* 不需要边框时取消容器上的border */
+.tt-grid.no-border{
+  border: none;
+}
+/* 不需要边框时取消格子上所以的border */
+.tt-grid.no-border > .tt-grid-item{
+  border: none;
+}
+
+/* 两列网格 */
+.tt-grid.tt-grid-2 .tt-grid-item{
+  
+  flex-basis: 50%;
+  padding: 1.8rem 0;
+}
+.tt-grid.tt-grid-2 .tt-grid-item:nth-child(2n){
+  border-right: none;
+}
+/* 三列网格 */
+.tt-grid.tt-grid-3 .tt-grid-item{
+  flex-basis: 33.3%;
+  padding: 1.8rem 0;
+}
+.tt-grid.tt-grid-3 .tt-grid-item:nth-child(3n){
+  border-right: none;
+}
+/* 四列网格 */
+.tt-grid.tt-grid-4 .tt-grid-item{
+  flex-basis: 25%;
+  padding: .9rem 0;
+}
+.tt-grid.tt-grid-4 .tt-grid-item:nth-child(4n){
+  border-right: none;
+}
+/* 五列网格 */
+.tt-grid.tt-grid-5 .tt-grid-item{
+  flex-basis: 20%;
+  padding: .6rem 0;
+}
+.tt-grid.tt-grid-5 .tt-grid-item:nth-child(5n){
+  border-right: none;
+}
+/* 六列网格 */
+.tt-grid.tt-grid-6 .tt-grid-item{
+  flex-basis: 16.6%;
+  padding: .4rem 0;
+}
+.tt-grid.tt-grid-6 .tt-grid-item:nth-child(6n){
+  border-right: none;
+}

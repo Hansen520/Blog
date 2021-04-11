@@ -1,0 +1,33 @@
+{
+  "name": "eslint-plugin-zoo",
+  "version": "0.0.0",
+  "description": "zoo",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "zoo",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node ./tests/lib/rules/zoo.js"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^26.6.3",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^7.1.0",
+    "jest": "^26.6.3",
+    "mocha": "^7.2.0",
+    "regenerator-runtime": "^0.13.7",
+    "eslint": "^7.23.0",
+    "vue-eslint-parser": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "ISC"
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+
+    window.requestAnimationFrame = window.requestAnimationFrame || function (a){return setTimeout(a,1000/60)};
+    window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+
+    (function(){
+        var oBox = document.getElementById("box");
+        document.onclick = function () {
+            move(oBox,"height",'500px',1000);
+        };
+        function move(obj , attr , target , time){
+            var startVal = parseFloat( getStyle(obj , attr) ),
+                startTime = new Date(), //起始时间
+                timer;
+            target = parseFloat( target );
+            m();
+            function m(){
+                var prop = (new Date() - startTime) / time; //比例值
+                prop >= 1?prop = 1:timer = requestAnimationFrame(m);
+                oBox.style[attr] = startVal + prop*(target-startVal) + 'px';
+            }
+        }
+
+        function getStyle( obj , atr ) {
+            return obj.currentStyle?obj.currentStyle[atr]:getComputedStyle(obj)[atr];
+        }
+    })();
+
+//    (function(){
+//        var oBox = document.getElementById("box");
+//        document.onclick = function () {
+//            move(oBox,"height",'500px',2000);
+//        };
+//        function move(obj , attr , target , time){
+//            var startVal = parseFloat( getStyle(obj , attr) ),
+//                startTime = new Date(), //起始时间
+//                timer;
+//            target = parseFloat( target );
+//            m();
+//            function m(){
+//                var s = 0.5*((target-startVal)/(time*time))*(new Date()-startTime)*(new Date()-startTime);
+//                if ((startVal + s) >= target){
+//                    oBox.style[attr] = target + 'px';
+//                }else{
+//                    timer = requestAnimationFrame(m);
+//                    oBox.style[attr] = startVal + s + 'px';
+//                }
+//            }
+//        }
+//
+//        function getStyle( obj , atr ) {
+//            return obj.currentStyle?obj.currentStyle[atr]:getComputedStyle(obj)[atr];
+//        }
+//    })();
+
+    /*
+     var nowTime = new Date(); //当前时间
+     var t = nowTime - startTime; //从开始到现在经过了多久
+     var prop = t / time; //比例值
+     var s = prop*(target-startVal); //位移 变化量
+     if ( prop >= 1 ){
+     prop = 1;
+     }else{
+     timer = requestAnimationFrame(m);
+     }
+     oBox.style[attr] = startVal + s + 'px';
+     */
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

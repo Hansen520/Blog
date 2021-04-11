@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+ <!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<!--当前页面的三要素-->
+	<title>标题</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="描述">
+	<style type="text/css">
+	.big{width:500px;height:500px;background:#6600FF;}
+	.big .sm1{width:100px;height:100px;background:#66CC00;float:left;}/*当框 1 向左浮动时，框1不占空间，相当于悬浮，
+	                                                                                                                          框1覆盖住了框 2，使框 2 从视图中消失。
+																																															*/
+	.big .sm2{width:100px;height:100px;background:#993300;}
+	.big .sm3{width:100px;height:100px;background:#660099;}
+
+	.bid{width:500px;height:500px;background:#6600FF;}/*如果浮动框的前一个框是浮动的，
+																								那么他会向左浮动直到碰到前一个浮动框。(右浮动同理*/
+	.bid .sm4{width:100px;height:100px;background:#66CC00;float:left;}
+	.bid .sm5{width:100px;height:100px;background:#993300;float:left;}
+	.bid .sm6{width:100px;height:100px;background:#660099;float:left;}
+	</style>
+	</head>
+
+	<body>
+    <div class="big">
+	<div class="sm1">1</div>
+	<div class="sm2">2</div>
+	<div class="sm3">3</div> 
+	</div><br><br>
+
+	 <div class="bid">
+	<div class="sm4">one</div>
+	<div class="sm5">two</div>
+	<div class="sm6">three</div> 
+	</div>
+	</body>
+</html>

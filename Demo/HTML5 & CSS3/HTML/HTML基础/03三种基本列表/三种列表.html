@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+ <!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--当前页面的三要素-->
+	<title>三种列表-无序、有序、定义上-hansen</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="描述">
+        <style type="text/css">
+		.list1{list-style-image:url("images/small-11.jpg");list-style-position:outside;}
+		.list2{list-style-image:url("images/small-4.jpg");list-style-position:outside;}
+        </style>
+	</head>
+
+	<body>
+	<h1>三种定义列表</h1>
+
+
+	<h3>无序列表ul li</h3>
+	<ul>
+	     <li>哥哥</li>
+		 <li>姐姐</li>
+		 <li>弟弟</li>
+	</ul>
+	<h3>无序列表__普通-disc实心（默认）、circle 空心圆、square 实心方块</h3>
+	<h2>ul源代码</h2>
+	<pre>
+	&lt;ul&gt;
+	&lt;li&gt;项目一&lt;/li&gt;
+	&lt;li&gt;项目二&lt;/li&gt;
+	&lt;/ul&gt;
+	</pre>
+	
+    <h3>ul标签符号</h3>
+	<ul type="disc">
+			<li>天气</li>
+			<li>白云</li>
+			<li>晴天</li>
+    </ul>
+	
+	<ul type="circle">
+			<li>省会</li>
+			<li>浙江</li>
+			<li>湖南</li>
+	</ul>
+
+	<ul type="square">
+			<li>老师</li>
+			<li>arry</li>
+			<li>keke</li>
+	</ul>
+
+    <h3>无序列表的嵌套</h3>
+
+	<ul>
+			<li>湖南</li>
+			<li>浙江
+			          <ul>
+							   <li>杭州</li>
+							   <li>宁波</li>
+							   <li>温州
+									  <ul>
+											  <li>鹿城区</li>
+											  <li>百定区</li>
+									  </ul>
+							   
+							   </li>
+					   </ul>
+			
+			</li>
+			<li>南京</li>
+	</ul>
+	<hr/>
+
+	<h2>ol源代码</h2>
+	<pre>
+	&lt;ol&gt;
+	&lt;li&gt;项目一&lt;/li&gt;
+	&lt;li&gt;项目二&lt;/li&gt;
+	&lt;/ol&gt;
+	</pre>
+
+	 <h3>有序列表-ol-li</h3>
+     <ol>
+			 <li>大哥</li>
+			 <li>二哥</li>
+			 <li>三哥</li>
+			 <li>四哥</li>
+			 <li>五哥</li>
+	 </ol>
+
+
+	<h3>有序列表__普通-样式（A,a,I,i,1）</h3>
+     <ol type="A">
+			 <li>太阳</li>
+			 <li>月亮</li>
+	</ol>
+	<ol type="a">
+			 <li>地球</li>
+			 <li>火星</li>
+	</ol>
+	<ol type="I">
+			 <li>美女</li>
+			 <li>帅哥</li>
+	</ol>
+	<ol type="i">
+			 <li>好</li>
+			 <li>坏</li>
+	</ol>
+	<ol type="1">
+			 <li>地球</li>
+			 <li>火星</li>
+	</ol>
+
+
+<h3>有序列表__嵌套</h3>
+        <ol>
+		     <li>秦</li>
+			 <li>五代十国
+			         <ol>
+							<li>宋</li>
+							<li>汉</li>
+							<li>唐</li>
+					</ol>
+			 </li>
+			 <li>明</li>
+		</ol>
+		<hr>
+
+		<h2>dl源代码</h2>
+			<pre style="font-size:10px;">
+			&lt;dl&gt;
+				&lt;dt&gt;计算机&lt;/dt&gt;
+				&lt;dd&gt;用于计算和软件的开发&lt;/dd&gt;
+				&lt;dd&gt;用于计算和软件的开发&lt;/dd&gt;
+				&lt;dt&gt;书本&lt;/dt&gt;
+				&lt;dd&gt;用于学习和研读&lt;/dd&gt;
+				&lt;dd&gt;用于学习和研读&lt;/dd&gt;
+			&lt;/dl&gt;
+			</pre>
+			<h3>定义列表</h3>
+			<dl>
+				<dt>计算机</dt>
+				<dd>用于计算和软件的开发</dd>
+				<dd>用于计算和软件的开发</dd>
+				<dt>书本</dt>
+				<dd>用于学习和研读</dd>
+				<dd>用于学习和研读</dd>
+			</dl><hr/>
+
+
+		<h2>采用图片作为项目符号-源代码</h2>
+		<pre>
+		&lt;style type="text/css"&gt;
+			.list1{list-style-image:url("images/small-11.jpg");list-style-position:outside;}
+			.list2{list-style-image:url("images/small-4.jpg");list-style-position:outside;}
+		&lt;/style&gt;
+
+		&lt;ul class="list1"&gt;
+			&lt;li&gt;你好&lt;/li&gt;
+			&lt;li&gt;不客气&lt;/li&gt;
+				&lt;ul class="list2"&gt;
+					&lt;li&gt;yes&lt;/li&gt;
+					&lt;li&gt;no&lt;/li&gt;
+					&lt;li&gt;ok&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;li&gt;qqqqqqq&lt;/li&gt;
+			&lt;li&gt;真不错&lt;/li&gt;
+		&lt;/ul&gt;		
+		</pre><br/>
+
+
+		<h3>采用图片作为项目符号</h3>
+		<ul class="list1">
+			<li>你好</li>
+			<li>不客气</li>
+				<ul class="list2">
+					<li>yes</li>
+					<li>no</li>
+					<li>ok</li>
+				</ul>
+			<li>qqqqqqq</li>
+			<li>真不错</li>
+		</ul>
+
+
+	
+	</body>
+</html>

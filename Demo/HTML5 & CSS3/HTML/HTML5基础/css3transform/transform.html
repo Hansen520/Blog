@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_transform</title>
+    <base target="blank">
+    <style>
+        *{margin:0;padding: 0;}
+        body{
+            font-family: 'Microsoft yahei', Verdana, '仿宋',Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+        a{text-decoration:none;color:inherit;outline: none;}
+        img{border:none;vertical-align: middle;outline:none;}
+        li{list-style:none;}
+
+        section{
+            position: relative;
+            margin:50px auto;
+        }
+        section>h2{
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        /*------------------------------3dBox-----------------------------------*/
+        .box-3d{
+
+        }
+        .box-3d > .box{
+            position: relative;
+            margin:100px auto;
+            width:300px;
+            height: 300px;
+            /*border:1px dashed #000;*/
+            perspective:800px;
+            perspective-origin:right center;
+        }
+        .box-3d > .box:hover .wrap{
+            transform:rotate3d(0,1,0,-90deg);
+            transition: 1s linear;
+        }
+        .box-3d > .box:hover .wrap > div:nth-child(1){
+            transform-origin:bottom;
+            transform:translateY(-200px) rotate3d(1,0,0,0deg);
+            transition:1s;
+        }
+        .box-3d > .box:hover .wrap2{
+            transform:translate3d(0px,-200px,0) rotate3d(0,1,0,360deg);
+            transition: 1s linear;
+        }
+        .box-3d > .box > .wrap{
+            position:absolute;
+            top:0;
+            right: 0;
+            bottom:0;
+            left:0;
+            margin:auto;
+            width:200px;
+            height:200px;
+            transform-style:preserve-3d;
+            transform-origin:center center -100px;
+            transition: 1s linear;
+        }
+        .box-3d > .box > .wrap2{
+            position:absolute;
+            top:0;
+            right: 0;
+            bottom:0;
+            left:0;
+            margin:auto;
+            width:100px;
+            height:100px;
+            transform-style:preserve-3d;
+            transform-origin:center center -50px;
+            transform: translate3d(0,0,0) rotate3d(0,0,0,0);
+            transition: 1s linear;
+        }
+        .box-3d > .box > .wrap2 > div{
+            position: absolute;
+            width:100%;
+            height: 100%;
+            box-shadow:inset 0 0 5px rgba(0,0,0,.4);
+            text-align:center;
+            line-height: 100px;
+            background:
+                    -webkit-linear-gradient(0deg,rgba(0,255,100,.4) 10px,transparent 10px) 0/1em 1em,
+                    -webkit-linear-gradient(90deg,rgba(0,255,100,.4) 10px,transparent 10px) 0/1em 1em
+        ;
+
+        }
+        .box-3d > .box > .wrap > div{
+            position: absolute;
+            width:100%;
+            height: 100%;
+            box-shadow:inset 0 0 10px rgba(0,0,0,.8);
+            text-align:center;
+            line-height: 200px;
+            background:
+                    -webkit-linear-gradient(0deg,#0ff 10px,transparent 10px) 0/1em 1em,
+                    -webkit-linear-gradient(90deg,#0ff 10px,transparent 10px) 0/1em 1em
+        ;
+            transition:1s .3s;
+        }
+        .box-3d > .box > .wrap > div:nth-child(1){
+            transform-origin:bottom;
+            transform:translateY(-200px) rotate3d(1,0,0,90deg);
+        }
+        .box-3d > .box > .wrap > div:nth-child(2){
+            transform-origin:top;
+            transform:translateY(200px) rotate3d(1,0,0,-90deg);
+        }
+        .box-3d > .box > .wrap > div:nth-child(3){
+            transform-origin:right;
+            transform:translate(-200px) rotate3d(0,1,0,-90deg);
+        }
+        .box-3d > .box > .wrap > div:nth-child(4){
+            transform-origin:left;
+            transform:translate(200px) rotate3d(0,1,0,90deg);
+        }
+        .box-3d > .box > .wrap > div:nth-child(5){
+            transform:translateZ(0px);
+        }
+        .box-3d > .box > .wrap > div:nth-child(6){
+            transform:translateZ(-200px);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(1){
+            transform-origin:bottom;
+            transform:translateY(-100px) rotate3d(1,0,0,90deg);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(2){
+            transform-origin:top;
+            transform:translateY(100px) rotate3d(1,0,0,-90deg);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(3){
+            transform-origin:right;
+            transform:translate(-100px) rotate3d(0,1,0,-90deg);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(4){
+            transform-origin:left;
+            transform:translate(100px) rotate3d(0,1,0,90deg);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(5){
+            transform:translateZ(0px);
+        }
+        .box-3d > .box > .wrap2 > div:nth-child(6){
+            transform:translateZ(-100px);
+        }
+        /*------------------------------壁纸-----------------------------------*/
+        .wallpaper{
+
+        }
+        .wallpaper > .wrap{
+            width: 880px;
+            display: flex;
+            flex-flow:row wrap;
+            justify-content:space-around;
+            align-content:space-around;
+        }
+
+        .wallpaper > .wrap > img{
+            height: 150px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+            cursor: pointer;
+            outline:none;
+            margin-bottom: 25px;
+            z-index: 2;
+        }
+
+        .wallpaper > .wrap > img.one{
+            animation:up-down .3s ease-in-out 2 both;
+        }
+        .wallpaper > .wrap > img.two{
+            animation:left-right .3s ease-in-out 2 both;
+        }
+        .wallpaper > .wrap > img.three{
+            animation:big-small .3s ease-in-out 2 both;
+        }
+        @keyframes up-down{
+            0%{transform:translateY(0);}
+            50%{transform:translateY(-10px);}
+            100%{transform:translateY(0px);}
+        }
+        @keyframes left-right{
+            0%{transform:rotate(0deg);}
+            30%{transform:rotate(10deg);}
+            60%{transform:rotate(-10deg);}
+            100%{transform:rotate(0deg);}
+        }
+        @keyframes big-small{
+            0%{transform:scale(1);}
+            50%{transform: scale(1.2)}
+            100%{transform:scale(1);}
+        }
+        /*------------------------------轮播图-----------------------------------*/
+        .slideshow{
+            margin-bottom: 100px;
+            position: relative;
+            width: 800px;
+            height: 400px;
+            perspective:1000px;
+        }
+        .slideshow > ul{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style:preserve-3d;
+            transform-origin:50% 50% -200px;
+            transform:rotateX(0deg);
+            transition:1s ease-in-out;
+        }
+        .slideshow > ul > li{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-shadow:inset 0 0 10px rgba(0,0,0,.5);
+        }
+        .slideshow > ul > li:nth-child(1){
+            transform:translate(0) rotate(0deg);
+        }
+        .slideshow > ul > li:nth-child(2){
+            transform-origin:top;
+            transform:translateY(400px) rotateX(-90deg) ;
+        }
+        .slideshow > ul > li:nth-child(3){
+            transform:translateZ(-400px);
+        }
+        .slideshow > ul > li:nth-child(4){
+            transform-origin:bottom;
+            transform:translateY(-400px) rotateX(90deg);
+        }
+        .slideshow > ul > li > img{
+            width: 100%;
+            height: 100%;
+        }
+        .slideshow > ol{
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            margin:auto;
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            width: 200px;
+
+        }
+        .slideshow > ol > li{
+            width: 15px;
+            height: 15px;
+            border:5px solid #000;
+            border-radius:50%;
+            cursor: pointer;
+        }
+        /*-------------------------------轮播图2----------------------------------------------------*/
+        section.slideshow2{
+            margin: 100px auto;
+            width: 800px;
+            height: 360px;
+            transform:rotateZ(0deg);
+            perspective:800px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        section.slideshow2 > .wrap{
+            height:100%;
+            cursor: pointer;
+        }
+        section.slideshow2 > .wrap > ul{
+            height: 100%;
+        }
+        section.slideshow2 > .wrap > ul > li{
+            float: left;
+            position: relative;
+            height: 100%;
+            transform-style:preserve-3d;
+            transform-origin:center center -180px;
+            transform:rotateX(0deg);
+        }
+        section.slideshow2 > .wrap > ul > li > div{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        section.slideshow2 > .wrap > ul > li > div:nth-child(1){
+            background: url(http://attach.bbs.miui.com/forum/201503/29/121327z8bsbsde8sb85zgd.jpg) no-repeat 0;
+        }
+        section.slideshow2 > .wrap > ul > li > div:nth-child(2){
+            background: url(http://attach.bbs.miui.com/forum/201501/31/161513vwwcwwqpbzlr0ycq.jpg) no-repeat 0/cover;
+            transform:translateZ(-360px) rotateX(180deg);
+        }
+        section.slideshow2 > .wrap > ul > li > div:nth-child(3){
+            background: url(http://attach.bbs.miui.com/forum/201501/29/154912worftckqkkv55trf.jpg) no-repeat 0/cover;
+            top:-360px;
+            transform-origin:bottom;
+            transform:rotateX(90deg);
+        }
+        section.slideshow2 > .wrap > ul > li > div:nth-child(4){
+            background: url(http://attach.bbs.miui.com/forum/201503/29/121236zlz9kkcoct39q28u.jpg) no-repeat 0/cover;
+            transform-origin:top;
+            transform:rotateX(-90deg);
+            top:360px;
+        }
+        section.slideshow2 > .wrap > ol{
+            position: absolute;
+            width: 100px;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content:space-around;
+        }
+        section.slideshow2 > .wrap > ol > li{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        section.slideshow2 > .wrap > ol > li.on{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<section class='box-3d'>
+    <h2>3d-box</h2>
+    <div class="box">
+        <div class="wrap">
+            <div>上</div>
+            <div>下</div>
+            <div>左</div>
+            <div>右</div>
+            <div>前</div>
+            <div>后</div>
+        </div>
+        <div class="wrap2">
+            <div>上</div>
+            <div>下</div>
+            <div>左</div>
+            <div>右</div>
+            <div>前</div>
+            <div>后</div>
+        </div>
+    </div>
+</section>
+<section class="wallpaper">
+    <h2>会动的图片</h2>
+    <div class="wrap">
+        <img class='on' src="http://i6.download.fd.pchome.net/t_960x600/g1/M00/10/11/oYYBAFWbMIKIEBAIABSTcA6TN1AAAClJQCuJCIAFJOI501.jpg" alt="">
+        <img src="http://i9.download.fd.pchome.net/t_960x600/g1/M00/10/11/ooYBAFWbMYiIYTUAAAa2bt6TdeUAAClJQOpIHYABraG621.jpg" alt="">
+        <img src="http://img.coocaa.com/www/attachment/forum/201508/18/055404n4s1o0oeocq43cnp.jpg" alt="">
+        <img src="http://www.viwin7.com/uploads/allimg/150717/16331225I-3.jpg" alt="">
+        <img src="http://www.viwin7.com/uploads/allimg/150717/1633126422-1.jpg" alt="">
+        <img src="http://p2.so.qhimgs1.com/bdr/200_200_/t01b7766062c21ed112.jpg" alt="">
+        <img src="http://p2.so.qhmsg.com/bdr/200_200_/t01c6a6684d016cff67.jpg" alt="">
+        <img src="http://p0.so.qhmsg.com/bdr/200_200_/t01db5fd7869a5b7205.jpg" alt="">
+        <img src="http://p4.so.qhmsg.com/bdr/200_200_/t017989cc4aef666239.jpg" alt="">
+    </div>
+</section>
+<section class="slideshow">
+    <h2>轮播图</h2>
+    <ul>
+        <li><img src="http://attach.bbs.miui.com/forum/201503/29/121327z8bsbsde8sb85zgd.jpg" alt=""></li>
+        <li><img src="http://attach.bbs.miui.com/forum/201501/31/161513vwwcwwqpbzlr0ycq.jpg" alt=""></li>
+        <li><img src="http://attach.bbs.miui.com/forum/201501/29/154912worftckqkkv55trf.jpg" alt=""></li>
+        <li><img src="http://attach.bbs.miui.com/forum/201503/29/121236zlz9kkcoct39q28u.jpg" alt=""></li>
+    </ul>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</section>
+
+<h2>轮播图2</h2>
+<section class="slideshow2">
+    <div class="wrap">
+        <ul>
+
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+<script>
+
+    (function () {
+        var oImgs = document.querySelectorAll('.wallpaper > .wrap > img'),
+            length = oImgs.length,
+            arr = ['one','two','three'];
+        for (var i = 0; i < length; i++) {
+            oImgs[i].onmouseenter = function(){
+                var rand = Math.floor(Math.random()*3);
+                this.className = arr[rand];
+                this.onmouseleave = function(){
+                    this.className = '';
+                }
+                return false;
+            };
+        }
+    })();
+
+    (function(){
+        var oli = document.querySelectorAll('.slideshow > ol > li'),
+            oBox = document.querySelector('.slideshow > ul'),
+            index = 0;
+
+        oli[index].style.backgroundColor = 'orange';
+        for (var i = 0; i < oli.length; i++) {
+            oli[i].index = i;
+            oli[i].onclick = function(){
+                var deg = 90*this.index;
+                oli[index].style.backgroundColor = 'transparent';
+                index = this.index;
+                oBox.style.transform = 'rotate3d(1,0,0,'+deg+'deg)';
+                this.style.backgroundColor = 'orange';
+            };
+        }
+    })();
+
+    //轮播图2
+    (function () {
+        var oUl = document.querySelector('section.slideshow2 > .wrap > ul');
+        var num = 100;
+
+        init(num);
+        function init(num){
+            var frag = document.createDocumentFragment();//Dom碎片
+            var createObj = null;
+            var createDiv = null;
+            var liWidth = 800 / num;
+            var z = -1;
+            oUl.innerHTML = '';
+            for (var i = 0; i < num; i++) {
+                createObj = document.createElement('li');
+                if(i>num/2){
+                    createObj.style = 'width:'+ liWidth + 'px ; z-index:'+(--z)+';';
+                }else {
+                    createObj.style = 'width:'+ liWidth + 'px';
+                }
+                for(var j=0;j<4;j++){
+                    createDiv = document.createElement('div');
+                    createDiv.style = 'background-position:' + (-i*liWidth) + 'px';
+                    createObj.appendChild(createDiv);
+                }
+                frag.appendChild(createObj);
+            }
+            oUl.appendChild(frag);
+        }
+        auto();
+        function auto(){
+            window.onload = function(){
+                var timer = null;
+                var oLi = oUl.querySelectorAll('li'),
+                    length = oLi.length;
+                var btn = document.querySelectorAll('section > .wrap > ol > li');
+                var index = 0;
+                var flag = true;
+
+                play();
+
+                function play(){
+                    timer = setInterval(function(){
+                        btn[index].className = '';
+                        index ++;
+                        index %= 4;
+                        btn[index].className = 'on';
+                        change();
+                    },2000);
+                }
+
+                function change(){
+                    for(var i=0;i<length;i++){
+                        oLi[i].style.cssText +=
+                            '\
+                                transform:rotateX('+(-90*index)+'deg);\
+								transition:0.5s '+ 0.5*i/length +'s\
+							';
+                    }
+                }
+
+                for(var i=0;i<4;i++){
+                    btn[i].index = i;
+                    btn[i].onclick = function(){
+                        console.log(flag);
+                        if(flag){
+                            flag = false;
+                            btn[index].className = '';
+                            index = this.index;
+                            this.className = 'on';
+                            change();
+                        }else {
+                            setTimeout(function(){
+                                flag = true;
+                            },300);
+                        }
+
+                    };
+                }
+
+                oUl.parentNode.onmouseenter = function(){
+                    clearInterval(timer);
+                    timer = null;
+                };
+                oUl.parentNode.onmouseleave = function(){
+                    if(!timer){
+                        play();
+                    }
+                };
+            };
+        }
+    })();
+</script>
+</body>
+</html>

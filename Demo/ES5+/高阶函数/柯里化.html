@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>柯里化</title>
+</head>
+<body>
+  <!-- 柯里化就是将函数转化为多个嵌套的一元函数，也就是每个函数只接收一个参数 -->
+  <script>
+    // const func = function(a){
+    //   return function(b){
+    //     return a * a + b * b
+    //   }
+    // }
+    // let a = func(3)(4);
+    // console.log(a)
+
+    // 柯里化函数实现
+    function curry (func) {
+      return function curried(...args){
+        // 通过函数的length属性，来获取函数的形参个数
+        if (args.length >= func.length){
+          // buildUri
+          return func.apply(this, args);
+        } else {
+          return function (...args2) {
+            // buildUriCurry
+            return curried.apply(this, args.concat(args2));
+          }
+        }
+      }
+    }
+
+    function buildUri(scheme, domain, path){
+      return `${scheme}://${domain}/${path}`;
+    }
+
+    const buildUriCurry = curry(buildUri);
+    const myGithubPath = buildUriCurry('https', 'github.com');
+    const profilePath = myGithubPath('semlinker/semlinker');
+    const awesomeTsPath = myGithubPath('semlinker/awesome-typescript');
+
+    console.log(profilePath);
+    console.log(awesomeTsPath);
+
+    // test
+
+  //  function aa(a,b,c){}
+  //  // 可以获取函数中形参的个数
+  //  console.log(aa.length)
+  </script>
+</body>
+</html>

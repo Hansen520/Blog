@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      body {
+        margin-top: 5em;
+        text-align: center;
+        color: #414142;
+        background: rgb(246, 241, 232);
+      }
+
+      h1,
+      em,
+      #information {
+        display: block;
+        font-size: 26px;
+        font-weight: bold;
+        margin: 2em auto;
+      }
+
+      a {
+        color: #414142;
+        font-style: normal;
+        text-decoration: none;
+        font-size: 20px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      #container {
+        margin: 0 auto;
+        width: 1024px;
+      }
+
+      .wrapper {
+        display: inline-block;
+        width: 310px;
+        height: 100px;
+        vertical-align: middle;
+        margin: 1em 1.5em 2em 0;
+        cursor: pointer;
+        position: relative;
+        font-family: Tahoma, Arial;
+        perspective: 4000px;
+      }
+
+      .item {
+        height: 100px;
+        transform-style: preserve-3d;
+        /* 给每个列表项添加过渡动画效果 */
+        transition: all 0.5s;
+        transform: translateZ(0) rotateX(0);
+      }
+
+      .item:hover {
+        /* 悬浮状态改变每个列表项的transform效果 */
+        transform: translateZ(50px) rotateX(90deg);
+      }
+
+      .item img {
+        display: block;
+        position: absolute;
+        top: 0;
+        /* 设置列表项图片的圆角和阴影效果 */
+        border-radius: 2px;
+        box-shadow: 0 6px 6px -6px #000;
+        transform: translateZ(50px);
+        transition: all 0.6s;
+        width: 310px;
+        height: 100px;
+      }
+
+      .item .information {
+        display: block;
+        position: absolute;
+        top: 0;
+        height: 100px;
+        text-align: left;
+        border-radius: 16px;
+        font-size: 12px;
+        color: #ffe;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+        box-shadow: none;
+        /* 给底层显示文本的层级设置渐变效果 */
+        background-image: linear-gradient(
+          to bottom right,
+          rgb(236, 241, 244),
+          rgb(147, 175, 193),
+          #000
+        );
+        background-clip: text;
+        transform: rotateX(-90deg) translateZ(50px);
+        transition: all 0.6s;
+      }
+
+      .information strong {
+        display: block;
+        margin: 0.2em 0 0.5em 0;
+        font-size: 20px;
+        /* font-family: 'Oleo Script'; */
+        color: #000;
+        text-shadow: 1px 1px 1px #fff;
+      }
+      .information p {
+        font-family: '微软雅黑';
+        background-image: linear-gradient(
+          to top left,
+          rgb(0, 0, 0),
+          rgb(0, 0, 0)
+        );
+        font-size: 12px;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -moz-background-clip: text;
+
+        color: transparent;
+      }
+      .item:hover img {
+        /* 列表项悬浮状态时，去掉图片的阴影效果 */
+        box-shadow: none;
+        border-radius: 16px;
+      }
+
+      .item:hover .information {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>CSS3 3D变形制作视频展示区</h1>
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1e900001db6d04630253.png" />
+          <span class="information">
+            <strong>澳门风云</strong>
+            <p>
+              闻名中外，曾担任美国赌场保安总顾问的魔术手石一坚，终回流澳门退休，更宴请各方朋友到来庆祝生日宴.
+            </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1eb20001ed6a03360201.png" />
+          <span class="information">
+            <strong>改过迁善</strong>
+            <p>
+              该剧讲述了金明民饰演的律师在失忆后回顾自己以往的所作所为心生忏悔，为弥补自己犯下的错误而与自己曾经工作过的律师事务所对簿公堂的故事。
+            </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1eef0001c62903830217.png" />
+          <span class="information">
+            <strong>父子刑警</strong>
+            <p>
+              本剧改编自雫井修介小说《BitterBlood》。剧中，新晋刑警•佐原夏辉（佐藤健饰）被分配到银座警察
+            </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1f4e0001f90c02850210.png" />
+          <span class="information">
+            <strong>果宝特攻3</strong>
+            <p>
+              果宝特攻3,顾名思义是果宝特攻的第二部续集,已在国家广播电影电视总局备案.暂定剧情为:菠萝吹雪偶然间穿越到了古代的水果世界
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1f5500017d5603190214.png" />
+          <span class="information">
+            <strong>红眼</strong>
+            <p>
+              1988年7月16日，从汉城始发的列车发生了一起严重的交通事故，造成100多人死亡。
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="item">
+          <img src="http://img.mukewang.com/545b1f620001874503500209.png" />
+          <span class="information">
+            <strong>熊出没之夺宝熊兵</strong>
+            <p>
+              一场漆黑雨夜的意外事故，一段笑料十足的误打误撞，将两个外表相似却内容各异的箱子调换。
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

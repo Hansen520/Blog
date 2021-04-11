@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+		//例如：
+//		var obj = {};//定义一个空的对象
+//		function f(x,y){
+//			console.log(x,y);
+//			console.log(this); //this是指obj
+//		}
+//		f.apply(obj,[1,2]); //后面的值需要用[]括起来
+//		f.call(obj,1,2); //直接写
+
+		//例如：
+//		function f(){
+//			console.log("看我怎么被调用");
+//			console.log(this) //指向this
+//		}
+//		var obj = {};
+//		f.call(obj); //直接调用函数,将f的this指向obj的this
+//		var g = f.bind(obj); //bind()不能调用函数
+//		g();  //此时才调用函数
+
+		var arr =[2,6,8,3,4,9,7,23,56,889];
+		console.log(Math.max.apply(arr,arr)) //第一个arr表示让arr借用max这个方法，第二个arr表示传给max的数据
+
+
+
+
+    </script>
+</body>
+</html>

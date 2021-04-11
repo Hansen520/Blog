@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>偏函数</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script> -->
+</head>
+<body>
+  <!-- 偏函数应用就是固定一个函数的一个或多个参数，并返回一个可以接收剩余参数的函数 -->
+  <script>
+    // parial(func, [partials]), 创建一个函数，该函数调用func，并传入预设的partials
+    // 偏函数
+    function partial(fn){
+      let args = [].slice.call(arguments, 1);
+      return function () {
+        const newArgs = args.concat([].slice.call(arguments));
+        return fn.apply(this, newArgs)
+      }
+    }
+    // 此函数被固定
+    function buildUri(scheme, domain, path){
+      return `${scheme}://${domain}/${path}`;
+    }
+
+    const myGithubPath = partial(buildUri, 'https', 'github.com');
+    const profilePath = myGithubPath('semlinker/semlinker');
+    const awesomeTsPath = myGithubPath('semlinker/awesome-typescript');
+
+    console.log(profilePath)
+    console.log(awesomeTsPath)
+
+    // test
+    // 还有种用aa(...args)的方式转为数组
+    // function aa(){
+    //   // [2,3]
+    //   let args = [].slice.call(arguments, 1)
+    //   console.log(args)
+    // }
+    // aa(1,2,3)
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function throttle(fn, delay=500){
+      let timer = null
+      return function(){
+        // let _this = this
+        // let arg = arguments
+        if(timer){
+          return false
+        }
+        timer = setTimeout(() => {//要采用箭头函数，采用ES5写法则this会指向window
+          fn.apply(this, arguments)
+          timer = null
+        }, delay)
+      }
+    } 
+  </script>
+</body>
+</html>

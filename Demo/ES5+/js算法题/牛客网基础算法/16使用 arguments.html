@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    function useArguments() {
+		var sum = 0;
+		for (var key in arguments) {
+			//key只是索引
+            sum = sum + arguments[key];
+
+		}
+		return sum;
+    }
+    
+    useArguments(1, 2, 3, 4);
+    </script>
+</body>
+</html>

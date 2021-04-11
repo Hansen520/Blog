@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+//		function partial(fn, str1, str2) {
+//			function result(str3) {
+//                return fn.call(this,str1,str2,str3);
+//                //这里的this指向fn这个函数，str1,str2,str3分别代表3个值greeting,name,punctuation
+//			}
+//			return result;
+//		}
+//		var sayIt = function(greeting, name, punctuation) {
+//			return greeting + ', ' + name + (punctuation || '!');
+//		};
+//		partial(sayIt, 'Hello', 'Ellie')('!!!');
+
+		function partial(fn, str1, str2) {
+			function result(str3) {
+                return fn.call(this,str1,str2,str3);
+                //这里的this指向fn这个函数，str1,str2,str3分别代表3个值greeting,name,punctuation
+			}
+			return result;
+		}
+		var sayIt = function(greeting, name, punctuation) {
+			return greeting + ', ' + name + (punctuation || '!');
+		};
+		partial(sayIt, 'Hello', 'Ellie')('!!!');
+		//最后('!!!')指向punctuation
+    </script>
+</body>
+</html>

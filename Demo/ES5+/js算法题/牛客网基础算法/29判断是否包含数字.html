@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>是否包含数字</title>
+</head>
+<body>
+<script>
+function containsNumber(str) {
+    var a = /[0-9]/; 
+    var b = a.test(str);
+    return b;
+}
+containsNumber('abc123');
+</script>
+</body>
+</html>

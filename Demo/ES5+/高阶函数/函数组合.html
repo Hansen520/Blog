@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 将两个或两个以上的函数组合生成一个新的函数 -->
+  <!-- 这段代码仔细思考其过程，在未来很有用 -->
+  <script>
+    // const compose = function (f, g, h) {
+    //   return function (x) {
+    //     return h(f(g(x)))
+    //   }
+    // }
+
+    // 函数的复用，尽量保证函数职责单一
+    function trim (input) {
+      // console.log(input)
+      return typeof input === 'string' ? input.trim() : input;
+    }
+
+    function lowerCase (input) {
+      return input && typeof input === 'string' ? input.toLowerCase() : input;
+    }
+
+    function split (input, delimiter = ',') {
+      return typeof input === 'string' ? input.split(delimiter) : input
+    }
+
+    function upperCase (input) {
+      return input && typeof input === 'string' ? input.toUpperCase() : input
+    }
+
+    // 组合函数的实现，通过reduce
+    // 执行顺序从左往右，与linux管道或过滤器的执行顺序一致
+    // 使用...将数组打散后funcs就是个数组的集合
+    function compose (...funcs) {
+      return function (x) {
+        return funcs.reduce(function(arg, fn){
+          // 首先第一次arg = x
+          console.log(arg);
+          return fn(arg);
+        }, x)
+      }
+    }
+
+    const trimLowerCaseAndSplit = compose(trim, lowerCase, split)
+    const a = trimLowerCaseAndSplit('a,B,c  ')
+    // console.log(a)
+
+
+    // test
+    // bb(1,2,3)
+    // function bb(...cc){
+    //   console.log(cc)
+    // }
+
+    // test1
+    // let arr = [2, 3, 4];
+    // let p = arr.reduce(function (x, y){
+    //   return x + y
+    // }, 10)
+    // console.log(p)
+  </script>
+</body>
+</html>

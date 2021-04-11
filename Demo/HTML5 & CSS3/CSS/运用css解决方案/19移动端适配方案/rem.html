@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <style type="text/css">
+        * {
+            margin:0px;
+            padding:0px;
+        }
+        html{
+            font-size: 18px;
+        }
+        #antzone {
+            width:10rem;
+            height:5rem;
+            background-color:green;
+            text-align:center;
+        }
+    </style>
+    <script>
+		window.onload = function () {
+			let odiv = document.getElementById("antzone");
+			odiv.innerHTML = odiv.offsetWidth;
+		}
+    </script>
+</head>
+<body>
+<div id="antzone"></div>
+<span>没有显式设置html的字体大小，所以默认是16px，那么1rem=16px，10rem=160px。</span>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>固定高度,宽度自适应,100%比做适配</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            font-size:16px;
+            overflow:hidden;
+            box-sizing:border-box;
+        }
+        /*left start*/
+        .left{
+            width:40px;/*两边固定宽度,中间自适应*/
+            height:40px;/*高度可以不加,由内容填充*/
+            position:absolute;
+            left:0;
+            top:0;
+            background:red;
+            text-align:center;
+            line-height:40px;
+        }
+        /*left end*/
+        /*center start*/
+        .center{
+            width:100%; /*宽度不固定*/
+            background:orange;
+            height:40px;
+            margin-left:40px;
+            margin-right:40px;
+        }
+        .center input{
+            width:100%;
+            height:40px;
+            outline:none;
+        }
+        /*center end*/
+        /*right start*/
+        .right{
+            width:40px;/*两边固定宽度,中间自适应*/
+            height:40px;/*高度可以不可,由内容填充*/
+            text-align:center;
+            line-height:40px;
+            position:absolute;
+            right:0;
+            top:0;
+            background:green;
+        }
+        /*right end*/
+        /*banner adv start*/
+        .banner{
+            width:100%;
+            height:200px;
+            background:pink;
+            text-align:center;
+            line-height:200px;
+        }
+        /*banner adv end*/
+        /*list start*/
+        .list{
+            overflow:hidden;
+        }
+        .list div{
+            width:20%;
+            height:90px;
+            float:left;
+            text-align:center;
+            line-height:90px;
+        }
+        .list div:nth-of-type(1){
+            background:orange;
+        }
+        .list div:nth-of-type(2){
+            background:#80B3FF;
+        }
+        .list div:nth-of-type(3){
+            background:#1BA260;
+        }
+        .list div:nth-of-type(4){
+            background:#F2A196;
+        }
+        .list div:nth-of-type(5){
+            background:#FFCE42;
+        }
+        .listTwo{
+            margin:15px 0 0 0;
+        }
+        /*list end*/
+        /*con start*/
+        .con{
+            width:100%;
+            height:200px;
+            overflow:hidden;     /*子元素使用来浮动,父元素记得清除浮动*/
+            text-align:center;
+            line-height:200px;
+        }
+        .left-80{
+            width:80%;
+            height:100%;  /*想要一个元素在页面中显示必须得给元素高度,继承父元素*/
+            float:left;
+            background:#B0E24A;
+        }
+        .right-20{
+            width:20%;
+            height:100%; /*高度100%,继承父元素的高度*/
+            float:right;
+            background:#6C6863;
+        }
+        /*con end*/
+    </style>
+</head>
+<body>
+<!-- header start -->
+<header>
+    <div class="left">左边</div>
+    <div class="center">
+        <form>
+            <input type="search" name="">
+        </form>
+    </div>
+    <div class="right">右边</div>
+</header>
+<!-- header end -->
+<!-- banner adv start -->
+<div class="banner">adv</div>
+<!-- banner adv end -->
+<!-- 列表list start -->
+<div class="list">
+    <div>1list</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</div>
+<div class="list listTwo">
+    <div>6list listTwo</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+</div>
+<!-- 列表list end -->
+<!-- con内容开始-->
+<div class="con">
+    <div class="left-80">左边80%</div>
+    <div class="right-20">右边20%</div>
+</div>
+<!-- con内容结束-->
+</body>
+</html>

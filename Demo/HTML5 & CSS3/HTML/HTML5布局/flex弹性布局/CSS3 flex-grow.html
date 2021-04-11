@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <style>
+        *{
+            font-size:20px
+        }
+        #main {
+            width: 350px;
+            height: 100px;
+            background:#ccc;
+            display: flex;
+        }
+
+        #main div{flex-basis:50px;}
+
+        #main div:nth-of-type(1) {flex-grow: 1;}
+        #main div:nth-of-type(2) {flex-grow: 3;}
+        #main div:nth-of-type(3) {flex-grow: 1;}
+        #main div:nth-of-type(4) {flex-grow: 1;}
+        #main div:nth-of-type(5) {flex-grow: 1;}
+
+    </style>
+</head>
+<body>
+<div id="main">
+    <div style="background-color:coral;"></div>
+    <div style="background-color:lightblue;"></div>
+    <div style="background-color:khaki;"></div>
+    <div style="background-color:pink;"></div>
+    <div style="background-color:lightgrey;"></div>
+</div>
+<pre>
+可以看到，第二个div的宽度要明显大于其余div，代码分析如下：
+（1）.首先，容器采用display: flex弹性布局，总宽度是350像素。
+（2）.子项目的基准宽度是50像素，五个子项目总共占据250像素，所以容器还有剩余空间。
+（3）.第二个div的flex-grow属性值为3，其余div的flex-grow属性值为1。
+（4）.也就是说第二个div瓜分到的剩余空间是其他div的三倍，特别注意的是，
+    不是第二个div的尺寸是其他div的三倍，而是第二个div瓜分到容器剩余空间是其他div的三倍。
+占据剩余空间尺寸的计算方式：可以认为将剩余空间划分为(1+3+1+1+1)=7份，
+    每一份的尺寸等于剩余空间/7。
+那么每一个div的尺寸就是：
+（1）.50px+100/7
+（2）.50px+(100/7)*3
+（3）.50px+100/7
+（4）.50px+100/7
+（5）.50px+100/7
+ <a href="http://www.softwhy.com/article-10085-1.html">原文</a>
+</pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function matchesPattern(str) {
+    var x = function () {
+        if (str.length != 12) return false;
+        if (str[3] == "-" && str[7] == "-") {
+            for (i = 0; i < str.length; i++) {
+                switch (i) {
+                    case 3:
+                        continue;
+                    case 7:
+                        continue;
+                    default:
+                        if (/\d/.test(str[i]) == false) {
+                            return false;
+                        }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    return x(str) ? true:false;
+}
+    </script>
+</body>
+</html>

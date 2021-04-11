@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+ <!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--当前页面的三要素-->
+	<title>布局</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="描述">
+	<style type="text/css">
+		body{font-family:"微软雅黑";font-size:30px;font-weight:bold;background:#FFFFCC;}
+		.one{width:800px;margin:0px auto;}
+		.one .left{width:300px;height:75px;float:left; background:#CCFFFF;}
+		.one .right{width:300px;height:75px;float:right; background:#CCFF33;}
+
+		.two{width:800px;height:75px;margin:10px auto;background:#CC0066;
+		font-size:30px;}
+
+		.three{width:800px;height:75px;margin:10px auto;background:#660066;
+		font-size:30px;}
+
+		.four{width:800px;margin:10px auto;}
+		.four .L{width:200px;height:255px;background:#66FF00;float:left;font-size:30px;}
+		.four .M{width:200px;height:255px;margin-left:100px;background:#0099FF;float:left;font-size:30px;}
+		.four .R{width:200px;height:255px;background:#9966FF;float:right;font-size:30px;}
+
+		.five{width:800px;margin:10px auto;}
+		.five .L1{width:400px;height:265px;background:#663300;float:left;font-size:40px;}
+		.five .R1{width:300px;height:265px;background:#9966FF;float:right;font-size:40px;}
+
+		.six{width:800px;height:200px; margin:10px auto;background:#CC9900;}
+		.seven{width:500px;height:100px; margin:10px auto;background:#FF6666;}
+	</style>
+	</head>
+
+	<body>
+	<!--one-->
+	<div class="one">
+	<div class="left">(左)left左왼쪽</div>
+	<div class="right">(右)right右오른쪽</div>
+	<div style="clear:both"></div>
+	</div>
+
+		<!--two-->
+	<div class="two">
+	(导航)navナビゲーション(내 비 게이 션)
+	</div>
+	
+	<!--three-->
+	<div class="three">(图片)picture写真사진</div>
+
+	<!--four三列式布局-->
+	<div class="four">
+	<div class="L">(左)left左왼쪽</div>
+	<div class="M">(中)center中</div>
+	<div class="R">(右)right右오른쪽</div>
+    <div style="clear:both"></div>
+	</div>
+
+	<!--five二列式布局-->
+	<div class="five">
+	<div class="L1">(左)left左왼쪽</div>
+	<div class="R1">(右)right右오른쪽</div>
+	<div style="clear:both"></div>
+	</div>
+    
+	<!--SIX-->
+    <div class="six">(底部)foot底바닥</div>
+	<!--seven-->
+	<div class="seven">最后<br/>请老师检验，如有错误，请告诉我</div>
+	
+	代码如下：<br/>
+	<pre style="font-size:20px;">
+	&lt;style type="text/css"&gt;
+	.one{width:800px;margin:0px auto;}
+	.one .left{width:300px;height:75px;float:left; background:#CCFFFF;}
+	.one .right{width:300px;height:75px;float:right; background:#CCFF33;}
+
+	.two{width:800px;height:75px;margin:10px auto;background:#CC0066;
+	font-size:30px;}
+
+	.three{width:800px;height:75px;margin:10px auto;background:#660066;
+	font-size:30px;}
+
+	.four{width:800px;margin:10px auto;}
+	.four .L{width:200px;height:255px;background:#66FF00;float:left;font-size:30px;}
+	.four .M{width:200px;height:255px;margin-left:100px;background:#0099FF;float:left;font-size:30px;}
+	.four .R{width:200px;height:255px;background:#9966FF;float:right;font-size:30px;}
+
+	.five{width:800px;margin:10px auto;border:1px solid red;}
+	.five .L1{width:400px;height:265px;background:#663300;float:left;font-size:40px;}
+	.five .R1{width:300px;height:265px;background:#9966FF;float:right;font-size:40px;}
+
+	.six{width:800px;height:200px; margin:10px auto;background:#CC9900;}
+	.seven{width:500px;height:100px; margin:10px auto;background:#FF6666;}
+	&lt;/style&gt;	
+	</pre>
+	<pre  style="font-size:20px;">
+	&lt;!--one--&gt;
+	&lt;div class="one"&gt;
+		&lt;div class="left"&gt;左&lt;/div&gt;
+		&lt;div class="right"&gt;右&lt;/div&gt;
+		&lt;div style="clear:both"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!--two--&gt;
+	&lt;div class="two"&gt;
+	导航
+	&lt;/div&gt;
+
+	&lt;!--three--&gt;
+	&lt;div class="three"&gt;图片&lt;/div&gt;
+
+	&lt;!--four三列式布局--&gt;
+	&lt;div class="four"&gt;
+		&lt;div class="L"&gt;左&lt;/div&gt;
+		&lt;div class="M"&gt;中&lt;/div&gt;
+		&lt;div class="R"&gt;右&lt;/div&gt;
+		&lt;div style="clear:both"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!--five二列式布局--&gt;
+	&lt;div class="five"&gt;
+		&lt;div class="L1"&gt;左&lt;/div&gt;
+		&lt;div class="R1"&gt;右&lt;/div&gt;
+		&lt;div style="clear:both"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!--SIX--&gt;
+	&lt;div class="six"&gt;&lt;/div&gt;
+	&lt;!--seven--&gt;
+	&lt;div class="seven"&gt;最后<br/>请老师检验，如有错误，请告诉我&lt;/div&gt;
+	</pre>
+
+		
+	</body>
+</html>

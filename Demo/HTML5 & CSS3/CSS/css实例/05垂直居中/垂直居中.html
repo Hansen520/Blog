@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垂直居中</title>
+  <style>
+    *{
+    margin: 0;padding: 0
+  }
+  section{
+    margin:10px 0;
+  }
+  </style>
+</head>
+<body>
+  <section class="vertical-center1">
+    <style>
+      .vertical-center1 .padding{
+        background: red;
+        padding:50px 0;
+      }
+    </style>
+    <div class="padding">居中<br>元素</div>
+  </section>
+
+  <section class="vertical-center2">
+    <style>
+      .vertical-center2{
+        width: 100%;
+        height: 120px;
+        background: rgb(206, 59, 59);
+      }
+      .vertical-center2 .table{
+        width: 100%;
+        height: 120px;
+        background: red;
+        display: table-cell;
+        vertical-align: middle;
+      }
+    </style>
+    <div class="table">居中<br>元素</div>
+  </section>
+
+  <section class="vertical-center3">
+    <style>
+      .vertical-center3 .flex{
+        width: 100%;
+        height: 120px;
+        background: red;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+      }
+    </style>
+    <div class="flex">居中<br>元素</div>
+  </section>
+
+  <section class="vertical-center4">
+    <style>
+      .vertical-center4 .lineHeight{
+        width: 100%;
+        height: 120px;
+        background: red;
+        line-height: 120px;    
+      }
+    </style>
+    <!-- 这个只适合一行元素 -->
+    <div class="lineHeight">居中元素</div>
+  </section>
+
+  <section class="vertical-center5">
+    <style>
+      .vertical-center5{
+        position: relative;
+        width: 100%;
+        height: 120px;
+        background: red;
+      }
+      .vertical-center5 .position{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+      }
+    </style>
+    <div class="position">居中<br>元素</div>
+  </section>
+
+  <section class="vertical-center6">
+    <style>
+      .vertical-center6{
+        width: 100%;
+        height: 120px;
+        background: red;
+        display: flex;
+      }
+      .vertical-center6 .flex-auto{
+        margin: auto;
+      }
+    </style>
+    <div class="flex-auto">
+      垂直居中
+    </div>
+  </section>
+</body>
+</html>

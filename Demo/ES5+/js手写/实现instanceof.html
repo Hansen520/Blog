@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function myInstanceof(left, right){
+      let prototype = right.prototype;
+      let left = left.__proto__;
+      while(true){
+        if(left == null){
+          return false
+        }
+        if(prototype === left){
+          return true
+        }
+        // 继续往上找
+        left = left.__proto__;
+      }
+    }
+  </script>
+</body>
+</html>

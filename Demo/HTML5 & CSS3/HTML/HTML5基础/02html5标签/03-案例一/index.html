@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>html标签-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="2014年12月31日">
+		<!--css,js-->
+
+		<style type="text/css">
+			*{margin:0px;padding:0px;}
+			html,body{ width:100%; height:3000px; font-family:"微软雅黑";background-color: #fbfbfb;}
+			li{list-style: none;}
+			code{font-size:15px;font-family:"微软雅黑";border:1px solid #666;}
+			.btn{font-size:15px;font-weight:300;font-family:"微软雅黑";}
+			.linght{color:red;font-weight:600;}
+			/*导航部分开始*/
+			.nav{width:100%;}
+			.nav .content{width:200px;position:fixed;z-index:2;top:120px;right:0px;background:#000;}
+			.nav .content ul{width:200px;background:#282828;}
+			.nav .content ul li{width:200px;border-bottom:1px solid #414141;border-top:1px solid #000;}
+			.nav .content ul li:hover{background:#323744;}
+			.nav .content ul li a{display:block;text-decoration:none;color:#fff;padding:0 25px;text-align:left;line-height:50px;font-size:14px;font-family:"微软雅黑";}
+			/*导航部分结束*/
+
+			/*案例布局部分开始*/
+			header.h5-top{
+				width:1200px;
+				height:80px;
+				background:#91a9fd;
+				margin:0 auto;
+			}
+			header.h5-top span{
+				font-size: 18px;
+				font-weight:bold;
+				display: block;
+				text-align: center;
+				line-height: 80px;
+			}
+			article{
+				width:1200px;
+				margin:0 auto;
+				position: relative;
+			}
+
+			article nav ul{
+				width:1200px;
+				height:30px;
+				background-color: #c4c4f7;}
+			article nav ul li{
+				width:165px;
+				height:30px;
+				float:left;
+				text-align: center;
+				line-height:30px;
+			}
+			section{
+				background-color:#f3ac6b;
+				width:1200px;
+				margin: 0 auto;
+			}
+			article section.part1{
+				
+				
+			}
+			article section figure{
+				height: 100%;
+			}
+			article section figure img{
+				margin-top: 10px;
+			}
+	        section figure figcaption{
+	            height: 350px;
+	            width: 600px;
+	            float: right;
+	            margin-top:10px;
+	        }
+			/*侧边导航 父元素article*/
+	        aside{
+            position: absolute;
+            top:30%;
+            left: -82px;
+            width: 80px;
+            font-size: 12px;
+            text-align: center;
+
+	        }
+	        aside a{
+	        	display:block;
+	        	width:80px;
+	        	height:40px;
+	        	border:1px solid #666;
+	        	text-decoration:none;
+	        	color:#858585;
+	        	line-height: 40px;
+	        	text-align: center;
+	        	font-weight: bold;
+	        }
+	        aside a:hover{
+	        	background-color:green;
+	        	color:#fff;
+	        }
+
+	        section.part2{
+	        	width:1200px;
+	        	height: 386px;
+	        }
+	        section.part2 .img_hangzhou{
+	        	width:255px;
+	        	height:386px;
+	        	float:left;
+	        }
+	        section.part2 .attribute{
+	        	width:320px;
+	        	height:386px;
+	        	float: left;
+	        	margin-left:10px;
+	        }
+
+			.media{
+				width:550px;
+	
+				float: left;
+			}
+			/*底部foot部分*/
+			footer{
+				width:1200px;
+				height:60px;
+				background-color: #888;
+				margin:0 auto;
+			}
+
+
+			/*案例布局部分结束*/;
+		
+		</style>
+
+	</head>
+	<body>
+	<header class="h5-top">
+		<span>h5头部标签<b class="linght">&lt;header&gt;标签</b></span>
+	</header>
+    <article>
+        <nav>
+            <ul id="list">
+                <li>王者农药</li>
+                <li>腾讯飞车</li>
+                <li>英雄联盟</li>
+                <li>兵临城下</li>
+                <li>神兵天降</li>
+                <li>植物大战僵尸</li>
+                <li class="linght">&lt;article&gt;&lt;nav&gt;标签</li>
+            </ul>
+        </nav>
+	    <section class="part1">
+	        <figure>
+		            <img src="img/xihu.jpg" height="350px" alt="">
+					<b>三潭印月</b>
+	            <figcaption>
+					<ul>
+						<li class="linght">&lt;section&gt;&lt;figure&gt;&lt;figcaption&gt;标签</li>
+						<li>地址:美丽的杭州西湖</li>
+						<li>经纬度：30°14′45″N 120°8′30″E</li>
+						<li>门票价格：免费</li>
+						<li>著名景点西湖十景：新西湖十景 三评西湖十景</li>
+						<li>气候类型：亚热带季风气候</li>
+						<li>名 诗：《饮湖上初晴后雨》等</li>
+						<li>《汉书·地理志》：“钱唐，西部都尉治。武林山，武林水所出，东入海，行八百三十里。”[1]  后又有钱水、钱唐湖、明圣湖、[2]  金牛湖、石涵湖、上湖、潋滟湖、放生池、西子湖、高土湖、西陵湖、龙川、销金锅、美人湖、贤者湖、明月湖诸般名称，但是只有两个名称为历代普遍公认，并见诸于文献记载：一是因杭州古名钱塘，湖称钱塘湖；一是因湖在杭城之西，故名西湖。最早出现的“西湖”名称，是在白居易的《西湖晚归回望孤山寺赠诸客》和《杭州回舫》这两首诗中。北宋以后，名家诗文大都以西湖为名，钱塘湖之名逐渐鲜为人知。而苏轼的《乞开杭州西湖状》，则是官方文件中第一次使用“西湖”这个名称。</li>
+					</ul>
+	            </figcaption>
+	        </figure>
+	    </section>
+		<aside>
+			<a href="" class="linght">&lt;aside&gt;标签</a>
+		    <a href="" name="music">北京do</a>
+		    <a href="" name="music">上海re</a>
+		    <a href="" name="music">天津mi</a>
+		    <a href="" name="music">重庆fa</a>
+		    <a href="" name="music">香港so</a>
+		    <a href="" name="music">澳门la</a>
+		    <a href="" name="music">台湾xi</a><br/>
+		    <p><dialog open>消息对话框<b class="linght">dialog</b></dialog></p>
+	    </aside>
+
+		<section class="part2">
+			<div class="img_hangzhou">
+				<img src="img/hangzhou.jpg" width="255" height="386">
+			</div>
+			<div class="attribute">
+				<p>杭州是个<mark>美丽</mark>的地方<b class="linght">mark突出标签</b></p>
+				<meter value="5" min="0" max="10" high="9" optimum="9"></meter>35°高温<b class="linght">meter标签</b><br>
+	            <meter value="4" min="0" max="10" high="9" optimum="9"></meter>46%湿度<br>
+	            <meter value="2" min="1" max="10" high="9" optimum="9"></meter>pm2.5 26<br>
+	  	        <meter value="10" min="1" max="10" high="9" optimum="9"></meter>非常适合出行<br>
+	  	        <progress id="pro" value="0" max="100"></progress><button onclick="go()">点击出行</button><b class="linght">progress标签</b><br>
+	  	        <ruby>
+                	龍 <rt>long</rt>
+           		</ruby>
+           		<p>Opportunities are always <wbr>reserved for those who are prepared<b class="linght">wbr标签</b></p>
+            <details>
+                <summary>浙江省<b class="linght">details、summary标签</b></summary>
+                <p>城市</p>
+                <dl>
+                    <dt>杭州</dt>
+                    <dd>江干区</dd>
+                    <dd>富阳</dd>
+                    <dt>舟山</dt>
+                    <dd>定海区</dd>
+                    <dt>温州</dt>
+                    <dd>鹿城区</dd>
+                    <dt>绍兴</dt>
+                    <dd>诸暨</dd>
+                </dl>
+            </details>     		
+			</div>
+			<div class="media">
+				<video controls width="100%" height="100%" src="../02-html5音频技术/sound/崔子格 - 卜卦.mkv"></video>
+			</div>
+		</section>
+		   
+  	</article>
+
+	<footer>
+		<p class="linght">&lt;footer&gt;</p>
+		备案ICP:主要填写备案信息
+	</footer>
+	<audio id="Audio"></audio>
+
+
+	<script type="text/javascript">
+		function go(){
+			step();
+		}
+
+		var n = 0;   
+        function step() {
+            if(n<100)n++;
+            pro.value = n;
+            if(n<100)requestAnimationFrame(step);//调用本函数相当于递归
+        }
+
+
+		var omusic = document.getElementsByName('music');
+		var oAudio = document.getElementById('Audio');
+
+        
+        // /alert(omusic);
+        for(var i=0;i<omusic.length;i++){
+            omusic[i].style.background = randomColor();
+            omusic[i].style.color = randomColor();
+            omusic[i].xyz = i;
+            omusic[i].onmouseenter = function () {
+                oAudio.src = 'mp3/'+(this.xyz+1)+'.mp3';
+                oAudio.play();
+            }
+        }
+
+
+       	function randomColor() {
+            var r = Math.floor(Math.random()*255);
+            var g = Math.floor(Math.random()*255);
+            var b = Math.floor(Math.random()*255);
+            return 'rgb('+r+','+g+','+b+')';
+        }
+	</script>
+	</body>
+
+	</html>

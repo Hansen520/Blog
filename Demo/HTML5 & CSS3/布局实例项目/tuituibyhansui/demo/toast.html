@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toast提示组件</title>
+    <link rel="stylesheet" href="../src/hans-ui.css" />
+  </head>
+  <body>
+    <div class="tt-content">
+      <h1 class="tt-panel-title">Toast提示组件</h1>
+      <div class="tt-panel-body">
+        <a class="tt-btn btn-primary" id="ja-show-toast-loading">加载中提示</a>
+        <br />
+        <a class="tt-btn btn-primary" id="js-show-toast-success">成功提示</a>
+      </div>
+    </div>
+    <div class="tt-toast" id="js-toast-loading">
+      <i class="fa fa-spinner fa-spin tt-toast-icon"></i>
+      <p class="tt-toast-info">操作进行中</p>
+    </div>
+    <div class="tt-toast" id="js-toast-success">
+      <i class="da da-check tt-toast-icon"></i>
+      <p class="tt-toast-info">操作成功</p>
+    </div>
+
+    <script>
+      window.onload = () => {
+        // 显示加载中的Toast,感觉requestAnimationFrame更加顺畅
+        document.querySelector('#ja-show-toast-loading').onclick = (e) => {
+          let toastEle = document.querySelector('#js-toast-loading');
+          let count = 0;
+          function load() {
+            count = count + 1;
+            if (count < 200) {
+              toastEle.classList.add('show');
+              window.requestAnimationFrame(load);
+            } else {
+              toastEle.classList.remove('show');
+              window.requestAnimationFrame(load);
+            }
+          }
+          window.requestAnimationFrame(load);
+        };
+
+        // 显示操作成功的Toast
+        document.querySelector('#js-show-toast-success').onclick = (e) => {
+          let toastEle = document.querySelector('#js-toast-success');
+          toastEle.classList.add('show');
+          setTimeout(() => {
+            toastEle.classList.remove('show');
+          }, 2e3);
+        };
+      };
+    </script>
+  </body>
+</html>

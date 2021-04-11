@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge, chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Slab:400, 700">
+    <link rel="stylesheet" href="./normalize.css">
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        outline: none;
+      }
+      /* 套用字体 */
+      @font-face{
+        font-family: "Raphaelicons";
+        src:  url('fonts/raphaelicons-webfont.eot') format('eot'),
+              url('fonts/raphaelicons-webfont.woff') format('truetype'),
+              url('fonts/raphaelicons-webfont.woff') format('woff'),
+              url('fonts/raphaelicons-webfont.woff') format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+      a{
+        text-decoration: none;
+        color: #555;
+      }
+      .fixclear{
+        width:0;
+        height:0;
+        padding:0;
+        margin:0;
+      }
+      .fixclear::before,.fixclear::after{
+        content: '';
+        display: table;
+      }
+      .fixclear::after{
+        content: '';
+        clear: both;
+      }
+      body{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #ddd;
+        font-weight: 400;
+        font-size: 14px;
+        color: #333;
+        overflow: hidden;
+        /* 让字体更加圆滑，适用于英文字体 */
+        -webkit-font-smoothing: antialiased; 
+      }
+
+      /* 自己要写的样式 */
+      .st-container{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .st-container > input,
+      .st-container > a{
+        width: 20%;
+        height: 34px;
+        line-height: 34px;
+        position: fixed;
+        bottom: 0;
+      }
+      .st-container > input{
+        opacity: 0;
+        z-index: 1000;
+      }
+      .st-container > a{
+        z-index: 10;
+        font-weight: 700;
+        font-size: 16px;
+        background: #e23a6e;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(151, 24, 64, 0.2);
+      }
+      #st-control-1,#st-control-1 + a{
+        left: 0%;
+      }
+      #st-control-2,#st-control-2 + a{
+        left: 20%;
+      }
+      #st-control-3,#st-control-3 + a{
+        left: 40%;
+      }
+      #st-control-4,#st-control-4 + a{
+        left: 60%;
+      }
+      #st-control-5,#st-control-5 + a{
+        left: 80%;
+      }
+      /* 被选中的a后面变成深色 */
+      .st-container input:checked + a,
+      /* 避免滑动时候当前颜色的变化 */
+      .st-container input:checked:hover + a{
+        background: rgb(224, 103, 33);
+      }
+      /* 制作三角形 */
+      .st-container input:checked + a:after{
+        content: '';
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        border: 20px solid transparent;
+        border-bottom-color:rgb(224, 103, 33);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -20px;
+      }
+      .st-container input:hover + a{
+        background: rgb(198, 130, 91);
+      }
+      /* 内容区域 */
+      .st-scroll,
+      .st-panel{
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .st-panel{
+        /* 产生BFC */
+        overflow:auto;
+      }
+      .st-scroll{
+        left: 0;
+        top: 0;
+        
+        /* 其实平面也是可以的，但是用3D可以触动cpu加速 */
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+        /* 背面隐藏，兼容问题 */
+        backface-visibility: hidden;
+        transition: all 0.6s ease-in-out;
+      }
+      /* ~寻找到它后面的元素 */
+      #st-control-1:checked ~ .st-scroll{
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+      }
+      #st-control-2:checked ~ .st-scroll{
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+      }
+      #st-control-3:checked ~ .st-scroll{
+        -webkit-transform: translateY(-200%);
+        transform: translateY(-200%);
+      }
+      #st-control-4:checked ~ .st-scroll{
+        -webkit-transform: translateY(-300%);
+        transform: translateY(-300%);
+      }
+      #st-control-5:checked ~ .st-scroll{
+        -webkit-transform: translateY(-400%);
+        transform: translateY(-400%);
+      }
+      .st-desc{
+        width: 200px;
+        height: 200px;
+        background: #156996;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -100px;
+        transform:translateY(-50%) rotate(-45deg);
+      }
+      /* data-icon属性选择器设置 就是上面的顶点三角形,难点*/
+      [data-icon]:after{
+        content: attr(data-icon);
+        width: 200px;
+        height: 200px;
+        color: #fff;
+        font-size: 90px;
+        text-align: center;
+        line-height: 200px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -100px 0 0 -100px;
+        transform: rotate(45deg) translateY(25%);
+        font-family: "Raphaelicons";
+      }
+      .st-panel h2{
+        color: #156996;
+        font-size: 54px;
+        line-height: 50px;
+        text-align: center;
+        font-weight: 900;
+        width: 80%;
+        position: absolute;
+        left: 10%;
+        top: 30%;
+        margin-top: -70px;
+        text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+        backface-visibility: hidden;
+      }
+      /* animation动画效果 */
+      #st-control-1:checked ~ .st-scroll #st-panel-1 h2,
+      #st-control-2:checked ~ .st-scroll #st-panel-2 h2,
+      #st-control-3:checked ~ .st-scroll #st-panel-3 h2,
+      #st-control-4:checked ~ .st-scroll #st-panel-4 h2,
+      #st-control-5:checked ~ .st-scroll #st-panel-5 h2{
+        /* 动画再0.2后播放 backwards表示在0.2s之前，动画就处于开始状态*/
+        animation: moveDown 1s ease-in-out 0.2s backwards;
+        /* -webkit-animation: moveDown 1s ease-in-out 0.2s backwards; */
+      }
+
+      @keyframes moveDown{
+        from{
+          transform: translateY(-40px);
+          opacity: 0;
+        }
+        to{
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* 段落 */
+      .st-panel p{
+        position: absolute;
+        width: 55%;
+        left: 25%;
+        top: 30%;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 0;
+        text-align: center;
+        backface-visibility: hidden;
+        color: #156996;
+        margin-top: 10px;
+      }
+      #st-control-1:checked ~ .st-scroll #st-panel-1 p,
+      #st-control-2:checked ~ .st-scroll #st-panel-2 p,
+      #st-control-3:checked ~ .st-scroll #st-panel-3 p,
+      #st-control-4:checked ~ .st-scroll #st-panel-4 p,
+      #st-control-5:checked ~ .st-scroll #st-panel-5 p{
+        animation: moveUp 1s ease-in-out 0.2s backwards;
+      }
+      @keyframes moveUp{
+        from{
+          transform: translateY(40px);
+          opacity: 0;
+        }
+        to{
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* 细节处理 颜色变换*/
+      .st-color{
+        background: #156996;
+      }
+      .st-color .st-desc{
+        background: #fff;
+      }
+      .st-color [data-icon]:after{
+        color: #156996;
+      }
+      .st-color h2{
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+      }
+      .st-color p{
+        color: rgba(255,255,255,0.8)
+      }
+
+      /* 自适应 */
+      @media screen and (max-width:520px){
+        .st-panel h2{
+          font-size: 16px;
+        }
+        .st-panel p{
+          width: 90%;
+          left: 10%;
+          font-size: 10px;
+          margin-top: 0;
+        }
+        .st-container > a{
+          font-size: 13px;
+        }
+        .st-container > a{
+          font-size: 10px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="st-container">
+        <!-- nav start -->
+        <input type="radio" name="radio-set" id="st-control-1" checked>
+        <a href="#st-panel-1">Serendpity</a>
+        <input type="radio" name="radio-set" id="st-control-2">
+        <a href="#st-panel-2">Happness</a>
+        <input type="radio" name="radio-set" id="st-control-3">
+        <a href="#st-panel-3">Tranquillity</a>
+        <input type="radio" name="radio-set" id="st-control-4">
+        <a href="#st-panel-4">Positivity</a>
+        <input type="radio" name="radio-set" id="st-control-5">
+        <a href="#st-panel-5">passion</a>
+        <!-- nav end and content start -->
+        <div class="st-scroll">
+          <section class="st-panel" id="st-panel-1">
+            <div class="st-desc" data-icon="1"></div>
+            <h2>主语+不及物动词</h2>
+            <p>不及物动词本身就可以表达完整的意念， 不需要宾语及补语， 
+              但有时可有副词， 介词短语等状语修饰语。
+              e.g. The rain stopped . 
+              The old man walks in the park . </p>
+          </section>
+          <section class="st-panel st-color" id="st-panel-2">
+            <div class="st-desc" data-icon="2"></div>
+            <h2>主语+系动词+表语</h2>
+            <p>系动词本身不能表达完整的意念，
+              需要形容词，名词，介词短语等来补充说明主语，也叫主语补语。
+              e.g. My sister is a nurse .
+              I feel quite hungry . 
+              The ball is under the desk .</p>
+          </section>
+          <section class="st-panel" id="st-panel-3">
+            <div class="st-desc" data-icon="B"></div>
+            <h2>主语+及物动词+宾语</h2>
+            <p>及物动词本身需要一个动作的接受者（宾语），才可以表达一个完整的意念。
+              e.g. We are learning English .
+              Do you know him ?
+              Your radio needs repairing .
+              She hopes to see her uncle. </p>
+          </section>
+          <section class="st-panel st-color" id="st-panel-4">
+            <div class="st-desc" data-icon="p"></div>
+            <h2>主语+及物动词+间接宾语+直接宾语 </h2>
+            <p>
+              有些及物动词需要两个宾语才能表达一个完整意念。<br>
+              e.g. Her mother bought her a skirt.<br>
+              Give me the book, please.<br>
+              特别提醒<br>
+              A. 在此句型中， 通常是间接宾语（人）在前，直接宾语（物）在后，有时直接宾语和间接宾语可以对调，这时间接宾语前应加上适当的介词。<br>
+              e.g. Her mother bought a skirt for her . <br>
+              Give the book to me , please . <br>
+              直接宾语与间接宾语对调时，间接宾语前加介词to的动词有：<br>
+              give(给), tell(告诉) , lend(借给) , sell(卖), teach(教) , send(寄给), write(写给), show(出示) , return(还给), bring(带给), pass(递给), leave(留给), offer(提供), hand(交给) <br>
+              间接宾语前加介词for的动词有：<br>
+              buy(买), choose(选择), get (弄到), make(做), order(订购), sing (唱歌), do (做), play(演奏) <br>
+              B. 如果直接宾语为人称代词那么必须把直接宾放在间接宾语前，且间接宾语前要加上适当的介词。<br>
+              e.g. I handed it to our teacher . <br>
+              不能说：I handed our teacher it .<br>
+              C. 此句型变为被动语态时，可分为两种情况。<br>
+              e.g. Her mother bought her a skirt .<br>
+              a. She was bought a skirt by her mother .<br>
+              b. A skirt was bought for her by her mother. <br>
+            </p>
+          </section>
+          <section class="st-panel" id="st-panel-5">
+            <div class="st-desc" data-icon="Z"></div>
+            <h2>主语+及物动词+宾语+宾语补足语</h2>
+            <p>及物动词本身需要一个宾语外， 还需要一个名词，形容词，副词, 动词不定式，分词来补充说明宾语，才能表达一个完整的意念。
+              e.g. We elected Li Yang our monitor.
+              The news made us sad. 
+              She saw the thief steal into the shop .
+              The teacher asked me to answer the question .
+              I found the man stealing the money .
+              I found my money stolen .</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

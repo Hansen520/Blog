@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+	<head>
+	<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--当前页面的三要素-->
+	<title>css3-平面立体变换</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="descrip<link rel="stylesheet" type="text/css" href="css/respont.css">tion" content="这是响应式布局">
+	<meta name="viewport" content="width=device-width,minimun-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<!--css,js-->
+	<link rel="stylesheet" type="text/css" href="css/respont.css">
+	<style type="text/css">
+	*{margin:0px;padding:0px;}
+	html,body{ width:100%; height:5000px; font-family:"微软雅黑";background-color: #fbfbfb;}
+	li{list-style: none;}
+	code{font-size:15px;font-family:"微软雅黑";border:1px solid #666;}
+	.btn{font-size:15px;font-weight:300;font-family:"微软雅黑";}
+	.linght{color:red;font-weight:600;}
+	b{margin-left:10px;}
+	a{text-decoration:none;color:red;box-shadow:0 0 3px #000;}
+	a:hover{color:#000;text-decoration:underline;}
+	.common{
+		margin-left:10px;
+		box-shadow: 2px 2px 6px #eaeaea;
+		border:1px solid #eaeaea;
+	}
+	form{
+		margin-left:15px;
+	}
+	/*主页部分*/
+	.paper{
+		width:850px;
+		white-space: pre-wrap;	
+	}
+	
+	</style>
+
+	</head>
+	<body>
+	<h3>响应式布局的一些概念性问题</h3>
+	<h4>响应式网站的优缺点</h4>
+	<div class="common paper">
+	响应式网站是一个设计理念，它是多项技术的综合体。
+	优点:
+	1.减少工作量。
+	2.节省时间。
+	3.每个设备都能得到正确的设计。
+	4.搜索优化-爬虫.
+	5.面对不同分辨率设备，灵活性强，能够快捷地解决设备显示适应问题。
+	缺点:
+	1.会加载更多样式和脚本资源。
+	2.设计比较难精确定位和控制。
+	3.老版本浏览器兼容不好
+	4.兼容各种设备时所需工作量大、效率低下、代码累赘，会隐藏无用的元素，加载时间延长，其实这是一种折中性质的设计解决方案， 由于多方面元素影响而达不到最佳效果，在一定程度上改变了网站原有的布局结构，会出现用户混淆的情况。
+	</div><br><br>
+
+	<h4>媒体查询</h4>
+	<div class="common paper">
+	//大于1200px时浏览器的变化
+	@media screen and ( min-width: 1200px ) {
+		这里写些要变化的元素。
+        }
+	//大于300px，小于800时浏览器的变化
+	@media screen and(min-width:300px) and (max-width:800px){
+		这里写些要变化的元素。
+	}
+	//小于等于600的浏览器的变化
+    @media screen and (max-width: 600px){
+	这里写些要变化的元素。
+    }
+    断点的选择:
+    	0-480px小屏幕
+    	481-800px中屏幕
+    	801-1400大屏幕
+    	1400+巨屏幕
+		&lt;link rel="" type="" href="A.css"  media="screen and (min-width: 800px)"&gt;
+		&lt;link rel="" type="" href="A.css"  media="screen and (min-width: 800px)"&gt;
+		&lt;link rel="" type="" href="B.css"  media="screen and (min-width: 600px) and (max-width: 800px)"&gt;
+		&lt;link rel="" type="" href="C.css"   media="screen and (max-width: 600px)"&gt;
+		&lt;link rel=”stylesheet” media=”all and (orientation:portrait)” href=”portrait.css”&gt;
+		&lt;link rel=”stylesheet” media=”all and (orientation:landscape)”href=”landscape.css”&gt;
+		&lt;link rel="stylesheet" type="text/css" media="print" href="print.css"  /&gt;
+		&lt;meta name="viewport" content="" /&gt;
+		视口的作用：在移动浏览器中，当页面宽度超出设备，浏览器内部虚拟的一个页面容器，将页面容器缩放到设备这么大，然后展示
+		width			[pixel_value | device-width]
+		height 			[pixel_value | device-height]
+		initial-scale 		初始比例
+		minimum-scale 		允许缩放的最小比例
+		maximum-scale 		允许缩放的最大比例
+		user-scalable 		是否允许缩放 （yes || no 或 1 | 0）
+		target-densitydpi 	[dpi_value | device-dpi | high-dpi | medium-dpi | low-dpi]
+		&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+		此属性为文档兼容模式声明，表示如果在IE浏览器下则使用最新的标准渲染当前文档
+
+		emmet快捷键：meta:compat
+	<b class="linght">min-width为最大的一个宽度，max-width为最大的一个宽度。</b>
+	</div><br><br>
+
+	<h4>viewport视口</h4>
+	<div class="common paper">
+	设置设备屏幕的宽度device-width
+	&lt;meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"&gt;
+	<b class="linght">备注:以上是理想视口，是pc在mobile上的理想大小，其中minimum-scale=1.0是最小的缩小比例，maximum-scale=1.0是最大的缩放比例,user-scalable=no是禁用了用户缩放</b>
+	</div><br><br>
+
+	<h4>怎么分析设计图</h4>
+	<div class="common paper">
+	1.和设计师交流，网站如何交互。
+	2.什么地方必须100%还原，哪些不用。
+	3.是否有相应的设计规范。
+	前端设计师，具有前端开发的功底。
+	有一定的设计能力。
+	前端设计与前端开发沟通。
+	</div><br><br>
+
+	<h4>如何组织项目目录结构</h4>
+	<div class="common paper">
+	1.约定代码配置。
+	2.约定代码结构或命名规范来减少配置数量。
+	3.jquery.js → jquery.min.js 这样子就有更好的打包约定。
+	</div><br><br>
+
+	<h4>一些规则</h4>
+	<div class="common paper">
+	1.一般使用class定义样式,id一般用于js快速的区别和获取元素，class一般用下划线分隔，id一般使用中横线分隔。
+	2.像logo图片可以直接切入到html中，可有可无的装饰图片可以用标签样式引入。
+	</div><br><br>	
+
+	<h4>几种度量单位</h4>
+	<div class="common paper">
+	px 一个px相当于1个像素。
+	em 相当于长度单位。
+	rem 相对长度单位，即设置一个值就全部改变，容易对历史的内容改变，未来不会使用精确的值。
+	对于一些浏览器，1rem=10px;另外一些1rem=16rem。
+	</div><br><br>	
+
+	<h4>一个好用的图片组件</h4>
+	<div class="common paper">
+	一个良好的广告滚动组件支持:
+	1.支持不同的图片数量。
+	2.支持响应式布局。
+	3.具有良好的兼容性。
+	怎样挑选第三方组件
+	1.使用人数。
+	2.是否开源。
+	3.文档是否齐全。
+	4.活跃性(作者是否维护)。
+	5.小巧好用。
+	</div><br><br>	
+
+	<h4>如何实现响应式图片</h4>
+	<div class="common paper">
+	&lt;div class="item"&gt;
+	    &lt;picture&gt;
+	        &lt;source srcset="img/ad001-l.png" media="(min-width:50em)"&gt;
+	        &lt;source srcset="img/ad001-m.png" media="(min-width:30em)"&gt;
+	        &lt;img src="img/ad001.png" alt="2015年度报告"&gt;
+	    &lt;/picture&gt;
+	&lt;/div&gt;
+	官方js,css
+	<b class="linght">&lt;link rel="stylesheet" href="js/vendor/owl.carousel.2.1.0/assets/owl.carousel.min.css"&gt;</b>
+	<b class="linght">&lt;link rel="stylesheet" href="js/vendor/owl.carousel.2.1.0/assets/owl.theme.default.min.css"&gt;</b>
+	<b class="linght">&lt;script src="js/vendor/owl.carousel.2.1.0/owl.carousel.min.js"&gt;&lt;/script&gt;</b>
+	官方api <a href="http://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html" target="blank">请点击这里，有惊喜哦！</a>
+	</div>
+
+	<h4>一个小案例</h4>
+	<div class="box">
+	</div>
+
+	</body>
+
+	</html>
+
+

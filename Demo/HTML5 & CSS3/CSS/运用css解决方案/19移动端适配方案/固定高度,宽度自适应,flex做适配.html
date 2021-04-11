@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>固定高度,宽度自适应,flex做适配</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            font-family:"微软雅黑";
+            font-size:16px;
+        }
+        .parent{
+            display:flex;
+        }
+        .left,.right{
+            width:40px;
+            height:40px;
+            text-align:center;
+            line-height:40px;
+        }
+        .left{
+            background:#abcdef;
+        }
+        .right{
+            background:#DD4F43;
+        }
+        .center{
+            flex:1;
+        }
+        .center input{
+            width:100%;
+            height:40px;
+            outline:none;
+        }
+        .banner-adv{
+            width:100%;
+            height:200px;
+            background:#0D6CB0;
+        }
+        .list{
+            width:100%;
+            height:90px;
+            display:flex;
+        }
+        .list div{
+            flex:1;
+            text-align:center;
+            line-height:90px;
+        }
+        .list div:nth-of-type(1){
+            background:#DE5246;
+        }
+        .list div:nth-of-type(2){
+            background:#19A25F;
+        }
+        .list div:nth-of-type(3){
+            background:#FF8080;
+        }
+        .list div:nth-of-type(4){
+            background:#F4CD0B;
+        }
+        .list div:nth-of-type(5){
+            background:#9EDA45;
+        }
+        .list-Two{
+            margin:15px 0 0 0;
+        }
+        .list-Two div:nth-of-type(1){
+            background:#B847FF;
+        }
+        .list-Two div:nth-of-type(2){
+            background:#79B900;
+        }
+        .list-Two div:nth-of-type(3){
+            background:#FF2424;
+        }
+        .list-Two div:nth-of-type(4){
+            background:#D2E4F0;
+        }
+        .list-Two div:nth-of-type(5){
+            background:#4CDF2B;
+        }
+        .con{
+            height:200px;
+            display:flex;
+        }
+        .con div:nth-of-type(1){
+            flex:8;
+            background:#80B3FF;
+        }
+        .con div:nth-of-type(2){
+            flex:2;
+            background:#CD8B37;
+        }
+    </style>
+</head>
+<body>
+<header class="parent">
+    <div class="left">左边</div>
+    <div class="center">
+        <form>
+            <input type="search" name="">
+        </form>
+    </div>
+    <div class="right">右边</div>
+</header>
+<div class="banner-adv"></div>
+<section class="list">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</section>
+<section class="list list-Two">
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>9</div>
+</section>
+<div class="con">
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

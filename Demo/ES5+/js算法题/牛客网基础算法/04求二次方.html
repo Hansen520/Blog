@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    function square(arr) {
+    	var newArr = [];
+        arr.forEach(function(item,index){
+            newItem = item*item;
+            newArr.push(newItem);
+        });
+        return newArr;
+    }
+    square([1, 2, 3, 4]);
+    </script>
+</body>
+</html>

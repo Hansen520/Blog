@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+	<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--当前页面的三要素-->
+	<title>css3时钟</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="用css3实现一个时钟">
+	<!--css,js-->
+	<style type="text/css">
+	*{margin:0px;padding:0px;}
+	body{
+		background:#212121;
+	}
+	li{
+		list-style: none;
+	}
+	.box{
+		width:320px;
+		height:320px;
+		margin:100px auto;
+		position:relative;
+	}
+	.box ul{
+		width:300px;
+		height:300px;
+		background: radial-gradient(#fff 20%,#eae8e9 40%,#d8d6d7 50%,#e9e7e8 60%,#e0dedf 80%,#d0cecf 100%);
+		border-radius:160px;
+		border:10px solid #c9c7c8;
+		box-shadow:0 0 10px #000 inset;
+
+
+	}
+	.box ul li{
+		width:2px;
+		height:5px;
+		background:#8f8b8d;
+		position:absolute;
+		top:11px;
+		left:49%;
+		transform-origin: center 148px;
+
+	}
+
+	.box .don{
+		width:20px;
+		height:20px;
+		border:10px solid #666;
+		border-radius:20px;
+		position:absolute;
+		top:140px;
+		left:139px;
+	}
+
+	.box div{
+		position:absolute;
+		bottom:9px;
+		left:8px;
+		transform-origin:bottom; 
+		border-radius:5px 5px 0 0;
+	}
+	.box .hour{
+		width:5px;
+		height:50px;
+		background:#665;
+
+	}
+	.box .min{
+		width:5px;
+		height:80px;
+		background:#667;
+	}
+	.box .sec{
+		width:5px;
+		height:130px;
+		background:#668;
+		bottom:10px;
+	}
+
+
+	.box .number{
+		width:100px;
+		height:20px;
+		position:absolute;
+		top:214px;
+		left:107px;
+	}
+
+	.box span{
+		color:#212121;
+		display: block;
+		font-size:25px;
+		font-weight: bold;
+		font-family: "微软雅黑";
+		position:absolute;
+	}
+	.box span.one{
+    top: 34px;
+    left: 213px;
+    transform: rotateZ(36deg);
+	}
+	.box span.two{
+	top: 82px;
+    left: 256px;
+    transform: rotateZ(59deg);
+	}
+	.box span.three{
+    top: 144px;
+    left: 275px;
+    transform: rotateZ(89deg);
+	}
+	.box span.four{
+    top: 204px;
+    left: 260px;
+    transform: rotateZ(111deg);
+	}
+	.box span.five{
+	top: 250px;
+    left: 212px;
+    transform: rotateZ(149deg);
+	}
+	.box span.six{
+    top: 265px;
+    left: 152px;
+    transform: rotateZ(178deg);
+	}
+	.box span.seven{
+	top: 250px;
+    left: 89px;
+    transform: rotateZ(208deg);
+	}
+	.box span.eight{
+    top: 206px;
+    left: 45px;
+    transform: rotateZ(-111deg);
+	}
+	.box span.nine{
+    top: 143px;
+    left: 29px;
+    transform: rotateZ(-85deg);
+	}
+	.box span.ten{
+    top: 79px;
+    left: 35px;
+    transform: rotateZ(-66deg);
+	}
+	.box span.eleven{
+    top: 32px;
+    left: 80px;
+    transform: rotateZ(-28deg);
+	}
+	.box span.twelve{
+    top: 18px;
+    left: 144px;
+    transform: rotateZ(0deg);
+	}	
+
+	</style>
+
+    </head>
+    <body>
+	<div class="box">
+		<ul id="ul"></ul>
+		<div class="number">
+			<div class="num_hour"></div>
+			<div class="num_min"></div>
+			<div class="num_sec"></div>
+		</div>
+		<div class="don">
+			<div class="hour"></div>
+			<div class="min"></div>
+			<div class="sec"></div>
+		</div>
+		<span class="one">1</span>
+		<span class="two">2</span>
+		<span class="three">3</span>
+		<span class="four">4</span>
+		<span class="five">5</span>
+		<span class="six">6</span>
+		<span class="seven">7</span>
+		<span class="eight">8</span>
+		<span class="nine">9</span>
+		<span class="ten">10</span>
+		<span class="eleven">11</span>
+		<span class="twelve">12</span>
+	</div>	
+
+	<script>
+	var _hour = document.querySelector(".hour");
+	var _min = document.querySelector(".min");
+	var _sec = document.querySelector(".sec");
+
+	function creatmark(){
+		for(var i = 0;i < 60;i++){
+			var oLi = document.createElement('li');
+			 oLi.style.transform = 'rotate('+(i*6)+'deg)';
+			 ul.appendChild(oLi);
+		}
+	var aLi = ul.getElementsByTagName('li');
+	for( var i=0;i<12;i++ ){
+		aLi[i*5].style.background = '#666';
+		aLi[i*5].style.height = '12px';
+		aLi[i*5].style.width = '5px';
+	}
+	}
+
+    function getTime() {
+            var oDate = new Date();
+            var s = oDate.getSeconds();
+            var m = oDate.getMinutes() + (s/60);
+            var h = oDate.getHours() + (m/60);
+
+            _hour.style.transform = 'rotate('+h*30+'deg)';
+            _min.style.transform = 'rotate('+m*6+'deg)';
+            _sec.style.transform= 'rotate('+s*6+'deg)';
+        }
+
+	creatmark();
+	getTime();
+	setInterval(getTime,1000);
+
+
+	</script>
+    </body>
+
+    </html>

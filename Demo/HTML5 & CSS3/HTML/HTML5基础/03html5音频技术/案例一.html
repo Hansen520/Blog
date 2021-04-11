@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>js控制-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+
+		</style>
+
+	</head>
+	<body>
+	<h2>js控制视频播放</h2>
+	<input type="button" value="点我啊video！！！" onClick="myPlay()"/>
+    <input type="button" value="暂停！！！" onClick="myPause()"/>
+    <input type="button" value="获取播放时间！！！" onClick="getCurTime()"/>
+    <input type="button" value="播放/暂停"  onClick="playPause()" />
+    <br />
+	<video id="vid1" controls Poster="img/vp_poster.jpg">
+    	<source src="sound/崔子格 - 卜卦.mkv" type="video/mp4" />
+        <source src="video/崔子格 - 卜卦.ogg" type="video/ogg" />
+    </video><br/><br/>
+
+
+
+
+
+	<script>
+		var vid1=document.getElementById("vid1");
+		function playPause(){
+			if(vid1.paused){
+				vid1.play();
+			}else{
+				vid1.pause();
+			}
+		}
+		function myPlay(){
+			vid1.play();
+		}
+		function myPause(){
+			vid1.pause();
+		}
+		function getCurTime(){
+			vid1.currentTime=5;
+		}
+
+
+	</script>
+	</body>
+
+	</html>

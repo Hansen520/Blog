@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>css3背景图片-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="
+		今天是2017年7月25日，我呆在寝室里感到好孤独，好寂寞，好像有个人来陪陪我。
+		嗨，好烦啊。
+		">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:0px;padding:0px;}
+		html,body{ width:100%; height:5000px; font-family:"微软雅黑";background-color: #fbfbfb;}
+		li{list-style: none;}
+		code{font-size:15px;font-family:"微软雅黑";border:1px solid #666;}
+		.btn{font-size:15px;font-weight:300;font-family:"微软雅黑";}
+		.linght{color:red;font-weight:600;}
+		b{margin-left:10px;}
+
+		.common{
+			margin-left:10px;
+			box-shadow: 2px 2px 6px #eaeaea;
+			border:1px solid #eaeaea;
+		}
+		/*主页部分*/
+		.pic_bg0{
+			width:400px;
+			height:300px;
+			background:url("images/picture4.png") no-repeat;
+			background-attachment: fixed;
+			background-position:130px 10px;
+		}
+		.pic_bg1{
+			width:400px;
+			height:300px;
+			background:url("images/bg.jpg") no-repeat center;
+			background-size:contain;
+		}
+
+		.pic_bg2{
+			width:300px;
+			height:300px;
+			background-image:url(images/picture4.png),url(images/picture2.png),url(images/picture3.png);
+			background-repeat: no-repeat;		
+		}
+		.pic_bg3{
+			width: 1350px;
+			height:300px;
+			background:url("images/top2.png") no-repeat 0px 130px,url("images/top1.jpg") -682px 0;
+			background-repeat: no-repeat;				
+		}
+
+		/*图片起始区域和裁剪*/
+		.pic_bg4{
+			width:200px;
+			height:200px;
+			border:15px dashed #666;
+			padding:10px;
+			display:inline-block;
+			background:url("images/砖头.jpg") no-repeat;
+			background-origin:border-box;
+
+		}
+		.tip1{
+			width:267px;
+			height:211px;
+			background:url("images/tip1.jpg") no-repeat;
+			display:inline-block;
+			margin-left: 10px;
+		}
+
+
+		.pic_bg5{
+			width:200px;
+			height:200px;
+			border:15px dashed #666;
+			padding:10px;
+			display:inline-block;
+			background:url("images/砖头.jpg") no-repeat;
+			background-origin:padding-box;
+		}
+		.tip2{
+			width:267px;
+			height:211px;
+			background:url("images/tip2.jpg") no-repeat;
+			display:inline-block;
+			margin-left: 10px;
+		}
+
+		.pic_bg6{
+			width:200px;
+			height:200px;
+			border:15px dashed #666;
+			padding:10px;
+			display:inline-block;
+			background:url("images/砖头.jpg") no-repeat;
+			background-origin:content-box;
+		}
+		.tip3{
+			width:267px;
+			height:211px;
+			background:url("images/tip3.jpg") no-repeat;
+			display:inline-block;
+			margin-left: 10px;
+		}
+
+		.pic_bg7{
+			width:200px;
+			height:200px;
+			border:15px dashed #666;
+			padding:10px;
+			display:inline-block;
+			background:url("images/砖头.jpg") no-repeat;
+			background-origin:padding-box;
+		}
+		.tip4{
+			width:267px;
+			height:211px;
+			background:url("images/tip4.jpg") no-repeat;
+			display:inline-block;
+			margin-left: 10px;
+		}
+
+		.pic_bg8{
+			width:200px;
+			height:200px;
+			border:15px dashed #666;
+			padding:10px;
+			display:inline-block;
+			background:url("images/砖头.jpg") no-repeat;
+			background-origin:border-box;
+			background-clip:content-box;
+		}
+		.tip5{
+			width:267px;
+			height:211px;
+			background:url("images/tip5.jpg") no-repeat;
+			display:inline-block;
+			margin-left: 10px;
+		}
+		/*阴影*/
+		.opacity1{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			background:url("images/picture4.png") no-repeat;
+			opacity: 0.5;
+		}
+		.rgba1{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			background:rgba(255,255,255,0.5);
+			background:url("images/picture4.png") no-repeat;		
+			}
+
+		#hsl{
+			width:267px;
+			height:211px;
+
+		}
+
+		.linear1{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			background:
+		     -webkit-linear-gradient(left,red 20%, green 40%,black 60%, yellow 80%,pink 100%);
+			background:
+		     -o-linear-gradient(left,red 20%, green 40%,black 60%, yellow 80%,pink 100%);
+			background:
+		     linear-gradient(left,red 20%, green 40%,,black 60%, yellow 80%,pink 100%);		
+		     display: inline-block;
+		}
+		.linear2{
+			width:267px;
+			height:211px;	
+			border:1px solid #eaeaea;	
+		    display:inline-block;
+		     background:linear-gradient(30deg,red 20%, green 40%,,black 60%, yellow 80%,pink 100%);
+		}
+
+		.linear3{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			margin-left:20px;
+			background: linear-gradient(
+                90deg,
+                greenyellow 3px,
+                rgba(0,0,0,0) 3px
+                ),
+                linear-gradient(
+                    0deg,
+                    #3EFF6D 3px,
+                    rgba(0,0,0,0) 3px
+                );
+            background-size:2em 2em;
+		}
+
+		.gradient1{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			border-radius:150px;
+			margin-left:20px;
+			background: radial-gradient(purple 20%,gold 40%,green,pink 60%,black 80%,red 100%);
+			display:inline-block;
+		}
+
+		.gradient2{
+			width:267px;
+			height:211px;
+			border:1px solid #eaeaea;
+			margin-left:20px;
+			border-radius:150px;
+			display:inline-block;
+		}
+
+		</style>
+
+	</head>
+	<body>
+	<h3>1.CSS背景属性</h3>
+	<pre class="btn">
+	background-image:url("");	//背景图片
+	background-color:英文单词/rgb()/十六进制	//背景颜色
+	background-repeat:repeat/no-repeat/repear-x/repeat-y	//背景是否重复
+	background-position:center/x y/	//背景位置
+	background-attachment:fixed	//背景是否定位</pre>
+	<h4>展示案例:</h4>
+	<div class="common pic_bg0"></div>
+	<b class="linght">备注:这么多属性可以写成一条标签  background:url("") no-repeat x y fixed,案例见项目案例</b><br/><br/><hr/><hr/>
+
+
+	<h3>2.background-size</h3>
+	<pre class="btn">
+	background-size:x y;	//水平 垂直；值可以为像素、百分比、auto等
+	background-size:cover;	//保持宽高比不变，保证占满盒子，但是不一定能看到全部图
+	background-size:contain;	//保持宽高比不变，保证看清全图，但是不一定占满盒子</pre>
+	<h4>展示案例:</h4>
+	<div class="common pic_bg1">		
+	</div>
+	<b class="linght"></b><br/><br/><hr/><hr/>
+
+
+	<h3>3.多背景</h3>
+	<pre class="btn">
+	background-image:url(1.jpg),url(2.jpg),url(3.jpg);</pre>
+	<h4>展示1</h4>
+	<div class="common pic_bg2"></div>
+	<b class="linght">备注:上面有三张png格式的图片结合而成。</b>
+	<h4>展示2</h4>
+	<div class="common pic_bg3"></div>
+	<b class="linght">备注:png格式图片要在jpg上面,所以在写法上png写在jpg前面。</b>
+
+
+	<br/><br/><hr/><hr/>
+
+
+	
+	<h3>4.背景位置属性background-origin和background-clip</h3>
+	<h4>(1)background-origin:border-box;</h4>
+	<div class="common pic_bg4"></div>
+	<div class="tip1"></div><brb/>
+
+	<h4>(2)background-origin:padding-box;</h4>
+	<div class="common pic_bg5"></div>
+	<div class="tip2"></div><br/>
+	<b class="linght">备注:以内边距开始</b>
+
+	<h4>(3)background-origin:content-box;</h4>
+	<div class="common pic_bg6"></div>
+	<div class="tip3"></div><br/>
+	<b class="linght">备注:以内容开始</b>
+
+	<h4>(4)background-clip:border-box;</h4>
+	<b class="linght">备注:默认值，从border区域开始显示背景。</b>
+
+	<h4>(5)background-clip:padding-box;</h4>
+	<div class="common pic_bg7"></div>
+	<div class="tip4"></div><br/>
+	<b class="linght">备注:这个地方以边框开始用padding去裁剪，就是说先显示以边框开始的内容，然后padding以外的内容全部裁剪。</b>
+
+	<h4>(6)background-clip:content-box;</h4>
+	<div class="common pic_bg8"></div>
+	<div class="tip5"></div><br/>
+	<b class="linght">备注:这个地方以边框开始用content去裁剪，就是说先显示以边框开始的内容，然后content以外的内容全部裁剪。</b>
+	<br/><br/><hr/><hr/>
+
+	<h3>3.新增颜色</h3>
+	<h4>(1)opacity</h4>
+	<div class="common opacity1">opacity:0.5</div>
+	<h4>(2)background:rgba(0,0,0,0.5)</h4>
+	<div class="common rgba1">background:rgba(0,0,0,0.5)</div>
+	<b class="linght">备注:opacity全透明，rgba只是颜色透明</b>
+	<h4>(3)hsl饱和度background = hsl(h,s%,l%)</h4>
+    <div class="common" id="hsl">   <!--数值选择器-->
+	    H: <input id="iH" type="range" min="0" max="360" onchange="changeColor()"> <br><br>
+	    S: <input id="iS" type="range" min="0" max="100" onchange="changeColor()"> <br><br>
+	    L: <input id="iL" type="range" min="0" max="100" onchange="changeColor()"><br><br>
+    </div>
+	<b class="linght">备注:</b><br>
+	<b class="linght">H：Hue(色调)。0(或360)表示红色，120表示绿色，240表示蓝色，也可取其他数值来指定颜色。0 – 360</b><br>
+	<b class="linght">S：Saturation(饱和度)。取值为：0.0% - 100.0%</b><br>
+	<b class="linght">L：Lightness(亮度)。取值为：0.0% - 100.0%</b><br>
+	<br/><br/><hr/><hr/>
+
+	<h3>4.渐变色</h3>
+	<pre class="btn">
+线性渐变:linear-gradient(角度,颜色 百分比/像素值, 颜色 百分比/像素值,...)
+径向渐变:radial-gradient(颜色 百分比/像素值, 颜色 百分比/像素值,...)</pre>
+	<h4>1.线性渐变linear-gradient()</h4>
+	<div class="common linear1"></div>
+	<div class="common linear2" id="linear2"></div><br/>
+	<b class="linght">从某个方位 渐变到某个方位top left right bottom，也可以写角度</b>
+	<h4>2.线性渐变linear-gradient()特殊写法</h4>
+	<div class="common linear3"></div>
+	<b class="linght">备注:相当于线条重复</b>
+
+
+	<h4>3.径向渐变radial-gradient()</h4>
+	<div class="common gradient1"></div>
+	<div class="common gradient2" id="gradient2"></div><br/>
+	<b class="linght">备注:IE低版本兼容filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ff0000',GradientType='1');以上内容都适用</b>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>     
+        function changeColor() {
+            //console.log(document.getElementById('iH').value);
+            var hslcolor=document.getElementById('hsl');
+            var h = document.getElementById('iH').value;
+            var s = document.getElementById('iS').value;
+            var l = document.getElementById('iL').value;
+          	hslcolor.style.background = 'hsl('+h+','+s+'%,'+l+'%)';
+        }
+
+        var i=0;
+        linear = document.getElementById("linear2");
+        setInterval(function () {
+            i++;   
+            //document.title = i;     
+            linear.style.background = 'linear-gradient(' 
+            	+ i + 'deg,red 20%, green 40%,black 60%, yellow 80%,pink 100%)';  
+        },13);
+
+        var j=0;
+        gradient2 = document.getElementById("gradient2");  
+        setInterval(function () {
+            j++;
+            if(j>10){  
+            //document.title = i; 
+            j=1;
+        	}
+            gradient2.style.background = 'radial-gradient(#666666 '
+            	+j+'%,gold '
+            	+(j+20)+'%,green,pink '
+            	+(j+40)+'%,#589725 '+(j+60)+'%)';  
+        },100);
+
+        
+    </script>
+
+	</body>
+
+	</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+ <!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<!--当前页面的三要素-->
+	<title>table-css+文字的效果-汉生</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="课程表">
+	<style type="text/css">
+	*{margin:5px;padding:0px;}
+
+
+	.main{width:500px; border:1px solid #66CCFF; border-collapse:collapse;/*折合边框*/}
+	.main th.ll{width:500px;height:40px;font-size:18px; 
+	line-height:40px;text-align:center;color:#FF0000;}
+	.main th.ll{background:#CCCCFF;}
+	table.main tr td.q{width:30px;height:30px;border:1px solid #66CCFF; font-size:14px;text-align:center;}
+	table.main tr.ii:hover{background:#CCCCFF;}
+	table.main tr.ii{background:#CCFFFF;}
+	table.main td.q:hover{background:#9966FF;color:#FFFFFF;font-size:16px;font-weight:bold;}
+	</style>
+	</head>
+
+	<body>
+    <pre>
+	border-collapse:collapse;/*折合边框*/
+	colspan="5"/*横向合并5格*/
+	rowspan="3"/*纵向合并3*/
+   </pre>
+
+	<h2>普通表格</h2>
+	<table border="1px" width="500px" height="500px" bordercolor="#6600FF" >
+	<th colspan="5">字母表</th>
+	<tr>
+	      <td rowspan="3">dd</td>
+		  <td>dd</td>
+		  <td rowspan="2">dd</td>
+		  <td>dd</td>
+		  <td>dd</td>
+	</tr>
+	<tr>
+	     
+		  <td>dd</td>
+
+		  <td>dd</td>
+		  <td>dd</td>
+	</tr>
+	<tr>
+	    
+		  <td>dd</td>
+		  <td>dd</td>
+		  <td>dd</td>
+		  <td>dd</td>
+	</tr>
+	<tr>
+	      <td>dd</td>
+		  <td>dd</td>
+		  <td colspan="3">dd</td>
+		  
+	</tr>
+	<tr>
+	      <td>dd</td>
+		  <td>dd</td>
+		  <td colspan="2">dd</td>
+		  
+		  <td>dd</td>
+	</tr>
+	</table><br/><br/>
+
+	<h2>css样式表格</h2>
+
+
+	<table class="main">
+	<th class="ll" colspan="7">学校课程表</th>
+	<tr class="ii">
+	<td class="q">日期<br/>&nbsp;&nbsp;课程</td>
+	<td class="q">星期一</td>
+	<td class="q">星期二</td>
+	<td class="q">星期三</td>
+	<td class="q">星期四</td>
+	<td class="q">星期五</td>
+	<td class="q">星期六</td>
+	</tr>
+
+	<tr>
+	<td class="q">早自习</td>
+	<td class="q">语文</td>
+	<td class="q">数学</td>
+	<td class="q">英语</td>
+	<td class="q">化学</td>
+	<td class="q">生物</td>
+	<td class="q">物理</td>
+	</tr>
+
+	<tr>
+	<td class="q" rowspan="4">上午</td>
+	<td class="q">地理</td>
+	<td class="q">历史</td>
+	<td class="q">体育</td>
+	<td class="q">音乐</td>
+	<td class="q">网页制作</td>
+	<td class="q">java制作</td>
+	</tr>
+
+	<tr>
+	<td class="q">自由活动</td>
+	<td class="q">英语</td>
+	<td class="q">计算机</td>
+	<td class="q">物理</td>
+	<td class="q">物理</td>
+	<td class="q">通用技术</td>
+	</tr>
+
+	<tr>
+	<td class="q">计算机</td>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	<td class="q">体育</td>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	</tr>
+
+	<tr>
+	<td class="q">物理</td>
+	<td class="q">计算机</td>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	<td class="q">物理</td>
+	<td class="q">语文</td>
+	</tr>
+
+	<tr>
+	<td class="q" rowspan="4">下午</td>
+	<td class="q">物理</td>
+	<td class="q">语文</td>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	<td class="q">语文</td>
+	<td class="q">语文</td>
+	</tr>
+
+	<tr>
+	<td class="q">物理</td>
+	<td class="q">语文</td>
+	<td class="q">语文</td>
+	<td class="q">语文</td>
+	<td class="q">物理</td>
+	<td class="q">语文</td>
+	</tr>
+
+	<tr>
+	<td class="q">劳技</td>
+	<td class="q">体育</td>
+	<td class="q">劳技</td>
+	<td class="q">体育</td>
+	<td class="q">劳技</td>
+	<td class="q">语文</td>
+	</tr>
+
+	<tr>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	<td class="q">计算机</td>
+	<td class="q">语文</td>
+	<td class="q">语文</td>
+	<td class="q">计算机</td>
+	</tr>
+	</table>
+	</body>
+</html>

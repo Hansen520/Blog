@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>缓存函数</title>
+</head>
+<body>
+  <!-- 将函数结果缓存起来，当下次以同样的参数调用函数时，直接返回已缓存的结果，无需再执行函数 -->
+  <script>
+    function memorize(fn){
+      // 储存缓存数据的对象
+      const cache = Object.create(null);
+      return function (...args){
+        const _args = JSON.stringify(args);
+        return cache[_args] || (cache[_args] = fn.apply(fn, args))
+      }
+    }
+
+    // 测试用例
+    let complexCalc = (a, b) => {
+      // 执行一个比较复杂的运算
+      let x = a**2 + b ** 2 * a ** 2;
+      console.log(x)
+    }
+    let memoCalc = memorize(complexCalc);
+    memoCalc(1000, 2000);
+    memoCalc(1000, 2000);
+    memoCalc(1000, 2000);
+    
+  </script>
+</body>
+</html>

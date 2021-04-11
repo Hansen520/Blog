@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>html标签-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="2014年12月31日">
+		<!--css,js-->
+
+		<style type="text/css">
+			*{margin:0px;padding:0px;}
+			html,body{ width:100%; height:3000px; font-family:"微软雅黑";background-color: #fbfbfb;}
+			li{list-style: none;}
+			code{font-size:15px;font-family:"微软雅黑";border:1px solid #666;}
+			.btn{font-size:15px;font-weight:300;font-family:"微软雅黑";}
+			.linght{color:red;font-weight:600;}
+			/*导航部分开始*/
+			.nav{width:100%;}
+			.nav .content{width:200px;position:fixed;z-index:2;top:120px;right:0px;background:#000;}
+			.nav .content ul{width:200px;background:#282828;}
+			.nav .content ul li{width:200px;border-bottom:1px solid #414141;border-top:1px solid #000;}
+			.nav .content ul li:hover{background:#323744;}
+			.nav .content ul li a{display:block;text-decoration:none;color:#fff;padding:0 25px;text-align:left;line-height:50px;font-size:14px;font-family:"微软雅黑";}
+			/*导航部分结束*/
+
+		
+		</style>
+
+	</head>
+	<body>
+	<!--这里是右边导航部分 start-->
+	<div class="nav" id="nav">
+	<div class="content">
+	<ul>
+		<li><a href="#dtd">1.文档声明变化</a></li>
+		<li><a href="#biaoqian">2.html5新增标签</a></li>
+		<li><a href="#duomeiti">3.新增的HTML5特殊标签</a></li>
+		<li><a href="#add">4.多媒体交互标签</a></li>
+		<li><a href="#del">5.删除的HTML标签</a></li>
+	</ul>
+	</div>
+	</div>
+	<!--这里是右边导航部分 end-->
+
+
+	<a name="dtd"></a>
+	<h3>1.文档声明变化</h3>
+	<pre class="btn">
+	HTML 5的DTD声明为:
+		&lt;!DOCTYPE html &gt;等也是正确的，因为HTML语法是不区分大小写的。
+		<b class="linght">在编写HTML5文档时，要求指定文档类型，以确保浏览器能在HTML5的标准模式下进行渲染。</b>
+	</pre>
+	<hr/><hr/>	
+	
+	<a name="biaoqian"></a>
+	<h3>2.html5新增标签</h3>
+	<pre class="btn">
+	语义化标签可以更好的适应移动端
+	&lt;header&gt;		定义文档的头部区域，一般用在顶部
+	&lt;article&gt;		定义页面独立的文章内容，帖子、博客文章、评论、新闻等可以使用
+ 	&lt;nav&gt;			定义导航，替代ul和li定义的导航
+	&lt;section&gt;		定义一块区域，一般用来写主体内容部分
+	&lt;aside&gt;			定义侧边栏，侧边信息可以使用
+	&lt;hgroup&gt;		标记定义文件中一个区块的相关信息
+	&lt;figure&gt;		定义一块独立的内容，通常用来展示图片及其描述
+	&lt;figcaption&gt;	 标签定义 figure 元素的标题。
+	&lt;footer&gt;		标记定义一个页面或一个区域的底部
+	</pre>
+
+	<pre class="btn linght">
+		兼容性 以上所讲的所有内容都不兼容IE6,7,8
+		只兼容
+		firefox   -moz-
+		webkit    -webkit-
+		opera     -o-
+		UC        -ms-       
+		IE9以上
+		如果想要兼容IE6，7，8通过js创建自定义标签使用，然后再添加样式
+			例如:document.createElement('header');
+
+	</pre><hr/><hr/>
+
+	<a name="add"></a>
+	<h3>3.新增的HTML5特殊标签</h3>
+	<pre class="btn">
+	&lt;mark&gt;突出显示文字
+	&lt;meter&gt;进度条<meter value="5" min="0" max="10" high="9" optimum="9"></meter>
+
+		<code>demo:&lt;meter value="5进度条比例" min="0最小值" max="10最大值" high="9" optimum="9不得超过此值"&gt;&lt;/meter&gt;</code>
+
+	&lt;ruby&gt;内容+注释标签 &lt;rt&gt;注释内容 例如:<ruby>龍<rt>lóng</rt></ruby>
+
+		<code>demo:&lt;ruby&gt;龍&lt;rt&gt;lóng&lt;/rt&gt;&lt;/ruby&gt;</code>
+
+	&lt;progress&gt;进度条状态标签 (任务过程:安装、加载) C、F、O<progress></progress>
+	&lt;wbr&gt; 长单词换行的位置
+	&lt;dialog&gt;定义一个对话框,默认属性值隐蔽。所以设置属性open
+	&lt;bdi&gt;单独设置文字摆放方式 open属性
+	&lt;menu&gt;命令列表
+	&lt;menuitem&gt;menu命令列表标签 FF（嵌入系统）
+	&lt;command&gt; menu标记定义一个命令按钮
+	&lt;datalist&gt; 为input标记定义一个下拉列表,配合option F、O
+	&lt;details&gt; 标记定义一个元素的详细内容 ，配合dl、dt、dd
+	<b class="linght">以上内容实现看后面布局内容</b>
+	</pre><hr/><hr/>
+
+	<a name="duomeiti"></a>
+	<h3>4.多媒体交互标签</h3>
+	<pre class="btn">
+	&lt;video&gt; 标记定义一个视频
+	&lt;audio&gt; 标记定义音频内容
+ 	&lt;source&gt; 标记定义媒体资源
+	&lt;canvas&gt; 标记定义图片
+	&lt;embed&gt; 标记定义外部的可交互的内容或插件 比如flash
+	<b class="linght">HTML5的多媒体标签的出现意味着富媒体的发展以及支持不使用插件的情况下即可操作媒体文件，极大地提升了用户体验</b>
+	</pre><hr/><hr/>
+
+	<a name="del"></a>
+	<h3>5.删除的HTML标签</h3>
+	<pre class="btn">
+	纯表现的元素：
+	basefont，big，center，font, s，strike，tt，u；
+
+	对可用性产生负面影响的元素：
+	frame，frameset，noframes；
+	</pre>
+	</body>
+	</html>

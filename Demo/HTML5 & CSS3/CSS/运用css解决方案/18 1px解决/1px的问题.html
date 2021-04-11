@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+ <meta charset="UTF-8"> 
+ <title>test</title> 
+ </head> 
+ <body> 
+<div class="box-shadow-1px scale">box-shadow-1px</div>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+.box-shadow-1px {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+.scale{
+  position: relative;
+  margin-bottom: 20px;
+  border:none;
+}
+.scale:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: left top;
+  transform: rotate(45deg);
+  transform-origin:top left;
+}
+</style>
+ <script> 
+console.log(typeof ('a'+1))
+ </script> 
+ </body> 
+</html>

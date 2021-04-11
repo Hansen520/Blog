@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>惰性函数载入</title>
+</head>
+<body>
+  <div id="box">click me</div>
+
+
+  <!-- 就是说，当第一次根据条件执行函数后，在第二次调用函数时，就不再检测条件，直接执行函数 -->
+  <!-- 猜想场景, 可以根据不同的浏览器做这种场景 -->
+  <script>
+    /**
+     * dom元素
+     * 事件名
+     * 回调函数
+    */
+    function addHandler(element, type, handler){
+      // 如果是标准浏览器
+      if(element.addEventListener){
+        // 就是多了以函数的方式
+        addHandler = function (element, type, handler) {
+          element.addEventListener(type, handler, false)
+        }
+      } else if (element.attachEvent){
+        addHandler = function (element, type, handler) {
+          element.attachEvent('on' + type, handler)
+        }
+      } else {
+        addHandler = function (element, type, handler) {
+          // dom2的实现方法
+          element['on' + type] = handler
+        }
+      }
+      // 保证首次调用能正常执行监听
+      return addHandler(element, type, handler)
+    }
+    // 当然也可以使用只执行方式首先执行一次
+
+
+    // test
+    let oBox = document.getElementById('box');
+    addHandler(oBox, 'click', function(){
+      alert(this.innerHTML)
+    })
+  </script>
+</body>
+</html>

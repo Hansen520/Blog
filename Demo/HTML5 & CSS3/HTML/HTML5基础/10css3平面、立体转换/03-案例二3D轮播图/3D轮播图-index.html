@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+	<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--当前页面的三要素-->
+	<title>3D轮播图</title>
+	<meta name="Keywords" content="关键词,关键词">
+	<meta name="description" content="dream，别人做个都是上下旋转，我要做左右旋转的哟">
+	<!--css,js-->
+	<style type="text/css" id="css">
+	*{margin:0px;padding:0px;}
+	li{list-style:none;}
+	.box{
+		width:800px;
+		height:360px;
+		box-shadow:0 0 3px #666;
+		margin:150px auto;
+		perspective: 800px;
+		position:relative;
+	}
+	.box .pic{
+		width:800px;
+		height:360px;		
+		transform-origin: center center -400px;
+		transform-style: preserve-3d;
+		transition:1s;	
+	}
+	.box .pic ul{
+		width:800px;
+		height:360px;
+	}
+	.box .pic ul li{
+		width:800px;
+		height:360px;
+		box-shadow:0 0 6px #000;
+		line-height:360px;
+		text-align:center;
+		position:absolute;
+		font-size:33px;
+		font-family: "微软雅黑";
+		
+		
+	}
+/* 	.box .pic ul li:nth-child(1){
+height:800px;
+top:-800px;
+transform-origin:bottom;
+transform:translateZ(0px) rotateX(90deg);
+}
+
+.box .pic ul li:nth-child(2){
+height:800px;
+top:360px;
+transform-origin:top;
+transform:translateZ(0px) rotateX(-90deg);
+} */
+	.box .pic ul li:nth-child(1){
+	}
+	.box .pic ul li:nth-child(2){
+
+		transform:translateZ(-800px) rotateY(180deg);
+
+	}
+	.box .pic ul li:nth-child(3){
+		left:-800px;
+		transform:rotateY(-90deg);
+		transform-origin:right;
+	}
+	.box .pic ul li:nth-child(4){
+		left:800px;
+		transform:rotateY(90deg);
+		transform-origin:left;
+		}
+	.box:hover .pic{
+		/* transform:rotateY(270deg); */
+	}
+
+
+	.dot{
+            position: absolute;
+            bottom: 10px;
+            right: 0;
+            width: 150px;
+            height: 20px;
+            color: white;
+            text-align: center;
+            font: 12px/20px 'Microsoft yahei';
+	}
+	.dot li{
+		    width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            float: left;
+            background: #999;
+            margin-left:12px;
+            cursor: pointer;
+
+	}
+	.dot li.on{
+		background: green;
+	}
+
+	</style>
+
+    </head>
+    <body>
+	<div class="box">
+	<div class="pic">
+		<ul>	
+			<li><img src="images/1.png" alt="">壹</li>
+			<li><img src="images/2.png" alt="">贰</li>
+			<li><img src="images/3.png" alt="">叄</li>
+			<li><img src="images/4.png" alt="">肆</li>
+		</ul>
+	</div>
+	<div class="dot">
+		<ul>
+			<li class="on">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>	
+	</div>
+
+	<script>
+		var _box = document.querySelector(".box");
+		var _dot = document.querySelector(".dot");
+		var gdotLi = _dot.getElementsByTagName('li');
+		var time;
+		var n = 0;
+		//这部分是小圆点部分包括联动
+		for(var i = 0;i < gdotLi.length;i++){
+			gdotLi[i].index = i;//关键步骤
+			gdotLi[i].onclick = function(){
+				for(var i = 0;i < 4;i++){
+					gdotLi[i].className = '';
+				}
+				this.className = 'on';
+				css.innerHTML += '.pic{transform:rotateY('+-90*this.index+'deg)}';
+
+			}
+		}
+		//加载一个定时器
+        timer = setInterval(auto,3000);
+        _box.onmouseenter = function () {
+            clearInterval( timer);
+        };
+        _box.onmouseleave = function () {
+            timer = setInterval(auto,3000);
+        };
+
+		//这部分和上面没有两样，只是封装了一下
+		 function auto() {
+            n ++;
+            n%=4;
+            for(var i=0;i<gdotLi.length;i++){
+                gdotLi[i].className = '';
+            }
+            gdotLi[n].className = 'on';
+            css.innerHTML += '.pic{transform:rotateY('+-90*n+'deg)}';
+        }
+
+
+
+
+
+	</script>
+    </body>
+
+    </html>

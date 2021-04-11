@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    //数组里面有三个函数
+    //如果在函数func内部声明函数inner，
+    // 然后在函数外部调用inner，这个过程即产生了一个闭包。
+    // 闭包最大的用处有两个：可以读取到函数内部的变量，
+    // 让这些变量的值始终保持在内存中。
+    // 实参形参，有数字的传给字母的，有字母的传给有字母的
+
+
+
+	function makeClosures(arr, fn) {
+		var funcs=[];  //因为返回的是数组函数
+		for(var i=0;i<arr.length;i++){
+			(function(i){  //立即函数可以执行给函数赋值的任务。
+				funcs[i] = function(){    //给每个函数赋值函数
+					console.log(fn(arr[i])); //赋值函数的内容
+				}
+			})(i);
+		}
+		console.log(funcs[1]());
+	}
+
+    makeClosures([1, 2, 3], function (x) {
+		return x * x;
+	})
+    </script>
+</body>
+</html>

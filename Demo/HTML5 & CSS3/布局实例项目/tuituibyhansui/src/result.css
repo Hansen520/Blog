@@ -1,0 +1,50 @@
+/*
+ * @Author: Hansen 
+ * @Date: 2020-09-22 19:41:40 
+ * @Last Modified by: Hansen
+ * @Last Modified time: 2020-09-22 20:18:25
+ */
+/* 结果提示图标 */
+.page-result .result-icon{
+  display: block;
+  margin: 2rem auto 1rem;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2.5rem;
+  background: #09BB07;
+  border-radius: 50%;
+  color: #fff;
+}
+/* 操作结果 */
+.page-result .result-info{
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+/* 结果详细信息 */
+.page-result .result-detail{
+  margin-top: .5rem;
+  text-align: center;
+  font-size: .8rem;
+  color: #aaa;
+}
+/* 跳转按钮 */
+.page-result .result-btn{
+  display: block;
+  width: 5rem;
+  margin: 1rem auto;
+  padding: .3rem 0;
+  color: #09BB07;
+  border-color: #09BB07;
+}
+
+/* 错误情况下的提示图标 */
+.page-result .result-error .result-icon{
+  background: #FA5151;
+}
+/* 错误情况下的提示图标 */
+.page-result .result-error .result-btn{
+  color: #999;
+  border-color: #999;
+}
