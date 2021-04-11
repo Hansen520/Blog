@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面布局</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .app{
+        margin-bottom: 30px;
+    }
+    .app>div{
+        height:100px;
+        color: antiquewhite;
+        font-family: "微软雅黑";
+        font-weight: 500;
+    }
+    /* float的写法 */
+    .app.float .left{
+        width:300px;
+        float: left;
+        background: rgb(42, 137, 23);
+    }
+    .app .right{
+        width:300px;
+        float: right;
+        background: rgb(182, 174, 230);
+    }
+    .app.float .content{
+        background: rgb(199, 29, 29);
+    }
+
+    /* position的写法 */
+    .app.position div{
+        position: absolute;
+    }
+    .app.position .left{
+        left:0;
+        width:300px;
+        background:rgb(42, 137, 23);
+    }
+    .app.position .content{
+        left:300px;
+        right:300px;
+        background: rgb(199, 29, 29);
+    }
+    .app.position .right{
+        right:0;
+        width:300px;
+        background: rgb(182, 174, 230);
+    }
+
+    /* flex的写法 */
+    .app.flex{
+        display: flex;
+        margin-top: 160px;
+    }
+    .app.flex .left{
+        width: 300px;
+        background: rgb(42, 137, 23);
+    }
+    .app.flex .content{
+        flex: 1;
+        background: rgb(199, 29, 29);
+    }
+    .app.flex .right{
+        width: 300px;
+        background:rgb(182, 174, 230);
+    }
+
+    /* table的写法 */
+    .app.table{
+        width: 100%;
+        margin-top: 10px;
+        display: table;
+        overflow: hidden;
+    }
+    .app.table>div{
+        display: table-cell;
+        vertical-align: top;
+    }
+    .app.table .left{
+        width: 300px;
+        background: rgb(42, 137, 23);
+    }
+    .app.table .content{
+        background: rgb(199, 29, 29);
+    }
+    .app.table .right{
+        width: 300px;
+        background: rgb(182, 174, 230);
+    }
+
+    /* grid布局的方法 */
+    .app.grid{
+        display: grid;
+        width: 100%;
+        grid-template-rows: 100px;
+        grid-template-columns: 300px auto 300px;
+    }
+    .app.grid .left{
+        background: rgb(42, 137, 23);
+    }
+    .app.grid .content{
+        background: rgb(199, 29, 29);
+    }
+    .app.grid .right{
+        background: rgb(182, 174, 230);
+    }
+    </style>
+</head>
+<body>
+    <!-- 题目:假设高度知道，请写出三栏布局，其中左栏和右栏各300px，中间自适应 -->
+
+    <!-- float的写法 -->
+    <!-- 这里是说，提前让left和right浮动脱离文档流 -->
+    <div class="app float">
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="content">
+            中间部分，我这里要自适应的float的写法
+        </div>   
+    </div>
+
+    <!-- position的写法 -->
+    <div class="app position">
+        <div class="left">左</div>         
+        <div class="content">
+            中间部分，我这里要自适应的position的写法
+        </div>
+        <div class="right">右</div> 
+    </div>
+
+    <!-- flex的写法 -->
+    <div class="app flex">
+        <div class="left">左</div>         
+        <div class="content">
+            中间部分，我这里要自适应的flex的写法
+        </div>
+        <div class="right">右</div> 
+    </div>
+
+    <!-- 表格布局 -->
+    <div class="app table">
+        <div class="left">左</div>
+        <div class="content">中间部分，我这里要自适应的table我这里要自适应的table的写法我这里要自适应的flex的写法的写法</div>
+        <div class="right">右</div>
+    </div>
+
+    <!-- 网格布局 -->
+    <div class="app grid">
+        <div class="left">左</div>
+        <div class="content">中间部分，我这里要自适应的grid布局的方法</div>
+        <div class="right">右</div>
+    </div>
+    
+    <!-- 下面是自己玩玩的网格布局 -->
+    <section>
+        <style>
+            .top-content-bottom{
+                margin-bottom: 20px;
+                display: grid;
+                width: 400px;
+                grid-template-columns: 100px 100px 100px 100px;
+                /* grid-template-columns: repeat(3, 100px); */
+                /* grid-template-columns: 1fr 2fr 3fr 4f; */
+                grid-template-rows: 100px 100px 100px 100px;
+                /* grid-template-rows: repeat(3, 100px); */ 
+                grid-auto-flow:row;
+                /* justify-items: center;
+                align-items:center; */
+                grid-gap: 3px;
+                
+            }
+            .top-content-bottom>div{
+                border: 1px solid red;
+                text-align: center;
+                line-height: 100px;
+                background: red;
+                color: papayawhip;
+
+            }
+            .top-content-bottom>div:nth-child(1){
+                /* 下面相当于坐标(3,3) */
+                grid-row-start: 3;
+                grid-column-start: 3;
+            }
+            .top-content-bottom>div:nth-child(3){
+                /* 下面相当于坐标(3,4) */
+                grid-row-start: 4;
+                grid-column-start: 3;
+            }
+        </style>
+        <article class="top-content-bottom">
+           
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+     
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+      
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+        
+                <div>13</div>
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+  
+        </article>
+    </section>
+
+</body>
+</html>

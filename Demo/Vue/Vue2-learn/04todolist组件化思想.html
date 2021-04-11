@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist组件化思想</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="updateValue">
+        <input type="button" v-on:click = "valueSubmit" value="提交">
+        <ul>
+            <todo-item v-bind:content="item" v-for="item in list"></todo-item>
+        </ul>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    //全局绑定思想
+    // Vue.component("TodoItem",{
+    //     props:['content'],//动态接收参数
+    //     template:"<li>{{content}}</li>"
+    // })
+
+    //局部绑定思想
+    var TodoItem = {
+        props : ['content'],
+        template : '<li>{{content}}</li>'
+    }
+
+    var app = new Vue({
+        el:'#app',
+        //局部绑定时候的组件注册
+        components : {
+            TodoItem : TodoItem
+        },
+        data:{
+            list:[],
+            updateValue:''
+        },
+        methods:{
+            valueSubmit:function(){
+                this.list.push(this.updateValue);
+                this.updateValue = '';
+            }
+        }
+    });  
+    </script>
+</body>
+</html>

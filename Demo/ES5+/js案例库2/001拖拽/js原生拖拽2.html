@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="Author" content="Fly" />
+    <title>Title</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Microsoft yahei, serif;
+      }
+      li {
+        list-style: none;
+      }
+      #box {
+        width: 600px;
+        height: 400px;
+        border: 1px solid #666;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .header {
+        width: 100%;
+        height: 30px;
+        background: #666;
+        cursor: move;
+      }
+      .body {
+        width: 100%;
+        height: calc(100% - 30px);
+        background: rgb(235, 218, 218);
+      }
+      .wrapper {
+        width: 100%;
+        height: 100%;
+        background: rgba(245, 240, 240, 0.55);
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body style="height: 100%">
+    dasdsadasdsd
+    <div id="box">
+      <div class="header">标题部分</div>
+      <div class="body">
+        <div class="wrapper">中间部分</div>
+      </div>
+    </div>
+    <script>
+      // onmousedown 按下    onmousemove 移动    onmouseup抬起
+
+      let oBox = document.getElementById('box');
+      let oHeader = document.querySelector('.header');
+      let { width: oBoxW, height: oBoxH } = oBox.getBoundingClientRect();
+      oHeader.onmousedown = function (e) {
+        e = e || window.event; //兼容全部浏览器写法
+        let xDown = e.clientX; //鼠标点击时的坐标
+        let yDown = e.clientY;
+        let leftDown = oBox.offsetLeft;
+        let topDown = oBox.offsetTop;
+        // 获取浏览器宽高
+        let clientWidth =
+          document.body.clientWidth || document.documentElement.clientWidth;
+        let clientHeight =
+          document.body.clientHeight || document.documentElement.clientHeight;
+
+        document.onmousemove = function (e) {
+          e = e || window.event;
+
+          let xMove = e.clientX; //获取移动坐标
+          let yMove = e.clientY;
+
+          let x_ = xMove - xDown;
+          let y_ = yMove - yDown;
+
+          let aLeft = leftDown + x_;
+          let aTop = topDown + y_;
+
+          // 不出左右边界
+          if (aLeft < 0) {
+            aLeft = 0;
+          } else if (aLeft > clientWidth - oBoxW) {
+            aLeft = clientWidth - oBoxW;
+          }
+
+          // 不出上下边界
+          if (aTop < 0) {
+            aTop = 0;
+          } else if (aTop > clientHeight - oBoxH) {
+            aTop = clientHeight - oBoxH;
+          }
+          //因为盒子跟着鼠标动，所以鼠标坐标变化量就是盒子位置变化量
+          oBox.style.left = aLeft + 'px';
+          oBox.style.top = aTop + 'px';
+        };
+
+        document.onmouseup = function () {
+          this.onmouseup = null; //注销抬起事件
+          this.onmousemove = null;
+        };
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "tpyescript-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/crowller.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cheerio": "^0.22.28",
+    "@types/superagent": "^4.1.10",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "superagent": "^6.1.0"
+  }
+}

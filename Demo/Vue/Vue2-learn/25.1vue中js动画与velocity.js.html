@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 5s;
+    }
+</style>
+<body>
+<!-- js动画效果，注意事件函数中所传递的参数及某些事件函数返回的函数
+1. 进入动画钩子：before-enter; enter; after-enter
+2. 离开动画钩子：before-leave; leave; after-leave
+3. 在enter钩子中的函数调用done()告诉VUE js动画完成
+4. 使用velocity.js动画库实现动画：Velocity（el，{样式属性}，{duration:1000，complete：done}）
+5. 中文文档：http://www.mrfront.com/docs/velocity.js/index.html -->
+<!-- 这部分为动画与过度的结合 style标签里面为过度-->
+<div id="app">
+    <transition name="fate"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+    >
+        <div v-show='show'>
+            hello 我的祖国！
+        </div>
+    </transition>
+    <button @click="handleFate">显示/消失</button>
+</div>
+<script>
+
+var vm = new Vue({
+    el:'#app',
+    data:{
+        show:true
+    },
+    methods:{
+        handleFate:function(){
+            this.show = !this.show
+        },
+        //在当前方法还没有进入前
+        beforeEnter:function(el){
+            console.log(1)
+            el.style.color = 'red'
+        },
+        // 在 enter 和 leave 中必须使用 done 进行回调。否则，它们将被同步调用，过渡会立即完成。
+        //在进入以后,el代表这个元素，done代表当前动画结束
+        enter:function(el, done){
+            //下面两个定时器同时执行，头一个2秒是绿色，过2秒是结束然后转到afterEnter函数
+            setTimeout(()=>{
+                console.log(12)
+                el.style.color = 'green'
+                el.style.fontSize=18 + 'px'
+            },2000);
+            setTimeout(()=>{
+                console.log(123)
+                done()//当前enter动画结束
+            },4000);         
+        },
+        //进来以后又过了一会
+        afterEnter:function(el){
+            console.log(1234)
+            el.style.color = 'pink'
+        },
+        beforeLeave: function (el) {
+            console.log(12345)
+            el.style.color = "black"
+        },
+        
+    }
+})
+
+</script>  
+</body>
+</html>

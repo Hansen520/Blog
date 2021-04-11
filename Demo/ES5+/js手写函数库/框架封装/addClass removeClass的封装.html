@@ -19,11 +19,15 @@
         //removeClass(oBox,"on txt wrap");
         function addClass(ele , cName) {
             var arr = ele.className.split(" ").concat(cName.split(" "));
-            for (var i = 0; i < arr.length; i++)for (var j = arr.length-1; j > i; j--)if ( arr[i] == arr[j] )arr.splice(j,1);
+            for (var i = 0; i < arr.length; i++){
+                for (var j = arr.length-1; j > i; j--)
+                    if ( arr[i] == arr[j] )
+                        arr.splice(j, 1);
+            } 
             ele.className = arr.join(" ");
         }
 
-        function removeClass(ele,cName) {
+        function removeClass(ele, cName) {
             var arr = ele.className.split(" "),
                 arr1 = cName.split(" ");
             for (var i = 0; i < arr1.length; i++) {

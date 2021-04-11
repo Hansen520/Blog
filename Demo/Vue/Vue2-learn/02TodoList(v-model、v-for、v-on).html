@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <input type="text" v-model="updateValue">
+    <input type="button" v-on:click = "valueSubmit" value="提交">
+    <ul>
+        <li v-for='item in list'>{{item}}</li>
+    </ul>
+</div>
+<script>
+var app = new Vue({
+    el:'#app',
+    data:{
+        list:[],
+        updateValue:''
+    },
+    methods:{
+        valueSubmit:function(){
+            this.list.push(this.updateValue);
+            this.updateValue = '';
+        }
+    }
+});
+</script>
+</body>
+</html>

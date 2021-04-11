@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中多个元素或组件的过度</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .fate-enter,.fate-leave-to{
+            opacity: 0;
+        }
+        .fate-enter-active,.fate-leave-active{
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+        <!-- <fate-child :show='show'>
+                <div>hello</div>
+            </fate-child> -->
+            <!-- =====> -->
+            <!-- <transition>
+            <slot v-if="show"></slot>
+                </transition> -->
+                <!-- =======> -->
+        <!-- <transition>
+            <div v-if="show">hello</div>
+        </transition> -->
+
+    <div id="app">
+        <fate-child :show='show'>
+            <div>hello</div>
+        </fate-child>
+        <button @click="handleFate">toggle</button>
+    </div>
+    <script>
+    Vue.component('fate-child',{
+        props:['show'],
+        //根据props:['show'],，这个show是父亲传进来的，然后区判断子组件的show变量是否要显示，
+        template:`<transition>
+            <slot v-if="show"></slot>
+                    </transition>`
+    })
+    
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            show:false
+        },
+        methods:{
+            handleFate:function(){
+                this.show = !this.show
+            }
+        }
+    })
+    
+    </script>     
+</body>
+</html>

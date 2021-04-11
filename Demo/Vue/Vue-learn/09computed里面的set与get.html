@@ -1,9 +1,0 @@
-计算属性的get和set
-      1、computed对象：里面的属性为计算属性，其中计算属性的方式有2种。
-第一种：计算属性fullName为方法   fullName:function(){return ...}
-第二种：计算属性fullName为对象，此时此对象有2个方法，get与set方法
-         （1）get方法：取值
-         （2）set方法：此方法会传入一个值，即可以手动设置值，改变相关联的值，页面的数据会重新渲染。
-           fullName:{get:function(){return ...}，set:function(va){} }
-           
-特性：get里面所依赖的值也会发生变化，他就会重新的计算，get里面的变化可以通过set去改变。

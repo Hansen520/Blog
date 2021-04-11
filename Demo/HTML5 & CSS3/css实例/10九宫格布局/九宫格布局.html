@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九宫格</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .flex{
+      width: 300px;
+      padding: 50px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex li{
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      box-sizing: border-box;
+      border: 4px solid #ccc;
+      margin-left: -4px;
+      margin-top: -4px;
+    }
+    .flex li:nth-child(3n+1){
+      margin-left: 0;
+    }
+    .flex li:hover{
+      border:4px solid red;
+      /* 没有position也可以有层级 */
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <!-- 知识点
+    九宫格考察重点
+    1.flex布局
+    2.box-sizing
+    3.css选择器
+    4.z-index
+    5.负边距 
+  -->
+  <ul class="flex">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul>
+</body>
+</html>

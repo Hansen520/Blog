@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中多个元素或组件的过度</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .fate-enter,.fate-leave-to{
+            opacity: 0;
+        }
+        .fate-enter-active,.fate-leave-active{
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- mode='in-out' 先显示后隐藏。mode='out-in'先隐藏，后显示。 -->
+        <transition name="fate" mode='in-out'>
+            <!-- key值，让各元素不唯一，避免vue的复用 -->
+            <div v-if='show' key='hello'>
+                hello 我的祖国！(出现)
+            </div>
+            <div v-else key='bye'>我爱你，祝福你，我的祖国！(隐身)</div>
+        </transition>
+        <button @click="handleFate">显示/消失</button>
+    </div>
+    <script>
+    
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            show:false
+        },
+        methods:{
+            handleFate:function(){
+                this.show = !this.show
+            },
+            
+        }
+    })
+    
+    </script>     
+</body>
+</html>

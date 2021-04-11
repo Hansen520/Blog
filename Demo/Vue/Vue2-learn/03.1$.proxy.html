@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$.proxy</title>
+</head>
+<body>
+<div id="test" style="width:100px;height:100px">Click Here!</div>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+// test.onclick = function(){
+//     setTimeout(function(){
+//         // 这个this指向的是settimeout函数内部，而非之前的html元素
+//         this.style.background = 'red';//报错，window没有这样子的属性
+//     },1000);
+// }
+
+//解决办法1
+// test.onclick = function(){
+//     //用that变量把this储存起来
+//     var that = this;
+//     setTimeout(function(){      
+//         that.style.background = 'red';//报错，window没有这样子的属性
+//     },1000);
+// }
+
+//解决办法2
+test.onclick = function(){
+    setTimeout($.proxy(function(){      
+        this.style.background = 'red';//报错，window没有这样子的属性
+    },this),1000);
+}
+// 批注:当有事件处理函数要附加到元素上，但他们的作用域实际是指向另一个对象时，这个方法最有用了。此外，最妙的是，jQuery能够确保即便你绑定的函数是经过jQuery.proxy()处理过的函数，你依然可以传递原先的函数来准确无误地取消绑定。请参考下面的例子。
+// 这个函数还有另一种用法，jQuery.proxy( scope, name )。第一个参数是要设定的作用域对象。第二个参数是将要设置作用域的函数名（必须是第一个作用域对象的一个属性）。
+</script>
+</body>
+</html>

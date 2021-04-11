@@ -1,0 +1,2 @@
+const str = 'jin-han-sheng';
+console.log(str);

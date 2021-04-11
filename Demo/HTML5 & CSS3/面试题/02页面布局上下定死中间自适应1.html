@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面布局</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    section{
+        width: 200px;
+        float: left;
+        margin-left: 20px;
+    }
+    
+    </style>
+</head>
+<body>
+<!-- 题目:假设宽度知道，请写出三栏布局，其中上下各100px，中间自适应 -->
+
+<!-- 普通方式 这种方式是建立在fixed上面，不然不可用-->
+<section class="layout general">
+    <style>
+        .layout.general .header-content-footer{
+            width:100%;
+            height:100%;
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .layout.general .header-content-footer .header{
+            height: 64px;
+            background: palevioletred;
+        }
+        .layout.general .header-content-footer .content{
+            min-height: 100%;
+            margin-bottom:-128px;
+            background: palegoldenrod;
+            overflow-y: scroll;
+        }
+        .layout.general .header-content-footer .content:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .layout.general .header-content-footer .footer{
+            background: palegreen;
+            
+        }
+        .layout.general .header-content-footer .footer, .content:after{
+            height:64px;
+        } 
+    </style>
+    <article class="header-content-footer">
+        <div class="header">顶部</div>
+        <div class="content">
+            <p>普通布局方式，建立在fixed</p>
+            <p>普通布局方式，建立在fixed</p>
+            <p>普通布局方式，建立在fixed</p>
+            <p>普通布局方式，建立在fixed</p>
+            <p>普通布局方式，建立在fixed</p>
+            <p>普通布局方式，建立在fixed</p>
+        </div>
+        <div class="footer">底部</div>
+    </article>
+</section>
+
+
+</body>
+</html>
