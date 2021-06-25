@@ -28,7 +28,7 @@
 
 // 具体实例
 // 定义一个共有的Person类
-interface Person {
+interface Person10 {
   name: string
 }
 interface Teacher extends Person {
@@ -41,7 +41,7 @@ interface Driver {
   name: string,// 此name也可以继承Person
   age: number
 }
-const teacher = {
+const teacher1 = {
   name: 'jin',// 必写
   teachingAge: 2// 选写
 }
@@ -49,8 +49,8 @@ const student = {
   name: 'lee',// 必写
   age: 18// 选写
 }
-const getUserInfo = (user: Person) => {
+const getUserInfo = (user: Person10) => {
   console.log(user.name);
 }
-getUserInfo(teacher);
+getUserInfo(teacher1);
 getUserInfo(student);

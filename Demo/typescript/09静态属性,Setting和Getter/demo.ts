@@ -1,5 +1,5 @@
-// setter getter
-class Person {
+// setter getter(存储器)
+class Person2 {
   constructor(private _name: string) { }
     // 因为_name为私有属性，可以通过get方法让外部可以调用
     get name(){
@@ -11,7 +11,7 @@ class Person {
       this._name = realName
     }
 }
-const person = new Person('zhang');
+const person = new Person2('zhang2');
 // 这里的person.name其实获取的是get name方法，切记不需要括号
 console.log(person.name); // zhang san
 // 因为上面定义了set，所以可以给上面赋值，但是获得的值还是get得到的

@@ -15,7 +15,6 @@ join('2', '5')// 不写会默认判断类型
 function anotherJoin<T>(first: T, second: T): T {
   return first
 }
-
 anotherJoin<string>('1', '2')
 
 // 3.数据是参数是 以数组的字符串类型
@@ -24,3 +23,13 @@ function map<T>(params: Array<T>) {
   return params
 }
 map<string>(['123'])
+
+
+// 4泛型接口形式
+function identity<T>(arg: T): T {
+  return arg
+}
+interface GenericIdentityFn<T> {
+  (arg: T): T
+}
+let myIdentity: GenericIdentityFn<number> = identity

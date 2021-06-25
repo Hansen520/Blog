@@ -1,5 +1,5 @@
 class Person5 {
-  // 共有类内外调用
+  // 共有类内外都 调用
   public name: string
   // 保护类 可以内部调用也可以继承调用
   protected sayHi() {
