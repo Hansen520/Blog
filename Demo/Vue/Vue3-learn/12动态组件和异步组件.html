@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态组件和异步组件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 动态组件: 采用component标签
+      const app = Vue.createApp({
+        data() {
+          return { currentItem: 'input-item' };
+        },
+        methods: {
+          handleClick() {
+            if (this.currentItem === 'input-item') {
+              this.currentItem = 'common-item';
+            } else {
+              this.currentItem = 'input-item';
+            }
+          },
+        },
+        /* keep-alive作用：页面第一次渲染时，会将变化的状态都记录下来，
+         放进缓存里，当再次使用这个动态组件时，会将缓存的信息再次填充 */
+        template: `
+          <keep-alive>
+            <component :is="currentItem"/>  
+          </keep-alive>
+          <async-common-item></async-common-item>
+          <button @click="handleClick">切换</button>`,
+      });
+      app.component('input-item', {
+        template: `<input />`,
+      });
+      app.component('common-item', {
+        template: `<div>Hello world</div>`,
+      });
+
+      // 异步组件
+      // 比如说这里4s展示组件
+      app.component(
+        'async-common-item',
+        Vue.defineAsyncComponent(() => {
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve({
+                template: `<div>this is an async component</div>`,
+              });
+            }, 4000);
+          });
+        })
+      );
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

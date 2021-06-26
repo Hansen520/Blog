@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-Props属性是什么</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Non-prop属性
+      const app = Vue.createApp({
+        template: `<div>
+          <counter msg="hello" msg2="world"></counter>  
+        </div>`,
+      });
+
+      app.component('counter', {
+        // 1.inheritAttrs为禁止父组件传来的Non-prop
+        // inheritAttrs: false,
+        // 2.$attrs 将Non-pro属性全部放在有$attrs的标签里面, 如上面的msg、msg2全部放在下面的第二个标签里
+        // 3.$attrs.msg1 将父组件的msg1属性获取
+        mounted() {
+          console.log(this.$attrs.msg);
+        },
+        template: `
+          <div>Counter1</div>
+          <div v-bind="$attrs">Counter2</div>
+          <div :msg1="$attrs.msg1">Counter3</div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

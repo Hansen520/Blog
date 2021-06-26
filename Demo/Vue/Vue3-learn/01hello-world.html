@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello-world</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // mvvm  v-视图层、m-数据层、vm-视图数据连接层
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: 1,
+          };
+        },
+        mounted() {
+          setInterval(() => {
+            this.content += 1;
+          }, 1000);
+        },
+        template: '<div>{{ content }}</div>',
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+      // 对数据进行修改
+      const test = (vm.$data.content = 12);
+    </script>
+  </body>
+</html>

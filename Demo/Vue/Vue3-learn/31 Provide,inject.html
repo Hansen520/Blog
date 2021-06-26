@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provide,inject</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 1. 可以使用provide和inject进行父子组件的通信
+      const app = Vue.createApp({
+        setup() {
+          const { provide, ref, readonly } = Vue;
+          const name = ref('han');
+          // 使用readonly可以避免在单项数据流时候修改属性值
+          provide('name', readonly(name));
+          // 可以通过函数形式传来子组件的值
+          provide('changeName', (value) => {
+            name.value = value;
+          });
+          return {};
+        },
+        template: `<div>
+            <child />
+          </div>`,
+      });
+      app.component('child', {
+        setup() {
+          const { inject } = Vue;
+          const name = inject('name');
+          const changeName = inject('changeName');
+          const handleClick = () => {
+            // 根据单项数据流原则，父组件添加的readonly可以不让此项改动
+            // name.value = '123';
+            // 函数传参方式改动数据
+            changeName('sheng');
+          };
+          return { name, handleClick };
+        },
+        template: '<div @click="handleClick">{{ name }}</div>',
+      });
+
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

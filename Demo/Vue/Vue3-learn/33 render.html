@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>render</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const { createApp, h } = Vue;
+      const app = Vue.createApp({
+        template:
+          '<anchored-heading :level="3">Hello world!</anchored-heading>',
+      });
+      /** Recursively get text from children nodes */
+      function getChildrenTextContent(children) {
+        return children
+          .map((node) => {
+            return typeof node.children === 'string'
+              ? node.children
+              : Array.isArray(node.children)
+              ? getChildrenTextContent(node.children)
+              : '';
+          })
+          .join('');
+      }
+
+      app.component('anchored-heading', {
+        render() {
+          // create kebab-case id from the text contents of the children
+          const headingId = getChildrenTextContent(this.$slots.default())
+            .toLowerCase()
+            .replace(/\W+/g, '-') // replace non-word characters with dash
+            .replace(/(^-|-$)/g, ''); // remove leading and trailing dashes
+
+          return h('h' + this.level, [
+            h(
+              'a',
+              {
+                name: headingId,
+                href: '#' + headingId,
+              },
+              this.$slots.default()
+            ),
+          ]);
+        },
+        props: {
+          level: {
+            type: Number,
+            required: true,
+          },
+        },
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

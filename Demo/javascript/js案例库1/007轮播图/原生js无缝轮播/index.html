@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #banner{
+            width: 970px;
+            height: 480px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #banner .pic{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        /*这里是css样式布局的一个技巧点*/
+        #banner .pic ul{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width:5000%;
+            height: 100%;
+        }
+        #banner .pic ul li{
+            width:2%;
+            height:100%;
+            float: left;
+        }
+        #banner .pic ul li img{
+            width: 100%;
+            height: 100%;
+        }
+
+        #banner .btn{
+            position: absolute;
+            left:40%;
+            bottom:1%;
+        }
+        #banner .btn ul li{
+            width:25px;
+            height: 25px;
+            background: #518dbb;
+            color: #fff;
+            border-radius: 100%;
+            margin:0 5px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            float: left;
+        }
+        #banner .btn ul li.on{
+            border:1px solid #518dbb;
+            background: #fff;
+            color: #518dbb;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="pic">
+            <ul>
+                <li><img src="img/6.jpg" alt=""/></li>
+                <li><img src="img/1.jpg" alt=""/></li>
+                <li><img src="img/2.jpg" alt=""/></li>
+                <li><img src="img/3.jpg" alt=""/></li>
+                <li><img src="img/4.jpg" alt=""/></li>
+                <li><img src="img/5.jpg" alt=""/></li>
+                <li><img src="img/6.jpg" alt=""/></li>
+                <li><img src="img/1.jpg" alt=""/></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <ul>
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      var aBanner = document.getElementById("banner"),
+          oPic = document.querySelector("#banner .pic ul"),
+          oBtn = document.querySelectorAll("#banner .btn ul li"),
+          index = 0,
+          nowtime = 0,
+          nLabel ,
+          timer =null;
+
+      for(var i = 0;i < oBtn.length;i++){
+          oBtn[i].index = i;
+          oBtn[i].onclick = function () {
+              if(new Date() - nowtime > 500){//为了防止滑动时产生bug
+                  oBtn[index].className = '';
+                  index = this.index;
+                  oBtn[index].className = 'on';
+                  move(oPic,{
+                      left : index * (-970) + 'px'
+                  },500);
+              }
+          }
+      }
+      auto();
+      function auto() {
+          timer = setInterval(function () {
+              oBtn[index].className = '';
+              index++;
+              nLabel =
+              oBtn[index % oBtn.length].className = 'on';
+              move(oPic,{
+                  left : index * (-970) + 'px'
+              },500,function () {
+                  if(index == 6){
+                      oPic.style.left = "0px";
+                      index = 0;
+                  }
+              });
+          },3000);
+
+      }
+
+        function move(obj , mJson , time , callBack) {
+            var sVal = {}, //存初始值
+                tVal = {}, //存目标值
+                sTime = new Date(); //存初始时间
+            for (var key in mJson) {
+                sVal[key] = parseFloat( getStyle(obj,key) );//获取初始值
+                tVal[key] = parseFloat( mJson[key] );//将目标值转换为数字
+            }
+
+            m();
+            function m(){
+                var prop = (new Date() - sTime)/time;
+                prop >= 1?prop = 1:requestAnimationFrame(m);
+                for (var key in mJson) {
+                    if ( key === "opacity" ){
+                        var o = sVal[key] + prop*(tVal[key] - sVal[key]);
+                        obj.style[key] = o;
+                        obj.style.filter = "alpha(opacity="+ 100*o +")";
+                    }else{
+                        obj.style[key] = sVal[key] + prop*(tVal[key] - sVal[key]) + "px";
+                    }
+                }
+                if ( prop === 1 ){
+                    callBack && callBack.call(obj);
+                }
+            }
+            function getStyle(obj , atr) {
+                return obj.currentStyle?obj.currentStyle[atr]:getComputedStyle(obj)[atr];
+            }
+        }
+    </script>
+</body>
+</html>

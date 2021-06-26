@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>document-Dom</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:3px;padding:0px;}
+		body{background:#FEEBDC;height:3000px;}
+		p{font-size:18px;font-weight:bold;}
+		h4{margin-top:30px;}
+		span{color:#F30;font-size:14px;}
+		.demo{width:550px;border:3px solid #333;}
+		.demo .attention{color:#6738F3;font-weight:bold;font-family:"微软雅黑";font-size:15px;}
+		.answer{color:#F00;font-size:15px;font-weight:bold;}
+
+
+		</style>
+
+	</head>
+	<body>
+	<h2>JS中的Doucment-Dom</h2>
+	<p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）</p>
+	<p>HTML DOM 模型被构造为对象的树，HTML DOM 树 </p>	
+	<p>JavaScript 能够改变页面中的所有 HTML 元素、HTML 属性、CSS 样式、</p>
+	<p>JavaScript 能够对页面中的所有事件做出反应</p>
+
+	<h4>一、Document对象属性</h4>
+	<p>document.title <span>设置文档标题等价于HTML的title标签</span></p>	
+	<h6 style="color:red; font-size:18px;">(选第一个作为案例:标题已变，请看上边)</h6>
+	<p>document.bgColor <span>设置页面背景色</span></p>
+	<p>document.fgColor <span>设置前景色(文本颜色)</span></p>
+	<p>document.linkColor <span>未点击过的链接颜色</span></p>
+	<p>document.alinkColor <span>激活链接(焦点在此链接上)的颜色</span></p>
+	<p>document.vlinkColor <span>已点击过的链接颜色</span></p>
+	<p>document.URL <span>设置URL属性从而在同一窗口打开另一网页</span></p>
+	<p>document.fileCreatedDate <span>文件建立日期，只读属性</span></p>
+	<p>document.fileModifiedDate <span>文件修改日期，只读属性</span></p>
+	<p>document.fileSize <span>文件大小，只读属性</span></p>
+	<p>document.cookie <span>设置和读出cookie</span></p>
+	<p>document.charset <span>设置字符集 简体中文:gb2312</span></p>
+	<hr/><hr/>
+
+	<h4>二、	常用对象方法</h4>
+	<p>document.write() <span>动态向页面写入内容</span></p>
+	<p>document.createElement(Tag) <span>创建一个html标签对象</span></p>
+	<p>document.getElementById(ID) <span>获得指定ID值的对象</span></p>
+	<p>document.getElementsByName(name) <span>获得指定name值的对象</span></p>
+	<p>document.getElementsByTagName(tagName) <span>获得指定标签值的对象</span></p>
+	<p>document.body.appendChild(oTag) <span>相对父标签，添加子标签元素。</span></p>
+	<p>document.getElementById(”ID”).innerText <span>动态输出文本</span></p>
+	<p>document.getElementById(”ID”).innerHTML <span>动态输出HTML</span></p>
+	<p>document.getElementById(”ID”).outerText <span>同innerText</span></p>
+	<p>document.getElementById(”ID”).outerHTML <span>同innerHTML</span></p>
+	
+	<h4>注意:</h4>
+	<div class="demo">
+		<p class="attention">①Javascript中，写方法和定义的时候严格区分大小写</p>
+		<p class="attention">②方法：document.getElementById(元素的id)根据id获取对象</p>
+		<p class="attention">③当页面上同时存在两个相同的ID时，只会打印第一个id对应的值</p>
+		<p class="attention">④.value只有form元素才有意义</p>
+		<p class="attention">⑤id选择器:唯一标识符</p>
+	</div>
+	
+	<h4>通过document.getElementsByName(name)举例</h4>
+	<p>document.get（获取）<b>Elements(元素)</b> By(通过) <b>TagName(标签)(tagName)通过</b></p>
+	<div class="demo">
+		<p>&lt;input type="checkbox" name="hobbys" value="爬山"&gt;爬山</p>
+		<p>&lt;input type="checkbox" name="hobbys" value="音乐"&gt;音乐</p>
+		<p>&lt;input type="checkbox" name="hobbys" value="读书"&gt;读书</p>
+		<p>&lt;input type="checkbox" name="hobbys" value="游泳"&gt;游泳</p>
+		<p>&lt;script type="text/javascript"&gt;</p>
+			<p>var divObj = document.getElementsByName("hobbys");</p>
+			<p>divObj[2].value;</p>
+			<p>alert(divObj[2].value);</p>
+		<p>&lt;/script&gt;</p>
+		<h4>输出结果:</h4>
+		<p class="answer">睡觉</p>
+	</div>
+	
+	
+	<hr/><hr/>
+
+	<h4>三、innerText与innerHTML的区别:</h4>
+	<p>1.innerHTML:带有格式的文本,如果标签内有嵌入标签，innerHTML，会获取除了id指定的HTML标签外，其他嵌入的标签会保留显示</p>
+	<p>2.innerText:只获取标签内的文本内容，不包含标签。</p>
+	<p>3.与innerHTML，innerText相对的outerHTML，outerText。</p>
+	<h5>代码展示:</h5>
+	<div class="demo">
+		<p>&lt;div id="k_div"&gt;&lt;span&gt;今天&lt;/span&gt;是个不错的日子&lt;/div&gt;</p>
+		<p>&lt;div id="k_p"&gt;&lt;span&gt;今天&lt;/span&gt;是个不错的日子&lt;/div&gt;</p>
+
+		<p>&lt;script type="text/javascript"&gt;</p>
+		<p>var value1 = document.getElementById("k_div").innerHTML;</p>
+		<p>alert(value1);</p>
+		<p>var value2 = document.getElementById("k_p").innerText;</p>
+		<p>alert(value2);</p>
+		<p>&lt;/script&gt;</p>
+		<h5>打印结果:</h5>
+		<p class="answer">&lt;span&gt;今天&lt;/span&gt;是个不错的日子</p>
+		<p class="answer">今天是个不错的日子</p>
+	</div>
+	<h4>注意:</h4>
+	<div class="demo">		
+		<p class="attention">①outerHTML会显示包含id的标签本身。这点与innerHTML有些许差别。</p>
+		<p class="attention">②outerText与innerText相同，输出没有差别</p>
+		<p class="attention">③Form元素用innerHTML/Text，outerHTML/Text无效（无意义）</p>
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		document.title = "我是变了之后的标题";	
+	</script>
+	</body>
+
+	</html>

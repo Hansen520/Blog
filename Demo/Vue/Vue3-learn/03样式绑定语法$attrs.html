@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>样式绑定语法</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      /*
+        $attrs.class的用法
+      */
+      const app = Vue.createApp({
+        data() {
+          return {
+            classString: 'red',
+          };
+        },
+        template:
+          '<div :class="classString">Hello world <demo class="green" /></div>',
+      });
+      app.component('demo', {
+        // 一般来说，如果组件中有2个标签，我们是不知道来自父组件的属性绑定在哪个标签的
+        // 所以利用$attrs.prop 的方法去绑定, 如下案例
+        template: `
+          <div :class="$attrs.class">one</div>
+          <div :class="$attrs.class">two</div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

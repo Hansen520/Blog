@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件间的传值</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            num: 1111,
+          };
+        },
+        template: `<div><test :content="num" /></div>`,
+      });
+      /*
+      1. 父级向子传递属性
+      type: String, Boolean,Array, Object, Function, Symbol
+      required 此属性必填
+      default 默认值
+      validator 校验
+      2.如果你属性传的式content-abc这种命名，接收的时候使用contentAbc命名
+      3.单项数据流概念
+        子组件可以使用父组件传递来的数据，但是不能修改父组件的传递来的数据
+      */
+      app.component('test', {
+        props: {
+          content: {
+            type: Number,
+            validator: function (value) {
+              return value < 1000;
+            },
+            required: true,
+          },
+        },
+        template: `<div>{{ content }}</div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+  <style>
+  *{
+    font-size: 16px;
+  }
+  body{
+    background: #d7d8d9c9;
+  }
+  /*神奇玩法1*/
+  .p1{
+    color: rgba(255, 0, 0, 0.5);
+  }
+  .p2{
+    color:#0634a9b3;
+  }
+  /*神奇玩法2*/
+  #seeMore{
+    display: none;
+  }
+  #seeMore:target{
+    display: block;
+  }
+  </style>
+</head>
+<body>
+  <p id="p1">test1</p>
+  <p class="p2">test2</p>
+
+  <a href='#seeMore'>
+    See more!
+  </a> 
+  <section id='seeMore'>
+    <p id="nosee">
+      Here's some more info that you couldn't see before. I can only be seen after you click the "See more!" button.
+    </p>
+  </section>
+  <div id="main"></div>
+  <button id="click">测试按钮</button>
+  <script
+  src="./2-13Promise异步操作 2.js"
+  ></script>
+  <script>
+  // let arr = [1,2]
+  // console.log(Array.isArray(arr))
+
+  // let a = (67/24) ** (1/3)
+  // console.log(a)
+  </script>
+</body>
+</html>

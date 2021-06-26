@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>composition api应用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 关于list操作的内容进行了封装
+      const listRelativeEffect = () => {
+        const list = reactive([]);
+        const addItemToList = (item) => {
+          if (!item) {
+            alert('无元素');
+            return;
+          }
+          list.push(item);
+        };
+        return { list, addItemToList };
+      };
+      const { reactive } = Vue;
+      const list = reactive([]);
+      // 关于 inputRelative 操作的内容进行了封装
+      const inputRelativeEffect = () => {
+        const { ref } = Vue;
+        const inputValue = ref('');
+        const handleInputValueChange = (e) => {
+          inputValue.value = e.target.value;
+        };
+        return { inputValue, handleInputValueChange };
+      };
+
+      const app = Vue.createApp({
+        setup() {
+          // 流程调度中转
+          const { list, addItemToList } = listRelativeEffect();
+          const { inputValue, handleInputValueChange } = inputRelativeEffect();
+          return {
+            list,
+            addItemToList,
+            inputValue,
+            handleInputValueChange,
+          };
+        },
+        template: `
+          <div>
+            <div>
+              <input :value="inputValue" @input="handleInputValueChange" />
+              <button @click="() => addItemToList(inputValue)">增加元素</button>
+            </div>
+            <ul>
+              <li v-for="(item, index) in list" :key="index">{{ item }}</li>
+            </ul>
+          </div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件和元素切换动画的实现</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .v-leave-to {
+        opacity: 0;
+      }
+      .v-enter-from {
+        opacity: 0;
+      }
+      .v-enter-active,
+      .v-leave-active {
+        transition: opacity 1s ease-in;
+      }
+      .v-leave-from,
+      .v-enter-to {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 定义2个组件做动画切换
+      const ComponentA = {
+        template: '<div>componentA 组件</div>',
+      };
+      const ComponentB = {
+        template: '<div>componentB 组件</div>',
+      };
+      const app = Vue.createApp({
+        data() {
+          return {
+            // 元素动画切换
+            show: false,
+            // 组件动画的切换
+            component: 'component-a',
+          };
+        },
+        components: {
+          'component-a': ComponentA,
+          'component-b': ComponentB,
+        },
+        methods: {
+          handleClick() {
+            this.show = !this.show;
+            if (this.component === 'component-a') {
+              this.component = 'component-b';
+            } else {
+              this.component = 'component-a';
+            }
+          },
+        },
+        // appear 表示一进来就有动画
+        // out-in 代表下一个元素动画必须在上一个元素动画结束后出来
+        // 第一个transition做元素切换，第二个transition做组件的切换
+        template: `
+          <div>
+            <transition mode="out-in" appear>
+              <div v-if="show">hello world 元素</div>
+              <div v-else="show">bye world 元素</div>
+            </transition>
+            <transition mode="out-in" appear>
+              <component :is="component">
+            </transition>
+            <button @click="handleClick">切换</button>
+          </div>
+        `,
+      });
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

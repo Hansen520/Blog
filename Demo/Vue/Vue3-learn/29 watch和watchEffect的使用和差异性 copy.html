@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>watch和watchEffect的使用和差异性</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // watch 侦听器
+      // watchEffect 侦听器, 偏向于effect
+      const app = Vue.createApp({
+        setup() {
+          const { ref, reactive, watch, watchEffect, toRef } = Vue;
+          // 监听ref
+          const testval = ref('a');
+          // watch(testval, (newValtest, oldValtest) => {
+          //   console.log(newValtest, oldValtest);
+          // });
+          // setTimeout(() => {
+          //   testval.value = 123;
+          // }, 1000);
+
+          // 监听多个reactive
+          const nameObj = reactive({
+            name: 'dell',
+            englishName: 'lee',
+          });
+          // 1.具有一定的惰性lazy(惰性指：只有在监听数据变化后才执行console里面内容)
+          // 2.参数可以拿到原始值和当前值
+          // 3.可以侦听多个数据的变化, 可以用uoge侦听器去承载(如下面使用数组方式)
+          // 4.可以用immediate消除惰性立即执行
+          watch(
+            [() => nameObj.name, () => nameObj.englishName],
+            ([curName, curEng], [prevName, prevEng]) => {
+              console.log('watch', curName, prevName, '--', curEng, prevEng);
+            }
+            // {
+            //   immediate: true,
+            // }
+          );
+
+          // 1.立即执行，没有惰性 immediate
+          // 2.不需要传递你要侦听的内容，自动会赣州代码依赖，不需要传递很多参数，值要传递一个销毁的函数即可
+          // 3.只能获取当前改变的值，不能先前的值
+          // 4.里面的stop()这样子的方式可以停止监听属性(watch也是可以的)
+          // 5.可以用immediate: false 增加惰性
+          const stop = watchEffect(
+            () => {
+              console.log('watchEffect', nameObj.name, nameObj.englishName);
+              setTimeout(() => {
+                stop();
+              }, 5000);
+            }
+            // { immediate: false }
+          );
+
+          setTimeout(() => {
+            (nameObj.name = 'han'), (nameObj.englishName = 'sheng');
+          }, 2000);
+          setTimeout(() => {
+            (nameObj.name = 'han1'), (nameObj.englishName = 'sheng');
+          }, 3000);
+          return { nameObj, name };
+        },
+        template: `<div>
+          {{ nameObj }}
+          </div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

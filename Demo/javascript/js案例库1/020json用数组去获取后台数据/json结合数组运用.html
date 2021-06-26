@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width:600px;
+
+            margin:50px auto;
+        }
+        #box ul{
+
+            width:600px;
+
+        }
+        #box ul.title li{
+            border-top:1px solid #000;
+            background: #336fbb;
+        }
+        #box ul li{
+            width:100px;
+            height: 45px;
+            border-bottom:1px solid #000000;
+            float: left;
+            font-size: 15px;
+            text-align: center;
+            line-height: 45px;
+        }
+        .clearfix:before,.clearfix:after{
+            content: " ";
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box">
+            <ul class="title">
+                <li>学校</li>
+                <li>名字</li>
+                <li>学号</li>
+                <li>来校时间</li>
+                <li>是否婚配</li>
+            </ul>
+
+    </div>
+    <script>
+        data = [{
+            school : "浙江海洋大学",
+            name : "王老吉",
+            stuId : "20171219011",
+            come_time : 2016,
+            marry : false
+
+        },{
+            school : "浙江大学",
+            name : "加多宝",
+            stuId : "20171226986",
+            come_time : 2015,
+            marry : true
+
+        },{
+            school : "浙江师范大学",
+            name : "六个核桃",
+            stuId : "20165285224",
+            come_time : 2016,
+            marry : true
+
+        },{
+            school : "浙江理工大学",
+            name : "冰绿茶",
+            stuId : "20175235991",
+            come_time : 2019,
+            marry : false
+
+        },{
+            school : "浙江工业大学",
+            name : "三只松鼠",
+            stuId : "20171219011",
+            come_time : 2010,
+            marry : false
+
+        }];
+
+
+
+        var oBox = document.getElementById("box");
+
+
+
+
+        for(var i = 0;i < data.length;i++){
+            str = "";
+            for(var key in data[i]){
+                str += "<li>" + data[i][key] + "</li>";
+            }
+            oBox.innerHTML += "<ul>" + str + "</ul>";
+
+            var oLi = document.querySelectorAll("#box ul li:last-child");
+
+
+            //oLi[i+1].innerHTML ? "oLi[" + (i+1) + "].innerHTML=已婚":"oLi[" + (i+1) + "].innerHTML=未婚";
+            if(oLi[i+1].innerHTML == "true"){
+                oLi[i+1].innerHTML = "已婚";
+                //alert(i);
+            }else if(oLi[i+1].innerHTML == "false"){
+                oLi[i+1].innerHTML = "未婚";
+            }
+            //console.log(oLi[i+1].innerHTML);
+        }
+
+
+
+    </script>
+    <script>
+        var oUl = document.querySelectorAll("#box ul");
+        for(var i = 0;i < oUl.length;i++){
+            oUl[i].className += " clearfix";
+        }
+    </script>
+
+</body>
+</html>

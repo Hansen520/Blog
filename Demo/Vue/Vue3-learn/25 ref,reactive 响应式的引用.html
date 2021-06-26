@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref,reactive 响应式的引用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // ref,reactive响应式的引用
+      // 原理: 通过proxy对数据进行封装, 当数据变化时,触发模板等内容的更新
+      // 1. ref 处理基础类型的数据
+      // 2. reactive处理非基础形的数据
+      // 3. readonly 是只能读取, 不能被修改的
+      // 4. toRefs 原本reactive解构后不能进行响应式的, 所以通过toRefs可以将数据进行解构可以进行响应式
+      const app = Vue.createApp({
+        template: `
+          <div>{{ name }}</div>
+        `,
+        // created 实例被完全初始化之前
+        // setup不能调用实例的一些方法,但是实例上的方法却可以去调用它
+        setup(props, context) {
+          // const { ref } = Vue;
+          // // proxy, 使用ref时, 'dell' 变成proxy({value: 'dell'})这样子的一个响应式引用
+          // let name = ref('dell');
+          // setTimeout(() => {
+          //   name.value = 'lee';
+          // }, 1000);
+          // return {
+          //   name,
+          // };
+
+          const { reactive, readonly, toRefs } = Vue;
+          // proxy, 使用reactive时, {name: 'dell'} 变成proxy({name: 'dell'})这样子的一个响应式引用
+          const nameObj = reactive({ name: 'han' });
+          const copyNameObj = readonly(nameObj);
+          setTimeout(() => {
+            nameObj.name = 'sheng';
+            // warn: Set operation on key "name" failed: target is readonly
+            // copyNameObj.name = 'huo';
+          }, 2000);
+          // 原本解构出来的数据是不进行响应式的,但是通过toRefs之后就可以了,
+          // 具体原因式因为 proxy({ name: 'dell' }) 变成 { name: proxy({ value: 'dell' }) }
+          const { name } = toRefs(nameObj);
+          return { name };
+        },
+      });
+      //
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+
+      // 特殊备注
+      // toRefs() 如果引用的数据里面没有某个字段，他不会给默认值，而是会说明该字段是undefined
+      // 如果不想要避免这种情况，可以使用toRef()函数。使用如下图，它会使不存在的也具有响应式
+      // 但不建议使用该方法，也不建议使用添加数据中没有的字段，若要使用，就在数据中心添加该字段，给一个空值
+    </script>
+  </body>
+</html>

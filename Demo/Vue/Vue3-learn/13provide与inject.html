@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>provide与inject</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // provide 直接传递给孙子组件，跨级传递
+      const app = Vue.createApp({
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        // 写在这里的不是响应式的，是第一次传给子组件的数据
+        provide() {
+          return {
+            count: this.count,
+          };
+        },
+        template: `
+          <child :count="count"/>
+        `,
+      });
+      app.component('child', {
+        template: `<child-child/>`,
+      });
+      app.component('child-child', {
+        inject: ['count'],
+        template: `<div>{{ count }}</div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

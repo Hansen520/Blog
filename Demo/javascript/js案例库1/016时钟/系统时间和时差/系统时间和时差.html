@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>系统时间</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            text-align: center;
+            font-size: 25px;
+            font-family: "微软雅黑";
+            padding-top:300px;
+        }
+        #future{
+            text-align: center;
+            font-size: 25px;
+            font-family: "微软雅黑";
+            padding-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <!--获取现在时间-->
+    <div id="box"></div>
+    <!--倒计时时间-->
+    <div id="future"></div>
+    <script>
+        //系统时间
+        obox = document.getElementById("box");
+        timer();
+        setInterval(timer,1000);
+        function timer() {
+            var goudan = new Date();
+            var YY = goudan.getFullYear();
+            var MM = goudan.getMonth() + 1;
+            var DD = goudan.getDate();
+            var hh = goudan.getHours();
+            var mm = goudan.getMinutes();
+            var ss = goudan.getSeconds();
+            var day = goudan.getDay();
+            var dayarr = ["日","一","二","三","四","五","六"];
+            obox.innerHTML = "今天是北京时间: "+ YY +"年"+ MM +"月"+ DD +"日 "+ zero(hh) +"时"+ zero(mm) +"分"+ zero(ss) +"秒 星期"+dayarr[day];
+        }
+
+
+        //倒计时时间
+        setInterval(time(),1000);
+
+        function time() {
+            var ofuture = document.getElementById("future");
+            var HS = new Date();
+            var HS_fur = new  Date(2019,1,16);
+            var ms = HS_fur - HS;
+            //alert(ms);
+            var f_day = Math.floor(ms/1000/24/60/60);
+            var f_hh = Math.floor(ms/1000/60/60)%24;
+            var f_mm = Math.floor(ms/1000/60)%60;
+            var f_ss = Math.floor(ms/1000)%60;
+            ofuture.innerHTML = "距离2019年春节还有:"+ f_day +"天"+ f_hh +"时"+ f_mm +"分"+ f_ss +"秒";
+            return time;
+        }
+
+
+
+
+
+        //补0神器
+        function zero(num){
+            if(num<10){
+                num  = "0" + num;
+            }else{
+                num = num;
+            }
+            return num;
+        }
+    </script>
+</body>
+</html>

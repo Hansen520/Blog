@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件绑定</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // mvvm  v-视图层、m-数据层、vm-视图数据连接层
+      const app = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+            counter1: 0,
+          };
+        },
+        methods: {
+          addCount(value, event) {
+            this.counter += value;
+            console.log(event);
+          },
+          handleBtn1() {
+            alert('执行事件1');
+          },
+          handleBtn2() {
+            alert('执行事件2');
+          },
+          handleDivClick() {
+            alert('父亲');
+          },
+          handleBtn3() {
+            alert('孩子');
+          },
+          handleDivClick1() {
+            alert('自己触发');
+          },
+          handleBtn4() {
+            this.counter1 += 1;
+          },
+          handleBtn5() {
+            alert('只执行一次');
+          },
+          handleKeyDown() {
+            alert('keydown enter');
+          },
+          handleClick() {
+            alert('精确修饰符');
+          },
+        },
+        // 1.获取原生$event事件target
+        // 2.执行多个事件函数
+        /*
+          事件修饰符: stop(去阻止冒泡),self(只有自己事件才触发),once(只执行一次事件)prevent(阻止默认行为),capture(捕获行为),passive(滚动的事件修饰符，让滚动更加流畅)
+          按键修饰符 enter(只有按下回车时候才有用)、tab、delete、esc、up、down、left、down
+          鼠标修饰符 left、right、middle
+          精确修饰符: exact
+        */
+
+        template: `<div>
+
+
+            总结:<br/>
+            1.获取原生$event事件target<br/>
+            2.执行多个事件函数<br/>
+            事件修饰符: stop(去阻止冒泡),self(只有自己事件才触发),once(只执行一次事件)prevent(阻止默认行为),capture(捕获行为),passive(滚动的事件修饰符，让滚动更加流畅)<br/>
+            按键修饰符 enter(只有按下回车时候才有用)、tab、delete、esc、up、down、left、down<br/>
+            鼠标修饰符 left、right、middle<br/>
+            精确修饰符: exact<br/><hr/>
+
+            1.获取原生事件target<br/>
+            {{ counter }}
+            <button @click="addCount(2, $event)">点击</button><hr/>
+            2.执行多个事件函数<br/>
+            <button @click="handleBtn1(), handleBtn2()">执行多个事件</button><hr/>
+            3.采用stop去阻止冒泡
+            <div @click="handleDivClick">
+              <button @click.stop="handleBtn3">阻止冒泡</button>
+            </div><hr/>
+            4.只有自己事件才触发self
+            <div @click.self="handleDivClick1">
+              {{ counter1 + '点击自己触发' }}
+              <button @click="handleBtn4">不是自己触发</button>
+            </div><hr/>
+            5.once只执行一次事件<br/>
+            <button @click.once="handleBtn5">执行一次</button><hr/>
+            6、按键修饰符 enter(只有按下回车时候才有用)
+            <div>
+              <input @keydown.enter="handleKeyDown"/>
+            </div>
+            7、 精确修饰符(按下ctrl同时再点击鼠标)
+            <div @click.ctrl.exact="handleClick">精确修饰符</div>
+          </div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

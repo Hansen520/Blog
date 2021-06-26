@@ -1,0 +1,39 @@
+slot :
+作用域的问题：父模板里调用的数据属性，使用的是父模板的数据属性；子组件也是一样的；
+普通插槽 slot:
+<slot></slot>
+具名插槽 slot :
+<layout>
+  <template v-slot:header>header</template>
+  <!-- 具名插槽指定标签类型不能渲染 -->
+  <template v-slot:footer>footer</template>
+</layout>
+<script>
+  app.component('layout', {
+    template: `
+  <div>
+    <slot name="header"></slot>
+    <div>content</div>
+    <slot name="footer"></slot>
+  </div>
+  `,
+  });
+</script>
+作用域插槽 slot: 将子组件的数据向父组件传递
+<script>
+  const app = Vue.createApp({
+    template: `
+      <list v-slot="slotProps">
+        <div>{{ slotProps.item }}</div>
+      </list>
+    `,
+  });
+  app.component('list', {
+    data() {
+      return { list: [1, 2, 3] };
+    },
+    template: `<div>
+      <slot v-for="item in list" :item="item"/></slot>
+    </div>`,
+  });
+</script>

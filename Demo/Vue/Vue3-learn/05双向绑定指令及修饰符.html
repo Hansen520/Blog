@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>双向绑定指令</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      /*
+        1.input,textarea,checkbox,radio,select
+        2.true-value 与 false-value
+        3.v-model修饰符：
+        .lazy   输入不敏感，只有当输入完失去焦点时，才会去改变内容。
+        .number   将输入的内容转换为number类型
+        .trim  去除字符前后的空格（不去除字符之间的空格）
+      */
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: [],
+            choose: [],
+            flag: 'hello',
+            message: '123',
+          };
+        },
+        template: `<div>
+          1.input,textarea,checkbox,radio,select<br/>
+          2.true-value 与 false-value<br/>
+          3.v-model修饰符：<br/>
+          .lazy   输入不敏感，只有当输入完失去焦点时，才会去改变内容。<br/>
+          .number   将输入的内容转换为number类型<br/>
+          .trim  去除字符前后的空格（不去除字符之间的空格）<hr/>
+          {{content}}<br/>
+          I<input type="checkbox" v-model='content' value='I'>
+          love<input type="checkbox" v-model='content' value='love'/>
+          me<input type="checkbox" v-model='content' value='me'/><hr/>
+          {{choose}}<br/>
+          <select v-model="choose" multiple>
+            <option value="A~">A~</option>
+            <option value="B~">B~</option>
+            <option value="C~">C~</option>
+          </select><hr/>
+          {{flag}}
+          <input type="checkbox" v-model="flag" true-value="hello" false-value="world"/><hr/>
+          {{message}}
+          <input v-model.number="message" type="number"/>
+          <input v-model.trim="message">
+        </div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

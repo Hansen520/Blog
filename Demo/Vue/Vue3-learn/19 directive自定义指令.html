@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自定义指令</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .header {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 局部自定义指令
+      // const directives = {
+      //   focus: {
+      //     mounted(el) {
+      //       el.focus();
+      //     },
+      //   },
+      // };
+      const app = Vue.createApp({
+        // directives: directives,
+        data() {
+          return {
+            distance: 110,
+          };
+        },
+        template: `
+        <div>
+          <div v-pos:left="distance" class="header">
+            <input/>
+          </div>
+          <div v-pos:top="distance" class="header">
+            <input/>
+          </div>
+        </div>`,
+      });
+      app.directive('pos', (el, binding) => {
+        console.log(binding, 'binding');
+        el.style[binding.arg] = binding.value + 'px';
+      });
+      // 全局自定义指令
+      // app.directive('focus', {
+      //   beforeMount(el) {
+      //     console.log('beforeMount');
+      //   },
+      //   mounted(el) {
+      //     el.focus();
+      //   },
+      //   beforeUpdate() {
+      //     console.log('beforeUpdate');
+      //   },
+      //   updated() {
+      //     console.log('updated');
+      //   },
+      //   beforeUnmount() {
+      //     console.log('beforeUnmount');
+      //   },
+      //   unmounted() {
+      //     console.log('unmounted');
+      //   },
+      // });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setup函数使用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 对数据做校验的插件
+      const app = Vue.createApp({
+        template: `
+          <div @click="handleClick">{{ name }}</div>
+        `,
+        mounted() {
+          console.log(this.$options.setup());
+        },
+        // created 实例被完全初始化之前
+        // setup不能调用实例的一些方法,但是实例上的方法却可以去调用它
+        setup(props, context) {
+          return {
+            name: 'han',
+            handleClick: () => {
+              alert(890);
+            },
+          };
+        },
+      });
+      //
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

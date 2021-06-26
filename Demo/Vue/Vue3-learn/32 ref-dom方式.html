@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref-dom</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // CompositionAPI 的语法下，获取真实的 DOM 元素节点
+      const app = Vue.createApp({
+        setup() {
+          const { ref, onMounted } = Vue;
+          // 变量名须与标签的ref名相同才可获取dom
+          const hello = ref(null);
+          onMounted(() => {
+            console.log(hello.value);
+          });
+          return { hello };
+        },
+        template: `<div ref="hello"><p>成功需要一步一个脚印</p></div>`,
+      });
+
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

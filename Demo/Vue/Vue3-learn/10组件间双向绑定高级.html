@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件间双向绑定高级(将首字母大写)</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            count: 'a',
+          };
+        },
+        /* 1.如果像在一个组件传递多个v-model可以使用v-model:[名字]的形式传递，那么子组件接收的就不是modelValue，
+         而是[名字]这个属性了，然后九开始相关的操作了*/
+        /* 2.uppercase为自定义的修饰符, 然后通过向子组件去传递内容做相对应的应用 */
+        template: '<counter v-model.uppercase="count"/>',
+      });
+      app.component('counter', {
+        props: {
+          modelValue: String,
+          // modelModifiers这是一个默认的名字, 底层变化了就会变成10组件间双向绑定高级{uppercase: true}
+          modelModifiers: {
+            default: () => {},
+          },
+        },
+        mounted() {
+          console.log(this.modelModifiers);
+        },
+        methods: {
+          handleClick() {
+            let newValue = this.modelValue + 'b';
+            if (this.modelModifiers.uppercase) {
+              newValue = newValue.toUpperCase();
+            }
+            this.$emit('update:modelValue', newValue);
+          },
+        },
+        template: `
+          <div @click="handleClick">{{ modelValue }}</div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

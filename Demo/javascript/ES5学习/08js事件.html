@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>事件-dream</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<!--css,js-->
+		<style type="text/css">
+		*{margin:3px;padding:0px;}
+		body{height:3000px;background:#FEEBDC;}
+		h3{font-size:18px;margin-top:20px;}/*h3案例样式*/
+		h4{margin-top:20px;font-size:28px;}/*h4标题样式*/
+		h5{width:80px;height:30px;margin-left:200px;line-height:30px;text-align:center;border-radius:10px;cursor:pointer;margin-top:15px;font-size:14px;border:1px solid #666;}
+		h5:hover{color:#0CA6E0}/*h5为显示代码的按钮样式*/
+		.zhu{color:red;font-weight:bold;}
+		.demo{width:700px;border:2px solid #333;color:#000;font-weight:bold;font-size:18px;margin:0px 0 20px 50px;display:none;}
+		.come{color:red;font-weight:bold;font-size:15px;}/*用来说明是引用jq的样式*/
+		p.jieshi{color:#000033;font-weight:900;font-size:15px;font-family:"微软雅黑";margin-left:60px;text-shadow:1px 1px 1px #666;}
+
+		span.zhushi{color:#0033FF;font-weight:bold;font-size:18px;}
+
+		input.in_text{width:200px;height:30px;color:#666;font-size:14px;}
+		.hover{width:100px;height:100px;background:#8CA3EE;line-height:100px;text-align:center;}
+		.hover:hover{background:#33CC66;}
+		.click{width:100px;height:100px;background:#D1EE2D;line-height:100px;text-align:center;}
+
+		</style>
+
+	</head>
+	<body>
+	<h2>事件的那些事&copy;</h2>
+	<h4>一、 窗口事件 a链接</h4>
+	<p class="jieshi">---只在body和frameset元素中才有效---</p>
+	<h5 class="btn1">显示代码</h5>
+	<div class="demo demo1">
+		<p>&lt;a href="#"&gt;窗口事件&lt;/a&gt;</p>
+	</div><!--一、窗口事件 a链接 end--><hr/><hr/>
+	<p class="zhu">-------------本次部分引用了jQuery，下有注明-------------</p>
+
+	<h4>二、onload和onunload事件</h4>
+	<p class="jieshi">---onload:页里或者图片加载完成时---</p>
+	<p class="jieshi">---onunload 用户离开页面里时完成---</p>
+	<h5 class="btn2">显示代码</h5>
+	<div class="demo demo2">
+		<p>&lt;body onunload="bb()"  onload="message()"&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;<p>
+			<p>function message(){</p>
+			<p>alert("欢迎您 光临小店 ，我是店小二为您服务 !");</p>
+			<p>}</p>
+			<p>function bb(){</p>
+			<p>alert("欢迎下次再来！!");</p>
+			<p>}</p>
+			&lt;/script&gt;
+	</div><!--二、onload和onunload事件 end--><hr/><hr/>
+
+
+	<h4>三、焦点事件(onfocus获取焦点和onblur失去焦点)<span class="come">---引入jQuery说明---</span></h4>
+	<p class="jieshi">应该是聚焦的意思，当鼠标点击时消失，鼠标点另一个时出现</p>
+
+	<h3>案例(点击后只见分晓)</h3>
+	<input type="text" value="请输入姓名" class="in_text" t_title="请输入姓名"/>
+	<input type="text" value="破壳日" class="in_text" t_title="破壳日"/>
+
+	<h5 class="btn3">显示代码</h5>
+	<div class="demo demo3">
+		<p>&lt;input type="text" value="请输入姓名" class="in_text" t_title="请输入姓名"/&gt;</p>
+		<p>&lt;input type="text" value="破壳日" class="in_text" t_title="破壳日"/&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>/*focus 该元素获取焦点时*/</p>
+			<p>$("input.in_text").focus(function(){</p>
+			<p>if ($(this).val() == $(this).attr("t_title"))</p>
+			<p>{</p>
+			<p>	$(this).val('');</p>
+			<p>}</p>
+		
+			<p>});</p>
+
+			<p>/*blur 该元素失去焦点时*/</p>
+			<p>$("input.in_text").blur(function(){</p>
+			<p>	if ($(this).val() == "")</p>
+			<p>	{</p>
+			<p>		$(this).val($(this).attr("t_title"));</p>
+			<p>	}</p>
+			<p>});</p>
+			<p>&lt;/script&gt;</p>	
+	</div><hr/><hr/><!--三、焦点事件(onfocus获取焦点和onblur失去焦点) end-->
+
+
+	<h4>四、onchange（change）事件</h4>
+	<p class="jieshi">---onchange 事件常结合对输入字段的验证来使用,点击一次就生效。当用户改变输入字段的内容时，会调用函数,一般用于表单联动---</p>
+	<h3>案例：</h3>
+	<select onchange="myChange(this)">
+		<option value="0">--请选择月--</option>
+		<option value="1">1月</option>
+		<option value="2">2月</option>
+		<option value="3">3月</option>
+		<option value="4">4月</option>
+		<option value="5">5月</option>
+	</select>
+	<h5 class="btn4">代码展示</h5>
+	<div class="demo demo4">
+		<p>&lt;select onchange="myChange(this)"&gt;</p>
+		<p>&lt;option value="0"&gt;--请选择月--&lt;/option&gt;</p>
+		<p>&lt;option value="1"&gt;1月&lt;/option&gt;</p>
+		<p>&lt;option value="2"&gt;2月&lt;/option&gt;</p>
+		<p>&lt;option value="3"&gt;3月&lt;/option&gt;</p>
+		<p>&lt;option value="4"&gt;4月&lt;/option&gt;</p>
+		<p>&lt;option value="5"&gt;5月&lt;/option&gt;</p>
+		<p>&lt;/select&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>function myChange(val){</p>
+			<p>alert(val.value);</p>
+			<p>}</p>
+			<p>&lt;/script&gt;</p>
+	</div><hr/></hr><!--四、onchange end-->
+
+
+	<h4>五、hover事件<span class="come">---引入jQuery说明---</span></h4>
+	<p class="jieshi">当鼠标经过时，触发的事件,此事件可以利用js控制也可以利用css样式控制</p>
+	<h3>案例</h3>
+	<div class="hover">hover me!</div>
+	<h5 class="btn5">显示代码</h5>
+	<div class="demo demo5">
+		<p>&lt;div class="hover"&gt;hover me!&lt;/div&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>$(".hover").hover(function(){</p>
+			<p>	$(this).animate({"width":"600px"},1000);</p>		
+			<p>},function(){</p>
+			<p>	$(this).animate({"width":"100px"},1000);</p>
+			<p>});</p>
+			<p>&lt;/script&gt;</p>
+	
+	</div>
+	
+	<hr/><hr/>
+
+
+	
+	<h4>六、click（onclick）事件</h4>
+	<p class="jieshi">---click为单击点击事件---</p>
+	<h3>案例1(onclick):</h3>
+	<input type="button" value="单击点击onclick" onclick="myClick()"/>
+	<h5 class="btn6_1">显示代码1</h5>
+	<div class="demo demo6_1">
+		<p>&lt;input type="button" value="单击点击onclick" onclick="myClick()"/&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>function myClick(){</p>
+			<p>alert("我是click单击点击事件")</p>		
+			<p>}</p>
+			<p>&lt;/script&gt;</p>
+	</div><!--onclick-->
+
+	<h3>案例2(click)<span class="come">---案例2要引入jQuery---</span></h3>
+
+	<div class="click">click me！</div>
+
+	<h5 class="btn6_2">显示代码2</h5>
+	<div class="demo demo6_2">
+		<p>&lt;div class="click"&gt;click me！&lt;/div&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>$(".click").click(function(){</p>
+			<p>$(this).animate({"width":"600px"},1000);	</p>	
+			<p>});</p>
+			<p>&lt;/script&gt;</p>
+
+	</div><hr/><hr/><!--六、click（onclick） end-->
+
+	<h4>七、双击事件（dblclick）ondblclick</h4>
+	<p class="jieshi">---故名思议，双击事件就是鼠标点两下发生的事---</p>
+	<h3>案例</h3>
+	<input type="button" value="双击事件ondblclick" ondblclick="myOndblclick()"/>
+	<h5 class="btn7">显示代码</h5>
+	<div class="demo demo7">
+		<p>&lt;input type="button" value="双击事件ondblclick" ondblclick="myOndblclick()"/&gt;</p><br/>
+			<p>&lt;script type="text/javascript"&gt;</p>
+			<p>function myOndblclick(){</p>
+			<p>alert("我是ondblclick双击事件哦！")</p>
+			<p>}</p>
+			<p>&lt;/script&gt;</p>
+	</div><hr/><hr/><!--七、双击事件（dblclick）ondblclick end-->
+
+
+	<h4>八、onmouse（mouse）的5种事件<span class="come">---要引入jQuery，所有用括号里的---</span></h4>
+		<p class="jieshi">1.onmousedown（mousedown）鼠标被按下时</p>
+		<p class="jieshi">2.onmousemove （mousemove）鼠标被挪动时</p>
+		<p class="jieshi">3.onmouseout（mouseout） 鼠标离开元素时</p>
+		<p class="jieshi">4.onmouseover（mouseover） 鼠标经过元素时</p>
+		<p class="jieshi">5.onmouseup(mouseup) 开释鼠标按键时</p>
+
+
+	<h3>mouseover鼠标经过-mouseout鼠标移开<span class="zhushi">*(注释:<em>mouseover</em>和<em>mouseout</em>的配套使用相当于<em>hover</em>,在这里<em>mousemove</em>近似于<em>mouseover</em>)</span></h3>
+
+	<h5>案例</h5>
+	<div class="mousemove"></div>
+	<h5 class="btn8">代码</h5>
+	<div class="demo demo8"></div>
+
+	<h3>mousedown鼠标按下-mouseup鼠标开释<span class="zhushi">*(注释:<em>mousedown</em>相当于click)</span></h3>
+	
+	<h5>案例</h5>
+	<div class="mousemove"></div>
+	<h5 class="btn9">代</h5>
+	<div class="demo demo9"></div>
+
+
+	
+
+
+
+
+	
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		/*onchange*/
+		function myChange(val){
+			alert(val.value);
+		}
+
+		/*onclick*/
+		function myClick(){
+			alert("我是click单击点击事件")	
+		}
+
+		/*hover*/
+		$(".hover").hover(function(){
+			$(this).animate({"width":"600px"},1000);		
+		},function(){
+			$(this).animate({"width":"100px"},1000);
+		});
+
+		/*click*/
+		$(".click").click(function(){
+			$(this).animate({"width":"600px"},1000);		
+		});
+
+		/*ondblclick 双击*/
+		function myOndblclick(){
+			alert("我是ondblclick双击事件哦！")
+		
+		}
+
+
+		/*focus 该元素获取焦点时*/
+		$("input.in_text").focus(function(){
+			if ($(this).val() == $(this).attr("t_title"))
+			{
+				$(this).val('');
+			}
+		
+		});
+
+		/*blur 该元素失去焦点时*/
+		$("input.in_text").blur(function(){
+			if ($(this).val() == "")
+			{
+				$(this).val($(this).attr("t_title"));
+			}
+		
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/*一下与本节无关，只为求代码美观*/
+		$(".btn1").click(function(){$(".demo1").toggle("1000");});
+		$(".btn2").click(function(){$(".demo2").toggle("1000");});
+		$(".btn3").click(function(){$(".demo3").toggle("1000");});
+		$(".btn4").click(function(){$(".demo4").toggle("1000");});
+		$(".btn5").click(function(){$(".demo5").toggle("1000");});		
+		$(".btn6_1").click(function(){$(".demo6_1").toggle("1000");});
+		$(".btn6_2").click(function(){$(".demo6_2").toggle("1000");});
+		$(".btn7").click(function(){$(".demo7").toggle("1000");});
+		$(".btn8").click(function(){$(".demo8").toggle("1000");});
+		$(".btn9").click(function(){$(".demo9").toggle("1000");});
+		$(".btn10").click(function(){$(".demo10").toggle("1000");});
+		$(".btn11").click(function(){$(".demo11").toggle("1000");});
+		$(".btn12").click(function(){$(".demo12").toggle("1000");});
+
+	</script>
+
+	</body>
+
+	</html>

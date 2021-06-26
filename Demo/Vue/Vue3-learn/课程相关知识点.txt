@@ -1,0 +1,14 @@
+// 相关的一些知识点
+1. bem 相关的scss使用
+2. 将公共的scss进行抽离，以及共有的scss变量抽离做统一的管理
+3. 由于加载缓慢导致banner 图的抖动问题(高度塌陷)
+ .banner{
+   height: 0;
+   overflow: hidden;
+   padding-bottom: 高/宽*100%
+ }
+4. vue3-devtool 安装工具地址
+https://github.com/vuejs/vue-devtools
+
+// 文言文编程语言
+https://github.com/wenyan-lang/wenyan

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>computed 计算属性</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const app = Vue.createApp({
+        setup() {
+          // 流程调度中转
+          const { ref, computed } = Vue;
+          const count = ref(0);
+          const handleClick = () => {
+            count.value += 1;
+          };
+          // const countAddFive = computed(() => {
+          //   return count.value + 5;
+          // });
+          const countAddFive = computed({
+            // 获取到的countAddFive会变成100
+            get: () => {
+              return count.value + 5;
+            },
+            // 设置完后count会变成95
+            set: (param) => {
+              count.value = param - 5;
+            },
+          });
+          setTimeout(() => {
+            countAddFive.value = 100;
+          }, 3000);
+          return { count, countAddFive, handleClick };
+        },
+        template: `
+          <div>
+            {{count}} -- {{countAddFive}}
+          </div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

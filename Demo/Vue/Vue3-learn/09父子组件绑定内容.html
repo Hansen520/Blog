@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>父子组件绑定(你不知道的点)</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        template: '<counter v-model="count"></counter>',
+      });
+      app.component('counter', {
+        // 默认是这种写法
+        props: ['modelValue'],
+        // emits 这个可写可不写，写了的好处在于便于维护(就是说有多少wmit传给父组件)
+        emits: ['update:modelValue'],
+        methods: {
+          handleClick() {
+            this.$emit('update:modelValue', this.modelValue + 2);
+          },
+        },
+        template: `
+          <div @click="handleClick">{{ modelValue }}</div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

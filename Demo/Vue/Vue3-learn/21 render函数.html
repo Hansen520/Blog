@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>render函数</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="hello"></div>
+    <script>
+      // render function
+      // template->render->h->虚拟dom(JS对象)->真实DOM->展示到页面上
+      const app = Vue.createApp({
+        data() {
+          return {
+            show: false,
+          };
+        },
+
+        template: `
+          <my-title :level="1">
+            hello 1 
+          </my-title>
+        `,
+      });
+      app.component('my-title', {
+        props: ['level'],
+        render() {
+          const { h } = Vue;
+          // 相当于h1~h2~h3~h4~h5~h6, 这个为虚拟dom
+          // params  第一个参数为标签名, 第二个参数为标签的属性, 第三个参数为插槽(或者是子节点内容)
+          return h('h' + this.level, {}, [
+            this.$slots.default(),
+            h('h4', {}, 'han'),
+          ]);
+        },
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

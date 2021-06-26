@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>全局组件和局部组件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      /*
+        1. 组件具备复用性
+        2. 全局组件，只要定义了，，处处可以使用，但是性能不高，但是使用起来简单(名字建议: 小写字母单词，中间用横杠)
+        3. 局部组件， 定义了，要注册之后才能使用，性能比较高，使用起来比较麻烦(建议大写字母开头驼峰式), 
+           局部组件使用时候，要做一个名字和组件间的映射对象, 你不写，vue底层也会做映射
+      */
+
+      // 局部组件(父组件需要注册才能使用)
+      const Con = {
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        template: `<div @click="count += 1">局部组件:{{count}}</div>`,
+      };
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: 1,
+          };
+        },
+        components: {
+          Con,
+        },
+        template: `
+        1. 组件具备复用性<br/>
+        2. 全局组件，只要定义了，，处处可以使用，但是性能不高，但是使用起来简单(名字建议: 小写字母单词，中间用横杠)<br/>
+        3. 局部组件， 定义了，要注册之后才能使用，性能比较高，使用起来比较麻烦(建议大写字母开头驼峰式), 
+           局部组件使用时候，要做一个名字和组件间的映射对象, 你不写，vue底层也会做映射<hr/>
+        <div><counter/><Con/></div>`,
+      });
+      // 此为全局组件
+      app.component('counter', {
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        template: `<div @click="count += 1">全局组件:{{count}}</div>`,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

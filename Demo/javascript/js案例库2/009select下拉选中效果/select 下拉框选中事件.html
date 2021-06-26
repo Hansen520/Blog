@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <script>
+		window.onload=function(){
+			let st=document.getElementById("st");
+			let odiv=document.getElementById("show");
+			st.onchange=function(){
+				odiv.innerHTML=st.options[st.selectedIndex].value;
+			}
+		}
+    </script>
+</head>
+<body>
+<select name="" id="st">
+    <option value="1">蚂蚁部落一</option>
+    　<option value="2">蚂蚁部落二</option>
+    　<option value="3">蚂蚁部落三</option>
+</select>
+<div id="show"></div>
+</body>
+</html>

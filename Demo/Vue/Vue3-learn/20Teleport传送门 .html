@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teleport传送门</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .area {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 300px;
+        height: 300px;
+        background: green;
+        z-index: 1;
+      }
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0.5;
+        z-index: 0;
+        color: aliceblue;
+        font-size: 110px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="hello"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            show: false,
+          };
+        },
+        methods: {
+          handleBtnClick() {
+            this.show = !this.show;
+          },
+        },
+        // teleport传送门就是说将当前标签的节点挂载到另一个节点后
+        // 如下面mask挂载到#hello节点
+        template: `
+        <div class="area">
+          <button @click="handleBtnClick">按钮</button>
+          <teleport to="#hello">
+            <div class="mask" v-show="show">HELLO HANGZHOU</div>  
+          </teleport>
+        </div>`,
+      });
+
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

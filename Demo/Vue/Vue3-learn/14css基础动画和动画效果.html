@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css过度和基本动画</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      /* @keyframes leftToRight {
+        0% {
+          transform: translateX(-100px);
+        }
+        50% {
+          transform: translateX(-50px);
+        }
+        0% {
+          transform: translateX(0px);
+        }
+      }
+      .animation {
+        animation: leftToRight 3s;
+      } */
+
+      .transit {
+        transition: background-color 2s ease;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .green {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            animate: {
+              animation: true,
+            },
+            transit: {
+              blue: true,
+              green: false,
+            },
+          };
+        },
+        methods: {
+          handleClick() {
+            this.animate.animation = !this.animate.animation;
+            this.transit.blue = !this.transit.blue;
+            this.transit.green = !this.transit.green;
+          },
+        },
+        template: `
+        <div>
+          <div :class="animate">animation hello world</div>
+          <div class="transit" :class="transit">transition hello world</div>
+          <button @click="handleClick">变化</button>
+        </div>`,
+      });
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

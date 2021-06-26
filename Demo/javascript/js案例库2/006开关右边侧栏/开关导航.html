@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>导航</title>
+	<style>
+		html{
+			overflow-x: hidden;
+			overflow-y:hidden;
+		}
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		::-webkit-scrollbar{
+			width:5px;
+			background-color: #00A0EA;
+		}
+		/* 滚动槽 */
+		::-webkit-scrollbar-track {
+			border-radius:10px;
+		}
+		/* 滚动条滑块 */
+		::-webkit-scrollbar-thumb {
+			border-radius:10px;
+			background: #002323;
+		}
+
+		li{
+			list-style: none;
+		}
+		body{
+			background: #f5f5f5;
+		}
+		#nav{
+			width:200px;
+			background: #00A0EA;
+			position: absolute;
+			right:-200px;
+			top:0;
+		}
+		#nav.slide{
+			right:0;
+		}
+		#nav.hide{
+			right:-200px;
+		}
+		#nav .nav-box{
+			position: relative;
+		}
+		#nav .nav-box .nav-list{
+			width:180px;
+			margin:0 auto;
+			border:1px solid red;
+			overflow:auto;
+		}
+		#nav .nav-box .nav-button{
+			width:50px;
+			height:50px;
+			background: #caffa5;
+			position: absolute;
+			top:45%;
+			left:-50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="nav">
+		<div class="nav-box">
+			<div class="nav-list">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+					<li>12</li>
+					<li>13</li>
+					<li>14</li>
+					<li>15</li>
+					<li>16</li>
+					<li>17</li>
+					<li>18</li>
+					<li>19</li>
+					<li>20</li>
+					<li>21</li>
+					<li>22</li>
+					<li>23</li>
+					<li>24</li>
+					<li>25</li>
+					<li>26</li>
+					<li>27</li>
+					<li>28</li>
+					<li>29</li>
+					<li>30</li>
+					<li>31</li>
+					<li>32</li>
+					<li>33</li>
+					<li>34</li>
+					<li>35</li>
+					<li>36</li>
+					<li>37</li>
+					<li>38</li>
+					<li>39</li>
+					<li>40</li>
+					<li>41</li>
+					<li>42</li>
+					<li>43</li>
+					<li>44</li>
+					<li>45</li>
+					<li>46</li>
+					<li>47</li>
+					<li>48</li>
+					<li>49</li>
+					<li>50</li>
+				</ul>
+			</div>
+			<div class="nav-button">2</div>
+		</div>
+	</div>
+
+	<script>
+		reg = /\d+/;//去掉px
+		oNav = document.getElementById('nav');
+		onavList = document.querySelector('.nav-list');
+		oNav.style.height = document.documentElement.clientHeight+'px';
+		onavList.style.height = (document.documentElement.clientHeight-10) + 'px';
+
+		onavButton = document.querySelector('.nav-button');
+		onavButton.ifClick = true;
+		onavButton.onclick = function () {
+			if(this.ifClick){
+				oNav.className = 'slide';
+				this.ifClick = false;
+			}else{
+				oNav.className = 'hide';
+				this.ifClick = true;
+			}
+		}
+	</script>
+</body>
+</html>

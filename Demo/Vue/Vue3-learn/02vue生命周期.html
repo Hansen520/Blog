@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue3中的生命周期</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 生命周期函数L 在 “某一时候” 会 “自动执行的” 函数
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: 2,
+          };
+        },
+        // 在实例生成之前会自动执行的函数
+        beforeCreate() {
+          console.log('---beforeCreate---');
+          console.log('data', this.content);
+        },
+        // 在实例生成之后会自动执行的函数
+        created() {
+          console.log('---create---');
+          console.log('data', this.content);
+        },
+        // 在模板已经被编程函数之后立即自动执行的函数
+        //（在组件内容被渲染到页面之前自动执行的函数）
+        beforeMount() {
+          console.log('---brforeMount----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        // 在组件内容被渲染到页面之后自动执行的函数
+        mounted() {
+          console.log('----mounted----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        // 在数据发生改变时候会立即自动执行的函数
+        beforeUpdate() {
+          console.log('----beforeUpdate----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        // 在数据发生改变，同时页面渲染之后 ，立即执行的函数
+        updated() {
+          console.log('----updated----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        // 当VUe 应用失效时，自动执行的函数
+        beforeUnmount() {
+          console.log('----beforeUnmount----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        // 当Vue应用失效时，且dom完全销毁之后，自动执行的函数
+        unmounted() {
+          console.log('----unmounted----');
+          console.log('dom', document.getElementById('root').innerHTML);
+        },
+        template: '<div>{{content}}</div>',
+      });
+
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

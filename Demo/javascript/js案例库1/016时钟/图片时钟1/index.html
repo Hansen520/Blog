@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box ul{
+            width: 328px;
+            height: 61px;
+            margin: 50px auto;
+        }
+        #box ul li{
+            float: left;
+            margin: 0 3px;
+        }
+        #box ul li.time{
+            width: 41px;
+            height: 61px;
+        }
+        #box ul li.time.p0{
+            background-image: url("img/0.png");
+        }
+        #box ul li.time.p1{
+            background-image: url("img/1.png");
+        }
+        #box ul li.time.p2{
+            background-image: url("img/2.png");
+        }
+        #box ul li.time.p3{
+            background-image: url("img/3.png");
+        }
+        #box ul li.time.p4{
+            background-image: url("img/4.png");
+        }
+        #box ul li.time.p5{
+            background-image: url("img/5.png");
+        }
+        #box ul li.time.p6{
+            background-image: url("img/6.png");
+        }
+        #box ul li.time.p7{
+            background-image: url("img/7.png");
+        }
+        #box ul li.time.p8{
+            background-image: url("img/8.png");
+        }
+        #box ul li.time.p9{
+            background-image: url("img/9.png");
+        }
+        #box ul li.split{
+            width: 17px;
+            height: 61px;
+            background-image: url("img/d.png");
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li class="time p0"></li>
+            <li class="time p0"></li>
+            <li class="split"></li>
+            <li class="time p0"></li>
+            <li class="time p0"></li>
+            <li class="split"></li>
+            <li class="time p0"></li>
+            <li class="time p0"></li>
+        </ul>
+    </div>
+    <script>
+        var oTime = document.querySelectorAll("#box ul li.time");
+
+        setInterval(timer(),1000);
+        function timer() {
+            var goudan = new Date();
+            var hh = goudan.getHours();
+            var mm = goudan.getMinutes();
+            var ss = goudan.getSeconds();
+            hh = zero(hh);
+            mm = zero(mm);
+            ss = zero(ss);
+           cha(hh,mm,ss);
+            return timer;
+        }
+
+        function cha(hh,mm,ss) {
+            var str = hh + mm + ss;
+            for(var i = 0;i < oTime.length;i++){
+                oTime[i].className = "time p" + str[i];
+            }
+        }
+        //补0神器
+        function zero(num){return num*1<10?"0"+num:num+'';}
+
+
+
+    </script>
+</body>
+</html>

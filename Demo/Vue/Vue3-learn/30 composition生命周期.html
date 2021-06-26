@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>composition生命周期</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // beforeMount => onBeforeMount
+      // mounted => onMounted
+      // beforeUpdate => onBeforeUpdate
+      // beforeUnmount => onBeforeUnmount
+      // unmouted => onUnmounted
+
+      /*
+        这里没有了created和beforeCreated, 因为数据的获取已经在setup里面已经获取了(setup在他们之间)
+      */
+      const app = Vue.createApp({
+        setup() {
+          const {
+            ref,
+            onBeforeMount,
+            onMounted,
+            onBeforeUpdate,
+            onUpdated,
+            onRenderTracked,
+            onRenderTriggered,
+          } = Vue;
+          const name = ref('han');
+          // dom渲染前
+          onBeforeMount(() => {
+            console.log('onBeforeMount');
+          });
+          // dom渲染之后
+          onMounted(() => {
+            console.log('onMounted');
+          });
+          // 数据更新前
+          onBeforeUpdate(() => {
+            console.log('onBeforeUpdate');
+          });
+          // 数据更新后
+          onUpdated(() => {
+            console.log('onUpdated');
+          });
+          // 每次渲染后重新手机响应式依赖
+          onRenderTracked(() => {
+            console.log('onRenderTracked');
+          });
+          // 每次触发页面重新渲染时自动执行
+          onRenderTriggered(() => {
+            console.log('onRenderTriggered');
+          });
+          const handleClick = () => {
+            name.value = 'sheng';
+          };
+          return { name, handleClick };
+        },
+        template: `
+          <div @click="handleClick">{{ name }}</div>
+        `,
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

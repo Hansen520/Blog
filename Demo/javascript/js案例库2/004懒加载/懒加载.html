@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生js懒加载-不是我不想加载，只是我想慢点加载</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul,li{
+        list-style: none;
+    }
+    #main{
+        width:1000px;
+        margin:0 auto;
+    }
+    #main ul li{
+        width:200px;
+        height: 300px;
+        border:1px solid #ccc;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    #main ul li img{
+        width: 100%;
+        height:100%;
+    }
+    </style>
+</head>
+<body>
+<div id="main">
+        <ul>
+            <li><img src="" alt="" data-src="img/01.jpg"></li>
+            <li><img src="" alt="" data-src="img/02.jpg"></li>
+            <li><img src="" alt="" data-src="img/03.jpg"></li>
+            <li><img src="" alt="" data-src="img/04.jpg"></li>
+            <li><img src="" alt="" data-src="img/05.jpg"></li>
+            <li><img src="" alt="" data-src="img/06.jpg"></li>
+            <li><img src="" alt="" data-src="img/07.jpg"></li>
+            <li><img src="" alt="" data-src="img/08.jpg"></li>
+            <li><img src="" alt="" data-src="img/09.jpg"></li>
+            <li><img src="" alt="" data-src="img/10.jpg"></li>
+            <li><img src="" alt="" data-src="img/11.jpg"></li>
+            <li><img src="" alt="" data-src="img/12.jpg"></li>
+            <li><img src="" alt="" data-src="img/13.jpg"></li>
+            <li><img src="" alt="" data-src="img/14.jpg"></li>
+            <li><img src="" alt="" data-src="img/15.jpg"></li>
+            <li><img src="" alt="" data-src="img/16.jpg"></li>
+            <li><img src="" alt="" data-src="img/17.jpg"></li>
+            <li><img src="" alt="" data-src="img/18.jpg"></li>
+            <li><img src="" alt="" data-src="img/19.jpg"></li>
+            <li><img src="" alt="" data-src="img/20.jpg"></li>
+        </ul>
+</div>
+<script>
+//可视区高度
+var insight = document.documentElement.clientHeight;
+var oImg = document.querySelectorAll("img");
+
+window.onload =  window.onscroll = function(){
+    //卷起高度document.body.scrollTop用于搜狗，document.documentElement.scrollTop用于谷歌
+    var oScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    for(var i = 0;i < oImg.length;i++){
+        //如果图片距离页面顶端高度<滚动条高度+可视区的高度，那么图片显示，反之不显示
+        if(oImg[i].offsetTop < oScroll + insight){
+            oImg[i].src = oImg[i].getAttribute("data-src");
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+懒加载
+在h5的标准下
+oDiv.offsetWidth //获取div宽度
+oDiv.offsetHeight //获取div高度
+oDiv.offsetTop //距离网页上面宽度
+oDiv.offsetLeft //距离网页左面宽度
+document.documentElement.clientHeight //可视区高度
+document.documentElement.clientWidth //可视区宽度
+
+配合 window.onscroll = function(){
+document.title = document.body.scrollTop //卷起高度
+}去用
+*/
+</script>
+</body>
+</html>

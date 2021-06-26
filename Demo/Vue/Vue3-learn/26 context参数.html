@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>context参数</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // context中attrs, slots, emit的用法
+      const app = Vue.createApp({
+        methods: {
+          handleChange() {
+            alert('change');
+          },
+        },
+        template: `
+          <child app="app1" @change="handleChange">parent</child>
+        `,
+      });
+      app.component('child', {
+        template: `<div @click="handleClick" title>123456</div>`,
+        setup(props, context) {
+          const { h } = Vue;
+          const { attrs, slots, emit } = context;
+          function handleClick() {
+            emit('change');
+          }
+          return { handleClick };
+          // console.log(attrs.app); // None-props 属性(就是说没有定义props可以获得组件属性)
+          // 这个相当于就是一个组件了, 参数相关: div标签, {} 写入属性, slots.default() 获取插槽里面的值, 相当于把内容包括标签写进parent里面
+          // return () => h('div', {}, slots.default());
+          // return () => h('div', {}, '1111');
+        },
+      });
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

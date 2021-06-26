@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>全选与全不选</title>
+    </head>
+    <body>
+        <form>
+          请选择你爱好:<br>
+          <input type="checkbox" name="hobby" id="hobby1">  音乐
+          <input type="checkbox" name="hobby" id="hobby2">  登山
+          <input type="checkbox" name="hobby" id="hobby3">  游泳
+          <input type="checkbox" name="hobby" id="hobby4">  阅读
+          <input type="checkbox" name="hobby" id="hobby5">  打球
+          <input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+          <input type="button" value = "全选" onclick = "checkall();">
+          <input type="button" value = "全不选" onclick = "clearall();">
+          <p>请输入您要选择爱好的序号，序号为1-6:</p>
+          <input id="wb" name="wb" type="text" >
+          <input name="ok" type="button" value="确定" onclick = "checkone();">
+        </form>
+        <script type="text/javascript">
+        function checkall(){
+            var hobby = document.getElementsByTagName("input");
+            for(var i=0;i<hobby.length;i++){
+               hobby[i].checked=true;
+		    }
+        }
+        function clearall(){
+            var hobby = document.getElementsByName("hobby");
+                for(var i=0;i<hobby.length;i++){
+                    hobby[i].checked=false;
+		        }
+        }
+        function checkone(){
+            var j=document.getElementById("wb").value;
+	        if(parseInt(j)>6||parseInt(j)<1){
+                alert("请输入1-6之间的数字");
+            }
+			var hobby = document.getElementsByName("hobby");
+			hobby[parseInt(j)-1].checked=true;
+		}
+        </script>
+    </body>
+</html>

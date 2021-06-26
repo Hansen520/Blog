@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据校验的插件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 对数据做校验的插件
+      const app = Vue.createApp({
+        data() {
+          return { name: 'han', age: 24 };
+        },
+        rules: {
+          age: {
+            validate: (age) => age > 25,
+            message: 'too yang, too simple!',
+          },
+          name: {
+            validate: (name) => name.length >= 4,
+            message: 'name too short',
+          },
+        },
+        template: `
+          <div>name: {{}}, age: {{age}}</div>
+        `,
+      });
+      // Plugin 编写的代码，为什么会解决掉 Mixin 中的各种问题
+      const validatorPlugin = (app, options) => {
+        app.mixin({
+          created() {
+            // this.$options里面存储着有关当前组件的所有信息
+            for (let key in this.$options.rules) {
+              // 这里key = name 和 age
+              const item = this.$options.rules[key];
+              // 监听属性name和age
+              this.$watch(key, (value) => {
+                // console.log(value); // key代表如age, value则返回更改后新的值
+                const result = item.validate(value); // 返回布尔值
+                if (!result) console.log(item.message); // 条件不成立返回
+              });
+            }
+          },
+        });
+      };
+      // 测试用例
+      // vm.$data.age = 12 // 不成立
+      app.use(validatorPlugin);
+      // vm代表的就是vue应用的根组件
+      const vm = app.mount('#root');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            position: relative;
+            background: pink;
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+        }
+        #box span{
+            position: absolute;
+            top: 0;
+            left: 250px;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            background: #000;
+            margin-left: -5px;
+            margin-top: -5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span></span>
+    </div>
+    <script>
+
+        /*
+        弧度值：
+            0 - 180 - 360
+            0 - π - 2π
+         */
+
+        //alert( Math.sin(30*Math.PI/180) );
+
+        //alert( 0.1+0.2 );
+
+        var deg = 90,
+            oSpan = document.querySelector("#box span"),
+            x = 250,
+            y = 0,
+            r = 250;
+
+        var timer = setInterval(function () {
+            deg -= 5;
+            var left = x + r*Math.cos(deg*Math.PI/180);
+            var top = y + (250 - r*Math.sin(deg*Math.PI/180));
+            oSpan.style.left = left + 'px';
+            oSpan.style.top = top + 'px';
+            if(deg < -20){
+                left = Math.sin(3);
+
+            }
+        },13);
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
