@@ -16,14 +16,14 @@ function installModule(store, rootState, path, module) {
   // 判断模块上是否有namespaced
   const namespaced = store._modules.getNamespaced(path)
 
-  console.log(namespaced)
-
   if (!isRoot) {
     // []
     const parentState = path
       .slice(0, -1)
       .reduce((state, key) => state[key], rootState)
-    parentState[path[path.length - 1]] = module.state
+    store._withCommit(() => {
+      parentState[path[path.length - 1]] = module.state
+    })
   }
   // getters
   module.forEachGetter((getter, key) => {
@@ -80,6 +80,7 @@ function resetStoreState(store, state) {
     enableStrictMode(store)
   }
 }
+// 能够进行严格模式
 function enableStrictMode(store) {
   // 监控数据变化，数据变化后执行回调函数
   watch(
@@ -87,7 +88,7 @@ function enableStrictMode(store) {
     () => {
       console.assert(
         store._commiting,
-        'do not mutate vuex store state outside mutaion handler'
+        '不能通过mutation其他之外的方式修改state'
       )
     },
     { deep: true, flush: 'sync' }
@@ -98,6 +99,7 @@ export default class Store {
   _withCommit(fn) {
     // 切片
     const commiting = this._commiting
+    // 就是包了一层后先置为true, 让其可以修改状态, 执行完方法后再置回false
     this._commiting = true
     fn()
     this._commiting = commiting
@@ -126,19 +128,38 @@ export default class Store {
     const state = store._modules.root.state // 根状态
     installModule(store, state, [], store._modules.root)
     resetStoreState(store, state)
+
+    // 做一个插件
+    store._subscribes = []
+    if (options.plugins) {
+      options.plugins.forEach((plugin) => plugin(store))
+    }
+  }
+
+  // 订阅模式
+  subscribe(fn) {
+    this._subscribes.push(fn)
   }
 
   get state() {
     return this._state.data
   }
 
+  // 通过插件换取新状态(用户刷新时候更改)
+  replaceState(newState) {
+    // 严格模式下，不能直接修改状态，所以加上_withCommit再修改
+    this._withCommit(() => {
+      this._state.data = newState
+    })
+  }
+
   commit = (type, payload) => {
     const entry = this._mutations[type] || []
-    console.log(entry)
     this._withCommit(() => {
       entry.forEach((handler) => handler(payload))
     })
-    // entry.forEach((handler) => handler(payload))
+    // 发布订阅插件执行
+    this._subscribes.forEach((sub) => sub({ type, payload }, this.state))
   }
 
   dispatch = (type, payload) => {
@@ -154,5 +175,19 @@ export default class Store {
     app.provide(injectKey || storeKey, this)
     // 类似vue2中Vue.prototype.$store = this的写法
     app.config.globalProperties.$store = this
+  }
+
+  // 动态添加新模块
+  registerModule(path, rawModule) {
+    const store = this
+    if (typeof path === 'string') {
+      path = [path]
+    }
+    // 要在原有的模块基础上新增加一个
+    const newModule = store._modules.register(rawModule, path) // 注册上去
+    // 再把模块安装上
+    installModule(store, store.state, path, newModule)
+    // 重置容器
+    resetStoreState(store, store.state)
   }
 }

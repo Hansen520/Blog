@@ -1,9 +1,9 @@
 <template>
-  计数器:{{ count }} {{ $store.state.count }}
+  计数器:{{ count }} - {{ $store.state.count }}
   <button @click="$store.state.count++">错误修改</button>
 
   <hr />
-  double:{{ double }} {{ $store.getters.double }}
+  double:{{ double }} - {{ $store.getters.double }}
 
   <!-- 同步修改 -->
   <button @click="add">同步修改</button>
