@@ -129,7 +129,7 @@ export default class Store {
   }
 
   get state() {
-    return this._state
+    return this._state.data
   }
 
   commit = (type, payload) => {
