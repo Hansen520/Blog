@@ -29,7 +29,7 @@ function installModule(store, rootState, path, module) {
   module.forEachGetter((getter, key) => {
     store._wrappedGetters[namespaced + key] = () => {
       // 这里不能直接用模块上自己的状态，此状态不是响应式的，所以我们用getNestedState包装下成为响应式的
-      return getter(getNestedState(module.state, path))
+      return getter(getNestedState(store.state, path))
     }
   })
   // mutations

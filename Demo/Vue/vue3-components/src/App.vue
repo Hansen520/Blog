@@ -30,7 +30,7 @@ export default {
     }
     function asyncAdd() {
       store.dispatch('asyncAdd', 1).then(() => {
-        alert('ok')
+        alert('将要进行异步修改')
       })
     }
     return {
