@@ -1,0 +1,37 @@
+<script>
+  // 模拟require
+  // function require(file) {
+  //   // exports模拟
+  //   exports = {};
+  //   (function (exports, code) {
+  //     eval(code);
+  //   })(exports, 'exports.default = function(a,b) {return a+b}');
+  //   return exports;
+  // }
+
+  // 读入模块
+  // eval()
+  // index.js
+  // var add = require('add.js').default;
+  // console.log(1, 2);
+
+  // ----------------------------webpack-------------------------------------
+
+  //   (function (list) {
+  //     function require(file) {
+  //       // exports模拟
+  //       exports = {};
+  //       (function (exports, code) {
+  //         eval(code);
+  //       })(exports, list[file]);
+  //       return exports;
+  //     }
+  //   })({
+  //     'index.js': `
+  //         var add = require('add.js').default;
+  //         console.log(1, 2);`,
+  //     'add.js': `exports.default =function(a,b){return a + b}`,
+  //   });
+</script>
+
+<script src="./dist/bundle.js"></script>
