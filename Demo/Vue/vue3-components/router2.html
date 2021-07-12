@@ -78,7 +78,7 @@
           window.history[replace ? 'replaceState' : 'pushState'](
             state,
             null,
-            to
+            url
           )
           /*
             将自己生成的状态同步到了路由系统中了(state)就是当前路径前后所有的值

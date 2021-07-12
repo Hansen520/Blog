@@ -1,10 +1,25 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from '@/vue-router'
 import vuexHandle from '../views/vuex-test'
+import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    redirect: '/vuex'
+    name: 'Home',
+    component: Home,
+    children: [
+      {
+        path: 'a',
+        component: {
+          render: () => <h1>a页面</h1>
+        }
+      },
+      {
+        path: 'b',
+        component: {
+          render: () => <h1>b页面</h1>
+        }
+      }
+    ]
   },
   {
     path: '/vuex',
