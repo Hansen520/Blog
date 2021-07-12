@@ -8,7 +8,7 @@
   </head>
   <body>
     <button onclick="routerHistory.push('/')">首页</button>
-    <button onclick="routerHistory.push('/about')">关于我</button>
+    <button onclick="routerHistory.push('#/about')">关于我</button>
     <button onclick="routerHistory.replace('/qwer')">替换</button>
     <script>
       // 自己实现一个路由模块
@@ -37,15 +37,21 @@
         }
       }
       // 获取当前路径函数
-      function createCurrentLocation() {
+      function createCurrentLocation(base) {
         const { pathname, search, hash } = window.location
+        // 有#就是hash 如 /about -> #/ #/about
+        const hasPos = base.indexOf('#')
+        if (hasPos > -1) {
+          return base.slice(1) || '/'
+        }
+
         return pathname + search + hash
       }
       // 利用历史状态导航(里面实现三个功能)
-      function useHistoryStateNavigation() {
+      function useHistoryStateNavigation(base) {
         // 当前路径
         const currentLocation = {
-          value: createCurrentLocation()
+          value: createCurrentLocation(base)
         }
         // 状态
         const historyState = {
@@ -66,6 +72,9 @@
          * 变化地址时候发生的事情
          * */
         function changeLocation(to, state, replace) {
+          const hasPos = base.indexOf('#')
+          const url = hasPos > -1 ? base + to : to
+          // data: any, title: string, url?: string
           window.history[replace ? 'replaceState' : 'pushState'](
             state,
             null,
@@ -84,7 +93,9 @@
             // 当前的状态
             historyState.value,
             {
+              // 将要去哪里
               forward: to,
+              // 记录当前滚动条的位置
               scroll: { left: window.pageXOffset, top: window.pageYOffset }
             }
           )
@@ -102,8 +113,6 @@
           // 真正的发生跳转(更改了路径)
           changeLocation(to, state, false)
           currentLocation.value = to
-
-          // 跳转后， 从这儿到了那
         }
         // 替换当前路径
         function replace(to, data) {
@@ -118,6 +127,7 @@
             ),
             data
           )
+
           changeLocation(to, state, true)
           // 替换后需要将路径变为现在的路径
           currentLocation.value = to
@@ -130,11 +140,11 @@
         }
       }
       // 监听浏览器前进后退，要更新historyState 和 currentLocation这两个边距
-      function useHistoryListeners(historyState, currentLocation) {
+      function useHistoryListeners(base, historyState, currentLocation) {
         const listeners = []
-        // 最新的状态，已经是前进后退完毕后的状态
+        // 最新的状态，已经是前进后退完毕后的状态， 回调函数
         const popStateHandler = ({ state }) => {
-          const to = createCurrentLocation() // 去哪儿
+          const to = createCurrentLocation(base) // 去哪儿
           const from = currentLocation.value // 从哪儿来
           const fromState = historyState.value // 从哪儿的状态
 
@@ -159,12 +169,13 @@
         }
       }
       // 创建主入口方法
-      function createWebHistory() {
+      function createWebHistory(base = '') {
         // 1.路由系统最基本的，【得包含当前的路径】，【当前路径下他的状态是什么】，【需要提供两个切换路径的方法push replace】
-        const historyNavigation = useHistoryStateNavigation()
+        const historyNavigation = useHistoryStateNavigation(base)
 
         // 2.监听浏览器的前进后退
         const historyListeners = useHistoryListeners(
+          base,
           historyNavigation.state,
           historyNavigation.location
         )
@@ -182,7 +193,10 @@
         })
         return routerHistory
       }
-      const routerHistory = createWebHistory()
+      function createWebHashHistory() {
+        return createWebHistory('#')
+      }
+      const routerHistory = createWebHashHistory()
       routerHistory.listen((to, from, { isBack }) => {
         console.log(to, from, isBack)
       })
