@@ -24,7 +24,8 @@ export const RouterLink = {
       return h(
         'a',
         {
-          onCLick: link.navigate
+          onClick: link.navigate,
+          href: 'javascript:void(0)'
         },
         slots.default && slots.default()
       )

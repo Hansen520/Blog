@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory } from '@/vue-router'
+import { createRouter, createWebHashHistory } from './../vue-router'
 import vuexHandle from '../views/vuex-test'
-import Home from '../views/Home'
+import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
