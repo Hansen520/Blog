@@ -116,13 +116,13 @@ function useHistoryListeners(base, historyState, currentLocation) {
   const listeners = []
   // 最新的状态，已经是前进后退完毕后的状态， 回调函数
   const popStateHandler = ({ state }) => {
+    console.log('state', state)
     const to = createCurrentLocation(base) // 去哪儿
     const from = currentLocation.value // 从哪儿来
     const fromState = historyState.value // 从哪儿的状态
 
     currentLocation.value = to
     historyState.value = state // state可能为空
-    console.log(state)
     // 判断是前进还是后退， 如果后退则小于0
     const isBack = state.position - fromState.position < 0
     // 用户在这扩展.....
