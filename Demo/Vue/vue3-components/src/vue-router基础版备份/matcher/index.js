@@ -5,10 +5,9 @@ function normalizedRecord1(record) {
     meta: record.meta || {},
     beforeEnter: record.beforeEnter,
     name: record.name,
-    components:
-      'components' in record
-        ? record.component || {}
-        : { default: record.component },
+    components: {
+      default: record.component // 循环
+    },
     children: record.children || []
   }
 }
@@ -76,7 +75,6 @@ function createRouterMatcher(routes) {
       matched.unshift(matcher.record)
       matcher = matcher.parent
     }
-    console.log(matched)
     return {
       path,
       matched

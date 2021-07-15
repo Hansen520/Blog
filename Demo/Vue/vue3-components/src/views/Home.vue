@@ -13,9 +13,15 @@
 <script>
 export default {
   name: 'Home',
-  mounted() {
-    console.log(this.$router)
-    console.log(this.$route)
+  mounted() {},
+  beforeRouteEnter(to, from) {
+    console.log('beforeRouterEnter', to, from)
+  },
+  beforeRouterUpdate(to, from) {
+    console.log('beforeRouterUpdate', to)
+  },
+  beforeRouteLeave(to, from) {
+    console.log('beforeRouteLeave', to, from)
   }
 }
 </script>

@@ -14,17 +14,65 @@ const STATE_LOCATION_NORMALIZED = {
   // 当前路径匹配到的记录
   matched: []
 }
+// 发布订阅模式
+function useCallback() {
+  const handlers = []
+  function add(handler) {
+    handlers.push(handler)
+  }
+  return {
+    add,
+    list: () => handlers
+  }
+}
+
+function guardToPromise(guard, to, from, record) {
+  return () =>
+    new Promise((resolve, reject) => {
+      const next = () => resolve()
+      const guardReturn = guard.call(record, to, from, next)
+
+      // 这边可以多一层， 如果不调用next，最终也会调用next(就是说用户可以不调用nexx方法)
+      return Promise.resolve(guardReturn).then(next)
+    })
+}
+
+// 确定组件守卫
+function extractComponentsGuards(matched, guardType, to, from) {
+  const guards = []
+  for (const record of matched) {
+    const rawComponent = record.components.default
+    const guard = rawComponent[guardType]
+
+    // 需要将钩子串联在一起
+    guard && guards.push(guardToPromise(guard, to, from))
+  }
+  return guards
+}
+
+// promise的组合函数
+// [fn()=>promise, fn=>promise]
+function runGuardQueue(guards) {
+  return guards.reduce(
+    (promise, guard) => promise.then(() => guard()),
+    Promise.resolve()
+  )
+}
 
 // 入口
 function createRouter(options) {
   const routerHistory = options.history
-  console.log(routerHistory)
+  // console.log(routerHistory)
   // 格式化设置拍平
   const matcher = createRouterMatcher(options.routes)
-  console.log(matcher)
 
   // (响应式)后续改变这个数据的value就可以更新视图了
   const currentRoute = shallowRef(STATE_LOCATION_NORMALIZED)
+
+  // 钩子
+  const beforeGuards = useCallback()
+  const beforeResolveGuards = useCallback()
+  const afterGuards = useCallback()
 
   // 通过路径匹配到对应的记录， 更新currentRoute
   function resolve(to) {
@@ -59,11 +107,97 @@ function createRouter(options) {
     }
     // 更新最新的路径
     currentRoute.value = to
-    console.log(currentRoute.value)
     // 如果是初始化，还需要注入一个listen去更新currentRoute的值，这样数据变化后可以重新渲染
     markAsReady()
   }
 
+  function extractChangeRecords(to, from) {
+    const leavingRecords = []
+    const updatingRecords = []
+    const enteringRecords = []
+    // 用len去判断谁的路径长一些
+    const len = Math.max(to.matched.length, from.matched.length)
+    for (let i = 0; i < len; i++) {
+      const recordFrom = from.matched[i]
+      if (recordFrom) {
+        // 去的和来的都有 那么就是要更新
+        if (to.matched.find((record) => record.path === recordFrom.path)) {
+          updatingRecords.push(recordFrom)
+        } else {
+          // 如果出来的不在进入的里面，那说明此路由是离开的
+          leavingRecords.push(recordFrom)
+        }
+      }
+      const recordTo = to.matched[i]
+      if (recordTo) {
+        // 如果进入的有，出来的没有，那就推进到enteringRecords里面
+        if (!from.matched.find((record) => record.path === recordTo.path)) {
+          enteringRecords.push(recordTo)
+        }
+      }
+    }
+    return [leavingRecords, updatingRecords, enteringRecords]
+  }
+
+  function navigate(to, from) {
+    // 在做导航的时候，要知道哪个组件是进入，哪个组件是离开的，还要知道哪个组件是更新的
+    const [
+      leavingRecords,
+      updatingRecords,
+      enteringRecords
+    ] = extractChangeRecords(to, from)
+
+    let guards = extractComponentsGuards(
+      leavingRecords.reverse(),
+      'beforeRouteLeave',
+      to,
+      from
+    )
+    return runGuardQueue(guards)
+      .then(() => {
+        guards = []
+        for (const guard of beforeGuards.list()) {
+          guards.push(guardToPromise(guard, to, from, guard))
+        }
+        return runGuardQueue(guards)
+      })
+      .then(() => {
+        guards = extractComponentsGuards(
+          updatingRecords,
+          'beforeRouteUpdate',
+          to,
+          from
+        )
+        return runGuardQueue(guards)
+      })
+      .then(() => {
+        guards = []
+        for (const record of to.matched) {
+          if (record.beforeEnter) {
+            guards.push(guardToPromise(record.beforeEnter, to, from, record))
+          }
+        }
+        return runGuardQueue(guards)
+      })
+      .then(() => {
+        guards = extractComponentsGuards(
+          enteringRecords,
+          'beforeRouteEnter',
+          to,
+          from
+        )
+        return runGuardQueue(guards)
+      })
+      .then(() => {
+        guards = []
+        for (const guard of beforeResolveGuards.list()) {
+          guards.push(guardToPromise(guard, to, from, guard))
+        }
+        return runGuardQueue(guards)
+      })
+  }
+
+  // 通过路径匹配到对应的记录，更新currentRoute
   function pushWithRedirect(to) {
     // console.log(to)
     const targetLocation = resolve(to)
@@ -71,16 +205,26 @@ function createRouter(options) {
     // 路由的钩子 在跳转前，我们可以做路由的拦截
 
     // 根据是不是第一次，来决定是push还是replace
-    finalizeNavigation(targetLocation, from)
-    console.log(targetLocation, from)
-    return { targetLocation, from }
+    // 这边做导航守卫的逻辑
+    navigate(targetLocation, from)
+      .then(() => {
+        return finalizeNavigation(targetLocation, from)
+      })
+      .then(() => {
+        // 当导航切换完毕后执行 afterEach
+        for (const guard of afterGuards.list()) {
+          guard(to, from)
+        }
+      })
   }
   function push(to) {
     return pushWithRedirect(to)
   }
   const router = {
     push,
-    replace() {},
+    beforeEach: beforeGuards.add, // 可以注册多个， 所以是一个发布订阅模式，钩子如同
+    afterEach: afterGuards.add,
+    beforeResolve: beforeResolveGuards.add,
     // vue3安装路由, 路由的核心就是 页面的切换，重新渲染
     install(app) {
       const router = this
@@ -105,13 +249,15 @@ function createRouter(options) {
       app.component('RouterView', RouterView)
       // 原本因为vue的ref的api，会path.value这样子使用
       // 所以可以采用reactive的方式包裹一层，因为它可以自动的消灭value的值
-      const { path } = reactive(reactiveRoute)
-      console.log(path)
-      console.log(currentRoute.value, STATE_LOCATION_NORMALIZED)
+      // const { path } = reactive(reactiveRoute)
+      // console.log(path)
+      // console.log(currentRoute.value, STATE_LOCATION_NORMALIZED)
       if (currentRoute.value === STATE_LOCATION_NORMALIZED) {
         // 默认就是初始化，需要通过路由系统先进行一次跳转 ，发生匹配
-        console.log('默认第一次')
+        // console.log('默认第一次')
+        push(routerHistory.location)
       }
+      // console.log(beforeGuards.list())
     }
   }
   console.log(router)
