@@ -10,7 +10,9 @@ export default {
   beforeRouteEnter(to) {
     console.log('beforeRouterEnter-homeb', to)
   },
-
+  beforeRouteUpdate(to) {
+    console.log('beforeRouteUpdate-homeb', to)
+  },
   beforeRouteLeave(to, from) {
     console.log('beforeRouteLeave-homeb', to, from)
   }

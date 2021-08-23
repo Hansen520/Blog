@@ -14,7 +14,7 @@ function normalizedRecord1(record) {
 }
 // 构建匹配记录，构造父子关系
 function createRouteRecordMatcher(record, parent) {
-  // record中的path做一些修改 正则的情况
+  // record中的path做一些修改 正则的情况(获取当前理由信息)
   const matcher = {
     path: record.path,
     record,
@@ -31,7 +31,7 @@ function createRouteRecordMatcher(record, parent) {
 function createRouterMatcher(routes) {
   const matchers = []
   /*
-    1. route {path:'/' children: [2]}
+    1. route {path:'/' children: [2]}, unde
   */
   function addRoute(route, parent) {
     // 获取标准化的格式
@@ -41,7 +41,7 @@ function createRouterMatcher(routes) {
       2. normalizedRecord {path:'b' children: []}, {path: '/', children: []}
     */
     const normalizedRecord = normalizedRecord1(route)
-    console.log(normalizedRecord)
+    // console.log(normalizedRecord)
     if (parent) {
       normalizedRecord.path = parent.path + normalizedRecord.path
     }
@@ -50,8 +50,11 @@ function createRouterMatcher(routes) {
       1. matcher {path: '/', children: []}
     */
     const matcher = createRouteRecordMatcher(normalizedRecord, parent)
+
+    // 如果有孩子先从孩子开始(到了子路由后，因为自己设置了，每次都会有个children: []所以会有， 这也是个技巧)
     if ('children' in normalizedRecord) {
       const children = normalizedRecord.children
+      // console.log(children.length)
       for (let i = 0; i < children.length; i++) {
         /*
           传入1 normalizedRecord {path:'a' children: []}, {path: '/', children: []}
@@ -59,12 +62,15 @@ function createRouterMatcher(routes) {
         */
         addRoute(children[i], matcher)
       }
+      // console.log(matcher)
     }
+    // console.log(matcher)
     matchers.push(matcher)
   }
-
+  // addRoute的入口， 通过循环增加动态路由
   routes.forEach((route) => addRoute(route))
-  console.log(matchers)
+  // console.log(matchers)
+
   // {path: /, matched: HomeRecord} {path: /a, matched: {HomeRecord, aRecord}}
   function resolve(location) {
     const matched = []

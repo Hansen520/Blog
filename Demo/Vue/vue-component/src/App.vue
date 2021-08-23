@@ -9,10 +9,12 @@
       <li><router-link to="/attrs">/attrs</router-link></li>
     </ul>
     <router-view></router-view>
+    <HelloWorld title="time">123456789</HelloWorld>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue';
 export default {
   name: 'App',
   data() {
@@ -22,7 +24,8 @@ export default {
       c: 3,
     };
   },
-  components: {},
+
+  components: { HelloWorld },
   mounted() {
     console.log(this);
     window.vue = this;

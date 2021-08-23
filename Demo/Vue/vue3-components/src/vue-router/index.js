@@ -25,7 +25,6 @@ function useCallback() {
     list: () => handlers
   }
 }
-
 function guardToPromise(guard, to, from, record) {
   return () =>
     new Promise((resolve, reject) => {
@@ -63,18 +62,18 @@ function runGuardQueue(guards) {
 function createRouter(options) {
   const routerHistory = options.history
   // console.log(routerHistory)
-  // 格式化设置拍平
+  // 将路由进行扁平化
   const matcher = createRouterMatcher(options.routes)
-
-  // (响应式)后续改变这个数据的value就可以更新视图了
+  console.log('matcher', matcher)
+  // (响应式)后续改变这个数据的value就可以更新视图了(利用vue的api)
   const currentRoute = shallowRef(STATE_LOCATION_NORMALIZED)
 
-  // 钩子
+  // 路由钩子(通过一个函数)
   const beforeGuards = useCallback()
   const beforeResolveGuards = useCallback()
   const afterGuards = useCallback()
 
-  // 通过路径匹配到对应的记录， 更新currentRoute
+  // 通过路径匹配到对应的记录， 更新currentRoute，将数据用计算属性 再次包裹
   function resolve(to) {
     // to = '/' to={path: '/'}
     if (typeof to === 'string') {
@@ -96,7 +95,7 @@ function createRouter(options) {
       finalizeNavigation(targetLocation, from, true)
     })
   }
-
+  // 初始化导航
   function finalizeNavigation(to, from, replaced) {
     // 第一次
     if (from === STATE_LOCATION_NORMALIZED || replaced) {
@@ -110,7 +109,7 @@ function createRouter(options) {
     // 如果是初始化，还需要注入一个listen去更新currentRoute的值，这样数据变化后可以重新渲染
     markAsReady()
   }
-
+  // 钩子相关
   function extractChangeRecords(to, from) {
     const leavingRecords = []
     const updatingRecords = []
