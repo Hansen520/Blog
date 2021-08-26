@@ -1,6 +1,6 @@
 // 调用node模块
 const fs = require('fs');
-let Promise = require('./myPromise2.js');
+let Promise = require('../myPromise2.js');
 const readFile = (filePath) => {
   return new Promise((resolve, reject) => {
     // 走的异步逻辑
