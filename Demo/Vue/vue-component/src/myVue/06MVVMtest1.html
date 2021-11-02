@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" value="123" />
+      <span>234</span>
+    </div>
+    <script>
+      /* while(firstChild=el.firstChild)这个语句进行了2个操作：
+       执行赋值操作firstChild=el.firstChild执行while(firstChild)，while是条件为真的情况下才执行，也就是必须el.firstChild有值的情况下才执行当判定while(firstChild)为真的情况执行fragment.appendChild(firstChild);把el.firstChild即el.children[0]抽出插入到fragment。注意这个操作是movedom，el.children[0]被抽出，
+       在下次while循环执行firstChild=el.firstChild时读取的是相对本次循环的el.children[1]以此达到循环转移dom的目的
+      */
+      let oApp = document.getElementById('app');
+      let fragment = document.createDocumentFragment();
+      let firstChild;
+      while ((firstChild = oApp.firstChild)) {
+        console.log(firstChild, 19);
+        // appendChild具有移动性
+        fragment.appendChild(firstChild);
+      }
+      console.log(fragment, 23);
+    </script>
+  </body>
+</html>

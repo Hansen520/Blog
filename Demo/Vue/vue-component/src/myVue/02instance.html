@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{name}}{{age.age}}</div>
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data() {
+          return { name: 'zf', age: {} };
+        },
+      });
+      // 1. vue有个特点，不会在本轮代码执行的时候取渲染dom
+      // 2. 下一个时间环中执行(promise.then settimout等)
+
+      // vm.$set vm.$delete 帮我更新属性的
+      // 新增的属性不会导致视图更行， 更改数组索引也不会更新
+      vm.$set(vm.age, 'age', 100);
+      vm.$set([1, 2, 3], '0', 100);
+
+      // vm.$el
+      // vm.$options
+      // vm.$watch
+      // vm.$nextTick
+      // vm.$set
+    </script>
+  </body>
+</html>
