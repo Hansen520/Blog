@@ -12,7 +12,7 @@ Function.prototype.myApply = function (context) {
 
   // 将函数设置未对象的方法
   context.fn = this;
-
+  console.log(this, context.fn, 15);
   // 调用方法
   if (arguments[1]) {
     // 获取第二个参数数组里面的所有参数

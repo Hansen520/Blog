@@ -6,9 +6,9 @@ Function.prototype.myBind = function (context) {
   const fn = this;
   // console.log(this)
   context = context || window;
-  //返回一个函数
+  //返回一个函数, 因为他是不能立即执行的
   return function () {
-    // console.log(this)// window
+    // console.log(this)// window， 简单吧
     return fn.apply(context, args);
   };
 };

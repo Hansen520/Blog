@@ -24,6 +24,7 @@ let a = reduce(
   },
   10
 );
+
 console.log(a);
 
 let b = [1, 2, 3].reduce(function (a, b) {

@@ -5,7 +5,7 @@ Function.prototype.myCall = function (context) {
     console.log('type error');
   }
 
-  // 获取参数
+  // 获取参数, 获取参数1后面的所有参数
   let args = [...arguments].slice(1);
   let result = null;
 
@@ -18,14 +18,15 @@ Function.prototype.myCall = function (context) {
   // 调用函数,并把参数传入函数
   result = context.fn(...args);
   /*
-      // 这个就是原理
-      {
-        firstName: "Bill"
-        fn: ƒ (a)
-        lastName: "Gates"
-      }
-      */
+    // 这个就是原理
+    {
+      firstName: "Bill"
+      fn: ƒ (a)
+      lastName: "Gates"
+    }
+  */
   // console.log(context)
+  // 删除这个本身无多大作用
   delete context.fn;
   return result;
 };
