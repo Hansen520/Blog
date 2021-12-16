@@ -15,7 +15,7 @@ const deepClone = function (obj, hash = new WeakMap()) {
     // 正在对象直接返回一个新的正则对象
     return new RegExp(obj);
   }
-  // 如果循环引用了就用weakMap来解决
+  // 如果循环引用(环)了就用weakMap来解决
   if (hash.has(obj)) {
     return hash.get(obj);
   }
