@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Hello from '../views/router-trans-params/Hello';
 import HelloRoute from '../views/router-trans-params/HelloRoute';
 import getTree from '../views/treeComponent';
+import test from '../views/test1/test';
 
 Vue.use(VueRouter);
 
@@ -12,8 +13,7 @@ function dynamicPropsFn(route) {
     name: new Date().getFullYear() + parseInt(route.params.years) + '!',
   };
 }
-
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     // {
@@ -42,5 +42,17 @@ export default new VueRouter({
 
     // 树形组件菜单
     { path: '/getTree', component: getTree },
+    { path: '/test', component: test },
   ],
 });
+router.beforeEach((to, from, next) => {
+  console.log(to, from);
+  if (to.path === '/getTree') {
+    setTimeout(() => {
+      Promise.reject('禁止跳到树形菜单');
+    }, 0);
+  } else {
+    next();
+  }
+});
+export default router;

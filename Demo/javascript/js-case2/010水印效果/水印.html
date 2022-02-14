@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水印</title>
+  </head>
+  <body style="background-color: black">
+    <script>
+      const watermark = {};
+      const setWatermark = function (str, wid, hei, bDiv) {
+        // str水印字符串，wid水印宽，hei水印高，bDiv默认水印区域(整个页面)是否不添加水印
+        const id = 'waterMark';
+        // 界面上不让waterMark占位
+        if (document.getElementById(id) !== null) {
+          document.body.removeChild(document.getElementById(id));
+        }
+        // 创建一个画布
+        const can = document.createElement('canvas');
+        // 设置画布的长宽
+        can.width = wid ? wid : 240;
+        can.height = hei ? hei : 240;
+        const cans = can.getContext('2d');
+
+        // 旋转角度
+        cans.rotate((-30 * Math.PI) / 180);
+        // 文字大小
+        cans.font = '26px Vedana';
+        // 色值文本填充绘画的颜色，渐变或者模式
+        cans.fillStyle = '#eee';
+        // 设置文字对齐方式
+        cans.textAlign = 'left';
+        // 设置文本内容的当前对齐方式
+        cans.textBaseline = 'Middle';
+        cans.shadowColor = 'rgba(0,0,0,1)';
+        cans.shadowOffsetX = 1;
+        cans.shadowOffsetY = 1;
+        cans.shadowBlur = 3;
+        // 在画布上绘制填色的文本(输出的文本，开始绘制文本的x坐标位置，开始绘制文本的y坐标的位置)
+        cans.fillText(str, -can.width / 16, can.height / 2);
+        console.log(cans);
+
+        const div = document.createElement('div');
+        div.id = id;
+        div.style.pointerEvents = 'none';
+        div.style.top = '0';
+        div.style.left = '0';
+        div.style.position = 'fixed';
+        div.style.zIndex = '1010';
+        div.style.opacity = '0.3';
+        div.style.display = 'none';
+        div.style.width = document.documentElement.clientWidth + 'px';
+        div.style.height = document.documentElement.clientHeight + 'px';
+        div.style.background =
+          'url(' + can.toDataURL('image/png') + ') -24px top repeat';
+        window.watermarkImgStr = can.toDataURL('image/png');
+        console.log();
+        if (!bDiv) {
+          document.body.appendChild(div);
+        }
+        return id;
+      };
+      // 设置文字信息和宽高
+      watermark.set = function (str, wid, hei, bDiv) {
+        let id = setWatermark(str, wid, hei, bDiv);
+        // 这里设计的比较巧妙，用定时器去判断只能去执行一次函数
+        const timer = setInterval(function () {
+          if (document.getElementById(id) === null) {
+            id = setWatermark(str, wid, hei, bDiv);
+            if (bDiv) {
+              clearInterval(timer);
+            }
+          } else {
+            clearInterval(timer);
+          }
+        }, 100);
+
+        // 自适应的时候用到
+        window.onresize = function () {
+          setWatermark(str, wid, hei, bDiv);
+          /* 项目水印开始 */
+          // 存放需要水印的页面路径
+          let needWaterRoute = window.baseUrl.needWaterRoute || [];
+          let path = location.hash.split('#')[1];
+          let needWaterFlag = false;
+          let waterMarkDom = document.getElementById('waterMark');
+          if (waterMarkDom) {
+            /*用到再打开*/
+            // if (needWaterRoute.indexOf(path) > -1) {
+            //   needWaterFlag = true;
+            // }
+            // if (needWaterFlag) {
+            //   waterMarkDom.style.display = 'block';
+            // } else {
+            //   waterMarkDom.style.display = 'none';
+            // }
+            waterMarkDom.style.display = 'block';
+          }
+        };
+      };
+
+      // 测试用例
+      // 设置文字
+      watermark.set('神奇的皮卡', 210, 210);
+      var baseUrl = {
+        // 对应路由的水印，根据实际项目来吧
+        needWaterRoute: ['/', ''],
+      };
+      window.onresize();
+    </script>
+  </body>
+</html>

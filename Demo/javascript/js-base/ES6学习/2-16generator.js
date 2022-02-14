@@ -10,37 +10,38 @@
 // }
 
 // 利用generator
-// function * loop (){
+// function* loop() {
 //   for (let i = 0; i < 5; i++) {
-//     yield console.log(i)
+//     console.log(i + '开始');
+//     yield i;
 //   }
 // }
 
-// const l = loop()
-// console.log(l.next())
-// console.log(l.next())
-// console.log(l.next())
-// console.log(l.next())
-// console.log(l.next())
-// console.log(l.next())
+// const l = loop();
+// console.log(l.next());
+// console.log(l.next());
+// console.log(l.next());
+// console.log(l.next());
+// console.log(l.next());
+// console.log(l.next());
 
 // 2Basic Syntax
-// function * gen (){
-//   let val
+// function* gen() {
+//   let val;
 //   // yield返回的是一个对象，其返回值是一个undefined
-//   val = yield 1
-//   console.log("1" + val)
-//   val = yield 9
-//   console.log("2" + val)
-//   val = yield 3
-//   console.log("3" + val)
+//   val = yield 1;
+//   console.log('1' + val);
+//   val = yield 9;
+//   console.log('2' + val);
+//   val = yield 3;
+//   console.log('3' + val);
 // }
 
-// let g = gen()
-// console.log(g.next())
-// console.log(g.next())
-// console.log(g.next())
-// console.log(g.next())
+// let g = gen();
+// console.log(g.next());
+// console.log(g.next());
+// console.log(g.next());
+// console.log(g.next());
 
 // 3其实 next 是可以接受参数的，这个参数可以让你在 Generator 外部给内部传递数据，而这个参数就是作为 yield 的返回值。
 // 从 done 可以看出代码执行已经结束。
@@ -67,15 +68,15 @@
 // // 40
 
 // 4return 也可以传入参数，作为返回的 value 值。
-// function * gen () {
-//   yield 1
-//   yield 2
-//   yield 3
+// function* gen() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
 // }
-// let g = gen()
-// console.log(g.next())
-// console.log(g.return(100))
-// console.log(g.next())
+// let g = gen();
+// console.log(g.next());
+// console.log(g.return(100));
+// console.log(g.next());
 
 // 5也可以作为抛出异常 throw 方法在 Generator 外部控制内部执行的“终断”。
 // function * gen () {
