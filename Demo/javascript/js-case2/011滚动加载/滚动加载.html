@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滚动加载</title>
+  </head>
+  <body>
+    <style>
+      #box1 {
+        width: 200px;
+        height: 300px;
+        border: 1px solid rebeccapurple;
+        overflow: auto;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    </style>
+    <div id="box1">
+      <div class="box2">
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />时间慢慢8<br />时间慢慢9<br />时间慢慢0<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />时间慢慢8<br />时间慢慢9<br />时间慢慢0<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />时间慢慢8<br />时间慢慢9<br />时间慢慢0<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />时间慢慢<br />
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />时间慢慢8<br />时间慢慢9<br />时间慢慢0<br />时间慢慢<br />时间慢慢<br />
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />时间慢慢8<br />
+        时间慢慢1<br />时间慢慢2<br />时间慢慢3<br />时间慢慢4<br />时间慢慢5<br />时间慢慢6<br />时间慢慢7<br />
+      </div>
+    </div>
+    <script>
+      let oS = document.getElementById('box1');
+      let box2 = document.querySelector('.box2');
+      oS.addEventListener('scroll', function (e) {
+        const clientHeight = e.target.clientHeight;
+        const scrollTop = e.target.scrollTop;
+        const scrollHeight = e.target.scrollHeight;
+        console.log(clientHeight, scrollTop, scrollHeight);
+        if (clientHeight + scrollTop >= scrollHeight - 40) {
+          box2.innerHTML +=
+            String(Math.floor(Math.random() * 10000000)) +
+            new Date().getMilliseconds() +
+            '<br/>';
+        }
+      });
+    </script>
+  </body>
+</html>

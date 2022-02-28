@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取文件信息</title>
+  </head>
+  <body>
+    <input id="files-list" type="file" />
+    <div id="output"></div>
+    <div id="progress"></div>
+    <script>
+      let filesList = document.getElementById('files-list');
+      filesList.addEventListener('change', (e) => {
+        console.log(e);
+        let info = '';
+        let output = document.getElementById('output');
+        let progress = document.getElementById('progress');
+        let files = e.target.files;
+        let type = 'default';
+        let reader = new FileReader();
+
+        if (/image/.test(files[0].type)) {
+          reader.readAsDataURL(files[0]);
+          type = 'image';
+        } else if (/text/.test(files[0].type)) {
+          reader.readAsText(files[0]);
+          type = 'text';
+        } else if (/pdf/.test(files[0].type)) {
+          reader.readAsText(files[0]);
+          type = 'text';
+        }
+        reader.onerror = function () {
+          output.innerHTML =
+            'Could not read file, error code is ' + reader.error.code;
+        };
+        reader.onprogress = function (event) {
+          if (event.lengthComputable) {
+            progress.innerHTML = `${event.loaded}/${event.total}`;
+          }
+        };
+        reader.onload = function () {
+          console.log(reader);
+          let html = '';
+          switch (type) {
+            case 'image':
+              html = `<img src="${reader.result}"/>`;
+              break;
+            case 'text':
+              html = reader.result;
+              break;
+          }
+          output.innerHTML = html;
+        };
+      });
+    </script>
+  </body>
+</html>

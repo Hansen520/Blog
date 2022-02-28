@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拖拽读取文件</title>
+  </head>
+  <body>
+    <style>
+      #droptarget {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ddd;
+        line-height: 300px;
+        text-align: center;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+      }
+    </style>
+
+    <div id="droptarget">此为拖拽区域</div>
+    <div id="output"></div>
+    <div id="show"></div>
+    <script>
+      let droptarget = document.getElementById('droptarget');
+      let show = document.getElementById('show');
+      let imgList = [];
+      function handleEvent(event) {
+        event.preventDefault();
+        let info = '';
+        let output = document.getElementById('output'),
+          files,
+          i,
+          j,
+          len;
+
+        if (event.type === 'drop') {
+          files = event.dataTransfer.files;
+          i = 0;
+          len = files.length;
+          j = 0;
+          console.log(files, 40);
+          if (/image/.test(files[0].type)) {
+            show.innerHTML = `<img src="${window.URL.createObjectURL(
+              files[0]
+            )}"/>`;
+          } else {
+            show.innerHTML = `<a download="${
+              files[0].name
+            }" href="${window.URL.createObjectURL(files[0])}">${
+              files[0].name
+            }</a>`;
+          }
+
+          while (i < len) {
+            info += `${files[i].name} (${files[i].type}, ${files[i].size} bytes)`;
+            i++;
+          }
+          output.innerHTML = info;
+        }
+      }
+      droptarget.addEventListener('dragenter', handleEvent, false);
+      droptarget.addEventListener('dragover', handleEvent, false);
+      droptarget.addEventListener('drop', handleEvent, false);
+    </script>
+  </body>
+</html>
