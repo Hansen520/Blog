@@ -51,6 +51,7 @@ let obj = {
   reg: new RegExp('/我是一个正则/ig'),
   [Symbol('1')]: 1,
 };
+obj.loop = obj;
 Object.defineProperty(obj, 'innumerable', {
   enumerable: false,
   value: '不可枚举属性',
