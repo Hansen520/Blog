@@ -10,7 +10,5 @@ const shallowClone = (target) => {
       }
     }
     return cloneTarget;
-  } else {
-    return cloneTarget;
   }
 };
