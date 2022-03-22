@@ -25,7 +25,7 @@ const deepClone = function (obj, hash = new WeakMap()) {
   let cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc);
   // 继承原型链
   hash.set(obj, cloneObj);
-  console.log(hash, 28, Reflect.ownKeys(obj));
+  // console.log(hash, 28, Reflect.ownKeys(obj));
   for (let key of Reflect.ownKeys(obj)) {
     cloneObj[key] =
       isComplexDataType(obj[key]) && typeof obj[key] !== 'function'

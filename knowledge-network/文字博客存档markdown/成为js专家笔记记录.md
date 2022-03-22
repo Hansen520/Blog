@@ -419,3 +419,38 @@ deepClone(obj)
 
 特殊类型未处理
 
+## delete语法的本质
+
+### delete的返回类型
+
+Boolean类型
+
+true不一定删除成功，代表删除没有异常
+
+false, 一定没有删除成功
+
+### delete不能删除哪些属性
+
+任何用var声明的属性，不能从全局作用域或者函数的作用域删除
+
+任何用let或者是const声明的属性，不能从它声明的作用域删除
+
+```javascript
+//var 
+function testVar() {
+    var a = 1;
+    console.log("delete var a:", delete a);
+    console.log("var a :", a);
+}
+testVar();
+
+//let const,
+function testLet() {
+    let a = 1;
+    console.log("delete let a:", delete a);
+    console.log("let a :", a);
+}
+//作用域在testLet 中
+testLet();
+```
+
