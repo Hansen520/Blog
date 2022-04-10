@@ -5,7 +5,10 @@ import Hello from '../views/router-trans-params/Hello';
 import HelloRoute from '../views/router-trans-params/HelloRoute';
 import getTree from '../views/treeComponent';
 import test from '../views/test1/test';
-
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
 Vue.use(VueRouter);
 
 function dynamicPropsFn(route) {
@@ -45,11 +48,19 @@ const router = new VueRouter({
     { path: '/test', component: test },
   ],
 });
+
 router.beforeEach((to, from, next) => {
   console.log(to, from);
   if (to.path === '/getTree') {
     setTimeout(() => {
-      Promise.reject('禁止跳到树形菜单');
+      const result = prompt('请输入你的跳转秘密啊:', '123456');
+      if (result === '123456') {
+        alert('密码正确！');
+        next();
+      } else {
+        alert('密码错误！');
+        Promise.reject('禁止跳到树形菜单，请输入密码');
+      }
     }, 0);
   } else {
     next();

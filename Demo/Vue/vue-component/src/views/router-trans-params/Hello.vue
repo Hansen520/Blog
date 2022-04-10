@@ -9,22 +9,12 @@
       <li><router-link to="/attrs">/attrs</router-link></li>
     </ul>
     <router-view></router-view>
-    <button @click="go">去树形菜单</button>
-    <button @click="go1">去测试</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'hello',
-  methods: {
-    go() {
-      this.$router.push('/getTree');
-    },
-    go1() {
-      this.$router.push('/test');
-    },
-  },
 };
 </script>
 

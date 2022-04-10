@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <HelloWorld title="time">123456789</HelloWorld>
+    <button @click="go">去树形菜单</button>
+    <button @click="go1">去测试</button>
+    <button @click="go2">去首页</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 export default {
   name: 'App',
   data() {
@@ -16,8 +17,6 @@ export default {
       c: 3,
     };
   },
-
-  components: { HelloWorld },
   mounted() {
     console.log(this);
     window.vue = this;
@@ -28,6 +27,17 @@ export default {
     console.log(this);
     Object.assign(this.$data, res);
     console.log(this.a, this.b, this.c);
+  },
+  methods: {
+    go() {
+      this.$router.push('/getTree');
+    },
+    go1() {
+      this.$router.push('/test');
+    },
+    go2() {
+      this.$router.push('/');
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>fhjkfhkshkfsfhk</div>
+  <div>当前页为测试页</div>
 </template>
 
 <script>
