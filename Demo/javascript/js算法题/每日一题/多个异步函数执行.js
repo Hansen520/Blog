@@ -11,20 +11,22 @@ const division = (x) => x / 5;
 
 // 同步的办法
 const pipeFunctions = (...fns) => {
-  // reduce
+  // 求最后结果
   return fns.reduce((preFn, curFn) => {
+    // return 为最外层的return
     return (...args) => {
+      // 执行每一个函数, 将结果传入下一个函数
       const res = preFn(...args);
       return curFn(res);
     };
   });
 };
-const targetFn = pipeFunctions(
+pipeFunctions(
   add, // 10
   multiply, // 50
   subtraction, // 45
   division // 9
-);
+)(5); // 9
 // console.log(targetFn(5));
 
 // 异步的办法
