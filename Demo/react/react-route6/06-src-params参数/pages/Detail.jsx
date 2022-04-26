@@ -1,9 +1,8 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams, useMatch } from 'react-router-dom'
 
 export default function Detail() {
-    // 用useLocation就可以获取参数
-    const { state: {id, title, content} } = useLocation()
+    const {id, title, content} = useParams()
     return (
         <ul>
             <li>消息编号: {id}</li>

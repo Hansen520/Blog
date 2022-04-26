@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React,{useState} from 'react'
+import {Link,Outlet} from 'react-router-dom'
 
 export default function Message() {
     const [messages] = useState([
@@ -16,14 +16,7 @@ export default function Message() {
                         return (
                             // 路由链接
                             <li key={m.id}>
-                                <Link
-                                    to="detail"
-                                    state={{
-                                        id: m.id,
-                                        title: m.title,
-                                        content: m.content
-                                    }}
-                                >{m.title}</Link>
+                                <Link to={`detail?id=${m.id}&title=${m.title}&content=${m.content}`}>{m.title}</Link>
                             </li>
                         )
                     })
