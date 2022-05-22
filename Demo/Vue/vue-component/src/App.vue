@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <router-view></router-view>
     <button @click="go">去树形菜单</button>
     <button @click="go1">去测试</button>
     <button @click="go2">去首页</button>
+    <button @click="go3">去todolist</button>
+    <hr color="green"/><br/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -37,6 +39,9 @@ export default {
     },
     go2() {
       this.$router.push('/');
+    },
+    go3() {
+      this.$router.push('/todolist');
     },
   },
 };
