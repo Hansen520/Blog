@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>业绩中心</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="50" height="50" rx="6"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.266666667   0 0 0 0 0.360784314   0 0 0 0 0.525490196  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M44,0 C47.3137085,-6.08718376e-16 50,2.6862915 50,6 L50,44 C50,47.3137085 47.3137085,50 44,50 L6,50 C2.6862915,50 4.05812251e-16,47.3137085 0,44 L0,6 C-4.05812251e-16,2.6862915 2.6862915,6.08718376e-16 6,0 L44,0 Z M35.65,10 L15.35,10 C12.9475613,10 11,11.9475613 11,14.35 L11,14.35 L11,34.65 C11,37.0524387 12.9475613,39 15.35,39 L15.35,39 L35.65,39 C38.0524387,39 40,37.0524387 40,34.65 L40,34.65 L40,14.35 C40,11.9475613 38.0524387,10 35.65,10 L35.65,10 Z M37,30 L37,34.6046512 C37,35.3299499 36.4275991,35.9259988 35.6957004,35.9936125 L35.556701,36 L23,36 L23,30 L37,30 Z M20.2,30 L20.2,36 L15.5953488,36 C14.8700501,36 14.2740012,35.4466157 14.2063875,34.7390326 L14.2,34.6046512 L14.2,30 L20.2,30 Z M20.2,22.3 L20.2,27.3 L14.2,27.3 L14.2,22.3 L20.2,22.3 Z M37,22.1 L37,27.1 L23,27.1 L23,22.1 L37,22.1 Z M20.2,13 L20.2,19 L14.2,19 L14.2,14.3953488 C14.2,13.624719 14.824719,13 15.5953488,13 L15.5953488,13 L20.2,13 Z M35.556701,13 C36.353813,13 37,13.624719 37,14.3953488 L37,14.3953488 L37,19 L23,19 L23,13 Z" id="path-3"></path>
+    </defs>
+    <g id="信贷" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-客户经理营销" transform="translate(-770.000000, -860.000000)">
+            <g id="菜单栏" transform="translate(180.000000, 862.000000)">
+                <g id="业绩中心" transform="translate(594.000000, 0.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="编组-13">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="形状结合" fill="#4D85F6" xlink:href="#path-3"></use>
+                        <rect id="矩形-3" fill-opacity="0.6" fill="#FFFFFF" mask="url(#mask-4)" x="14" y="12" width="8" height="16"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

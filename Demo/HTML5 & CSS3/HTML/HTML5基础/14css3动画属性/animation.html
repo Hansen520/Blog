@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+</head>
+<body style="overflow: hidden;">
+    <!-- 起止关键帧可以不设置 -->
+    <style>
+        @keyframes fadeInBy {
+            100% {
+                opacity: 1;
+            }
+        }
+        .ani1{
+            opacity: 0.5;
+        }
+        .ani1.active{
+            animation: fadeInBy 5s infinite;
+        }
+    </style>
+    <div class="ani1 active">起止关键针可以不设置</div>
+
+    <!-- 重复使用动画 -->
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInRIght {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0%);
+            }
+        }
+        .ani2{
+            animation: fadeIn 4s, slideInRIght 6s infinite
+        }
+    </style>
+    <div class="ani2">
+        可以重复使用动画
+    </div>
+
+    <!-- loading 效果实现 -->
+    <style>
+        /* 则动画会在奇数次数（1、3、5 等等）正常播放，而在偶数次数（2、4、6 等等）向后播放。 */
+        .loading i {
+            display: inline-block;
+            margin-left: 2px;
+            border-left: 8px solid deepskyblue; height: 6px;
+            animation: scaleUp 4s linear infinite alternate;
+        }
+        .loading i:nth-child(2) {
+            animation-delay: -1s;
+        }
+        .loading i:nth-child(3) {
+            animation-delay: -2s;
+        }
+        .loading i:nth-child(4) {
+            animation-delay: -3s;
+        }
+        @keyframes scaleUp {
+            to {
+                transform: scaleY(10)
+            }
+        }
+
+    </style>
+    <div class="loading">
+        <i></i><i></i><i></i><i></i>
+    </div>
+
+    <!-- 设置50%颜色透明值 -->
+    <style>
+        .set50opcity{
+            animation: opacityColor 1s -.5s linear paused;
+            /* color: #005ff955; */
+        }
+        @keyframes opacityColor{
+            0%{
+                color: transparent;
+            }
+            100%{
+                color: deepskyblue;
+            }
+        }
+    </style>
+    <div class="set50opcity">
+        我只在50%透明度摆动
+    </div>
+
+    <!-- 顺时针与逆时针 -->
+    <style>
+        @keyframes spin{
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .turntable{
+            width: 200px;
+            height: 200px;
+            animation: spin 5s 5;
+        }
+        .downtable{
+            width: 200px;
+            height: 200px;
+            animation: spin reverse 1s infinite;
+        }
+    </style>
+    <div class="turntable">100</div>
+    <div class="downtable">200</div>
+</body>
+</html>

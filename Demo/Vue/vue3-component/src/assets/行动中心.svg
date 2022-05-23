@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>行动中心</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="50" height="50" rx="6"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.266666667   0 0 0 0 0.360784314   0 0 0 0 0.525490196  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M44,0 C47.3137085,-6.08718376e-16 50,2.6862915 50,6 L50,44 C50,47.3137085 47.3137085,50 44,50 L6,50 C2.6862915,50 4.05812251e-16,47.3137085 0,44 L0,6 C-4.05812251e-16,2.6862915 2.6862915,6.08718376e-16 6,0 L44,0 Z M35.6626518,10.1671081 L9.87323095,24.0140895 C9.34929238,24.3138077 9,24.8533004 9,25.4527369 C9,26.0521733 9.29107698,26.6516097 9.81501556,26.9513279 L15.3454783,30.2482282 C16.044063,30.6678337 16.917294,30.4280592 17.2665864,29.7087355 C17.6740941,28.9894118 17.4412326,28.0902571 16.7426478,27.7305953 L13.1332932,25.5726242 L31.2382816,15.9216978 L19.4205561,30.4280592 L19.4205561,37.5613526 C19.4205561,38.3406199 20.0609254,39 20.8177256,39 C21.5745257,39 22.2148951,38.3406199 22.2148951,37.5613526 L22.2148951,31.4471011 L34.6147747,16.221416 L32.3443742,35.4633251 L26.4646191,32.6459739 C25.7660343,32.2863121 24.8928034,32.6459739 24.6017264,33.3652976 C24.252434,34.0846213 24.6017264,34.983776 25.3003112,35.2834942 L32.6354512,38.8201691 C32.8683128,38.9400564 33.1011743,39 33.3340359,39 C33.6251129,39 33.8579745,38.9400564 34.1490515,38.7602254 C34.6147747,38.5204509 34.9058517,38.0409017 34.964067,37.5014089 L37.9912677,11.8455301 C38.0494831,11.2460937 37.8166215,10.6466573 37.2926829,10.2869954 C36.8269598,9.92733355 36.1865904,9.92733355 35.6626518,10.1671081 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="信贷" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-客户经理营销" transform="translate(-665.000000, -860.000000)">
+            <g id="菜单栏" transform="translate(180.000000, 862.000000)">
+                <g id="行动中心" transform="translate(489.000000, 0.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="形状结合" fill="#4D85F6" xlink:href="#path-3"></use>
+                    <polygon id="三角形" fill="url(#linearGradient-5)" mask="url(#mask-4)" points="32.5 15 20 30 11.5 25.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

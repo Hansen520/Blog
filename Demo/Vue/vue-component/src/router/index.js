@@ -5,6 +5,7 @@ import Hello from '../views/router-trans-params/Hello';
 import HelloRoute from '../views/router-trans-params/HelloRoute';
 import getTree from '../views/treeComponent';
 import test from '../views/test1/test';
+import todoList from '../views/todoList/todoList';
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err);
@@ -46,6 +47,7 @@ const router = new VueRouter({
     // 树形组件菜单
     { path: '/getTree', component: getTree },
     { path: '/test', component: test },
+    { path: '/todoList', component: todoList }
   ],
 });
 

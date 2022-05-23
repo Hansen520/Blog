@@ -9,6 +9,12 @@
     />
     主题切换
     <img :src="logoUrl" alt="图片" />
+
+    <div>
+      <router-link to="/">首页</router-link>
+      <router-link to="/about">关于</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,17 +23,16 @@ import { ref } from 'vue';
 import { setTheme } from './style/themeUtil';
 
 const checked = ref(false);
-const logoUrl = ref('/src/assets/logo-light.png');
+const logoUrl = ref('/src/assets/行动中心.svg');
 // 换图
 const loadImg = async () => {
-  let name = !checked.value ? 'light' : 'dark';
-  let ext = !checked.value ? 'png' : 'jpg';
-  let res = await import(`./assets/logo-${name}.${ext}`);
+  let name = !checked.value ? '业绩' : '学习';
+  let ext = !checked.value ? 'svg' : 'svg';
+  let res = await import(`./assets/${name}中心.${ext}`);
   console.log(res, 24);
   logoUrl.value = res.default;
 };
 const changeTheme = function () {
-  console.log(checked.value);
   setTheme(!checked.value);
   loadImg();
 };

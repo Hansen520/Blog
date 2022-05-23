@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .example{
+            width: 300px;
+            height: 20px;
+            border: 1px solid red;
+            transform: translateX(0);
+            transition-duration: 1s;
+            transition-delay: -0.5s;
+        }
+        .example:hover{
+            transform: translateX(100px);
+        }
+    </style>
+    <div class="example">
+        省略部分动画
+    </div>
+
+    <style>
+        .fly-item, .fly-item > .img{
+            transition: transform .5s;
+        }
+        .fly-item{
+            transition-timing-function: linear;
+        }
+        .fly-item > .img{
+            transition-timing-function: cubic-bezier(.55, 0, .85, .36);
+        }
+    </style>
+    <div class="fly-item">
+        <div class="img">
+            抛物线运动
+        </div>
+    </div>
+
+    <style>
+        .hoverstop{
+            opacity: .5;
+        }
+        .hoverstop.active{
+            transition: opacity 350ms;
+            opacity: .999;
+        }
+    </style>
+    <div class="hoverstop">悬停350mm</div>
+    <script>
+        let oHoverstop = document.querySelector('.hoverstop');
+        oHoverstop.addEventListener('transitionend', _ => {
+            console.log('350ms定时器触发')
+            alert('350ms')
+        });
+        oHoverstop.onmouseenter = function() {
+            this.classList.add('active');
+        }
+        oHoverstop.onmouseleave = function() {
+            this.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
