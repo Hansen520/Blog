@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let getDouble = (n) => n * 2;
+      let obj = {};
+      let count = 1;
+      let double = getDouble(count);
+
+      // Object.defineProperty(obj, 'count', {
+      //   get() {
+      //     return count;
+      //   },
+      //   set(val) {
+      //     count = val;
+      //     double = getDouble(val);
+      //   },
+      // });
+      // console.log(double); // 2
+      // obj.count = 2;
+      // console.log(double); // 4
+
+      let proxy = new Proxy(obj, {
+        get: function (target, prop) {
+          console.log(target, prop, 31);
+          return target[prop];
+        },
+        set: function (target, prop, value) {
+          target[prop] = value;
+          if (prop === 'count') {
+            double = getDouble(value);
+          }
+        },
+        deleteProperty(target, prop) {
+          delete target[prop];
+          if (prop === 'count') {
+            double = NaN;
+          }
+        },
+      });
+      // 测试用例
+      console.log(obj.count, double);
+      proxy.count = 2;
+      console.log(obj.count, double);
+      delete proxy.count;
+      console.log(obj.count, double);
+    </script>
+  </body>
+</html>

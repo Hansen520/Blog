@@ -9,12 +9,14 @@
     />
     主题切换
     <img :src="logoUrl" alt="图片" />
-
+    <hr />
     <div>
       <router-link to="/">首页</router-link>
       <router-link to="/about">关于</router-link>
     </div>
+    <hr />
     <router-view></router-view>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   </div>
 </template>
 
@@ -40,6 +42,10 @@ const changeTheme = function () {
 
 <style scoped>
 @import './style/theme.css';
+
+body {
+  margin-bottom: 9000px;
+}
 #app {
   position: absolute;
   top: 0;
@@ -49,5 +55,10 @@ const changeTheme = function () {
   color: var(--theme-color);
   border-bottom: 1px solid var(--theme-boder-color);
   background-color: var(--theme-bg);
+}
+a {
+  text-decoration: none;
+  color: green;
+  margin-right: 10px;
 }
 </style>

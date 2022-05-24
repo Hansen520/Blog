@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^8.5.0",
     "axios": "^0.26.0",
     "css-vars-ponyfill": "^2.4.7",
     "sass": "^1.49.9",

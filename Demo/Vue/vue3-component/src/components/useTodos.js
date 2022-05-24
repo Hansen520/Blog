@@ -1,37 +1,48 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue';
+import { useStorage } from './useStorage';
 export function useTodos() {
-    let title = ref('')
-    let todos = ref([{title: '学习 Vue', done: false}])
-    function addTodo() {
-        todos.value.push({
-            title: title.value,
-            done: false
-        })
-        title.value = ''
+  let title = ref('');
+  let showModal = ref(false);
+  // 获取缓存中的数据
+  let todos = useStorage('todos', []);
+  function addTodo() {
+    if (!title.value) {
+      showModal.value = true;
+      setTimeout(() => {
+        showModal.value = false;
+      }, 1500);
+      return;
     }
-    function clear() {
-        todos.value = todos.value.filter(v => !v.done)
-    }
-    let active = computed(() => {
-        return todos.value.filter((v) => !v.done).length
-    })
-    let all = computed(() => todos.value.length)
+    todos.value.push({
+      title: title.value,
+      done: false,
+    });
+    title.value = '';
+  }
+  function clear() {
+    todos.value = todos.value.filter((v) => !v.done);
+  }
+  let active = computed(() => {
+    return todos.value.filter((v) => !v.done).length;
+  });
+  let all = computed(() => todos.value.length);
 
-    let allDone = computed({
-        get: function() {
-            return active.value === 0
-        },
-        set: function(val) {
-            todos.value.forEach(todo => todo.done = value)
-        }
-    })
-    return {
-        title,
-        todos,
-        addTodo,
-        clear,
-        active,
-        all,
-        allDone
-    }
+  let allDone = computed({
+    get: function () {
+      return active.value === 0;
+    },
+    set: function (val) {
+      todos.value.forEach((todo) => (todo.done = val));
+    },
+  });
+  return {
+    title,
+    todos,
+    addTodo,
+    clear,
+    active,
+    all,
+    allDone,
+    showModal,
+  };
 }
