@@ -5,7 +5,7 @@
     x: {{ x }} y: {{ y }}
   </div>
   <h5>todolist</h5>
-  <TodoList ref="todolistRef" />
+  <TodoList></TodoList>
   <h5>更改颜色值</h5>
   <div class="updateColor">
     <h1 @click="add">{{ count }}</h1>
@@ -38,7 +38,6 @@ import Rate from '../components/Rate.vue';
 // 监听相应书数据
 const { x, y } = useMouse();
 const { color, count, add } = useChangeColor();
-
 /* 修改favicon图标 */
 let { favicon } = useFavicon();
 function loading() {

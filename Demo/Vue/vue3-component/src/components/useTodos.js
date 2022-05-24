@@ -1,10 +1,10 @@
-import { ref, computed, watchEffect } from 'vue';
+import { ref, computed } from 'vue';
 import { useStorage } from './useStorage';
 export function useTodos() {
   let title = ref('');
   let showModal = ref(false);
   // 获取缓存中的数据
-  let todos = useStorage('todos', []);
+  let todos = useStorage('todos', '[]');
   function addTodo() {
     if (!title.value) {
       showModal.value = true;
@@ -35,14 +35,6 @@ export function useTodos() {
       todos.value.forEach((todo) => (todo.done = val));
     },
   });
-  return {
-    title,
-    todos,
-    addTodo,
-    clear,
-    active,
-    all,
-    allDone,
-    showModal,
-  };
+
+  return { title, todos, addTodo, clear, active, all, allDone, showModal };
 }
