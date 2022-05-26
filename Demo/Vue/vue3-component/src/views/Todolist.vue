@@ -39,16 +39,19 @@
       </transition>
     </div>
   </div>
+  <h5>todolist jsx版</h5>
+  <Todo />
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import { useTodos } from './useTodos';
-
+import { reactive, nextTick } from 'vue';
+import { useTodos } from '../components/useTodos';
+import Todo from '../components/Todo';
 let animate = reactive({
   show: false,
   el: null,
 });
+
 // 找到初始化动画的位置
 function beforeEnter(el) {
   let dom = animate.el;
@@ -57,7 +60,6 @@ function beforeEnter(el) {
   let y = rect.top - 10;
   el.style.transform = `translate3d(-${x}px, ${y}px, 0)`;
 }
-
 function enter(el, done) {
   document.body.offsetHeight;
   el.style.transform = `translate3d(0, 0, 0)`;
@@ -67,9 +69,10 @@ function afterEnter(el) {
   animate.show = false;
   el.style.display = 'none';
 }
-function removeTodo(e, i) {
+async function removeTodo(e, i) {
   animate.el = e.target;
   animate.show = true;
+  await nextTick();
   todos.value.splice(i, 1);
 }
 const { title, todos, active, all, allDone, showModal, addTodo, clear } =
@@ -87,6 +90,7 @@ h1 {
 .todolist {
   width: 300px;
   border: 1px solid green;
+  position: relative;
 }
 .info-wrapper {
   position: absolute;

@@ -1,22 +1,39 @@
 <template>
   <div id="app">
-    <span>{{ checked === true ? '暗色' : '亮色' }}</span>
-    <input
-      v-model="checked"
-      type="checkbox"
-      class="switch"
-      @change="changeTheme"
-    />
-    主题切换
-    <img :src="logoUrl" alt="图片" />
-    <hr />
-    <div>
-      <router-link to="/">首页</router-link>
-      <router-link to="/about">关于</router-link>
+    <el-container>
+      <el-header>
+        <span>{{ checked === true ? '暗色' : '亮色' }}</span>
+        <input
+          v-model="checked"
+          type="checkbox"
+          class="switch"
+          @change="changeTheme"
+        />
+        主题切换
+        <img :src="logoUrl" alt="图片" />
+      </el-header>
+    </el-container>
+    <div class="container">
+      <el-container>
+        <el-aside width="200px">
+          <div>
+            <router-link to="/">首页</router-link>
+          </div>
+          <div>
+            <router-link to="/about">关于</router-link>
+          </div>
+          <div>
+            <router-link to="/todolist">todoList</router-link>
+          </div>
+          <div>
+            <router-link to="/count">计数组件vuex</router-link>
+          </div>
+        </el-aside>
+      </el-container>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </div>
-    <hr />
-    <router-view></router-view>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   </div>
 </template>
 
@@ -60,5 +77,30 @@ a {
   text-decoration: none;
   color: green;
   margin-right: 10px;
+}
+
+.el-header,
+.el-footer {
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+  text-align: center;
+  border: 1px solid var(--theme-boder-color);
+}
+.el-aside {
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+  border: 1px solid var(--theme-boder-color);
+}
+.el-main {
+  width: 100%;
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+  border: 1px solid var(--theme-boder-color);
+}
+.container {
+  display: flex;
+}
+body > .el-container {
+  margin-bottom: 40px;
 }
 </style>

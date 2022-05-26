@@ -5,7 +5,6 @@
     x: {{ x }} y: {{ y }}
   </div>
   <h5>todolist</h5>
-  <TodoList></TodoList>
   <h5>更改颜色值</h5>
   <div class="updateColor">
     <h1 @click="add">{{ count }}</h1>
@@ -29,7 +28,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import TodoList from '../components/Todolist.vue';
 import { useMouse } from '../components/useMouse';
 import { useChangeColor } from '../components/useChangeColor';
 import useFavicon from '../components/useFavicon';

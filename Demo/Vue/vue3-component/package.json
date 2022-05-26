@@ -11,6 +11,7 @@
     "@vueuse/core": "^8.5.0",
     "axios": "^0.26.0",
     "css-vars-ponyfill": "^2.4.7",
+    "element3": "^0.0.40",
     "sass": "^1.49.9",
     "vue": "^3.2.25",
     "vue-router": "^4.0.13",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
     "vite": "^2.8.0"
   }
 }
