@@ -20,3 +20,11 @@ export default defineConfig({ plugins: [vue(),vueJsx()]})
 
 ```
 
+npm i axios --save
+
+npm install -D sass
+
+npm i eslint -D
+
+在项目根目录下执行 npx eslint --init,然后按照终端操作的提示完成一系列设置来创建配置文件。你可以按照下图所示的选择来始化 ESLint
+
