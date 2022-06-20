@@ -1,10 +1,11 @@
 import { ref, computed } from 'vue';
-import { useStorage } from './useStorage';
+import { useStorage } from '../utils/useStorage';
 export function useTodos() {
   let title = ref('');
   let showModal = ref(false);
   // 获取缓存中的数据
-  let todos = useStorage('todos', '[]');
+  let todos = useStorage('todos');
+  console.log(todos, 8);
   function addTodo() {
     if (!title.value) {
       showModal.value = true;

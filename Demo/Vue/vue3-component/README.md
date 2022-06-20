@@ -28,3 +28,9 @@ npm i eslint -D
 
 在项目根目录下执行 npx eslint --init,然后按照终端操作的提示完成一系列设置来创建配置文件。你可以按照下图所示的选择来始化 ESLint
 
+
+npm install nprogress -D
+
+有些渲染器的知识，https://github.com/shengxinjing/vue3-vs-vue2.git 有很好的实现
+
+响应式机制的主要功能就是，可以把普通的 JavaScript 对象封装成为响应式对象，拦截数据的获取和修改操作，实现依赖数据的自动化更新。

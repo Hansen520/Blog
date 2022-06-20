@@ -1,41 +1,40 @@
-
-import axios from 'axios'
-import { useMsgbox, Message } from 'element3'
-import store from '@/store'
-import { getToken } from '@/utils/auth'
+import axios from 'axios';
+import store from '@/store';
+import { getToken } from '@/utils/auth';
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: 'http://localhost:5000',
+  // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   timeout: 5000, // request timeout
-})
+});
 
 service.interceptors.request.use(
-  config => {
+  (config) => {
     if (store.getters.token) {
-      config.headers['X-Token'] = getToken()
+      config.headers['X-Token'] = getToken();
     }
-    return config
+    return config;
   },
-  error => {
-    console.log(error) // for debug
-    return Promise.reject(error)
-  },
-)
+  (error) => {
+    console.log(error); // for debug
+    return Promise.reject(error);
+  }
+);
 
 service.interceptors.response.use(
-  response => {
-    const res = response.data
+  (response) => {
+    const res = response.data;
     if (res.code !== 20000) {
-      console.log('接口信息报错',res.message)
-      return Promise.reject(new Error(res.message || 'Error'))
+      console.log('接口信息报错', res.message);
+      return Promise.reject(new Error(res.message || 'Error'));
     } else {
-      return res
+      return res;
     }
   },
-  error => {
-    console.log('接口信息报错' + error) 
-    return Promise.reject(error)
-  },
-)
+  (error) => {
+    console.log('接口信息报错' + error);
+    return Promise.reject(error);
+  }
+);
 
-export default service
+export default service;

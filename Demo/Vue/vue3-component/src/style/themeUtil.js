@@ -5,7 +5,7 @@ const lightTheme = '#fff';
 const lightBorderTheme = '#d6d6d6';
 
 // 获取相应的主题色
-export const getThemeMap = (isLight) => {
+export const getThemeMap = (isLight = true) => {
   return {
     'theme-bg': isLight ? lightTheme : darkTheme,
     'theme-color': isLight ? darkTheme : lightTheme,

@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { useMouse } from '../components/useMouse';
 import { useChangeColor } from '../components/useChangeColor';
 import useFavicon from '../components/useFavicon';

@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+// import { computed } from 'vue';
 // import { useStore } from '../store/gvuex';
 import { useStore } from 'vuex';
 let store = useStore();
