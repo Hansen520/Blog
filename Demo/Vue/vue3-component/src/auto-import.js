@@ -20,7 +20,7 @@ export default function autoImportPlugin() {
           // 去代码中匹配 api() 这样子的函数
           const reg = new RegExp(api + '(.*)');
           if (reg.test(code)) {
-            console.log(code, 22);
+            // console.log(code, 22);
             // 匹配上了就往上加
             helpers.add(api);
           }

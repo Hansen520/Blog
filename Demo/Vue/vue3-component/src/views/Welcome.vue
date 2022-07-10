@@ -25,6 +25,9 @@
         <div>
           <router-link to="/count">计数组件vuex</router-link>
         </div>
+        <div>
+          <router-link to="/pinia">pinia计数</router-link>
+        </div>
       </el-aside>
     </el-container>
     <el-main>

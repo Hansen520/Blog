@@ -7,6 +7,7 @@ import About from '../views/about.vue';
 import Todolist from '../views/todolist.vue';
 import Count from '../views/count.vue';
 import Login from '../views/Login.vue';
+import Pinia from '../views/pinia.vue'
 import Welcome from '../views/Welcome.vue';
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
         path: '/todolist',
         name: 'Todolist',
         component: Todolist,
+      },
+      {
+        path: '/pinia',
+        name: 'pinia',
+        component: Pinia
       },
       {
         path: '/count',
