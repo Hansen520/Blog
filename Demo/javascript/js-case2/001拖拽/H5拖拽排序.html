@@ -1,184 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>H5排序</title>
     <style>
-    
-    li{
-        list-style-type:none;
-        font-size:14px;
-    }
-    #drag-containter{
-        width:600px;
+      li {
+        list-style-type: none;
+        font-size: 14px;
+      }
+      #drag-containter {
+        width: 600px;
         margin: 0 auto;
-    }
-    /* #drag-containter ul{
+      }
+      /* #drag-containter ul{
     } */
-    #drag-containter ul li{
-        height:50px;
-        border:1px solid #ccc;
+      #drag-containter ul li {
+        height: 50px;
+        border: 1px solid #ccc;
         border-bottom: none;
-        
-        
-    }
-    #drag-containter ul li:nth-last-child(1){
-        border-bottom:1px solid #ccc;
-    }
-    #drag-containter ul li div{
+      }
+      #drag-containter ul li:nth-last-child(1) {
+        border-bottom: 1px solid #ccc;
+      }
+      #drag-containter ul li div {
         display: inline-block;
         /* margin-left:25px;
         margin-top:15px; */
-        margin:15px 0 0 25px;
-    }
-    .title{
-        width:120px;
-    }
-    .singer{
-        width:80px;
-    }
-    .album{
-        width:120px;
-    }
-    .time{
-        width:50px;
-    }
-    #drag-containter ul li span.number{
-        width:20px;
-        height:20px;
+        margin: 15px 0 0 25px;
+      }
+      .title {
+        width: 120px;
+      }
+      .singer {
+        width: 80px;
+      }
+      .album {
+        width: 120px;
+      }
+      .time {
+        width: 50px;
+      }
+      #drag-containter ul li span.number {
+        width: 20px;
+        height: 20px;
         text-align: center;
         display: inline-block;
-        border:1px solid #ccc;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        margin-left:15px;
-    }
+        margin-left: 15px;
+      }
     </style>
-</head>
-<body>
-<div id="drag-containter">
-    <ul>
+  </head>
+  <body>
+    <div id="drag-containter">
+      <ul>
         <li class="each">
-            <span class="number">1</span>
-            <div class="title">第一次告白</div>
-            <div class="singer">TFBOYS</div>
-            <div class="album">第一次告白</div>
-            <div class="time">03:33</div>
+          <span class="number">1</span>
+          <div class="title">第一次告白</div>
+          <div class="singer">TFBOYS</div>
+          <div class="album">第一次告白</div>
+          <div class="time">03:33</div>
         </li>
         <li class="each">
-            <span class="number">2</span>
-            <div class="title">陷落美好</div>
-            <div class="singer">易烊千玺</div>
-            <div class="album">陷落美好</div>
-            <div class="time">05:11</div>
+          <span class="number">2</span>
+          <div class="title">陷落美好</div>
+          <div class="singer">易烊千玺</div>
+          <div class="album">陷落美好</div>
+          <div class="time">05:11</div>
         </li>
         <li class="each">
-            <span class="number">3</span>
-            <div class="title">世界末日</div>
-            <div class="singer">鹿晗</div>
-            <div class="album">世界末日</div>
-            <div class="time">04:27</div>
+          <span class="number">3</span>
+          <div class="title">世界末日</div>
+          <div class="singer">鹿晗</div>
+          <div class="album">世界末日</div>
+          <div class="time">04:27</div>
         </li>
         <li class="each">
-            <span class="number">4</span>
-            <div class="title">源</div>
-            <div class="singer">王源</div>
-            <div class="album">源</div>
-            <div class="time">04:23</div>
+          <span class="number">4</span>
+          <div class="title">源</div>
+          <div class="singer">王源</div>
+          <div class="album">源</div>
+          <div class="time">04:23</div>
         </li>
         <li class="each">
-            <span class="number">5</span>
-            <div class="title">今后我与自己流浪</div>
-            <div class="singer">张碧晨</div>
-            <div class="album">今后我与自己流浪</div>
-            <div class="time">04:37</div>
+          <span class="number">5</span>
+          <div class="title">今后我与自己流浪</div>
+          <div class="singer">张碧晨</div>
+          <div class="album">今后我与自己流浪</div>
+          <div class="time">04:37</div>
         </li>
         <li class="each">
-            <span class="number">6</span>
-            <div class="title">我的朋友</div>
-            <div class="singer">TFBOYS</div>
-            <div class="album">第一次告白</div>
-            <div class="time">03:39</div>
+          <span class="number">6</span>
+          <div class="title">我的朋友</div>
+          <div class="singer">TFBOYS</div>
+          <div class="album">第一次告白</div>
+          <div class="time">03:39</div>
         </li>
         <li class="each">
-            <span class="number">7</span>
-            <div class="title">巅峰之上</div>
-            <div class="singer">毛不易</div>
-            <div class="album">全职高手OST</div>
-            <div class="time">04:06</div>
+          <span class="number">7</span>
+          <div class="title">巅峰之上</div>
+          <div class="singer">毛不易</div>
+          <div class="album">全职高手OST</div>
+          <div class="time">04:06</div>
         </li>
         <li class="each">
-            <span class="number">8</span>
-            <div class="title">慢半拍</div>
-            <div class="singer">薛之谦</div>
-            <div class="album">尘</div>
-            <div class="time">04:01</div>
+          <span class="number">8</span>
+          <div class="title">慢半拍</div>
+          <div class="singer">薛之谦</div>
+          <div class="album">尘</div>
+          <div class="time">04:01</div>
         </li>
         <li class="each">
-            <span class="number">9</span>
-            <div class="title">这么久没见</div>
-            <div class="singer">薛之谦</div>
-            <div class="album">尘</div>
-            <div class="time">04:55</div>
+          <span class="number">9</span>
+          <div class="title">这么久没见</div>
+          <div class="singer">薛之谦</div>
+          <div class="album">尘</div>
+          <div class="time">04:55</div>
         </li>
         <li class="each">
-            <span class="number">10</span>
-            <div class="title">哪吒</div>
-            <div class="singer">GAI/大痒痒</div>
-            <div class="album">哪吒</div>
-            <div class="time">02:43</div>
-        </li>         
-    </ul>
-</div>
-<img id='cursor-h' src="shop.png" alt=""><!--鼠标旁边的图片-->
-<script>
-var oLi = document.querySelectorAll(".each");
-var cursor = document.getElementById('cursor-h')
-var length = oLi.length;
-var move = null;
-var target = null;
-// 以数组方式节点重排
-let arr = [];
+          <span class="number">10</span>
+          <div class="title">哪吒</div>
+          <div class="singer">GAI/大痒痒</div>
+          <div class="album">哪吒</div>
+          <div class="time">02:43</div>
+        </li>
+      </ul>
+    </div>
+    <img
+      id="cursor-h"
+      src="shop.png"
+      alt=""
+      style="position: absolute; top: -30px; left: 100px"
+    /><!--鼠标旁边的图片-->
+    <script>
+      var oLi = document.querySelectorAll('.each');
+      var cursor = document.getElementById('cursor-h');
+      var length = oLi.length;
+      var move = null;
+      var target = null;
+      // 以数组方式节点重排
+      let arr = [];
 
-for(let i = 0;i < oLi.length;i++){
-    // 初始化
-    oLi[i].draggable = true;
-    // 自定义属性
-    arr.push(oLi[i]);
+      for (let i = 0; i < oLi.length; i++) {
+        // 初始化
+        oLi[i].draggable = true;
+        // 自定义属性
+        arr.push(oLi[i]);
 
-    // ondragstart :拖拽的一瞬间触发 
-    oLi[i].ondragstart = function(e){
-        var e = e || window.event; //一种兼容写法
-        // 判断位置
-        this.index = arr.indexOf(this);
-        e.dataTransfer.setData('sum', this.index);
-        // 为一个给定的类型设置数据,经过测试，里面参数可以随便来
-        e.dataTransfer.effectAllowed = 'move';
-        // e.dataTransfer.setDragImage(cursor, '-10','-10');
-        move = this;//变量提升，每变一次重新赋值
-    };
+        // ondragstart :拖拽的一瞬间触发
+        oLi[i].ondragstart = function (e) {
+          var e = e || window.event; //一种兼容写法
+          // 判断位置
+          this.index = arr.indexOf(this);
+          console.log(this.index, this);
+          e.dataTransfer.setData('sum', Math.random());
+          // 为一个给定的类型设置数据,经过测试，里面参数可以随便来
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setDragImage(cursor, '-10', '-10');
+          move = this; //变量提升，每变一次重新赋值
+        };
 
-    oLi[i].ondragover = function(e){
-        var e = e || window.event;
-        // 阻止默认事件，否则会跳出链接
-        var prevent = e.preventDefault();        
-    };
-    // 目标位置
-    oLi[i].ondrop = function(){
-        target = this
-        this.index = arr.indexOf(this);
-        arr[move.index] = target;
-        arr[target.index] = move;
-        // 这个api好是好，但不是我想要的
-        // this.parentNode.insertBefore(move,target)
-        for (var i = 0; i < length; i++) {
-          this.parentNode.appendChild(arr[i]);
-        }
-        
-    };
-    
-}
-</script>
-</body>
+        oLi[i].ondragover = function (e) {
+          var e = e || window.event;
+          // 阻止默认事件，否则会跳出链接
+          var prevent = e.preventDefault();
+        };
+        // 目标位置
+        oLi[i].ondrop = function (e) {
+          target = this;
+          console.log(e.dataTransfer.getData('sum')); // 获取上面的数据
+          this.index = arr.indexOf(this);
+          // 一个替换的动作
+          console.log(target, move, 176);
+          arr[move.index] = target;
+          arr[target.index] = move;
+          // 这个api好是好，但不是我想要的
+          // this.parentNode.insertBefore(move,target)
+          for (var i = 0; i < length; i++) {
+            this.parentNode.appendChild(arr[i]);
+          }
+        };
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="div"
+      style="
+        position: absolute;
+        top: 1300px;
+        left: 1300px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border: 20px solid green;
+        padding: 10px;
+      "
+    >
+      22
+    </div>
+    <script>
+      /*
+        元素的 offsetLeft、offsetTop 指的是元素相对于其 offseParent 指定的坐标来说的。
+        offsetParent：是指当前元素最近的经过定位的父级元素，如果没有则一直向上直至 body。
+        注意当前元素为 fixed 时，其 offsetParent 的值为 null
+      */
+      let div = document.getElementById('div');
+      console.log(div.offsetLeft, div.offsetTop, div.offsetParent); //
+      console.log(div.offsetHeight, div.offsetWidth); // width + padding + border
+      console.log(div.clientLeft, div.clientTop); // border值
+      console.log(window.screen.availWidth, window.screen.availHeight);
+      console.log(div.getBoundingClientRect());
+    </script>
+  </body>
+</html>

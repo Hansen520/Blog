@@ -1,6 +1,7 @@
 const oDiv1 = document.getElementById('div1');
 let timer = null;
 oDiv1.addEventListener('drag', function (e) {
+  console.log(timer, 4);
   if (timer) {
     return false; //事件停止执行并跳出函数
   }

@@ -9,8 +9,8 @@
           @mouseover="mouseOver(num)"
           v-for="num in 5"
           :key="num"
-          >★</span
-        >
+          >★
+        </span>
       </span>
     </div>
     {{ rate }}

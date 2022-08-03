@@ -63,3 +63,22 @@ function flatten6(arr) {
   return JSON.parse(str);
 }
 console.log(flatten6([1, 2, 3, [4, 5, 6, [7, 8, 9]]]));
+
+// 写法七 堆栈方法(个人觉得这个方法不错)
+function flatten7(arr) {
+  const stack = [...arr];
+  const res = [];
+  while (stack.length) {
+    // 使用pop从stack中取出并移除值,直到没有为止
+    const next = stack.pop();
+    if (Array.isArray(next)) {
+      // 使用push送回内层数组中的元素，不会改动原始输入 original input
+      stack.push(...next);
+    } else {
+      res.push(next);
+    }
+  }
+  // 使用reverse恢复数组的顺序
+  return res.reverse();
+}
+console.log(flatten7([1, 2, 3, [4, 5, 6, [7, 8, 9]]]));
