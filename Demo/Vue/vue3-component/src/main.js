@@ -19,6 +19,7 @@ function delyError(message) {
   });
 }
 async function test() {
+  // 这里有段隐形的try--catch代码
   await delyError('ref is not defined');
 }
 

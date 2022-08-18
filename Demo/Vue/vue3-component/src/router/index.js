@@ -5,9 +5,10 @@ import { getToken } from '../utils/auth';
 import Home from '../views/home.vue';
 import About from '../views/about.vue';
 import Todolist from '../views/todolist.vue';
+import Map from '../views/map.vue';
 import Count from '../views/count.vue';
 import Login from '../views/Login.vue';
-import Pinia from '../views/pinia.vue'
+import Pinia from '../views/pinia.vue';
 import Welcome from '../views/Welcome.vue';
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
         component: About,
       },
       {
+        path: '/count',
+        name: 'Count',
+        component: Count,
+      },
+      {
         path: '/todolist',
         name: 'Todolist',
         component: Todolist,
@@ -38,12 +44,12 @@ const routes = [
       {
         path: '/pinia',
         name: 'pinia',
-        component: Pinia
+        component: Pinia,
       },
       {
-        path: '/count',
-        name: 'Count',
-        component: Count,
+        path: '/map',
+        name: 'Map',
+        component: Map,
       },
     ],
   },

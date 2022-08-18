@@ -28,6 +28,9 @@
         <div>
           <router-link to="/pinia">pinia计数</router-link>
         </div>
+        <div>
+          <router-link to="/map">百度地图</router-link>
+        </div>
       </el-aside>
     </el-container>
     <el-main>
