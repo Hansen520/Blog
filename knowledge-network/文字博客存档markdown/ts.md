@@ -193,6 +193,85 @@ mayNullOrUndefinedOrString.toString(); // ts(2531)
 
 在复杂应用场景中，如果我们使用非空断言，就无法保证之前一定非空的值，比如页面中一定存在 id 为 feedback 的元素，数组中一定有满足 > 2 条件的数字，这些都不会被其他人改变。而一旦保证被改变，错误只会在运行环境中抛出，而静态类型检测是发现不了这些错误的。
 
+## 字面量类型、类型推断、类型扩宽和类型缩小
+
+在ts中，我们使用`let`定义变量时候，我们可以不用写明类型注解，但是`const`是必须要写的，不然就会报出错误，如下代码所示。
+
+
+
+```typescript
+{
+    // 用let定义的变量，能推断出是什么类型
+    let str = 'this is string';
+    let num = 1; // 等价
+    let bool = true; // 等价
+}
+{
+    // 用const定义的类型，并不能推出是什么类型
+    const str = 'this is string'; // 不等价
+    const num = 1; // 不等价
+    const bool = true; // 不等价
+}
+```
+
+**如上述代码中注释说明，通过 let 和 const 定义的赋予了相同值的变量，其推断出来的类型不一样。**看下面上下文推断这里就能找到端倪哟。
+
+### 类型推断
+
+在 TypeScript 中，类型标注声明是在变量之后（即类型后置），使用类型标注后置的好处是编译器可以通过代码所在的上下文推导其对应的类型，无须再声明变量类型，具体示例如下：
+
+```typescript
+{
+  let x1 = 42; // 推断出 x1 的类型是 number
+  let x2: number = x1; // ok
+}
+```
+
+在上述代码中，`x1` 的类型被推断为 `number`，将变量赋值给 `number` 类型的变量 `x2` 后，不会出现任何错误。
+
+其实我们有很多代码都可以从上下文中推断出来。比如我们可以根据`return`语句推断函数返回的类型。如下代码：
+
+```typescript
+{
+    /** 根据参数的类型，推断出返回值的类型也是 number */
+    function add1(a: number, b: number) {
+        return a + b
+    }
+    // 推断出 x1 的类型也是 number
+    const x1 = add1(1, 1);
+	/** 推断参数 b 的类型是数字或者 undefined，返回值的类型也是数字 */
+    function add2(a: number, b = 1) {
+        return a + b;
+    }
+    const x2 = add2(1);
+    // ts(2345) Argument of type '"1"' is not assignable to parameter of type 'number | undefined
+    const x3 = add2(1, '1'); 
+}
+```
+
+在上述 `add1` 函数中，我们 `return` 了变量 `a + b` 的结果，因为 `a` 和 `b` 的类型为 `number`，所以函数返回类型被推断为 `number`。
+
+当然，拥有默认值的函数参数的类型也能被推断出来。比如上述 `add2` 函数中，`b` 参数被推断为 `number | undefined` 类型，如果我们给 `b` 参数传入一个字符串类型的值，由于函数参数类型不一致，此时编译器就会抛出一个 `ts(2345)` 错误。
+
+### 上下文推断
+
+通过类型推断的例子，我们发现变量的类型可以通过被赋值的值进行推断。除此之外，在某些特定的情况下，我们也可以通过变量所在的上下文环境推断变量的类型，代码如下：
+
+```typescript
+{
+  type Adder = (a: number, b: number) => number;
+  const add: Adder = (a, b) => {
+    return a + b;
+  }
+  const x1 = add(1, 1); // 推断出 x1 类型是 number
+  const x2 = add(1, '1');  // ts(2345) Argument of type '"1"' is not assignable to parameter of type 'number
+}
+```
+
+这里我们定义了一个实现加法功能的**函数类型 Adde**定义的 Adder 类型使用了 type 类型别名)，声明了**add**变量的类型为 Adder 并赋值一个匿名箭头函数，箭头函数参数 a 和 b 的类型和返回类型都没有显式声明。
+
+ts通过**add**的类型 Adder 反向（通过变量类型推断出值的相关类型）推断出箭头函数参数及返回值的类型，也就是说函数参数 `a、b`，以及返回类型在这个变量的声明上下文中被确定了
+
 ## 函数类型：返回值类型和参数类型到底如何定义？
 
 ts中函数是最基本、最重要的元素
@@ -1860,7 +1939,7 @@ type computedRdux7 = ReduxModelMixed<{ id: boolean }> // ok
 }
 ```
 
-我们分别使用了 typeof、Array.isArray 确保字符串和字符串数组类型的入参在运行时分别进入正确的分支，而不至于入参是数组类型时，调用数组类型并不存在的 toUpperCase 方法，从而抛出一个`“strOrArray.toUpperCase is not a function”`的错误。
+我们分别使用了 typeof、Array.isArray 确保字符串和字符串数组类型的入参在运行时分别进入正确的分支，而不至于入参是数组类型时，调用数组类型并不存在的 toUpperCase 方法，从而抛出一个`“strOrArray.toUpperCase is not a function”`的错误。原因是`strOrArray`可能没有`toUpperCase()`属性。
 
 但是如果我们将上边示例中的 `convertToUpperCase` 函数使用 TypeScript 实现，那么就需要显示地标明 `strOrArray` 的类型就是 `string` 和 `string[]` 类型组成的联合类型就会在写代码的时候就会觉察出这个问题，如下代码所示。
 
@@ -1876,29 +1955,221 @@ type computedRdux7 = ReduxModelMixed<{ id: boolean }> // ok
 }
 ```
 
-在示例中，convertToUpperCase 函数的主体逻辑与 JavaScript 中的逻辑完全一致（除了添加的参数类型注解）。
+在示例中，`convertToUpperCase` 函数的主体逻辑与 JavaScript 中的逻辑完全一致（除了添加的参数类型注解）。
 
 从示例中，我们可以看到**类型守卫的作用在于触发类型缩小。实际上，它还可以用来区分类型集合中的不同成员。**也就是说在编译初期，咱们就直到是字符串或者是一个字符串的集合。
 
 ### 如何区分联合类型？
 
+常用的类型守卫包括**switch、字面量恒等、typeof、instanceof、in和自定义守卫**这几种。
 
+#### switch
 
+往往会使用switch类型守卫来处理**联合类型中成员或者成员属性可枚举**的场景，即字面量的集合，如下所示：
 
+```typescript
+{
+    const convert = (c: 'a' | 1) => {
+        switch(c) {
+            case 1:
+                return c.toFixed(); // c is 1
+            case 'a':
+                return c.toLowerCase(); // c is 'a'
+        }
+    }
+    const feat = (c: { animal: 'panda'; name: 'China' } | { feat: 'video';name: 'Japan' }) =>  {
+        switch (c.name) {
+            case 'China':
+                return c.animal; // c is "{ animal: 'panda'; name: 'China' }"
+            case 'Japan':
+                return c.feat; // c is "{ feat: 'video'; name: 'Japan' }"
+        }
+    }
+}
+```
 
+这里就是说上面的 `convert`函数的参数及`feat`函数参数的name属性都是一个可枚举的集合，所以我们可以使用`switch`来缩小类型。
 
+比如上面的c的类型被缩小为数字`1`，`c`被缩小为字符串'a'，同样的`feat`函数`c`也同样缩小为相应的接口类型。因此，我们对参数`c`进行相关操作时候就不会提示类型错误了。
 
+#### 字面量恒等
 
+switch 适用的场景往往也可以直接使用字面量恒等比较进行替换，比如前边的 convert 函数可以改造成以下示例：
 
+```typescript
+const convert = (c: 'a' | 1) => {
+    if(c === 1) {
+        return c.toFixed(); // c is 1
+    } else if(c === 'a') {
+        return c.toLowerCase(); // c is 'a'
+    }
+    return
+}
+```
 
+比如这里，类型都相应都缩小为了字面量 1 和 'a'。
 
+**建议:  一般来说，如果可枚举的值和条件分支越多，那么使用switch就会让代码逻辑更加简洁、更清晰；反之，则推荐使用字面量恒等进行判断。**
 
+#### typeof
 
+当联合类型的成员不可枚举，比如说是字符串、数字等原子类型组成的集合，这个时候就需要使用 `typeof`。
 
+```typescript
+{
+    const convert = (c: 'a' | 1) => {
+        if(typeof c === 'number') {
+            return c.toFixed(); // c is 1
+        } else if(typeof c === 'string') {
+            return c.toLowerCase(); // c is 'a';
+        }
+        return
+    }
+}
+```
 
+这边的示例中，因为 `typeof c` 表达式的返回值类型是字面量联合类型 `'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function'`，所以通过判断将 `typeof c`表达式值类型进行了缩小，进而将`c`的类型缩小为明确的`number、string`等原子类型。
 
+#### instanceof
 
+此外，联合类型的成员还可以是类。下面，我们使用了 `instanceof` 来判断 `param` 是 `Dog` 还是 `Cat` 类。
 
+```typescript
+{
+    class Dog {
+        dogSound = 'wangwang';
+    }
+    class Cat {
+        catSound = 'miaomiao';
+    }
+    const getName = (animal: Dog | Cat) => {
+        if(animal instanceof Dog) {
+            return animal.dogSound
+        } else if(animal instanceof Cat) {
+            return animal.catSound
+        }
+        return
+    }
+}
+```
+
+上面代码中我们把类型缩小为`Dog、Cat`类型。
+
+#### in
+
+当联合类型的成员包含接口类型（对象），并且接口之间的属性不同，如下示例中的接口类型 `Dog、Cat`，我们不能直接通过“ . ”操作符获取 `param参数` 的 `wang`、miao` 属性，从而区分它是 `Dog` 还是 `Cat`。
+
+```typescript
+{
+  interface Dog {
+    wang: string;
+  }
+  interface Cat {
+    miao: string;
+  }
+  const getName = (animal: Dog | Cat) => {
+    if (typeof animal.wang == 'string') { // Property 'wang' does not exist on type 'Cat'.(2339)
+      return animal.wang; // ts(2339)
+    } else if (animal.miao) { // Property 'miao' does not exist on type 'Dog'.(2339)
+      return animal.miao; // ts(2339)
+    }
+  }
+}
+```
+
+这里我们看到，上面都提示了一个 `ts(2339) Dog | Cat` 联合类型没有 `wang、miao` 属性的错误。
+
+所以，这个时候，我们就需要使用`in`操作符来改造下`getName`函数，这样子就不会提示类型错误了。如下代码所示。
+
+```typescript
+{
+  interface Dog {
+    wang: string;
+  }
+  interface Cat {
+    miao: string;
+  }
+  const getName = (animal: Dog | Cat): any => {
+    if ('wang' in animal) { // ok
+      return animal.wang; // ok
+    } else if ('miao' in animal) { // ok
+      return animal.miao; // ok
+    }
+  }
+}
+```
+
+这里可以看到，animal的类型也缩小成`Dog`和`Cat`了。
+
+#### 自定义类型守卫
+
+使用类型谓词`is`，比如封装一个`isDog`函数来区分`Dog`和`Cat`，如下代码。
+
+```typescript
+interface Dog {
+    wang: string;
+}
+interface Cat {
+    miao: string;
+}
+const isDog = function (animal: Dog | Cat): animal is Dog {
+    return 'wang' in animal
+}
+const getName = (animal: Dog | Cat): any => {
+    if(isDog(animal)) {
+        return animal.wang
+    }
+}
+```
+
+上面的我们在 `getName`函数条件判断中使用了isDog将animal的类型缩小为Dog，这样子就可以直接获取wang属性了，就不会有`ts(2339)`的错误了。
+
+#### 如何区别枚举类型？
+
+**特性 1**：枚举和其他任何枚举、类型都不可比较，除了数字枚举可以与数字类型比较之外；
+
+**特性 2**：数字枚举极其不稳定。
+
+**我们永远不要拿枚举和除了自身之外的任何枚举、类型进行比较。**
+
+```typescript
+{
+    enum A {
+        one,
+        two
+    }
+    enum B {
+        one,
+        two
+    }
+    /*
+        这里我们将类型是枚举A的入参param和数字字面量1进行， 因为A是数字枚举，所以param可以和1进行比较，而不会提示ts(2367)条件判断恒为false的错误。
+        但是，数字枚举不稳定，所以默认情况下A.two的是1，因此判断在入参为A.two的时候为真。但是，如果我们给枚举 A 的成员 one 指定初始值 1，条件判断在入参为 A.two 的时候就为否了，因为 A.two 值变成了 2，所以这不是一个安全的实践。
+    */
+    const cpWithNumber = (param: A): any => {
+        if(param === 1) { // bad
+            return param
+        }
+    }
+    const cpWithOtherEnum = (param: A): any => {
+        // 这里使用了双重类型断言将枚举类型 B 转换为 A，所以这同样也是一种不安全的实践。因为一旦 A 和 B 的结构出现了任何差异（比如给成员指定了不同的初始值、改变了成员的顺序或者个数），都会导致条件判断逻辑时真时否。
+        if(param === B.two as unknown as A) { // bad
+            return param
+        }
+    }
+    
+    const cpWithSelf = (param: A): any => {
+        // 最安全的实践是使用区分枚举成员的判断方式。
+        if(param === A.two) {// ok
+            return param
+        }
+    }
+}
+```
+
+**注意：你应该还记得字面量成员枚举可等价为字面量成员类型组成的联合类型，所以类型守卫可以让字面量成员枚举发生类型缩小。
+
+## 类型兼容
 
 
 
