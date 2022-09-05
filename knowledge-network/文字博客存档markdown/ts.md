@@ -214,7 +214,7 @@ mayNullOrUndefinedOrString.toString(); // ts(2531)
 }
 ```
 
-**如上述代码中注释说明，通过 let 和 const 定义的赋予了相同值的变量，其推断出来的类型不一样。**看下面上下文推断这里就能找到端倪哟。
+**如上述代码中注释说明，通过 let 和 const 定义的赋予了相同值的变量，其推断出来的类型不一样。**看下面**上下文推断**小节这里就能找到端倪哟。
 
 ### 类型推断
 
@@ -270,7 +270,189 @@ mayNullOrUndefinedOrString.toString(); // ts(2531)
 
 这里我们定义了一个实现加法功能的**函数类型 Adde**定义的 Adder 类型使用了 type 类型别名)，声明了**add**变量的类型为 Adder 并赋值一个匿名箭头函数，箭头函数参数 a 和 b 的类型和返回类型都没有显式声明。
 
-ts通过**add**的类型 Adder 反向（通过变量类型推断出值的相关类型）推断出箭头函数参数及返回值的类型，也就是说函数参数 `a、b`，以及返回类型在这个变量的声明上下文中被确定了
+ts通过**add**的类型 Adder 反向（通过变量类型推断出值的相关类型）推断出箭头函数参数及返回值的类型，也就是说函数参数 `a、b`，以及返回类型在这个变量的声明上下文中被确定了。
+
+### 字面量类型
+
+字面量不仅可以表示值，还可以表示类型，即所谓的字面量类型。
+
+当前，ts支持3中字面量类型：**字符串字面量、数字字面量类型、布尔字面量类型**，对应的字符串字面量、数字字面量、布尔字面量分别拥有与其值一样的字面量类型，
+
+```typescript
+{
+    let testFiedStr: 'this is string' = 'this is string';
+    let testFiedNum: 1 = 1;
+    let testFiedBoolean: true = true;
+}
+```
+
+字面量类型是集合类型的子类型，它是集合类型的一种更具体的表达。比如 `'this is string'` （就是说，他的值只能是`this is string`），而 `string` 类型不一定是 `'this is string'`（因为定义了`string`后，他可以写上任何的字符串）类型。
+
+#### 字符串字面量
+
+单独定义字面量类型并没有多大的用处，它真正的应用场景是可以把多个字面量类型组合成一个联合类型。如下代码所示。
+
+```typescript
+type Direction = 'up' | 'down';
+function move(dir: Direction) {
+    // ...
+}
+move('up'); // ok
+move('down');// ok
+move('right'); // Argument of type '"right"' is not assignable to parameter of type 'Direction'.(2345)
+```
+
+使用 string 类型，使用字面量类型（组合的联合类型）可以将函数的参数限定为更具体的类型。
+
+#### 数字字面量类型及布尔字面量类型
+
+数字字面量类型和布尔字面量类型的使用与字符串字面量类型的使用类似，我们可以使用字面量组合的联合类型将函数的参数限定为更具体的类型，比如声明如下所示的一个类型 Config：
+
+```typescript
+interface Config {
+    size: 'small' | 'big';
+    isEnable: true | false;
+    margin: 0 | 2 | 4 | 8 | 16 | 32 | 64
+}
+```
+
+**介绍完三种字面量类型后，我们再来看看通过 let 和 const 定义的变量的值相同，而变量类型不一致的具体原因。**
+
+- const 示例
+
+```typescript
+{
+  const str = 'this is string'; // str: 'this is string'
+  const num = 1; // num: 1
+  const bool = true; // bool: true
+}
+```
+
+在上述代码中，我们将 const 定义为一个不可变更的常量，在缺省类型注解的情况下，TypeScript 推断出它的类型直接由赋值字面量的类型决定。
+
+- let示例
+
+这个会难以理解点。
+
+```typescript
+{
+  let str = 'this is string'; // str: string
+  let num = 1; // num: number
+  let bool = true; // bool: boolean
+}
+```
+
+缺省显式类型注解的<u>可变更的变量的类型转换为了赋值字面量类型的父类型</u>，比如 str 的类型是 'this is string' 类型（这里表示一个字符串字面量类型）的父类型 string，num 的类型是 1 类型的父类型 number。
+
+这种转换为父类型的这种设计称之为 `"literal widening"`
+
+#### Literal Widening
+
+所有<u>通过 let 或 var 定义的变量、函数的形参、对象的非只读属性</u>，如果满足<u>指定了初始值且未显式添加类型注解的条件</u>，那么它们推断出来的类型就是指定的初始值字面量类型拓宽后的类型，这就是字面量类型拓宽。
+
+下面我们通过字符串字面量的示例来理解一下字面量类型拓宽：
+
+```typescript
+{
+  let str = 'this is string'; // 类型是 string
+  let strFun = (str = 'this is string') => str; // 类型是 (str?: string) => string;
+  const specifiedStr = 'this is string'; // 类型是 'this is string'
+  let str2 = specifiedStr; // 类型是 'string'
+  let strFun2 = (str = specifiedStr) => str; // 类型是 (str?: string) => string;
+}
+```
+
+上面`str`和`strFun`满足了 `let`、形参且未显式声明类型注解的条件，所以变量、形参的类型拓宽为 `string`（形参类型确切地讲是 `string | undefined`）。
+
+`const`定义的常量不可变更，类型没有拓宽，所以 `specifiedStr` 的类型是 `'this is string'` 字面量类型。
+
+`str2`与`strFun2`赋予的值 `specifiedStr` 的类型是字面量类型，且没有显式类型注解，所以变量、形参的类型也被拓宽了。其实，这样的设计符合实际编程诉求。我们设想一下，如果 `str2` 的类型被推断为 `'this is string'`，它将不可变更，因为赋予任何其他的字符串类型的值都会提示类型错误。
+
+基于字面量类型拓宽的条件，我们可以通过如下所示代码添加显示类型注解控制类型拓宽行为。
+
+```typescript
+{
+  const specifiedStr: 'this is string' = 'this is string'; // 类型是 '"this is string"'
+  let str2 = specifiedStr; // 即便使用 let 定义，类型是 'this is string'
+}
+```
+
+实际上，除了字面量类型拓宽之外，`TypeScript` 对某些特定类型值也有类似 `"Type Widening"` （类型拓宽）的设计，下面我们具体来了解一下。
+
+#### Type Widening
+
+比如对 `null` 和 `undefined` 的类型进行拓宽，通过 `let`、`var` 定义的变量如果满足未显式声明类型注解且被赋予了 `null` 或 `undefined` 值，则推断出这些变量的类型是 `any`：
+
+```typescript
+{
+    let x = null; // 类型拓展成any
+    let y = undefined; // 类型拓展成any
+    // ----------------------------
+    const z = null; // 类型是null
+    // ----------------------------
+    let anyFun = (param = null) => param;//  形参类型是null
+    let z2 = z; // 类型是null
+    let x2 = x; // 类型是null
+    let y2 = y; // 类型是undefined
+}
+```
+
+既然有类型拓宽，自然也会有类型缩小，下面我们简单介绍一下 Type Narrowing。
+
+#### Type Narrowing
+
+在 TypeScript 中，我们可以通过某些操作将变量的类型由一个较为宽泛的集合缩小到相对较小、较明确的集合，这就是 "Type Narrowing"。
+
+```typescript
+{
+    let func = (anything: any) => {
+        if(typeof anything === 'string') {
+            return anything; // 类型是string
+        } else if(typeof anything === 'number') {
+            return anything; // 类型是number
+        }
+        return null;
+    }
+}
+```
+
+同样，我们可以使用类型守卫将联合类型缩小到明确的子类型，具体示例如下：
+
+```typescript
+{
+  let func = (anything: string | number) => {
+    if (typeof anything === 'string') {
+      return anything; // 类型是 string 
+    } else {
+      return anything; // 类型是 number
+    }
+  };
+}
+```
+
+当然，我们也可以通过字面量类型等值判断`（===）`或其他控制流语句（包括但不限于 <u>if、三目运算符、switch</u> 分支）将联合类型收敛为更具体的类型，如下代码所示：
+
+```typescript
+{
+  type Goods = 'pen' | 'pencil' |'ruler';
+  const getPenCost = (item: 'pen') => 2;
+  const getPencilCost = (item: 'pencil') => 4;
+  const getRulerCost = (item: 'ruler') => 6;
+  const getCost = (item: Goods) =>  {
+    if (item === 'pen') {
+      return getPenCost(item); // item => 'pen'
+    } else if (item === 'pencil') {
+      return getPencilCost(item); // item => 'pencil'
+    } else {
+      return getRulerCost(item); // item => 'ruler'
+    }
+  }
+}
+```
+
+在上述 `getCost` 函数中，接受的参数类型是字面量类型的联合类型，函数内包含了 `if` 语句的 3 个流程分支，其中每个流程分支调用的函数的参数都是具体独立的字面量类型。
+
+那为什么类型由多个字面量组成的变量 `item` 可以传值给仅接收单一特定字面量类型的函数 `getPenCost`、`getPencilCost`、`getRulerCost` 呢？这是因为在每个流程分支中，编译器知道流程分支中的 `item` 类型是什么。比如 `item === 'pencil'` 的分支，`item` 的类型就被收缩为`“pencil”`。
 
 ## 函数类型：返回值类型和参数类型到底如何定义？
 
@@ -291,7 +473,7 @@ const add = (a: number, b: number): number => {
 }
 ```
 
-参数名后的 ':number' 表示参数类型都是数字类型，圆括号后的 ': number' 则表示返回值类型也是数字类型。
+参数名后的 `':number'` 表示参数类型都是数字类型，圆括号后的 `': number'` 则表示返回值类型也是数字类型。
 
 ### 返回值类型
 
@@ -2169,7 +2351,708 @@ const getName = (animal: Dog | Cat): any => {
 
 **注意：你应该还记得字面量成员枚举可等价为字面量成员类型组成的联合类型，所以类型守卫可以让字面量成员枚举发生类型缩小。
 
-## 类型兼容
+## 增强类型系统
+
+### 增强类型系统
+
+TypeScript 相较于 JavaScript 而言，其一大特点就是类型。关于类型的定义方法，除了之前学习的内容之外，我们还可以通过以下方式扩展类型系统。
+
+### 声明
+
+我们要想在TypeScript中安全地使用JavaScript的库，关键在于使用TypeScript中的关键字`declare`;
+
+通过使用 `declare` 关键字，我们可以**声明全局的变量、方法、类、对象**。下面我们先说一下如何声明全局的变量。
+
+### declare变量
+
+在运行时，前端代码 `<script>` 标签会引入一个全局的库，再导入全局变量。此时，如果你想安全地使用全局变量，那么就需要对变量的类型进行声明。
+
+声明变量的语法： `declare (var|let|const)` 变量名称: 变量类型 ，具体示例如下：
+
+```typescript
+declare var val1: string;
+declare let val2: number;
+declare const val3: boolean;
+val1 = '1';
+val2 = 2;
+val2 = '2';// Type 'string' is not assignable to type 'number'.(2322)
+val3 = true;// Cannot assign to 'val3' because it is a constant.(2588)
+```
+
+在上面的代码示例中，我们分别使用 `var`、`let`、`const` 声明了 3 种不同类型的变量。其中，使用 `var、let` 声明的变量是可以更改变量赋值的，而使用 `const` 声明的变量则不可以。同时，对于变量类型不正确的错误，TypeScript 也可以正常检测出来。
+
+当然， `declare` 关键字还可以用来声明**函数、类、枚举**类型，下面我们一起来看看。
+
+#### 声明函数
+
+声明函数的语法与声明变量类型的语法相同，不同的是 declare 关键字后需要跟 function 关键字，如下示例：
+
+```typescript
+declare function toString(x: number): string;
+// 这里的toString方法已经在原生库实现过了，这里只需要调用即可
+const x = toString(1);
+```
+
+需要注意：使用 declare**关键字时，我们不需要编写声明的变量、函数、类的具体实现（因为变量、函数、类在其他库中已经实现了），只需要声明其类型即可**，如下示例，我们强行再定义一次就会报错：
+
+```typescript
+/*
+An implementation cannot be declared in ambient contexts.(1183)
+ypeScript 的报错信息提示：
+环境声明的上下文不需要实现。也就是说 declare 声明的所有类型只需要表明类型，不需要实现。
+*/
+declare function toString(x: number) {
+  return String(x);
+};
+declare function toString(x: number): string;
+// 这里的toString方法已经在原生库实现过了，这里只需要调用即可
+const x = toString(1)
+```
+
+#### 声明类
+
+声明类时，我们只需要声明类的属性、方法的类型即可。
+
+另外，关于类的可见性修饰符我们也可以在此进行声明，下面看一个具体的示例：
+
+```typescript
+declare class Person {
+    public name: string;
+    private age: number;
+    constructor(name: string);
+    getAge(): number;
+}
+const person = new Person('Hansen');
+person.name; // string
+person.age; // Property 'age' is private and only accessible within class 'Person'.(2341)
+person.getAge(); // number
+```
+
+我们声明了公共属性 `name` 以及私有属性 `age`，此时我们看到无法访问私有属性 `age`（私有属性只能被内部使用）。另外，我们还声明了方法 `getAge` ，并且 `getAge` 的返回值是 `number` 类型，所以 `Person` 实例调用后返回的类型也是 `number` 类型。
+
+#### 声明枚举
+
+声明枚举只需要定义枚举的类型，并不需要定义枚举的值，如下示。
+
+```typescript
+declare enum Direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+}
+const dorections = [
+    Direction.UP,
+    Direction.RIGHT,
+    Direction.DOWN,
+    Direction.LEFT
+]
+```
+
+我们声明了在其他地方定义的枚举 `Direction` 类型结构，然后在就可以直接访问枚举的成员了。
+
+**注意：声明枚举仅用于编译时的检查，编译完成后，声明文件中的内容在编译结果中会被删除，**相当于仅剩下面使用的语句:
+
+```typescript
+const directions = [Direction.Up, Direction.Down, Direction.Left, Direction.Right];
+```
+
+这里的 `Direction `表示引入的全局变量。
+
+#### declare模块
+
+通过使用 module 关键字，我们就可以声明一个内部模块。但是由于 ES6 后来也使用了 module 关键字，为了兼容 ES6，所以 TypeScript 使用 namespace 替代了原来的 module，并更名为命名空间。
+
+**需要注意：目前，任何使用**`module`关键字声明一个内部模块的地方，我们都应该使用`namespace`关键字进行替换。
+
+TypeScript 与 ES6 一样，任何包含顶级 import 或 export 的文件都会被当作一个模块。我们可以通过声明模块类型，为缺少 TypeScript 类型定义的三方库或者文件补齐类型定义，如下示例：
+
+```typescript
+// lodash.d.ts
+declare module 'lodash' {
+  export function first<T extends unknown>(array: T[]): T;
+}
+// index.ts
+import { first } from 'lodash';
+first([1, 2, 3]); // => number;
+```
+
+在上面的例子中，lodash.d.ts 声明了模块 lodash 导出的 first 方法，然后在 TypeScript 文件中使用了模块 lodash 中的 first 方法。
+
+**声明模块的语法**： `declare module '模块名'{}`。
+
+在模块声明的内部，我们只需要使用 export 导出对应库的类、函数即可。
+
+#### declare文件
+
+在使用 TypeScript 开发前端应用时，我们可以通过 import 关键字导入文件，比如先使用 import 导入图片文件，再通过 webpack 等工具处理导入的文件。
+
+但是，因为 TypeScript 并不知道我们通过 import 导入的文件是什么类型，所以需要使用 declare 声明导入的文件类型，下面看一个具体的示例：
+
+```typescript
+declare module '*.jpg' {
+  const src: string;
+  export default src;
+}
+declare module '*.png' {
+  const src: string;
+  export default src;
+}
+```
+
+这里标记的图片文件的默认导出的类型是 string ，通过 import 使用图片资源时，TypeScript 会将导入的图片识别为 string 类型，因此也就可以把 import 的图片赋值给 的 src 属性，因为它们的类型都是 string，是匹配的。
+
+#### declare namespace
+
+不同于声明模块，命名空间一般用来表示具有很多子属性或者方法的全局对象变量。
+
+我们可以将声明命名空间简单看作是声明一个更复杂的变量，如下示例：
+
+```typescript
+declare namespace $ {
+  const version: number;
+  function ajax(settings?: any): void;
+}
+$.version; // => number
+$.ajax();
+```
+
+在上面的例子中，因为我们声明了全局导入的 jQuery 变量 $，所以可以直接使用 $ 变量的 version 属性以及 ajax 方法。
+
+在 TypeScript 中，我们还可以编写以 .d.ts 为后缀的声明文件来增强（补齐）类型系统。
+
+#### 声明文件 ///
+
+安装 TypeScript 依赖后，一般我们会顺带安装一个 lib.d.ts 声明文件，这个文件包含了 JavaScript 运行时以及 DOM 中各种全局变量的声明，如下示例：
+
+```typescript
+// typescript/lib/lib.d.ts
+/// <reference no-default-lib="true"/>
+/// <reference lib="es5" />
+/// <reference lib="dom" />
+/// <reference lib="webworker.importscripts" />
+/// <reference lib="scripthost" />
+```
+
+这其实就是 lib.d.ts 文件的内容。
+
+其中，/// 是 TypeScript 中三斜线指令，后面的内容类似于 XML 标签的语法，用来指代引用其他的声明文件。通过三斜线指令，我们可以更好地复用和拆分类型声明。no-default-lib="true" 表示这个文件是一个默认库。而最后 4 行的lib="..." 表示引用内部的库类型声明。
+
+#### @type
+
+有些JavaScript是没有对应的type依赖文件的，所以我们要额外的添加一些typescript来维持javascript的运行。
+
+具体操作：首先，
+
+[点击这里的链接搜索]: https://www.typescriptlang.org/dt/search?search=&amp;fileGuid=xxQTRXtVcqtHK6j8
+
+你想要导入的类库的类型声明，如果有社区维护的声明文件。然后，我们只需要安装 @types/xxx 就可以在 TypeScript 中直接使用它了。
+
+### 合并接口
+
+最简单、常见的声明合并是接口合并，如下代码。
+
+```typescript
+interface Person {
+  name: string;
+}
+interface Person {
+  age: number;
+}
+// 相当于
+interface Person {
+  name: string;
+  age: number;
+}
+```
+
+**注意的是接口的非函数成员类型必须完全一样**，如下示例：
+
+```typescript
+interface Person {
+  age: string;
+}
+interface Person {
+  // TS2717: Subsequent property declarations must have the same type.
+  // Property 'age' must be of type 'string', but here has type 'number'.
+  age: number;
+}
+```
+
+**需要注意的是后面声明的接口具有更高的优先级**，如下代码：
+
+对于函数成员而言，**每个同名的函数**声明都会被当作这个函数的重载。
+
+**需要注意的是后面声明的接口具有更高的优先级**，下面看一个具体的示例：
+
+```typescript
+interface Obj {
+    identity(val: any): any;
+}
+interface Obj {
+    identity(val: number): number;
+}
+interface Obj {
+    identity(val: boolean): boolean;
+}
+// 相当于
+interface Obj {
+  identity(val: boolean): boolean;
+  identity(val: number): number;
+  identity(val: any): any;
+}
+const obj: Obj = {
+    identity(val: any) {
+        return val;
+    }
+};
+const t1 = obj.identity(1); // => number
+const t2 = obj.identity(true); // => boolean
+const t3 = obj.identity("t3"); // => any
+```
+
+在上面的代码中，Obj 类型的 identity 函数成员有 3 个重载，与函数重载的顺序相同，声明在前面的重载类型会匹配。
+
+接下来我们更改一下顺序，再看看结果。
+
+```typescript
+interface Obj {
+  identity(val: boolean): boolean;
+}
+interface Obj {
+  identity(val: number): number;
+}
+interface Obj {
+  identity(val: any): any;
+}
+// 相当于
+interface Obj {
+  identity(val: any): any;
+  identity(val: number): number;
+  identity(val: boolean): boolean;
+}
+const obj: Obj = {
+  identity(val: any) {
+      return val;
+  }
+};
+const t1 = obj.identity(1); // => any
+const t2 = obj.identity(true); // => any
+const t3 = obj.identity("t3"); // => any
+```
+
+在上面的代码中，`identity` 函数参数为 `any` 的重载在第一位，因此 `t1、t2、t3` 的返回值类型都被重载成了 `any`。
+
+### 合并 namespace
+
+合并 namespace 与合并接口类似，命名空间的合并也会合并其导出成员的属性。不同的是，非导出成员仅在原命名空间内可见。
+
+```typescript
+namespace Person {
+  const age = 18;
+  export function getAge() {
+    return age;
+  }
+}
+namespace Person {
+  export function getMyAge() {
+    return age; // Cannot find name 'age'.(2304)
+  }
+}
+```
+
+在上面的例子，同名的命名空间 `Person` 中，有一个非导出的属性 `age`，在第二个命名空间 `Person` 中没有 `age` 属性却引用了 `age`，所以 TypeScript 报出了找不到 `age` 的错误。这是因为非导出成员仅在合并前的命名空间中可见在上面的例子，同名的命名空间 `Person` 中，有一个非导出的属性 `age`，在第二个命名空间 `Person` 中没有 `age` 属性却引用了 `age`，所以 TypeScript 报出了找不到 `age` 的错误。这是因为非导出成员仅在合并前的命名空间中可见。
+
+### 扩充模块
+
+JavaScript 是一门动态类型的语言，通过 prototype 我们可以很容易地扩展原来的对象。
+
+但是，如果我们直接扩展导入对象的原型链属性，TypeScript 会提示没有该属性的错误，因此我们就需要扩展原模块的属性。
+
+```typescript
+// person.ts
+export class Person {}
+// index.ts
+import { Person } from './person';
+declare module './person' {
+  interface Person {
+    greet: () => void;
+  }
+}
+Person.prototype.greet = () => {
+  console.log('Hi!');
+};
+```
+
+在上面的例子中，我们声明了导入模块 `person` 中 `Person` 的属性，TypeScript 会与原模块的类型合并，通过这种方式我们可以扩展导入模块的类型。
+
+### 扩充全局
+
+全局模块指的是不需要通过 import 导入即可使用的模块，如全局的 window、document 等。
+
+对全局对象的扩充与对模块的扩充是一样的，下面看一个具体示例：
+
+在上面的例子中，因为我们声明了全局的 Array 对象有一个 getLen 方法，所以为 Array 对象实现 getLen 方法时，TypeScript 不会报错。
+
+```typescript
+declare global {
+  interface Array<T extends unknown> {
+    getLen(): number;
+  }
+}
+Array.prototype.getLen = function () {
+  return this.length;
+};
+```
+
+## TypeScript 官方工具类型
+
+在 TypeScript 中提供了许多自带的工具类型，因为这些类型都是全局可用的，所以无须导入即可直接使用。
+
+### 操作接口类型
+
+#### Partial
+
+Partial 工具类型可以将一个类型的所有属性变为可选的，且该工具类型返回的类型是给定类型的所有子集，看如下代码。
+
+```typescript
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+interface Person {
+  name: string;
+  age?: number;
+  weight?: number;
+}
+type PartialPerson = Partial<Person>;
+// 相当于
+interface PartialPerson {
+  name?: string;
+  age?: number;
+  weight?: number;
+}
+```
+
+在上述示例中，我们使用映射类型取出了传入类型的所有键值，并将其值设定为可选的。
+
+#### Required
+
+与 Partial 工具类型相反，Required 工具类型可以将给定类型的所有属性变为必填的。
+
+```typescript
+type Required<T> = {
+  [P in keyof T]-?: T[P];
+};
+type RequiredPerson = Required<Person>;
+interface Person {
+  name: string;
+  age?: number;
+  weight?: number;
+}
+// 相当于
+interface RequiredPerson {
+  name: string;
+  age: number;
+  weight: number;
+}
+```
+
+在上述示例中，映射类型在键值的后面使用了一个 `-` 符号，`- 与 ?` 组合起来表示去除类型的可选属性，因此给定类型的所有属性都变为了必填。
+
+#### Readonly
+
+Readonly 工具类型可以将给定类型的所有属性设为只读，这意味着给定类型的属性不可以被重新赋值，如下代码。
+
+```typescript
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+type ReadonlyPerson = Readonly<Person>;
+// 相当于
+interface ReadonlyPerson {
+  readonly name: string;
+  readonly age?: number;
+  readonly weight?: number;
+}
+```
+
+在上述示例中，经过 Readonly 处理后，ReadonlyPerson 的 `name、age、weight` 等属性都变成了 `readonly` 只读。
+
+#### Pick
+
+Pick 工具类型可以从给定的类型中选取出指定的键值，然后组成一个新的类型，下面我们看一个具体的示例。
+
+```typescript
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+};
+type NewPerson = Pick<Person, 'name' | 'age'>;
+// 相当于
+interface NewPerson {
+  name: string;
+  age?: number;
+}
+```
+
+在上述示例中，Pick工具类型接收了两个泛型参数，第一个 T 为给定的参数类型，而第二个参数为需要提取的键值 key。有了参数类型和需要提取的键值 key（也就是说提取自己想要的key）。
+
+#### Omit
+
+与 Pick 类型相反，Omit 工具类型的功能是返回去除指定的键值之后返回的新类型，下面我们看一个具体的示例：
+
+```typescript
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+type NewPerson = Omit<Person, 'weight'>;
+// 相当于
+interface NewPerson {
+  name: string;
+  age?: number;
+}
+```
+
+在上述示例中，`Omit` 类型的实现使用了前面介绍的 `Pick` 类型。我们知道 `Pick` 类型的作用是选取给定类型的指定属性，那么这里的 `Omit` 的作用应该是选取除了指定属性之外的属性，而 `Exclude` 工具类型的作用就是从入参 `T` 属性的联合类型中排除入参 `K` 指定的若干属性。
+
+### 联合类型
+
+在`Omit` 类型的实现中，我们使用了 `Exclude` 类型。通过使用 `Exclude` 类型，我们从接口的所有属性中去除了指定属性，因此，`Exclude` 的作用就是从联合类型中去除指定的类型。
+
+#### Exclude
+
+在介绍 Omit 类型的实现中，我们使用了 Exclude 类型。通过使用 Exclude 类型，我们从接口的所有属性中去除了指定属性，因此，Exclude 的作用就是从联合类型中去除指定的类型。
+
+看如下代码。
+
+```typescript
+interface Person {
+  name: string;
+  age?: number;
+  weight?: number;
+}
+// Exclude 的实现使用了条件类型。如果类型 T 可被分配给类型 U ，则不返回类型 T，否则返回此类型 T ，这样我们就从联合类型中去除了指定的类型。
+type Exclude<T, U> = T extends U ? never : T;
+// 排除a
+type T = Exclude<'a' | 'b' | 'c', 'a'>; // => 'b' | 'c'
+// 相当于从Person里面除去weight
+type NewPerson = Omit<Person, 'weight'>;
+// 相当于利用了Exclude去Person里面排除了weight，并通过Pick去保留
+type NewPerson = Pick<Person, Exclude<keyof Person, 'weight'>>;
+// 其中
+type ExcludeKeys = Exclude<keyof Person, 'weight'>; // => 'name' | 'age'
+```
+
+#### Extract
+
+Extract 类型的作用与 Exclude 正好相反，Extract 主要用来从联合类型中提取指定的类型，类似于操作接口类型中的 Pick 类型。
+
+看下面代码。
+
+```typescript
+type Extract<T, U> = T extends U ? T: never;
+type TA = Extract<'a' | 'b' | 'c' | 'd', 'd'>;
+```
+
+通过上述示例，我们发现 Extract 类型相当于取出两个联合类型的交集。
+
+此外，我们还可以基于 Extract 实现一个获取接口类型交集的工具类型，如下示例：
+
+```typescript
+type Intersect<T, U> = {
+  [K in Extract<keyof T, keyof U>]: T[K];
+};
+interface Person {
+  name: string;
+  age?: number;
+  weight?: number;
+}
+interface NewPerson {
+  name: string;
+  age?: number;
+}
+type T = Intersect<Person, NewPerson>;
+// 相当于
+type T = {
+  name: string;
+  age?: number;
+};
+```
+
+我们使用了 `Extract` 类型来提取两个接口类型属性的交集，并使用映射类型生成了一个新的类型。
+
+#### NonNullable
+
+`NonNullable` 的作用是从联合类型中去除 `null` 或者 `undefined` 的类型。
+
+```typescript
+type NonNullable<T> = T extends null | undefined ? never : T;
+// 等同于使用 Exclude
+type NonNullable<T> = Exclude<T, null | undefined>;
+type T = NonNullable<string | number | undefined | null>; // => string | number
+```
+
+也就是说，如果 NonNullable 传入的类型可以被分配给 null 或是 undefined ，则不返回该类型，否则返回其具体类型。
+
+#### Record
+
+Record 的作用是生成接口类型，然后我们使用传入的泛型参数分别作为接口类型的属性和值。
+
+如下代码所示：
+
+```typescript
+// 这里的实现限定了第一个泛型参数继承自keyof any
+type Record<K extends keyof any, T> = {
+  [P in K]: T;
+};
+type MenuKey = 'home' | 'about' | 'more';
+interface Menu {
+  label: string;
+  hidden?: boolean;
+}
+const menus: Record<MenuKey, Menu> = {
+  // 这里的key值一定要是MenuKey的子集
+  about: { label: '关于' },
+  home: { label: '主页' },
+  more: { label: '更多', hidden: true },
+};
+```
+
+在上述示例中，Record 类型接收了两个泛型参数：第一个参数作为接口类型的属性，第二个参数作为接口类型的属性值。
+
+在 TypeScript 中，`keyof any` 指代可以作为对象键的属性，如下示例：
+
+```typescript
+type T = keyof any; // => string | number | symbol
+```
+
+**说明**：目前，JavaScript 仅支持`string`、`number`、`symbol`作为对象的键值。
+
+### 函数类型
+
+#### ConstructorParameters
+
+可以用来获取构造函数的构造参数，而 `ConstructorParameters` 类型的实现则需要使用 `infer` 关键字推断构造参数的类型。
+
+关于 `infer` 关键字，我们可以把它当成简单的模式匹配来看待。如果真实的参数类型和 `infer` 匹配的一致，那么就返回匹配到的这个类型。
+
+```typescript
+type ConstructorParameters<T extends new (...args: any) => any> = T extends new (
+  ...args: infer P
+) => any
+  ? P
+  : never;
+class Person {
+  constructor(name: string, age?: number) {}
+}
+// type T = [name: string, age?: number | undefined]
+type T = ConstructorParameters<typeof Person>;
+```
+
+在上述示例中，ConstructorParameters 泛型接收了一个参数，并且限制了这个参数需要实现构造函数。于是，我们通过 infer 关键字匹配了构造函数内的构造参数，并返回了这些参数
+
+#### Parameters
+
+`Parameters` 的作用与 `ConstructorParameters` 类似，`Parameters` 可以用来获取函数的参数并返回序对，如下示例：
+
+```typescript
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+type T0 = Parameters<() => void>;// type T0 = []
+type T1 = Parameters<(x: number, y?: string) => void>;// type T1 = [x: number, y?: string | undefined]
+```
+
+`Parameters` 的泛型参数限制了传入的类型需要满足函数类型。
+
+#### ReturnType
+
+`ReturnType` 的作用是用来获取函数的返回类型。
+
+```typescript
+type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+type T0 = ReturnType<() => void>; // type T0 = void
+type T1 = ReturnType<() => string>; // type T1 = string
+```
+
+在上述示例中，ReturnType的泛型参数限制了传入的类型需要满足函数类型。
+
+#### ThisParameterType
+
+`ThisParameterType` 可以用来获取函数的 `this` 参数类型。
+
+```typescript
+type ThisParameterType<T> = T extends (this: infer U, ...args: any[]) => any ? U : unknown;
+type T = ThisParameterType<(this: Number, x: number) => void>; // Number
+```
+
+因为函数类型的第一个参数声明的是 `this` 参数类型，所以我们可以直接使用 `infer` 关键字进行匹配并获取 `this` 参数类型。类型别名 `T` 得到的类型就是 `Number`。
+
+### 字符串类型
+
+TypeScript 也提供了 `Uppercase`、`Lowercase`、`Capitalize`、`Uncapitalize`这 4 种内置的操作字符串的类型。
+
+```typescript
+type T0 = Uppercase<'Hello'>; // => 'HELLO'
+type T1 = Lowercase<T0>; // => 'hello'
+type T2 = Capitalize<T1>; // => 'Hello'
+type T3 = Uncapitalize<T2>; // => 'hello'
+```
+
+## 工具类型
+
+### 用泛型判断变量类型
+
+我们就需要把确切的类型抽离为入参，然后封装成一个可复用的泛型。看如下代码，
+
+```typescript
+type isSubTyping<Child, Par> = Child extends Par ? true : false;
+type isXX2 = isSubTyping<1, number>; // true
+type isYY2 = isSubTyping<'string', string>; // true
+type isZZ2 = isSubTyping<true, boolean>; // true
+```
+
+示例中的工具泛型其实是工具类型 `isSubTyping`，如果类型入参 `Child` 是 `Par` 的子类型，则返回布尔字面量类型 `true`，否则返回 `false`。这样，我们就可以使用 `isSubTyping` 判断其他任意两个类型之间的子类型关系了。
+
+### 条件类型
+
+TypeScript 支持使用三元运算的条件类型，它可以根据 `？`前面的条件判断返回不同的类型。同时，三元运算还支持嵌套。
+
+```typescript
+type isSubTyping<Child, Par> = Child extends Par ? true : false;
+type isAssertable<T, S> = T extends S ? true :  S extends T ? true : false;
+type isNumAssertable = isAssertable<1, number>; // true
+type isStrAssertable = isAssertable<string, 'string'>; // true
+type isNotAssertable = isAssertable<1, boolean>; // false
+```
+
+### 分配条件类型
+
+在条件类型中，如果入参是联合类型，则会被拆解为一个个独立的（原子）类型（成员），然后再进行类型运算，看如下代码。
+
+```typescript
+type BooleanOrString = string | boolean | number;
+type StringOrNumberArray<E> = E extends string | number ? E[] : E;
+type WhatIsThis = StringOrNumberArray<BooleanOrString>; // boolean | string[] | number[]
+type BooleanOrStringGot = BooleanOrString extends string | number ? BooleanOrString[] : BooleanOrString; //  string | number | boolean
+```
+
+`string` 和 `boolean`和`number` 组成的联合类型 `BooleanOrString` 作为泛型 `StringOrNumberArray` 入参的时候，则会被拆解成 `string` 和 `boolean` 和`number`这三个独立的类型，再通过 `extends` 关键字判断是否是 `string | number` 类型的子类型。
+
+因为 `string`和`number` 是子集，而 `boolean` 不是，所以最终我们得到的 `WhatIsThis` 的类型是 `boolean | string[]`|`number[]`。
+
+同样，通过某些手段强制`类型入参被当成一个整体，也可以解除类型分配，如下示例：
+
+```typescript
+type StringOrNumberArray<E> = [E] extends [string | number] ? E[] : E;
+type WhatIsThis = StringOrNumberArray<string | boolean>; // string | boolean
+```
+
+在示例中，我们使用 [] 将入参 E 包起来，即便入参是联合类型 `string | boolean`，也会被当成**一个整体**对待，所以下面返回的是 `string | boolean`。
+
+**注意：包含条件类型的泛型接收 never 作为泛型入参时，存在一定“陷阱”，如下示例：**
+
+```typescript
+type GetSNums = never extends number ? number[] : never extends string ? string[] : never; // number[];
+type GetNever = StringOrNumberArray<never>; // never
+```
+
+因为 `never` 是所有类型的子类型，自然也是 `number` 的子类型，所以返回的是 `number` 类型的数组；所以传入 `never` 作为入参来实例化前面定义的泛型 `StringOrNumberArray` 时，返回的类型却是 `never`，而不是 `number[]`。
 
 
 
