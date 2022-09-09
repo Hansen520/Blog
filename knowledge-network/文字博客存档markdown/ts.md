@@ -3052,7 +3052,323 @@ type GetSNums = never extends number ? number[] : never extends string ? string[
 type GetNever = StringOrNumberArray<never>; // never
 ```
 
-因为 `never` 是所有类型的子类型，自然也是 `number` 的子类型，所以返回的是 `number` 类型的数组；所以传入 `never` 作为入参来实例化前面定义的泛型 `StringOrNumberArray` 时，返回的类型却是 `never`，而不是 `number[]`。
+**因为 `never` 是所有类型的子类型**，自然也是 `number` 的子类型，所以返回的是 `number` 类型的数组；所以传入 `never` 作为入参来实例化前面定义的泛型 `StringOrNumberArray` 时，返回的类型却是 `never`，而不是 `number[]`。
+
+下面看具体例子:
+
+```typescript
+  type UsefulNeverX<T> = T extends {} ? T[] : [];
+  type UselessNeverX<T, S> = S extends {} ? S[] : [];
+  type UselessNeverY<T, S> = S extends {} ? T[] : [];
+  type UselessNeverZ<T> = [T] extends [{}] ? T[] : [];
+  type ThisIsNeverX = UsefulNeverX<never>; // never
+  type ThisIsNotNeverX = UselessNeverX<never, string>; // string[]
+  type ThisIsNotNeverY = UselessNeverY<never, string>; // never[]
+  type ThisIsNotNeverZ = UselessNeverZ<never>; // never[]
+```
+
+在示例中的第 1 行，因为我们定义的泛型 `UsefulNeverX` 的入参 T 被三元运算中的 `extends` 使用，所以第 5 行返回的类型是 `never`。而第 2 行、第 3 行定义的泛型入参 T 都没有被三元运算中的 `extends` 使用，所以第 6~7 行所返回的类型分别是 `string[]` 和 `never[]`。在第 4 行，因为入参 `T` 是以 `T[]` 而不是以原子形式被 `extends` 使用，所以第 8 行返回的类型也是 `never[]`。
+
+### 条件类型中的类型推断infer
+
+我们可以在条件类型中使用类型推断操作符 `infer` 来获取类型入参的组成部分，比如说**获取数组类型入参里元素的类型**。
+
+看下面的例子。
+
+```typescript
+type ElementTypeOfArray<T> = T extends (infer E)[] ? E : never;
+type isNumber = ElementTypeOfArray<number[]>; // number
+type isNever = ElementTypeOfArray<number>; // never
+```
+
+在示例中第1行，定义了接收入参 T 的泛型 `ElementTypeOfArray`，并在三元运算的条件判断中，通过 `(infer E)[]` 定义了一个有对元素类型推断参数 `E` 的数组。当入参 `T` 满足是 `(infer E)[]` 数组类型的子类型的条件，则返回参数 `E`，即数组元素类型，所以在第 3 行传入 `number[]` 入参时返回的是 `number` 类型，而传入 `number` 时返回的则是 `never`。
+
+我们或许可以通过`infer`创建任意个类型推断参数，以此获取任意的成员参数，看下代码。
+
+```typescript
+    type ElementTypeOfObj<T> = T extends { name: infer E; id: infer I, age: infer K} ? [E, I, K] : never;
+    type isArray = ElementTypeOfObj<{ name: 'name'; id: 1; age: 30; sex: '男' }>; // ['name', 1, 30]
+    type isNever = ElementTypeOfObj<number>; // never
+```
+
+在示例中的第 1 行，我们定义了入参是 T 的泛型 `ElementTypeOfObj`，并通过两个 `infer` 类型推断来获取入参 `name、id、age` 属性的类型。在第 3 行，因为入参是包含 `name、id、age` 属性的接口类型，所以提取到了元组类型 `['name', 1]`。而在第 4 行，因为入参 `number` 不满足三元运算中的条件判断，所以返回了 `never`。
+
+### 索引访问类型
+
+索引访问类型其实更像是获取物料的方式，首先我们可以通过属性名、索引、索引签名按需提取对象（接口类型）任意成员的类型**（注意：只能使用 [索引名] 的语法）**，如下示例。相关看注释内容。
+
+```typescript
+interface MixedObject { 
+    animal: {
+        type: 'animal' | 'dog' | 'cat';
+        age: number;
+    };
+    [name: number]: {
+        type: string;
+        age: number;
+        nickname: string;
+    };
+    [name: string]: {
+        type: string;
+        age: number;
+    }
+}
+type animal = MixedObject['animal'];
+type animalType = MixedObject['animal']['type'];
+// 我们通过 number 类型索引签名和数字索引 0 获取的是同一个接口
+type numberIndex = MixedObject[number];
+type numberIndex0 = MixedObject[0];
+// 通过 string 类型索引签名和字符串字面量索引 'string' 获取 定义的同一个接口类型
+type stringIndex = MixedObject[string];
+type stringIndex0 = MixedObject['string'];
+```
+
+### keyof
+
+我们可以使用`keyof`关键字提取对象属性名、索引名、索引签名的类型，如下所示。
+
+```typescript
+interface MixedObject { 
+    animal: {
+        type: 'animal' | 'dog' | 'cat';
+        age: number;
+    };
+    [name: number]: {
+        type: string;
+        age: number;
+        nickname: string;
+    };
+    [name: string]: {
+        type: string;
+        age: number;
+    };
+}
+type animal = MixedObject['animal'];
+type numberIndex = MixedObject[number];
+// 使用 keyof 提取了 MixedObject 接口的属性和索引签名，它是由 string、number 和 'animal' 类型组成的联合类型，缩减之后就是 string | number 联合类型
+type MixedObjectKeys = keyof MixedObject; // string | number
+type animalKeys = keyof animal;// 'type' | 'age'
+type numberIndexKeys = keyof numberIndex; // "type" | "age" | "nickname"
+```
+
+### typeof
+
+在表达式上下文中使用 `typeof`，则是用来获取表达式值的类型，如果在类型上下文中使用，则是用来获取变量或者属性的类型。当然，在 TypeScript 中，`typeof` 的主要用途是在类型上下文中获取变量或者属性的类型。看如下代码与注释。
+
+```typescript
+{
+    let StrA = 1;
+    // 获取的是 StrA 值的类型，因为与静态类型上下文无关，所以变量 unions 的类型是 'string'、'number' 等字符串字面量组成的联合类型。
+    const unions = typeof StrA;// "string" | "number" | "boolean" | "symbol" | "undefined" | "object" | "function"
+    // typeof 作用在类型上下文中，提取的是变量 StrA 的类型，所以推断出来 StrA 的类型是 string，因此提取的类型、变量 str 的类型也是 string。
+    const str: typeof StrA = 'string';
+    // 我们也可以使用一个类型别名专门接收从变量 StrA 提取的类型
+    type DerivedFromStrA = typeof StrA;// number
+}
+```
+
+对于任何未显式添加类型注解或值与类型注解一体（比如函数、类）的变量或属性，我们都可以使用 typeof 提取它们的类型，这是一个十分方便、有用的设计，如下示例：
+
+```typescript
+const animal = {
+    id: 1,
+    name: 'animal'
+};
+type Animal = typeof animal;// type Animal = { id: number; name: string; }
+const animalFun = () => animal;// const animalFun: () => { id: number; name: string; }
+type AnimalFun = typeof animalFun;// type AnimalFun = () => { id: number; name: string; }
+```
+
+### 映射类型
+
+可以使用索引签名语法和 in 关键字限定对象属性的范围。
+
+```typescript
+type SpecifiedKeys = 'id' | 'name';
+type TargetType = {
+    [key in SpecifiedKeys]: any;
+}// { id: any; name: any; }
+type TargetGeneric<OO extends string | number | symbol> = {
+    [key in OO]: any
+}
+type TargetInstance = TargetGeneric<SpecifiedKeys>// { id: any; name: any; }
+```
+
+在示例中的第 1 行，我们定义了联合类型 `SpecifiedKeys`，并在第 3 行、第 6 行使用 `in` 限定了 `AnimalNormal` 对象和泛型 `AnimalGeneric` 的属性必须是 `SpecifiedKeys` 的成员，所以最终第 2 行、第 8 行得到的类型都是 `{ id: any; name: any; }`。
+
+**注意：我们只能在类型别名定义中使用 in，如果在接口中使用，则会提示一个 ts(1169) 的错误，**如下代码所示。
+
+```typescript
+type SpecifiedKeys = 'id' | 'name';
+interface ITargetInterface {
+    [key in SpecifiedKeys]: any; // ts(1169) A computed property name in an interface must refer to an expression whose type is a literal type or a 'unique symbol' type.
+}
+```
+
+在定义类型时，我们可以组合使用 in 和 keyof，并基于已有的类型创建一个新类型，使得新类型与已有类型保持一致的只读、可选特性，这样的泛型被称之为映射类型。
+
+**注意：in 和 keyof 也只能在类型别名定义中组合使用。**
+
+看例子
+
+```typescript
+interface SourceInterface {
+    readonly id: number;
+    name?: string;
+}
+type TargetType = {
+    // type TargetType = { readonly id: number; name?: string; }
+    [key in keyof SourceInterface]: SourceInterface[key]
+}
+// S泛型，里面可以定义一些接口
+type TargetGenericType<S> = {
+    [key in keyof S]: S[key]
+}
+// { readonly id: number; name?: string; }
+type TargetInstance = TargetGenericType<SourceInterface>
+```
+
+我们使用 `in` 和 `keyof`，以及基于接口类型 `SourceInterface` 和泛型入参 `S` 分别创建了一个新类型，最终的 `TargetType`和`TargetInstance` 也获得了*只读的* `id` 属性和可选的 `name` 属性。
+
+同样，我们可以在映射类型中使用 `readonly、?` 修饰符来描述属性的可读性、可选性，也可以在修饰符前添加 `+、-` 前缀表示添加、移除指定修饰符（默认是 `+`、添加），如下示例：
+
+```typescript
+ // 以SourceInterface基础
+  interface SourceInterface {
+    readonly id: number;
+    name?: string;
+    }
+  // 保留readonly
+  type TargetGenericTypeReadonly<S> = {
+    readonly [key in keyof S]: S[key];
+  }
+  type TargetGenericTypeReadonlyInstance = TargetGenericTypeReadonly<SourceInterface>; // { readonly id: number; readonly name?: string | undefined }
+    // 保留?
+    type TargetGenericTypeOptional<S> = {
+    [key in keyof S]?: S[key];
+  }
+  type TargetGenericTypeOptionalInstance = TargetGenericTypeOptional<SourceInterface>; // { readonly id?: number; readonly name?: string | undefined }
+    // 移除所有的readonly选项
+    type TargetGenericTypeRemoveReadonly<S> = {
+    -readonly [key in keyof S]: S[key];
+  }
+  type TargetGenericTypeRemoveReadonlyInstance = TargetGenericTypeRemoveReadonly<SourceInterface>; // { id: number; name?: string | undefined }
+  // 移除所有的?
+  type TargetGenericTypeRemoveOptional<S> = {
+    [key in keyof S]-?: S[key];
+  }
+  type TargetGenericTypeRemoveOptionalInstance = TargetGenericTypeRemoveOptional<SourceInterface>; // { readonly id: number; name: string }
+```
+
+###  造轮子
+
+#### ReturnTypeOfResolved
+
+`ReturnTypeOfResolved` 和官方 `ReturnType` 的区别：如果入参 F 的返回类型是泛型 `Promise` 的实例，则返回 `Promise` 接收的入参。
+
+我们可以借鉴 `ReturnType` 的定义实现 `ReturnTypeOfResolved`，如下示例。
+
+```typescript
+  // type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+  type ReturnTypeOfResolved<F extends (...args: any) => any> = F extends (...args: any[]) => Promise<infer R> ? R : ReturnType<F>;
+  type isNumber = ReturnTypeOfResolved<() => number>; // number
+  type isString = ReturnTypeOfResolved<() => Promise<string>>; // string
+```
+
+示例中第 1 行注释的代码是官方工具类型 `ReturnType` 的实现，第 2 行我们自定义了一个泛型 `ReturnTypeOfResolved`，并约束了入参 F 必须是函数类型。当入参 F 的返回值是 `Promise` 类型，通过条件类型，我们推断 `infer` 获取了 `Promise` 入参类型，所以第 3 行返回的是入参函数返回值类型 `number`，第 4 行返回的是入参函数返回 `Promise` 入参类型 `string`。
+
+#### Equal
+
+`Equal<S, T>`，它可以用来判断入参 `S` 和 `T` 是否是相同的类型。如果相同，则返回布尔字面量类型 `true`，否则返回 `false`。
+
+如果 `S` 是 `T` 的子类型且 `T` 也是 `S` 的子类型，则说明 `S` 和 `T` 是相同的类型，所以 `Equal` 的实现似乎是这样的：
+
+```typescript
+type EqualV1<S, T> = S extends T ? T extends S ? true : false : false;
+type ExampleV11 = EqualV1<1 | number & {}, number>; // true but boolean
+type ExampleV12 = EqualV1<never, never>; // true but never
+```
+
+在示例中的第 1 行，我们实现了泛型 EqualV1；第 2 行中的第一个入参是联合类型，因为分配条件类型的设定，所以第一个类型入参被拆解，最终返回类型 boolean（实际上是联合类型 true | false）。同样，在第 3 行中，当入参是 never，则返回类型 never。因此，EqualV1 并不符合我们的预期。
+
+**此时，我们需要使用 [] 解除条件分配类型和 never “陷阱”，**确保自定义泛型仅返回 true 或者 false，所以前面示例的改良版本 EqualV2 如下：
+
+```typescript
+  type EqualV2<S, T> = [S] extends [T] ? [T] extends [S] ? true : false : false;
+  type ExampleV21 = EqualV2<1 | number & {}, number>; // true
+  type ExampleV22 = EqualV2<never, never>; // true
+  type ExampleV23 = EqualV2<any, number>; // false but true
+```
+
+在示例中的第 2 行、第 3 行，虽然我们解决了联合类型和 never 的问题，但是还是无法区分万金油类型 any 和其他类型。在第 4 行，当入参是 any 和 number，预期应该返回 false，却返回了 true。
+
+这时，我们还需要使用一个可以能识别 any 的改良版 EqualV3 如下：
+
+```typescript
+  type IsAny<T> = 0 extends (1 & T) ? true : false;
+  type EqualV3<S, T> = IsAny<S> extends true
+    ? IsAny<T> extends true
+      ? true
+      : false
+    : IsAny<T> extends true
+    ? false
+    : [S] extends [T]
+    ? [T] extends [S]
+      ? true
+      : false
+    : false;
+  type ExampleV31 = EqualV3<1 | number & {}, number>; // true but false got
+  type ExampleV32 = EqualV3<never, never>; // true
+  type ExampleV34 = EqualV3<any, any>; // true
+  type ExampleV33 = EqualV3<any, number>; // false
+  type ExampleV35 = EqualV3<never, any>; // false 
+```
+
+在示例中的第 1 行，我们定义了可以区分 any 和其他类型的泛型 IsAny，因为只有 any 和 1 交叉得到的类型（any）是 0 的父类型，所以如果入参是 any 则会返回 true，否则返回 false。
+
+在第 2~7 行，我们定义了 EqualV3（首先特殊处理了类型入参 S 和 T 至少有一个是 any 的情况），当 S 和 T 都是 any 才返回 true，否则返回 false。因此，在第 15~17 行，EqualV3 是可以区分 any 和其他类型的。
+
+在第 8 ~12 行，我们复用了 EqualV2 的逻辑，并通过 [] 解除了条件分配类型，所以第 13~14 行 EqualV3 可以判断出联合类型 1 | number & {} 和 number、never 和 never 是相同的类型。
+
+至此，我们造的第一个轮子 Equal（实际上，用来区分 any 类型的泛型 IsAny 也可以算一个轮子）基本可以正确地区分大多数类型了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
