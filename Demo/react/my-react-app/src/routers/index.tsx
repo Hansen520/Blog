@@ -4,6 +4,7 @@ import NotFound from "@/components/ErrorMessage/404";
 import LayoutIndex from "@/layouts/index";
 import Login from "@/views/login/index";
 import Home from "@/views/home/index";
+import UseHooks from "@/views/proTable/useHooks/index";
 
 const rootRouter: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const rootRouter: RouteObject[] = [
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/proTable/useHooks",
+        element: <UseHooks />,
       },
     ],
   },

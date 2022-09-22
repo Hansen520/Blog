@@ -1,6 +1,6 @@
 import "./index.less";
 function Home() {
-  return <div>Home</div>;
+  return <div>集采</div>;
 }
 
 export default Home;
