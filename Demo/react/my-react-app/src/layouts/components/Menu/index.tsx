@@ -86,6 +86,18 @@ const LayoutMenu = () => {
       ],
     },
     {
+      label: "表格 table",
+      key: "/table",
+      icon: <FileTextOutlined />,
+      children: [
+        {
+          key: "/table/table1",
+          label: "基础 table",
+          icon: <AppstoreOutlined />,
+        },
+      ],
+    },
+    {
       label: "Echarts",
       key: "/echarts",
       icon: <PieChartOutlined />,
@@ -160,6 +172,8 @@ const LayoutMenu = () => {
   const navigate = useNavigate();
   // 点击当前菜单
   const clickMenu: MenuProps["onClick"] = (e) => {
+    console.log(e.key);
+    // 跳转菜单
     navigate(e.key);
   };
   const [subMenuActive, setSubMenuActive] = useState("");

@@ -29,6 +29,24 @@ const rootRouter: RouteObject[] = [
           React.lazy(() => import("@/views/proTable/useHooks/index"))
         ),
       },
+      {
+        path: "/form/basicForm",
+        element: lazyLoad(
+          React.lazy(() => import("@/views/form/basicForm/index"))
+        ),
+      },
+      {
+        path: "/table/table1",
+        element: lazyLoad(
+          React.lazy(() => import("@/views/table/Table1/index"))
+        ),
+      },
+      {
+        path: "/assembly/selectIcon",
+        element: lazyLoad(
+          React.lazy(() => import("@/views/assembly/selectIcon"))
+        ),
+      },
     ],
   },
   {

@@ -14,22 +14,6 @@ const LayoutTabs = () => {
       title: "首页",
       path: "/home",
     },
-    {
-      title: "数据大屏",
-      path: "/dataScreen",
-    },
-    {
-      title: "使用 Hooks",
-      path: "/proTable/useHooks",
-    },
-    {
-      title: "使用 Component",
-      path: "/proTable/useComponent",
-    },
-    {
-      title: "数据可视化",
-      path: "/dashboard/dataVisualize",
-    },
   ]);
 
   useEffect(() => {
