@@ -1,11 +1,23 @@
-import React from 'react';
+import { Layout } from "antd";
+import AvatarIcon from "./components/AvatarIcon";
+import CollapseIcon from "./components/CollapseIcon";
+import BreadcrumbNav from "./components/BreadcrumbNav";
+import "./index.less";
 
-function Header() {
+const { Header } = Layout;
+
+function LayoutHeader() {
   return (
-    <div>
-      Header
-    </div>
+    <Header>
+      <div className="header-lf">
+        <CollapseIcon />
+        <BreadcrumbNav />
+      </div>
+      <div className="header-ri">
+        <AvatarIcon />
+      </div>
+    </Header>
   );
 }
 
-export default Header;
+export default LayoutHeader;

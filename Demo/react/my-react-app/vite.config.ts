@@ -23,12 +23,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
+        // 定制antd主题
         modifyVars: {
-          'primary-color': '#ff9933',
-          'link-color': '#1da57a',
+          'primary-color': 'green',
+          'link-color': 'red',
           'border-radius-base': '2px'
         },
-        javascriptEnabled: true
+        javascriptEnabled: true,
+        additionalData: `@import "@/styles/var.less";`,
       },
       output: {
         manualChunks: (id) => {
