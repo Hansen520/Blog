@@ -1,14 +1,15 @@
-import { Tabs } from "antd";
+import { Tabs, message } from "antd";
 import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./index.less";
+import { HOME_URL } from "@/config/config";
 
 const LayoutTabs = () => {
   const { TabPane } = Tabs;
   const { pathname } = useLocation();
   const [activeValue, setActiveValue] = useState(pathname);
-  const [tabsList] = useState([
+  const [tabsList, setTabsList] = useState([
     {
       title: "首页",
       path: "/home",
@@ -42,8 +43,19 @@ const LayoutTabs = () => {
     navigate(path);
   };
 
-  const delTabs = (path: string) => {
-    console.log(path);
+  const delTabs = (tabPath?: string) => {
+    if (tabPath === HOME_URL) return;
+    if (pathname === tabPath) {
+      tabsList.forEach((item: any, index: number) => {
+        // 循环里面找不到则直接退出
+        if (item.path !== pathname) return;
+        const nextTab = tabsList[index + 1] || tabsList[index - 1];
+        if (!nextTab) return;
+        navigate(nextTab.path);
+      });
+    }
+    message.success("你删除了Tabs标签 😆😆😆");
+    setTabsList(tabsList.filter((item: any) => item.path !== tabPath));
   };
 
   return (

@@ -3,8 +3,9 @@ import { useRoutes, Navigate, RouteObject } from "react-router-dom";
 import NotFound from "@/components/ErrorMessage/404";
 import LayoutIndex from "@/layouts/index";
 import Login from "@/views/login/index";
-import Home from "@/views/home/index";
-import UseHooks from "@/views/proTable/useHooks/index";
+// import Home from "@/views/home/index";
+import lazyLoad from "./lazyLoad";
+// import UseHooks from "@/views/proTable/useHooks/index";
 
 const rootRouter: RouteObject[] = [
   {
@@ -20,11 +21,13 @@ const rootRouter: RouteObject[] = [
     children: [
       {
         path: "/home",
-        element: <Home />,
+        element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
       },
       {
         path: "/proTable/useHooks",
-        element: <UseHooks />,
+        element: lazyLoad(
+          React.lazy(() => import("@/views/proTable/useHooks/index"))
+        ),
       },
     ],
   },
