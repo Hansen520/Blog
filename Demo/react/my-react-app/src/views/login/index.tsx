@@ -1,4 +1,4 @@
-import { Button, message } from "antd";
+import { Button, message, Spin } from "antd";
 import "./index.less";
 
 const Login = () => {
@@ -9,7 +9,8 @@ const Login = () => {
         message.success("登入成功！");
       }}
     >
-      dengr
+      <Spin />
+      登入
     </Button>
   );
 };

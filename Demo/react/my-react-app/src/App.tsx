@@ -1,12 +1,11 @@
 import Router from "@/routers/index";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Router />
-      1111111
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
