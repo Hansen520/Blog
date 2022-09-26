@@ -196,7 +196,13 @@ rollupOptions: {
 2. 开发环境下,如果删掉了node_modules,每次进入一个新页面,因为要在node_module文件中的.vite文件夹生成加载的文件,会导致进入一个新页面就会一直刷新,直到页面用到的所有模块都加入到.vite文件夹中为止，项目体量小的话是没有多大感觉，但是页面多的话,有了几十个页面，就会经常出现这种体验不好的问题
 3. 目前eslint的报错提醒没有，不会在命令面包上提示，代码报错也只在浏览器上才有提示，所以加上husky，在提交代码前做一次eslint检测很有必要
 
+### 参考文章
 
+https://blog.csdn.net/weixin_41277748/article/details/116431789 (rollupOptions 处理)
+
+https://juejin.cn/post/6933562433264943111#heading-4
+
+https://juejin.cn/post/6938671679153373214#heading-6
 
 
 

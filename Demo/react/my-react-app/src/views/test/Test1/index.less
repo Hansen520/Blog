@@ -1,0 +1,89 @@
+.my-hansen{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 80vh;
+    text-align: center;
+}
+.my-header{
+   flex: 1;
+   margin: 1rem 1rem 0;
+   border-radius: 1rem;
+   background-color: #282c34;
+   min-height: 5rem;
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 1vmin);
+   color: white;
+}
+
+.kanban-board {
+    flex: 10;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0 1rem 1rem;
+}
+.kanban-column {
+    flex: 1 1;
+    display: flex;
+    border: 1px solid gray;
+    flex-direction: column;
+    border-radius: 1rem;
+}
+.kanban-column > ul {
+    flex: 1;
+    flex-basis: 0;
+    margin: 1rem;
+    padding: 0;
+    overflow: auto;
+}
+.kanban-column > h2 {
+    margin: 0.6rem 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid gray;
+}
+
+.kanban-column > h2 > button {
+    float: right;
+    margin-top: 0.2rem;
+    padding: 0.2rem 0.5rem;
+    border: 0;
+    border-radius: 1rem;
+    height: 1.8rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+      
+.card-title > input[type="text"] {
+width: 80%;
+}
+.column-todo {
+    background-color: #c9af97;
+}
+.column-ongoing {
+    background-color: #ffe799;
+}
+.column-done {
+    background-color: #C0E8BA;
+}
+.kanban-card {
+    margin-bottom: 1rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    text-align: left;
+}
+.card-title {
+    min-height: 3rem;
+}
+.card-status {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #333;
+}

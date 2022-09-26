@@ -5,18 +5,17 @@ import LayoutMenu from "./components/Menu";
 import LayoutHeader from "./components/Header";
 import LayoutTabs from "./components/Tabs";
 import LayoutFooter from "./components/Footer";
+import { connect } from "react-redux";
 import "./index.less";
 
 const { Sider, Content } = Layout;
-const LayoutIndex = (props: { name: string }) => {
-  console.log(props, 180);
-
+const LayoutIndex = (props: any) => {
   const { pathname } = useLocation();
 
   return (
     <>
       <Layout>
-        <Sider trigger={null} collapsible collapsed={false}>
+        <Sider trigger={null} collapsible={props.isCollapse} collapsed={false}>
           <LayoutMenu></LayoutMenu>
         </Sider>
         <Layout>
@@ -41,5 +40,7 @@ const LayoutIndex = (props: { name: string }) => {
     </>
   );
 };
-
-export default LayoutIndex;
+// * react-redux写法(高阶组件)
+// * connect具有两个参数，第一个参数是mapStateToProps，第二个参数是mapDispatchToProps
+const mapStateToProps = (state: any) => state.menu;
+export default connect(mapStateToProps)(LayoutIndex);

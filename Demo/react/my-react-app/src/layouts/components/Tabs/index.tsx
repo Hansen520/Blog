@@ -4,42 +4,31 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./index.less";
 import { HOME_URL } from "@/config/config";
+import { connect } from "react-redux";
+import { addTabs } from "@/redux/modules/tabs/action";
+import { routerArray } from "@/routers";
+import { searchRoute } from "@/utils/util";
 
-const LayoutTabs = () => {
+const LayoutTabs = (props: any) => {
+  console.log(props, 13);
   const { TabPane } = Tabs;
   const { pathname } = useLocation();
-  const [activeValue, setActiveValue] = useState(pathname);
-  const [tabsList, setTabsList] = useState([
-    {
-      title: "首页",
-      path: "/home",
-    },
-  ]);
-
+  const [activeValue, setActiveValue] = useState<string>(pathname);
   useEffect(() => {
+    const route = searchRoute(pathname, routerArray);
+    // 这里很巧妙，根据pathname的变化来添加tabs，而不是说通过左侧的menu去点击添加，相当于监听触发
+    props.addTabs({ title: route.meta!.title, path: route.path });
     setActiveValue(pathname);
-  }, [pathname]);
+  }, [pathname]); // 监听pathname的变化
 
   const navigate = useNavigate();
 
   const tabsClick = (path: string) => {
-    console.log(path);
     navigate(path);
   };
 
   const delTabs = (tabPath?: string) => {
-    if (tabPath === HOME_URL) return;
-    if (pathname === tabPath) {
-      tabsList.forEach((item: any, index: number) => {
-        // 循环里面找不到则直接退出
-        if (item.path !== pathname) return;
-        const nextTab = tabsList[index + 1] || tabsList[index - 1];
-        if (!nextTab) return;
-        navigate(nextTab.path);
-      });
-    }
-    message.success("你删除了Tabs标签 😆😆😆");
-    setTabsList(tabsList.filter((item: any) => item.path !== tabPath));
+    message.success("删除Tabs标签 😆😆😆");
   };
 
   return (
@@ -52,7 +41,7 @@ const LayoutTabs = () => {
         delTabs(path as string);
       }}
     >
-      {tabsList.map((item) => {
+      {props.tabsList.map((item: Menu.MenuOptions) => {
         return (
           <TabPane
             key={item.path}
@@ -62,7 +51,7 @@ const LayoutTabs = () => {
                 {item.title}
               </span>
             }
-            closable={item.path !== "home"}
+            closable={item.path !== HOME_URL}
           ></TabPane>
         );
       })}
@@ -70,4 +59,9 @@ const LayoutTabs = () => {
   );
 };
 
-export default LayoutTabs;
+const mapStateToProps = (state: any) => {
+  return state.tabs;
+};
+const mapDispatchToProps = { addTabs };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutTabs);

@@ -30,7 +30,7 @@ class RequestHttp {
             // * 如果当前请求不需要显示 loading,在api服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading，参见loginApi
             config.headers!.noLoading || showFullScreenLoading();
             // const token: string = store.getState().global.token; // 可以直接从store获取
-            const token: string = "123456";
+            const token: string = "11111111111111qqqqqqqqqqqqqqqqqqqq";
             return { ...config, headers: { "x-access-token": token } };
         }, (error: AxiosError) => {
             return Promise.reject(error)
@@ -42,7 +42,7 @@ class RequestHttp {
 		 */
         this.service.interceptors.response.use((response: AxiosResponse) => {
             const {data, config} = response;
-            const navigate = useNavigate();
+            // const navigate = useNavigate();
             /* 在请求结束后，移除本次请求(关闭loading) */
             axiosCanceler.removePending(config);
             tryHideFullScreenLoading();
@@ -62,12 +62,12 @@ class RequestHttp {
         }, (error: AxiosError) => {
             const { response } = error;
             const navigate = useNavigate();
-				tryHideFullScreenLoading();
-				// 根据响应的错误状态码，做不同的处理
-				if (response) return checkStatus(response.status);
-				// 服务器结果都没有返回(可能服务器错误可能客户端断网) 断网处理:可以跳转到断网页面
-				if (!window.navigator.onLine) return navigate("/500");
-				return Promise.reject(error);
+            tryHideFullScreenLoading();
+            // 根据响应的错误状态码，做不同的处理
+            if (response) return checkStatus(response.status);
+            // 服务器结果都没有返回(可能服务器错误可能客户端断网) 断网处理:可以跳转到断网页面
+            if (!window.navigator.onLine) return (window.location.hash = "/500");
+            return Promise.reject(error);
         })
     }
     // * 常用请求方法封装

@@ -13,7 +13,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {  
-        target: 'http://1212333.com',
+        target: 'https://mock.mengxuegu.com/mock/632d1642f7ed812f70e38f49/example',
         ws: false,
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')

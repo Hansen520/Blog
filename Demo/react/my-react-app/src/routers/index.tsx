@@ -1,58 +1,44 @@
 import React from "react";
-import { useRoutes, Navigate, RouteObject } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
+import { RouteObject } from "@/routers/interface";
 import NotFound from "@/components/ErrorMessage/404";
 import LayoutIndex from "@/layouts/index";
 import Login from "@/views/login/index";
-// import Home from "@/views/home/index";
+import Home from "@/views/home/index";
 import lazyLoad from "./lazyLoad";
 // import UseHooks from "@/views/proTable/useHooks/index";
 
+// 导入所有router
+const metaRouters = import.meta.globEager("./modules/*.tsx");
+console.log(Object.keys(metaRouters), 13);
+
+// 处理路由
+export const routerArray: RouteObject[] = [];
+Object.keys(metaRouters).forEach((item) => {
+  Object.keys(metaRouters[item]).forEach((key: any) => {
+    routerArray.push(...metaRouters[item][key]);
+  });
+});
+console.log(routerArray, 21);
 const rootRouter: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/home" />,
+    element: <Navigate to="/login" />,
   },
   {
     path: "/login",
     element: <Login />,
+    meta: {
+      requiresAuth: false,
+      title: "登录页",
+      key: "login",
+    },
   },
-  {
-    element: <LayoutIndex name="我是参数" />,
-    children: [
-      {
-        path: "/home",
-        element: lazyLoad(React.lazy(() => import("@/views/home/index"))),
-      },
-      {
-        path: "/proTable/useHooks",
-        element: lazyLoad(
-          React.lazy(() => import("@/views/proTable/useHooks/index"))
-        ),
-      },
-      {
-        path: "/form/basicForm",
-        element: lazyLoad(
-          React.lazy(() => import("@/views/form/basicForm/index"))
-        ),
-      },
-      {
-        path: "/table/table1",
-        element: lazyLoad(
-          React.lazy(() => import("@/views/table/Table1/index"))
-        ),
-      },
-      {
-        path: "/assembly/selectIcon",
-        element: lazyLoad(
-          React.lazy(() => import("@/views/assembly/selectIcon"))
-        ),
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
+  ...routerArray,
+  // {
+  //   path: "*",
+  //   element: <Navigate to="/404" />,
+  // },
 ];
 
 const Router = () => {

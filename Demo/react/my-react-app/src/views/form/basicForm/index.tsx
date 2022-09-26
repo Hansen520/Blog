@@ -1065,7 +1065,7 @@ const AdvancedSearchForm = () => {
             {i % 3 !== 1 ? (
               <Input placeholder="placeholder" />
             ) : (
-              <Select defaultValue="2">
+              <Select defaultValue={"1"}>
                 <Select.Option value="1">1</Select.Option>
                 <Select.Option value="2">long</Select.Option>
               </Select>

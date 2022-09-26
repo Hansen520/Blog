@@ -21,6 +21,7 @@ class AxiosCanceler {
                 pendingMap.set(url, cancel);
             }
         })
+        // console.log(pendingMap, 7);
     }
 
     // 移除请求
@@ -32,6 +33,7 @@ class AxiosCanceler {
             cancel && cancel();
             pendingMap.delete(url);
         }
+        // console.log(pendingMap, 7);
     }
 
     // 移除所有pending
