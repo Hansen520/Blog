@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { Table, Tag, Space, Radio, Divider, Button } from "antd";
-import type {
-  ColumnsType,
-  FilterValue,
-  SorterResult,
-  TableProps,
-} from "antd/es/table";
+import type { ColumnsType, TableProps } from "antd/es/table";
 
 const Test1 = () => {
   const dataSource = [

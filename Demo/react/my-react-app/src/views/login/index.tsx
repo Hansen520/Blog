@@ -1,17 +1,18 @@
 import { Button, message, Spin } from "antd";
+import LoginForm from "./components/LoginForm";
 import "./index.less";
 
 const Login = () => {
   return (
-    <Button
-      type="primary"
-      onClick={() => {
-        message.success("登入成功！");
-      }}
-    >
-      {/* <Spin /> */}
-      登入
-    </Button>
+    <div className="login-container">
+      <div className="login-box">
+        <div className="login-left">！！！！！！！！！！！！！！！！！！</div>
+        <div className="login-form">
+          <span className="logo-text">~~~~~~~~~</span>
+        </div>
+        <LoginForm />
+      </div>
+    </div>
   );
 };
 

@@ -7,12 +7,16 @@ import reduxPromise  from "redux-promise";
 import menu from "./modules/menu/reducer";
 import tabs from "./modules/tabs/reducer";
 import breadcrumb from "./modules/breadcrumb/reducer";
+import global from "./modules/global/reducer";
+import auth from "./modules/auth/reducer";
 
 // 创建reducer(这里做一次合并reducer)
 const reducer = combineReducers({
     menu,
     tabs,
-    breadcrumb
+    breadcrumb,
+    global,
+    auth
 });
 
 // redux 持久化配置

@@ -1,11 +1,11 @@
 import React from "react";
-import { useRoutes, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { RouteObject } from "@/routers/interface";
 import NotFound from "@/components/ErrorMessage/404";
 import LayoutIndex from "@/layouts/index";
 import Login from "@/views/login/index";
 import Home from "@/views/home/index";
-import lazyLoad from "./lazyLoad";
+import lazyLoad from "./util/lazyLoad";
 // import UseHooks from "@/views/proTable/useHooks/index";
 
 // 导入所有router
@@ -15,11 +15,10 @@ console.log(Object.keys(metaRouters), 13);
 // 处理路由
 export const routerArray: RouteObject[] = [];
 Object.keys(metaRouters).forEach((item) => {
-  Object.keys(metaRouters[item]).forEach((key: any) => {
+  Object.keys(metaRouters[item] as []).forEach((key: any) => {
     routerArray.push(...metaRouters[item][key]);
   });
 });
-console.log(routerArray, 21);
 const rootRouter: RouteObject[] = [
   {
     path: "/",
@@ -41,9 +40,4 @@ const rootRouter: RouteObject[] = [
   },
 ];
 
-const Router = () => {
-  const routes = useRoutes(rootRouter);
-  return routes;
-};
-
-export default Router;
+export default rootRouter;

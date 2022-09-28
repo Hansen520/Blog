@@ -12,20 +12,22 @@ const { Header } = Layout;
 
 const LayoutHeader = () => {
   return (
-    <Header>
-      <div className="header-lf">
-        <CollapseIcon />
-        <BreadcrumbNav />
-      </div>
-      <div className="header-ri">
-        <AssemblySize />
-        <Language />
-        <Theme />
-        <Fullscreen />
-        <span className="username">Hooks</span>
-        <AvatarIcon />
-      </div>
-    </Header>
+    <div className="layout-header">
+      <Header>
+        <div className="header-lf">
+          <CollapseIcon />
+          <BreadcrumbNav />
+        </div>
+        <div className="header-ri">
+          <AssemblySize />
+          <Language />
+          <Theme />
+          <Fullscreen />
+          <span className="username">Hooks</span>
+          <AvatarIcon />
+        </div>
+      </Header>
+    </div>
   );
 };
 export default LayoutHeader;

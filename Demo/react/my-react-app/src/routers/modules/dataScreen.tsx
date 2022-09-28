@@ -1,5 +1,5 @@
 import React from "react";
-import lazyLoad from "@/routers/lazyLoad";
+import lazyLoad from "@/routers/util/lazyLoad";
 import { LayoutIndex } from "@/routers/constant";
 import { RouteObject } from "@/routers/interface";
 
@@ -9,7 +9,7 @@ const dataScreenRouter: Array<RouteObject> = [
     element: <LayoutIndex />,
     children: [
       {
-        path: "/dataScreen",
+        path: "/dataScreen/index",
         element: lazyLoad(React.lazy(() => import("@/views/dataScreen/index"))),
         meta: {
           requiresAuth: false,

@@ -1,9 +1,10 @@
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router";
+import { HOME_URL } from "@/config/config";
 const NotNetwork = () => {
   const navigate = useNavigate();
   const goHome = () => {
-    navigate("/home");
+    navigate(HOME_URL);
   };
   return (
     <Result

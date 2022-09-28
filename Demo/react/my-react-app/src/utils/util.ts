@@ -54,7 +54,6 @@ export const localClear = () => {
 };
 
 
-
 /**
  * @description 递归查询对应的路由
  * @param {String} path 当前访问地址
@@ -114,11 +113,12 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
  * @param {Array} newArr 菜单的一维数组
  * @return array
  */
- export function handleRouter(routerList: any, newArr: string[] = []) {
-	routerList.forEach((item: any) => {
+ export function handleRouter(routerList: Menu.MenuOptions[], newArr: string[] = []) {
+	routerList.forEach((item: Menu.MenuOptions) => {
 		typeof item === "object" && item.path && newArr.push(item.path);
+		// 如果没有这段是不会被执行的
 		item.children && item.children.length && handleRouter(item.children, newArr);
-	});
+	})
 	return newArr;
 }
 

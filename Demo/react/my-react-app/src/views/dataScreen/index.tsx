@@ -1,7 +1,5 @@
-import React from "react";
-
-function DataScreen() {
-  return <div>DataScreen</div>;
-}
+const DataScreen = () => {
+  return <div>DataScreen111111111</div>;
+};
 
 export default DataScreen;
