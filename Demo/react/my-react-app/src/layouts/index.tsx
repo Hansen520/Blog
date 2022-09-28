@@ -41,7 +41,7 @@ const LayoutIndex = (props: any) => {
   return (
     <>
       {/* 这里可以不用layout，因为可能会造成闪屏的bug */}
-      <section className="container">
+      <section className="layout-container">
         <Sider trigger={null} collapsible={props.isCollapse} collapsed={false}>
           <LayoutMenu></LayoutMenu>
         </Sider>

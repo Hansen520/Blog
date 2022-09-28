@@ -24,7 +24,7 @@ const App = (props: any) => {
   return (
     <HashRouter>
       {/* <Router /> */}
-      <ConfigProvider locale={i18nLocale} componentSize={props.assemblySize}>
+      <ConfigProvider locale={i18nLocale}>
         <RouterGuard routes={rootRouter} />
       </ConfigProvider>
     </HashRouter>
