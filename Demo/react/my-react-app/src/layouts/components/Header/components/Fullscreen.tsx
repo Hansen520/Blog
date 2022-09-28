@@ -27,7 +27,7 @@ const Fullscreen = () => {
       ].join(" ")}
       onClick={handleFullScreen}
     >
-      切换全屏
+      <FullscreenOutlined />
     </i>
   );
 };

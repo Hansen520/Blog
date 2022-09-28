@@ -155,7 +155,6 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 	else return Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase();
 };
 
-
 /**
  * @description 对象数组深克隆
  * @param {Object} obj 源对象

@@ -8,9 +8,10 @@ import { connect } from "react-redux";
 import { setTabsList } from "@/redux/modules/tabs/action";
 import { routerArray } from "@/routers";
 import { searchRoute } from "@/utils/util";
+import { useTranslation } from "react-i18next";
 
 const LayoutTabs = (props: any) => {
-  console.log(props, 13);
+  let { t } = useTranslation();
   const { TabPane } = Tabs;
   const { pathname } = useLocation();
   const [activeValue, setActiveValue] = useState<string>(pathname);
@@ -64,17 +65,17 @@ const LayoutTabs = (props: any) => {
       items={[
         {
           key: "1",
-          label: <span>关闭当前</span>,
+          label: <span>{t("tabs.closeCurrent")}</span>,
           onClick: () => delTabs(),
         },
         {
           key: "2",
-          label: <span>关闭其它</span>,
+          label: <span>{t("tabs.closeOther")}</span>,
           onClick: () => closeMultipleTab(pathname),
         },
         {
           key: "3",
-          label: <span>关闭所有</span>,
+          label: <span>{t("tabs.closeAll")}</span>,
           onClick: () => closeMultipleTab(),
         },
       ]}

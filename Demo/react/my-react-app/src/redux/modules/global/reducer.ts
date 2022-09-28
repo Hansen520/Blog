@@ -22,6 +22,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) => produce(
         case types.SET_TOKEN:
             draftState.token = action.token;
             break;
+        case types.SET_LANGUAGE:
+			draftState.language = action.language;
+			break;
         default:
             return draftState;
     }
