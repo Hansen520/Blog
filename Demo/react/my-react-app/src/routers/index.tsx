@@ -35,10 +35,10 @@ const rootRouter: RouteObject[] = [
     },
   },
   ...routerArray,
-  // {
-  //   path: "*",
-  //   element: <Navigate to="/404" />,
-  // },
+  {
+    path: "*",
+    element: <Navigate to="/404" />,
+  },
 ];
 
 const Router = () => {

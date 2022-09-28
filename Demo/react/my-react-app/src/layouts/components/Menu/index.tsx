@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as Icons from "@ant-design/icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getOpenKeys } from "@/utils/util";
+import { getOpenKeys, findAllBreadcrumb } from "@/utils/util";
 import { setMenuList } from "@/redux/modules/menu/action";
 import type { MenuProps } from "antd";
 import { Menu, Spin } from "antd";
+import { setBreadcrumbList } from "@/redux/modules/breadcrumb/action";
 import { getMenuList } from "@/api/modules/login";
 import "./index.less";
 import { connect } from "react-redux";
@@ -54,8 +55,13 @@ const LayoutMenu = (props: any) => {
   const getMenuData = async () => {
     setLoading(true);
     try {
-      const res = await getMenuList();
-      res.data && setMenuList(deepLoopFloat(res.data));
+      const { data } = await getMenuList();
+      if (!data) return;
+      setMenuList(deepLoopFloat(data));
+      // 存储处理过后的所有面包屑导航栏到redux中
+      console.log(data, findAllBreadcrumb(data), 62);
+      // 存储
+      props.setBreadcrumbList(findAllBreadcrumb(data));
     } finally {
       setLoading(false);
     }
@@ -103,5 +109,5 @@ const LayoutMenu = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => state.menu;
-const mapDispatchToProps = {};
+const mapDispatchToProps = { setMenuList, setBreadcrumbList };
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutMenu);

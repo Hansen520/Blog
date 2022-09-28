@@ -86,7 +86,7 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 			tempPath.push(node);
 			// 找到符合条件的节点，通过throw终止掉递归
 			if (node.path === path) {
-				throw new Error("GOT IT!");
+				throw new Error("GOT IT!");// 全部完成抛出异常，跳到catch里面去执行
 			}
 			if (node.children && node.children.length > 0) {
 				for (let i = 0; i < node.children.length; i++) {
@@ -99,6 +99,7 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 				tempPath.pop();
 			}
 		};
+		// 入口
 		for (let i = 0; i < menuList.length; i++) {
 			getNodePath(menuList[i]);
 		}
@@ -124,13 +125,19 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 /**
  * @description 双重递归 找出 所有面包屑生成对象存到 redux 中，就不用每次都去递归查找了
  * @param {String} menuList 当前菜单列表
- * @returns object
+ * @returns object 类似于下面这种结构
+ * /403:  (2) ['错误页面', '403页面']
+   /404:  (2) ['错误页面', '404页面']
+   /500:  (2) ['错误页面', '500页面']
+   /assembly/batchImport: (2) ['常用组件', '批量导入数据']
+   /assembly/guide : (2) ['常用组件', '引导页']
  */
  export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]: any } => {
 	let handleBreadcrumbList: any = {};
 	const loop = (menuItem: Menu.MenuOptions) => {
 		// 下面判断代码解释 *** !item?.children?.length   ==>   (item.children && item.children.length > 0)
 		if (menuItem?.children?.length) menuItem.children.forEach(item => loop(item));
+		// getBreadcrumbList(menuItem.path, menuList); 为对应的面包屑路径， 从menuList菜单中找到对应的menuItem.path的映射路径
 		else handleBreadcrumbList[menuItem.path] = getBreadcrumbList(menuItem.path, menuList);
 	};
 	menuList.forEach(item => loop(item));

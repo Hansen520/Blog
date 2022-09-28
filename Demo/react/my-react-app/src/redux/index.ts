@@ -6,11 +6,13 @@ import reduxThunk from "redux-thunk";// 异步必须
 import reduxPromise  from "redux-promise";
 import menu from "./modules/menu/reducer";
 import tabs from "./modules/tabs/reducer";
+import breadcrumb from "./modules/breadcrumb/reducer";
 
 // 创建reducer(这里做一次合并reducer)
 const reducer = combineReducers({
     menu,
-    tabs
+    tabs,
+    breadcrumb
 });
 
 // redux 持久化配置

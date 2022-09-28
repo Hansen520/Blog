@@ -24,7 +24,7 @@ const homeRouter: Array<RouteObject> = [
         meta: {
           keepAlive: true,
           requiresAuth: true,
-          title: "表格",
+          title: "表格1",
           key: "Table2",
         },
       },

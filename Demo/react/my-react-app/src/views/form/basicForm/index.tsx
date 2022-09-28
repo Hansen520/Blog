@@ -1153,7 +1153,6 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
         form
           .validateFields()
           .then((values) => {
-            console.log(123, values);
             form.resetFields();
             onCreate(values);
           })
