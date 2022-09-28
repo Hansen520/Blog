@@ -31,6 +31,7 @@
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.4.1",
+    "screenfull": "^6.0.2",
     "umi-request": "^1.4.0"
   },
   "devDependencies": {
