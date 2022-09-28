@@ -25,7 +25,7 @@ export default defineConfig({
       less: {
         // 定制antd主题
         modifyVars: {
-          'primary-color': 'green',
+          'primary-color': '#020',
           'link-color': 'red',
           'border-radius-base': '2px'
         },

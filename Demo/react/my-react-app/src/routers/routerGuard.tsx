@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import guard from "@/routers/util/guard";
+import guard from "@/routers/util/authRouter";
 import { RouteObject } from "@/routers/interface";
 import { useRoutes, useLocation, useNavigate } from "react-router-dom";
 

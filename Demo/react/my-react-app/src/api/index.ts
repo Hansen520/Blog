@@ -4,6 +4,7 @@ import { axiosCanceler, getPendingUrl } from "./helper/axiosCancel";
 import { useNavigate } from "react-router";
 import { checkStatus } from "./helper/checkStatus";
 import { ResultData } from "@/api/interface";
+import { store } from "@/redux";
 
 const config = {
     // 默认地址
@@ -30,7 +31,8 @@ class RequestHttp {
             // * 如果当前请求不需要显示 loading,在api服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading，参见loginApi
             config.headers!.noLoading || showFullScreenLoading();
             // const token: string = store.getState().global.token; // 可以直接从store获取
-            const token: string = "11111111111111qqqqqqqqqqqqqqqqqqqq";
+            // const token: string = "11111111111111qqqqqqqqqqqqqqqqqqqq";
+            const token: string = store.getState().global.token;
             return { ...config, headers: { "x-access-token": token } };
         }, (error: AxiosError) => {
             return Promise.reject(error)

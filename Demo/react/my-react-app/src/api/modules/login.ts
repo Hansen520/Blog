@@ -14,7 +14,7 @@ export const loginApi = (params: Login.ReqLoginForm) => {
 
 // * 获取按钮权限
 export const getAuthorButtons = () => {
-	return http.get<Login.ResAuthButtons>(PORT1 + `/auth/buttons`);
+	return http.post<Login.ResAuthButtons>(PORT1 + `/auth/buttons`);
 };
 
 // * 获取菜单列表
