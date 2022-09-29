@@ -42,7 +42,13 @@ const LayoutIndex = (props: any) => {
     <>
       {/* 这里可以不用layout，因为可能会造成闪屏的bug */}
       <section className="layout-container">
-        <Sider trigger={null} collapsible={props.isCollapse} collapsed={false}>
+        {/* 根据布局样式的Sider做样式的伸缩调整 */}
+        <Sider
+          trigger={null}
+          collapsed={props.isCollapse}
+          width={220}
+          theme="dark"
+        >
           <LayoutMenu></LayoutMenu>
         </Sider>
         <Layout>

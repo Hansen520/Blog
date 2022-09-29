@@ -5,6 +5,7 @@ import { getOpenKeys, findAllBreadcrumb, handleRouter } from "@/utils/util";
 import { setMenuList } from "@/redux/modules/menu/action";
 import type { MenuProps } from "antd";
 import { Menu, Spin } from "antd";
+import Logo from "./components/Logo";
 import { setBreadcrumbList } from "@/redux/modules/breadcrumb/action";
 import { setAuthRouter } from "@/redux/modules/auth/action";
 import { getMenuList } from "@/api/modules/login";
@@ -44,9 +45,11 @@ const LayoutMenu = (props: any) => {
   };
   // 设置当前展开的 subMenu
   const onOpenChange = (openKeys: string[]) => {
+    console.log(openKeys, 48);
     if (openKeys.length === 0 || openKeys.length === 1)
       return setOpenKeys(openKeys);
     const latestOpenKey = openKeys[openKeys.length - 1];
+    console.log(latestOpenKey, 52);
     if (latestOpenKey.includes(openKeys[0])) return setOpenKeys(openKeys);
     setOpenKeys([latestOpenKey]);
   };
@@ -95,6 +98,7 @@ const LayoutMenu = (props: any) => {
   return (
     <div className="menu">
       <Spin spinning={loading} tip="Loading...">
+        <Logo></Logo>
         <Menu
           theme="dark"
           mode="inline"
