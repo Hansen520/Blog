@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "antd";
+import { KanbanBoard } from "./KanbanBoard.js";
+import { KanbanColumn } from "./KanbanColumn";
+import { KanbanCard } from "./KanbanCard";
+import { KanbanNewCard } from "./KanbanNewCard";
 import "./index.less";
 
 const DATA_STORE_KEY = "kanban-data-store"; // localstorage
@@ -13,164 +17,36 @@ const COLUMN_KEY_TODO = "todo";
 const COLUMN_KEY_ONGOING = "ongoing";
 const COLUMN_KEY_DONE = "done";
 
-// 看板卡片(在新增卡片的时候status会变化)
-const KanbanCard = ({
-  title,
-  status,
-  onDragStart,
-}: {
-  title: string;
-  status: string;
-  onDragStart: any;
-}) => {
-  const [displayTime, setDisplayTime] = useState(status);
-  useEffect(() => {
-    const updateDisplayTime = () => {
-      const timePassed = new Date() - new Date(status);
-      let relativeTime = "刚刚";
-      if (MINUTE <= timePassed && timePassed < HOUR) {
-        relativeTime = `${Math.ceil(timePassed / MINUTE)} 分钟前`;
-      } else if (HOUR <= timePassed && timePassed < DAY) {
-        relativeTime = `${Math.ceil(timePassed / HOUR)} 小时前`;
-      } else if (DAY <= timePassed) {
-        relativeTime = `${Math.ceil(timePassed / DAY)} 天前`;
-      }
-      setDisplayTime(relativeTime);
-    };
-    const intervalId = setInterval(updateDisplayTime, UPDATE_INTERVAL);
-    updateDisplayTime();
-    return function cleanup() {
-      clearInterval(intervalId);
-    };
-  }, [status]);
-
-  // 拖拽
-  const handleDragStart = (evt: any) => {
-    evt.dataTransfer.effectAllowed = "move";
-    evt.dataTransfer.setData("text/plain", title);
-    onDragStart && onDragStart(evt);
-  };
-  return (
-    <li className="kanban-card" draggable onDragStart={handleDragStart}>
-      <div className="card-title">{title}</div>
-      <div className="card-status">{displayTime}</div>
-    </li>
-  );
-};
-// 看板列表
-const KanbanNewCard = ({ onSubmit }: { onSubmit: (title: string) => any }) => {
-  const [title, setTitle] = useState<string>("");
-  const handleChange = (evt: any) => {
-    setTitle(evt.target.value);
-  };
-  const handleKeyDown = (evt: any) => {
-    if (evt.key === "Enter") {
-      onSubmit(title);
-    }
-  };
-
-  const inputElem = useRef<HTMLInputElement>(null);
-  // 这种使用方法会保证 func 只在组件挂载的提交阶段执行一次，接下来的组件更新时不会再执行。
-  useEffect(() => {
-    inputElem.current!.focus();
-  }, []);
-  return (
-    <li className="kanban-card">
-      <h3>添加新卡片</h3>
-      <div className="card-title">
-        <input
-          type="text"
-          value={title}
-          ref={inputElem}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-    </li>
-  );
-};
-// 拆分main
-const KanbanBoard = ({ children }: { children: any }) => (
-  <main className="kanban-board">{children}</main>
-);
-// 拆分column
-const KanbanColumn = ({
-  children,
-  className,
-  title,
-  setIsDragSource = () => {},
-  setIsDragTarget = () => {},
-  onDrop,
-}: {
-  children?: any;
-  className: string;
-  title: HTMLBaseElement | any;
-  setIsDragSource?: (x: Boolean) => any;
-  setIsDragTarget?: (x: Boolean) => any;
-  onDrop?: any;
-}) => {
-  const combinedClassName = `kanban-column ${className}`;
-  return (
-    <section
-      className={combinedClassName}
-      onDragStart={() => setIsDragSource(true)}
-      // 经过
-      onDragOver={(evt) => {
-        evt.preventDefault();
-        // console.log(evt, 97);
-        evt.dataTransfer.dropEffect = "move";
-        setIsDragTarget(true);
-      }}
-      // 离开
-      onDragLeave={(evt) => {
-        evt.preventDefault();
-        // console.log(evt, 102);
-        evt.dataTransfer.dropEffect = "none";
-        setIsDragTarget(false);
-      }}
-      // 下落
-      onDrop={(evt) => {
-        evt.preventDefault();
-        onDrop && onDrop(evt);
-        // console.log(evt, 107);
-      }}
-      // 下落结束
-      onDragEnd={(evt) => {
-        evt.preventDefault();
-        // console.log(evt, 111);
-        setIsDragSource(false);
-        setIsDragTarget(false);
-      }}
-    >
-      <h2>{title}</h2>
-      <ul>{children}</ul>
-    </section>
-  );
-};
 // 主要入口
 function Hansen() {
-  const [showAdd, setShowAdd] = useState(false);
-  const [todoList, setTodoList] = useState([
-    { title: "开发任务-1", status: "2022-05-22 18:15" },
-    { title: "开发任务-3", status: "2022-05-22 18:15" },
-    { title: "开发任务-5", status: "2022-05-22 18:15" },
-    { title: "测试任务-3", status: "2022-08-22 18:15" },
-  ]);
-  const [ongoingList, setOngoingList] = useState([
+  const [showAdd, setShowAdd] = useState<Boolean>(false);
+  const [todoList, setTodoList] = useState<{ title: string; status: string }[]>(
+    [
+      { title: "开发任务-1", status: "2022-05-22 18:15" },
+      { title: "开发任务-3", status: "2022-05-22 18:15" },
+      { title: "开发任务-5", status: "2022-05-22 18:15" },
+      { title: "测试任务-3", status: "2022-08-22 18:15" },
+    ]
+  );
+  const [ongoingList, setOngoingList] = useState<
+    { title: string; status: string }[]
+  >([
     { title: "开发任务-4", status: "2022-05-22 18:15" },
     { title: "开发任务-6", status: "2022-06-22 18:15" },
     { title: "测试任务-2", status: "2022-07-22 18:15" },
   ]);
-  const [doneList, setDoneList] = useState([
-    { title: "开发任务-2", status: "2022-06-24 18:15" },
-    { title: "测试任务-1", status: "2022-07-03 18:15" },
-  ]);
+  const [doneList, setDoneList] = useState<{ title: string; status: string }[]>(
+    [
+      { title: "开发任务-2", status: "2022-06-24 18:15" },
+      { title: "测试任务-1", status: "2022-07-03 18:15" },
+    ]
+  );
   const [isLoading, setIsLoading] = useState(true);
 
   // 拖拽的三个变量
   const [draggedItem, setDraggedItem] = useState<any>(null);
-  const [dragSource, setDragSource] = useState<any>(null);
-  const [dragTarget, setDragTarget] = useState<any>(null);
+  const [dragSource, setDragSource] = useState<string | null>(null);
+  const [dragTarget, setDragTarget] = useState<string | null>(null);
 
   const handleDrop = (evt: any) => {
     if (
