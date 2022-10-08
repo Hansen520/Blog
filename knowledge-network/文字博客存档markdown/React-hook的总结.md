@@ -505,5 +505,12 @@ function App() {
 }
 ```
 
+## 一些建议
 
+- 先精通三个基础 Hooks，也就是 useState 、 useEffect 和 useContext。然后在此基础上：
 
+1. 掌握 useRef 的一般用法；
+2. 当需要优化性能，减少不必要的渲染时，学习掌握 useMemo 和 useCallback ；
+3. 当需要在大中型 React 项目中处理复杂 state 时，学习掌握 useReducer ；
+4. 当需要封装组件，对外提供命令式接口时，学习掌握 useRef 加 useImperativeHandle；
+5. 当页面上用户操作直接相关的紧急更新（Urgent Updates，如输入文字、点击、拖拽等），受到异步渲染拖累而产生卡顿，需要优化时，学习掌握 useDeferredValue 和 useTransition 。
