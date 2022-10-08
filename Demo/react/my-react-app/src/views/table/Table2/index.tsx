@@ -50,6 +50,7 @@ const Test2 = () => {
       dataIndex: "title",
       copyable: true,
       ellipsis: true,
+      hideInSearch: false,
       tip: "标题过长会自动收缩",
       formItemProps: {
         rules: [
@@ -63,7 +64,7 @@ const Test2 = () => {
     {
       disable: true,
       title: "状态",
-      dataIndex: "state",
+      dataIndex: "text",
       filters: true,
       onFilter: true,
       ellipsis: true,
@@ -91,6 +92,7 @@ const Test2 = () => {
       dataIndex: "labels",
       search: false,
       renderFormItem: (_, { defaultRender }) => {
+        console.log(_, defaultRender, 94);
         return defaultRender(_);
       },
       render: (_, record) => (
@@ -102,14 +104,6 @@ const Test2 = () => {
           ))}
         </Space>
       ),
-    },
-    {
-      title: "创建时间",
-      key: "showTime",
-      dataIndex: "created_at",
-      valueType: "date",
-      sorter: true,
-      hideInSearch: true,
     },
     {
       title: "创建时间",
@@ -185,9 +179,58 @@ const Test2 = () => {
         actionRef={actionRef}
         cardBordered
         request={async (params = {}, sort, filter) => {
-          return request;
+          console.log(params, sort, sort, 188);
+          return request<{
+            data: GithubIssueItem[];
+          }>("https://proapi.azurewebsites.net/github/issues", {
+            params,
+          });
         }}
-      ></ProTable>
+        editable={{
+          type: "multiple",
+        }}
+        columnsState={{
+          persistenceKey: "pro-table-singe-demos",
+          persistenceType: "localStorage",
+          onChange(value) {
+            console.log("value: ", value);
+          },
+        }}
+        rowKey="id"
+        search={{
+          labelWidth: "auto",
+        }}
+        options={{
+          setting: {
+            listsHeight: 400,
+          },
+        }}
+        form={{
+          // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
+          syncToUrl: (values, type) => {
+            console.log(values, type);
+            if (type === "get") {
+              return {
+                ...values,
+                created_at: [values.startTime, values.endTime],
+              };
+            }
+            return values;
+          },
+        }}
+        dateFormatter="string"
+        headerTitle="高级表格"
+        toolBarRender={() => [
+          <Button key="button" icon={<PlusOutlined />} type="primary">
+            新建
+          </Button>,
+          <Dropdown key="menu" overlay={menu}>
+            <Button>
+              <EllipsisOutlined />
+            </Button>
+          </Dropdown>,
+        ]}
+      />
     </>
   );
 };

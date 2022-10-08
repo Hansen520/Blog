@@ -28,6 +28,16 @@ const homeRouter: Array<RouteObject> = [
           key: "Table2",
         },
       },
+      {
+        path: "/table/table3",
+        element: lazyLoad(React.lazy(() => import("@/views/table/Table3"))),
+        meta: {
+          keepAlive: true,
+          requiresAuth: true,
+          title: "表格3",
+          key: "Table3",
+        },
+      },
     ],
   },
 ];

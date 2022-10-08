@@ -13,6 +13,7 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "types": ["@types/emotion"],
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
