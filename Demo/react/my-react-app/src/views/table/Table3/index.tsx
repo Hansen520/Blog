@@ -3,12 +3,12 @@ import type { ProColumns } from "@ant-design/pro-components";
 import { ProTable, TableDropdown } from "@ant-design/pro-components";
 import { Button, Tooltip } from "antd";
 
-const valueEnum = {
-  0: "close",
-  1: "running",
-  2: "online",
-  3: "error",
-};
+enum valueEnum {
+  "close",
+  "running",
+  "online",
+  "error",
+}
 
 export type TableListItem = {
   key: number;

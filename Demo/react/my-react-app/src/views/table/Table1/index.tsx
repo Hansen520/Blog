@@ -404,7 +404,7 @@ const Test6 = () => {
           ],
         },
       ],
-      onFilter: (value: string, record) => record.name.indexOf(value) === 0,
+      onFilter: (value: any, record) => record.name.indexOf(value) === 0,
       sorter: (a, b) => a.name.length - b.name.length,
       sortDirections: ["descend"],
     },
@@ -427,7 +427,8 @@ const Test6 = () => {
           value: "New York",
         },
       ],
-      onFilter: (value: string, record) => record.address.indexOf(value) === 0,
+      onFilter: (value: any, record: DataType5) =>
+        record.address.indexOf(value) === 0,
     },
   ];
 

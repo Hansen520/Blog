@@ -1,3 +1,11 @@
+/*
+ * @Author: hansen
+ * @Date: 2022-09-22 09:28:54
+ * @LastEditors: hansen
+ * @LastEditTime: 2022-10-26 13:21:08
+ * @FilePath: \my-jirad:\project\Blog\Demo\react\my-react-app\vite.config.ts
+ */
+/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
@@ -6,7 +14,12 @@ import path from 'path'
 var ignoreFile = []
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), createStyleImportPlugin({
+  plugins: [react({
+    jsxImportSource: '@emotion/react',
+    babel: {
+      plugins: ['@emotion/babel-plugin']
+    },
+  }), createStyleImportPlugin({
     resolves: [AntdResolve()]
   })],
   server: {

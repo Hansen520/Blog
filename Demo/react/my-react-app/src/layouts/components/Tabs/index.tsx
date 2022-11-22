@@ -66,7 +66,7 @@ const LayoutTabs = (props: any) => {
         {
           key: "1",
           label: <span>{t("tabs.closeCurrent")}</span>,
-          onClick: () => delTabs(),
+          onClick: () => delTabs(pathname),
         },
         {
           key: "2",
@@ -89,7 +89,7 @@ const LayoutTabs = (props: any) => {
         hideAdd
         type="editable-card"
         onEdit={() => {
-          delTabs();
+          delTabs(pathname);
         }}
       >
         {props.tabsList.map((item: Menu.MenuOptions) => {
