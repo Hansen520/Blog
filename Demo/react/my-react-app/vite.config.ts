@@ -2,8 +2,8 @@
  * @Author: hansen
  * @Date: 2022-09-22 09:28:54
  * @LastEditors: hansen
- * @LastEditTime: 2022-10-26 13:21:08
- * @FilePath: \my-jirad:\project\Blog\Demo\react\my-react-app\vite.config.ts
+ * @LastEditTime: 2023-02-14 10:56:08
+ * @FilePath: \user-endd:\project\Blog\Demo\react\my-react-app\vite.config.ts
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite'

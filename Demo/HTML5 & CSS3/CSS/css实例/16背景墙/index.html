@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>背景墙</title>
-  <style>
-    #tiaowen1{
-      width: 400px;
-      height: 200px;
-      background: linear-gradient(#fb3 50%, #58a 0);
-      background-size: 100% 35px;
-    }
-    #tiaowen2{
-      margin-top: 30px;
-      width: 400px;
-      height: 200px;
-      background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
-      background-size: 30px 30px;
-    }
-  </style>
-</head>
-<body>
-  <div id="tiaowen1"></div>
-  <div id="tiaowen2"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>背景墙</title>
+    <style>
+      #tiaowen1 {
+        width: 400px;
+        height: 200px;
+        background: linear-gradient(#fb3 50%, #58a 0); /* 让我们试着把这两个色标拉近一点 */
+        background-size: 100% 35px;
+      }
+      #tiaowen2 {
+        margin-top: 30px;
+        width: 400px;
+        height: 200px;
+        background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+        background-size: 30px 30px;
+      }
+      #tiaowen4 {
+        margin-top: 30px;
+        width: 400px;
+        height: 200px;
+        background: linear-gradient(45deg, #fb3 25%, #fff 0, #fff 50%, #fb3 0, #fb3 75%, #fff 0);
+        background-size: 30px 30px;
+      }
+      #tiaowen5 {
+        margin-top: 30px;
+        width: 400px;
+        height: 200px;
+        background: #58a;
+        background-image: linear-gradient(white 2px, transparent 0), linear-gradient(90deg, white 2px, transparent 0),
+          linear-gradient(hsla(0, 0%, 100%, 0.3) 1px, transparent 0),
+          linear-gradient(90deg, hsla(0, 0%, 100%, 0.3) 1px, transparent 0);
+        background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tiaowen1"></div>
+    <div id="tiaowen2"></div>
+    <div id="tiaowen4"></div>
+    <div id="tiaowen5"></div>
+  </body>
 </html>
