@@ -1,146 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>侧边栏固定</title>
     <style>
-    *{
-        padding:0px;
-        margin:0px;
-    }
-    ul,li{
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      ul,
+      li {
         list-style: none;
-    }
-    header,section,footer{
+      }
+      header,
+      section,
+      footer {
         max-width: 1200px;
-        margin:0 auto;
+        margin: 0 auto;
         background: #123333;
-    }
-    .head{
-        width:1200px;
-        height:215px;
+      }
+      .head {
+        width: 1200px;
+        height: 215px;
         background: #d2dc19;
-    }
-    .nav{
-        width:300px;
-    }
-    .main{
-        width:1200px;
+      }
+      .nav {
+        width: 300px;
+      }
+      .main {
+        width: 1200px;
         background: #fff;
-        margin-top:20px;
+        margin-top: 20px;
         margin-bottom: 20px;
         position: relative;
-    }
-    .main .nav{
-        width:300px;
-        height:200px;
+      }
+      .main .nav {
+        width: 300px;
+        height: 200px;
         float: left;
         background: #d0121b;
-    }
-    .main .content{
-        width:800px;
-        float:right;
+      }
+      .main .content {
+        width: 800px;
+        float: right;
         background: #d3ccec;
-    }
-    .main .content ul li{
-        width:220px;
-        height:138px;
-        border:1px solid #999;
+      }
+      .main .content ul li {
+        width: 220px;
+        height: 138px;
+        border: 1px solid #999;
         float: left;
-        margin-left:20px;
-        margin-top:20px;
-    }
+        margin-left: 20px;
+        margin-top: 20px;
+      }
 
-    footer{
-        width:1200px;
-        height:200px;
-    }
+      footer {
+        width: 1200px;
+        height: 200px;
+      }
 
-    
-    .clearfix:before,.clearfix:after{
-    content: " ";
-    display: table;
-    }
-    .clearfix:after{
-    clear: both;
-    }
-
+      .clearfix:before,
+      .clearfix:after {
+        content: " ";
+        display: table;
+      }
+      .clearfix:after {
+        clear: both;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="head">我是头部</div>
+      <div class="head">我是头部</div>
     </header>
     <section class="main clearfix">
-        <div class="nav">
-        我是导航
-        </div>
-        <div class="content">
-            <ul>
-                <li>001</li>
-                <li>002</li>
-                <li>003</li>
-                <li>004</li>
-                <li>005</li>
-                <li>006</li>
-                <li>007</li>
-                <li>008</li>
-                <li>009</li>
-                <li>010</li>
-                <li>011</li>
-                <li>012</li>
-                <li>013</li>
-                <li>014</li>
-                <li>015</li>
-                <li>016</li>
-                <li>017</li>
-                <li>018</li>
-                <li>019</li>
-                <li>020</li>
-            </ul>
-        </div>
+      <div class="nav">我是导航</div>
+      <div class="content">
+        <ul>
+          <li>001</li>
+          <li>002</li>
+          <li>003</li>
+          <li>004</li>
+          <li>005</li>
+          <li>006</li>
+          <li>007</li>
+          <li>008</li>
+          <li>009</li>
+          <li>010</li>
+          <li>011</li>
+          <li>012</li>
+          <li>013</li>
+          <li>014</li>
+          <li>015</li>
+          <li>016</li>
+          <li>017</li>
+          <li>018</li>
+          <li>019</li>
+          <li>020</li>
+        </ul>
+      </div>
     </section>
     <footer>
-        <div class="foot">我是底部</div>
+      <div class="foot">我是底部</div>
     </footer>
 
     <script>
-    //获得class
-    function getClass(id){
+      //获得class
+      function getClass(id) {
         return document.getElementsByClassName(id)[0];
-    }   
-    //点击事件兼容写法
-    function addEvent(obj,event,fn){
-        if(obj.addEventListener){
-            obj.addEventListener(event,fn,false)
-        }else if(obj.addEvent()){
-            obj.addEvent("on"+event,fn)
+      }
+      //点击事件兼容写法
+      function addEvent(obj, event, fn) {
+        if (obj.addEventListener) {
+          obj.addEventListener(event, fn, false);
+        } else if (obj.addEvent()) {
+          obj.addEvent("on" + event, fn);
         }
-    }
+      }
 
-    addEvent(window,"scroll",function(){
+      addEvent(window, "scroll", function () {
         //获取总高度
         var scrollHeight = document.documentElement.scrollHeight;
         //卷起高度
         var oScroll = document.body.scrollTop || document.documentElement.scrollTop;
         //为了防止滚出去，给他设置高度，然他只能在内容区域的高度滚动，下面的判断语句就是这么写法
         var oContent = getClass("content").offsetHeight - getClass("nav").offsetHeight;
-        console.log(oContent)
-        if(oScroll>getClass("main").offsetTop && oScroll< oContent + getClass("main").offsetHeight){
-            getClass("nav").style.position = "absolute";
-            getClass("nav").style.left = "0px";
-            getClass("nav").style.top = oScroll - getClass("main").offsetTop + "px";
-        }else if(oScroll < getClass("main").offsetTop){//防止快速滚动时出现空白区域
-            getClass("nav").style.position = "absolute";
-            getClass("nav").style.left = "0px";
-            //就是让top一直保持为0即可
-            getClass("nav").style.top = "0px";
+        console.log(oContent);
+        if (oScroll > getClass("main").offsetTop && oScroll < oContent + getClass("main").offsetHeight) {
+          getClass("nav").style.position = "absolute";
+          getClass("nav").style.left = "0px";
+          getClass("nav").style.top = oScroll - getClass("main").offsetTop + "px";
+        } else if (oScroll < getClass("main").offsetTop) {
+          //防止快速滚动时出现空白区域
+          getClass("nav").style.position = "absolute";
+          getClass("nav").style.left = "0px";
+          //就是让top一直保持为0即可
+          getClass("nav").style.top = "0px";
         }
-    })
-
-
+      });
     </script>
-</body>
+  </body>
 </html>
