@@ -1,0 +1,30 @@
+<!--
+ * @Author: Hansen
+ * @Date: 2023-05-15 13:42:55
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-05-15 13:54:25
+ * @FilePath: \zufe-userd:\project\Blog\Demo\HTML5 & CSS3\svg\003描边与路径动画.html
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>描边动画</title>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
+      <title>SVG SMIL Animate with Path</title>
+      <rect x="0" y="0" width="600" height="600" stroke="black" stroke-width="1" />
+      <circle cx="0" cy="50" r="15" fill="blue" stroke="black" stroke-width="1">
+        <animateMotion
+          path="M 250,80 H 50 Q 30,80 30,50 Q 30,20 50,20 H 250 Q 280,20,280,50 Q 280,80,250,80Z"
+          dur="3s"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </svg>
+  </body>
+</html>

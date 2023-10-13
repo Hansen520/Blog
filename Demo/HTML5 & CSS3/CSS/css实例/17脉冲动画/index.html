@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS3动画：圆形脉冲动画 - Web前端之家https://www.jiangweishan.com</title>
+    <style>
+      body {
+        background: #e1ad01;
+      }
+
+      .pulse {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: scale(1.5, 1.5) translate(-50%, -50%);
+        height: 20px;
+        width: 20px;
+        background: #a83f39;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(142, 68, 173, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgba(142, 68, 173, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(142, 68, 173, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pulse"></div>
+
+    <script></script>
+  </body>
+</html>

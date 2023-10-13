@@ -1,0 +1,122 @@
+<!--
+ * @Author: Hansen
+ * @Date: 2023-05-19 10:08:20
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-05-19 10:53:12
+ * @FilePath: \user-endd:\project\Blog\Demo\javascript\js-case2\001拖拽\拖拽之兼容移动和pc端.html
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拖拽兼容</title>
+    <style>
+      body {
+        margin: 0;
+        font-size: 0;
+        position: relative;
+        height: 100vh;
+      }
+
+      .bird {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        cursor: grab;
+        z-index: 10;
+        background: #ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bird">This is a rect!</div>
+
+    <script>
+      let evtName = getEventName();
+      // 鼠标指针相对于浏览器可视区域的偏移
+      let offsetX = 0,
+        offsetY = 0;
+      // 限制图片可以x和y轴可以移动的最大范围，防止溢出
+      let limitX = 0,
+        limit = 0;
+
+      // 确保图片加载完
+      window.onload = () => {
+        const bird = document.querySelector(".bird");
+        const { width, height } = bird;
+        console.log(width, height, 47);
+        limitX = document.documentElement.clientWidth - width;
+        limitY = document.documentElement.clientHeight - height;
+        console.log(limitX, limitY, 51);
+        bird.addEventListener(evtName.start, () => {
+          // 监听鼠标指针相对于可视窗口移动的距离
+          // 注意移动事件要绑定在document元素上，防止移动过快,位置丢失
+          document.addEventListener(evtName.move, moveAt);
+        });
+
+        // 鼠标指针停止移动时,释放document上绑定的移动事件
+        // 不然白白产生性能开销
+        document.addEventListener(evtName.end, () => {
+          document.removeEventListener(evtName.move, moveAt);
+        });
+
+        // 移动元素
+        function moveAt({ movementX, movementY }) {
+          const { offsetX, offsetY } = getSafeOffset({ movementX, movementY });
+
+          window.requestAnimationFrame(() => {
+            // 关键性移动代码
+            bird.style.cssText = `left:${offsetX}px;top:${offsetY}px`;
+          });
+        }
+      };
+
+      // 获取安全的偏移距离
+      const getSafeOffset = ({ movementX, movementY }) => {
+        // //距上次鼠标位置的X,Y方向的偏移量
+        offsetX += movementX;
+        offsetY += movementY;
+
+        // 防止拖拽元素被甩出可视区域
+        if (offsetX > limitX) {
+          offsetX = limitX;
+        }
+
+        if (offsetX < 0) {
+          offsetX = 0;
+        }
+
+        if (offsetY > limitY) {
+          offsetY = limitY;
+        }
+
+        if (offsetY < 0) {
+          offsetY = 0;
+        }
+
+        // console.log({ movementX, movementY, offsetX, offsetY });
+        return { offsetX, offsetY };
+      };
+
+      // 区分市移动端还是pc端
+      function getEventName() {
+        if ("ontouchstart" in window) {
+          return {
+            start: "touchstart",
+            move: "touchmove",
+            end: "touchend",
+          };
+        } else {
+          return {
+            start: "pointerdown",
+            move: "pointermove",
+            end: "pointerup",
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

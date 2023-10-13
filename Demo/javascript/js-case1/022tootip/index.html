@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>hangge.com</title>
+
+    <style>
+      canvas {
+        cursor: pointer;
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      // 这个方法用来储存每个圆圈对象
+      function Circle(x, y, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.isSelected = false;
+      }
+
+      // 保存画布上所有的圆圈
+      var circles = [];
+
+      var canvas;
+      var context;
+
+      window.onload = function () {
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+
+        canvas.onmousemove = onMouseMove;
+      };
+
+      //“添加圆圈”按钮点击
+      function addRandomCircle() {
+        // 为圆圈计算一个随机大小和位置
+        var radius = randomFromTo(10, 60);
+        var x = randomFromTo(0, canvas.width);
+        var y = randomFromTo(0, canvas.height);
+
+        // 为圆圈计算一个随机颜色
+        var colors = ["green", "blue", "red", "yellow", "magenta", "orange", "brown", "purple", "pink"];
+        var color = colors[randomFromTo(0, 8)];
+
+        // 创建一个新圆圈
+        var circle = new Circle(x, y, radius, color);
+
+        // 把它保存在数组中
+        circles.push(circle);
+
+        // 重新绘制画布
+        drawCircles();
+      }
+
+      //“清空画布”按钮点击
+      function clearCanvas() {
+        // 去除所有圆圈
+        circles = [];
+
+        // 重新绘制画布.
+        drawCircles();
+      }
+
+      //绘制圆圈
+      function drawCircles() {
+        // 清除画布，准备绘制
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 遍历所有圆圈
+        for (var i = 0; i < circles.length; i++) {
+          var circle = circles[i];
+
+          // 绘制圆圈
+          context.globalAlpha = 0.85;
+          context.beginPath();
+          context.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+          context.fillStyle = circle.color;
+          context.strokeStyle = "black";
+
+          if (circle.isSelected) {
+            context.lineWidth = 5;
+          } else {
+            context.lineWidth = 1;
+          }
+          context.fill();
+          context.stroke();
+        }
+      }
+
+      //绘制tooltip提示文字
+      function drawToolTip(txtLoc, x, y) {
+        context.save();
+        var padding = 3;
+        var font = "16px arial";
+        context.font = font;
+        context.textBaseline = "bottom";
+        context.fillStyle = "yellow";
+
+        //绘制ToolTip背景
+        var width = context.measureText(txtLoc).width;
+        var height = parseInt(font, 10);
+        context.fillRect(x, y - height, width + padding * 2, height + padding * 2);
+
+        //绘制ToolTip文字
+        context.fillStyle = "#000";
+        context.fillText(txtLoc, x + padding, y + padding);
+
+        context.restore();
+      }
+
+      //当前选中的圆圈
+      var previousSelectedCircle;
+
+      //鼠标移动事件
+      function onMouseMove(e) {
+        // 清除之前选择的圆圈
+        if (previousSelectedCircle != null) {
+          previousSelectedCircle.isSelected = false;
+          previousSelectedCircle = null;
+        }
+
+        // 取得画布上被单击的点
+        var clickX = e.pageX - canvas.offsetLeft;
+        var clickY = e.pageY - canvas.offsetTop;
+
+        // 查找被单击的圆圈
+        for (var i = circles.length - 1; i >= 0; i--) {
+          var circle = circles[i];
+          //使用勾股定理计算这个点与圆心之间的距离
+          var distanceFromCenter = Math.sqrt(Math.pow(circle.x - clickX, 2) + Math.pow(circle.y - clickY, 2));
+          // 判断这个点是否在圆圈中
+          if (distanceFromCenter <= circle.radius) {
+            previousSelectedCircle = circle;
+
+            //选择新圆圈
+            circle.isSelected = true;
+
+            //停止搜索
+            break;
+          }
+        }
+
+        //更新显示，重绘圆圈
+        drawCircles();
+        //如果当前鼠标位置有圆圈，还要显示tip
+        if (previousSelectedCircle != null) {
+          drawToolTip("颜色：" + previousSelectedCircle.color, clickX, clickY);
+        }
+      }
+
+      //在某个范围内生成随机数
+      function randomFromTo(from, to) {
+        return Math.floor(Math.random() * (to - from + 1) + from);
+      }
+    </script>
+  </head>
+
+  <body>
+    <canvas id="canvas" width="360" height="300"> </canvas>
+
+    <div>
+      <button onclick="addRandomCircle()">添加圆圈</button>
+      <button onclick="clearCanvas()">清空画布</button>
+    </div>
+  </body>
+</html>

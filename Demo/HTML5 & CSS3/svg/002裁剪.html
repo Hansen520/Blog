@@ -1,0 +1,98 @@
+<!--
+ * @Author: Hansen
+ * @Date: 2023-05-15 10:38:01
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-05-15 13:18:59
+ * @FilePath: \zufe-userd:\project\Blog\Demo\HTML5 & CSS3\svg\002裁剪.html
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- 裁剪 -->
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      width="200"
+      height="200"
+    >
+      <defs>
+        <clipPath id="cut-off-bottom">
+          <rect x="0" y="0" width="200" height="175" />
+        </clipPath>
+      </defs>
+      <circle cx="100" cy="100" r="100" clip-path="url(#cut-off-bottom)" />
+    </svg>
+    <!-- 裁剪动画 -->
+    <style>
+      .svg-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1100px;
+        margin: 2em auto;
+        overflow: hidden;
+      }
+      .visible #cd-image-1 circle {
+        animation: visible-clippath 1s linear forwards;
+      }
+
+      @keyframes visible-clippath {
+        to {
+          r: 1364;
+        }
+      }
+    </style>
+    <div class="svg-wrapper">
+      <svg viewBox="0 0 1400 800">
+        <title>Animated clip-path SVG</title>
+        <defs>
+          <clipPath id="cd-image-1">
+            <circle id="cd-circle-1" cx="110" cy="400" r="60"></circle>
+          </clipPath>
+        </defs>
+
+        <image
+          height="800px"
+          width="1400px"
+          clip-path="url(#cd-image-1)"
+          xlink:href="https://gonglutest-1256288681.cos.ap-nanjing.myqcloud.com/01269fce-4706-493a-bce7-7ef2c4c536ed/%2F0bad20a6-442c-46c0-afeb-206d2cb8673b/901c1e94-4c9a-44d7-9caa-796b7b236623"
+        ></image>
+      </svg>
+    </div>
+    <script>
+      $(".svg-wrapper").click(function () {
+        console.log(123);
+        $(this).toggleClass("visible");
+      });
+    </script>
+
+    <!-- 蒙版 -->
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <linearGradient id="Gradient">
+          <stop offset="0" stop-color="white" stop-opacity="0" />
+
+          <stop offset="1" stop-color="white" stop-opacity="1" />
+        </linearGradient>
+
+        <mask id="Mask">
+          <rect x="0" y="0" width="200" height="200" fill="url(#Gradient)" />
+        </mask>
+      </defs>
+
+      <rect x="0" y="0" width="200" height="200" fill="green" />
+
+      <rect x="0" y="0" width="200" height="200" fill="red" mask="url(#Mask)" />
+    </svg>
+
+    <script></script>
+  </body>
+</html>

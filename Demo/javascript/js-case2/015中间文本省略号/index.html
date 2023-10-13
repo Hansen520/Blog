@@ -1,0 +1,82 @@
+<!--
+ * @Author: Hansen
+ * @Date: 2023-06-05 11:26:56
+ * @LastEditors: Hansen
+ * @LastEditTime: 2023-06-06 15:40:48
+ * @FilePath: \zsks-userd:\project\Blog\Demo\javascript\js-case2\015中间文本省略号\index.html
+ * @Description: 中间省略号效果
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中间省略号的效果</title>
+  </head>
+  <body>
+    <!-- 设置父级容器宽度为600px -->
+      <div id="autoEllipsisWrapper">
+        <span id="text"
+          >方法配置了 MutationObserver 对象的回调方法以开始接收与给定选项匹配的 DOM 变化的通知。根据配置，观察者会观察
+          DOM树中的单个 Node，也可能会观察被指定节点的部分或者所有的子孙节点。</span
+        >
+      </div>
+    <script>
+      /* 传入的必要参数 一个是几行，一个是suffix点的位置，最后一个是true */
+      const startEllipsisLine = 1; /* 当前占用几行 */
+      const suffix = true; /* 是否中间出现三个点， false表示不再出现，true则表示出现三个点 */
+      
+      const premitiveText = document.getElementById("text").innerHTML; /* 获取相关的文本信息 */
+      const cssEntirely = !suffix && startEllipsisLine; /* css样式的进入方案 */
+
+      function autoEllipsis(container, textNode) {
+        const str = premitiveText; /* 1.拿到文本的信息 */
+        textNode.textContent = str; /* 2.将所有文字放入span中 */
+        container.style.whiteSpace = "nowrap"; //3.先将文字全部放入到《一行》中，为了计算整体宽度
+        container.style.width = "fit-content"; //4. 给 container 设置 fit-content 属性，就可以拿到正确的内容宽度
+        const containerWidth = container.clientWidth; //5. 拿到了 container 的宽度
+        const parent = container.parentElement; // 拿到外部父元素的宽度
+        const parentWidth = parent?.clientWidth || parent?.offsetWidth;
+
+        if (containerWidth <= parentWidth) {
+          //如果container 的宽度《小于》父元素的宽度，不做任何处理
+          textNode.textContent = str;
+          return;
+        } else if (cssEntirely) {
+          container.style.width = parentWidth + "px";
+          container.style.whiteSpace = "nowrap";
+          container.style.textOverflow = "ellipsis";
+          container.style.overflow = "hidden";
+          return;
+        } else {
+          const textWidth = textNode.offsetWidth; //1. 拿到文字节点的宽度
+          const strNumber = str.length; //2. 拿到文字的数量
+          const avgStrWidth = textWidth / strNumber; //3. 拿到平均每个文字多少宽度
+          const canFitStrNumber = Math.floor(
+            (parentWidth * startEllipsisLine) / avgStrWidth //4. 根据父元素的宽度来计算出可以容纳多少文字
+          );
+          const shouldDelNumber = strNumber - canFitStrNumber + 1.5; //1. 算出需要删除几个文字（1.5是为了省略号的宽度），即可以容纳的宽度, 意思是说从中间各砍掉一半的宽度
+          
+          const delEachSide = shouldDelNumber / 2; //2. 因为要保留中间,所以我们不能只从开头删除，也需要从两头删除
+          const endLeft = Math.floor(strNumber / 2 - delEachSide); //3. 因为下面要用到 slice 所以需要计算出 index， 从左边砍掉一半
+          const startRight = Math.ceil(strNumber / 2 + delEachSide); //4. 和上面同理，从右边砍掉一半
+
+          switch (suffix) {
+            case true: {
+              textNode.textContent = str.slice(0, endLeft) + "···" + str.slice(startRight);
+              break;
+            }
+            case false: {
+              textNode.textContent = str.slice(0, -shouldDelNumber) + "···";
+              break;
+            }
+          }
+          container.style.wordBreak = "break-all";
+          container.style.whiteSpace = "normal";
+        }
+      }
+      autoEllipsis(document.getElementById("autoEllipsisWrapper"), document.getElementById("text"));
+    </script>
+  </body>
+</html>
