@@ -16,8 +16,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/bilibili");
 mongoose.connection.once("open", () => {
   // 5. 创建文档的结构对象
   let BookSchema = new mongoose.Schema({
-    name: String,
-    author: String,
+    name: {
+      type: String,
+      required: true, /* 表明该属性必须不为空 */
+      unique: true, /* 设置为独一无二的，必须一开始数据表为空的时候插入 */
+    },
+    author: {
+      type: String,
+      default: '匿名' /* 默认值 */
+    },
+    style: {// 类型
+      type: String,
+      enum: ['体育', '文学', '教育', '音乐', '小说']/* 枚举值 */
+    },
     price: Number,
     is_hot: Boolean,
     tags: Array,
@@ -33,8 +44,9 @@ mongoose.connection.once("open", () => {
   BookModel.create({
     name: "西游记",
     author: "吴承恩",
-    price: 20.88,
+    price: 18.88,
     is_hot: true,
+    style: '小说',
     tags: ['音乐', '体育', '新闻'],
     pub_time: new Date(),
     testMixed: new Date(),
