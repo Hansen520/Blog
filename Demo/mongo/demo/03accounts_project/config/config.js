@@ -4,7 +4,9 @@
  */
 /* 配置文件 */
 module.exports = {
-    DBHOST: '127.0.0.1',
+    DBHOST: '118.195.176.186',
     DBPORT: 27017,
     DBNAME: 'bilibili',
+    USERNAME: 'root',
+    PASSWORD: '325600',
 }

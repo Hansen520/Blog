@@ -7,10 +7,10 @@
     error 数据库连接失败的回调
 */
 module.exports = function (success, error) {
-  if (typeof error !== 'function') {
+  if (typeof error !== "function") {
     error = () => {
-        console.log('连接失败~~~');
-    }
+      console.log("连接失败~~~");
+    };
   }
   // 1. 安装 mongoose
   // 2. 导入mongoose
@@ -20,8 +20,11 @@ module.exports = function (success, error) {
   mongoose.set("strictQuery", true);
 
   // 3. 连接 mongodb
-  const { DBHOST, DBPORT, DBNAME } = require('../config/config');
-  mongoose.connect(`mongodb://${DBHOST}:${DBPORT}/${DBNAME}`);
+  const { DBHOST, DBPORT, DBNAME, USERNAME, PASSWORD } = require("../config/config");
+  mongoose.connect(`mongodb://${USERNAME}:${PASSWORD}@${DBHOST}:${DBPORT}/${DBNAME}?authSource=admin`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   // 4.设置回调 once只执行一次事件
   mongoose.connection.once("open", () => {
