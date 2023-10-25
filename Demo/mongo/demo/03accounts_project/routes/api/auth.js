@@ -7,10 +7,12 @@ const router = express.Router();
 const UserModel = require("../../models/UserModel");
 const md5 = require("md5");
 const jwt = require("jsonwebtoken");
+const { secret } = require('../../config/config');
 
 router.post("/login", (req, res) => {
   // 获取用户名和密码
   let { username, password } = req.body;
+  console.log(username, password, 14);
   // 查询数据库
   UserModel.findOne({ username, password: md5(password) }).then((data, err) => {
     if (err) {
@@ -27,12 +29,13 @@ router.post("/login", (req, res) => {
         msg: "用户名密码错误~",
         data: null,
       });
+      return;
     }
     // 创建token
     let token = jwt.sign({
         username: data.username,
         _id: data._id,
-    }, 'myLearn', {
+    }, secret, {
         expiresIn: 60 * 60 * 24
     })
     res.json({

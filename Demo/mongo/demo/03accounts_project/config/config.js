@@ -9,4 +9,5 @@ module.exports = {
     DBNAME: 'bilibili',
     USERNAME: 'root',
     PASSWORD: '325600',
+    secret: 'myLearn', // token 密钥
 }

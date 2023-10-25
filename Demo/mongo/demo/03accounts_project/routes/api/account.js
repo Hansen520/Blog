@@ -7,8 +7,12 @@ var express = require("express");
 var router = express.Router();
 const AccountModel = require("../../models/AccountModel");
 
+const checkTokenMiddleware = require('../../middlewares/checkTokenMiddleware');
+
+
 //记账本的列表
-router.get("/account", function (req, res, next) {
+router.get("/account", checkTokenMiddleware, function (req, res, next) {
+  console.log(req.user, 15);
   //获取所有的账单信息
   // let accounts = db.get('accounts').value();
   AccountModel.find()
@@ -27,7 +31,7 @@ router.get("/account", function (req, res, next) {
 });
 
 //新增记录
-router.post("/account", (req, res) => {
+router.post("/account", checkTokenMiddleware, (req, res) => {
   //生成 id
   // let id = shortid.generate();
   // //写入文件
@@ -55,7 +59,7 @@ router.post("/account", (req, res) => {
 });
 
 //删除记录
-router.get("/account/:id", (req, res) => {
+router.delete("/account/:id", checkTokenMiddleware, (req, res) => {
   //获取 params 的 id 参数
   let id = req.params.id;
   //删除
@@ -99,7 +103,7 @@ router.get("/account/:id", (req, res) => {
 });
 
 // 更新账单
-router.patch("/account/:id", (req, res) => {
+router.patch("/account/:id", checkTokenMiddleware, (req, res) => {
   const { id } = req.params;
   AccountModel.updateOne({ _id: id }, req.body).then((data, err) => {
     if (err) {
