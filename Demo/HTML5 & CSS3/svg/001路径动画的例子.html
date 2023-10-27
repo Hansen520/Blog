@@ -1,10 +1,14 @@
+<!--
+ * @Date: 2023-05-15 10:23:10
+ * @Description: description
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>例子一</title>
+    <title>路径动画</title>
     <style>
       .checkmark__circle {
         stroke-dasharray: 166;
@@ -25,6 +29,7 @@
         box-shadow: inset 0px 0px 0px #7ac142;
         animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
       }
+      /* 路径动画的关键 */
       .checkmark__check {
         transform-origin: 50% 50%;
         stroke-dasharray: 48;
@@ -48,6 +53,11 @@
       <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
       <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
     </svg>
+    <code>
+      获取路径动画的长度
+      var path = document.querySelector("path");
+      var length = path.getTotalLength();
+    </code>
     <script>
       var path = document.querySelector("path");
       var length = path.getTotalLength();
