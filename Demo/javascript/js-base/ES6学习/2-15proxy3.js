@@ -4,8 +4,9 @@ const dom = new Proxy(
   {},
   {
     get(target, property) {
+      // console.log(property, 7);
       return function (attrs = {}, ...children) {
-        // console.log(children);
+        console.log(attrs, children, 9);
         const el = document.createElement(property);
         for (let prop of Object.keys(attrs)) {
           el.setAttribute(prop, attrs[prop]);
@@ -17,7 +18,6 @@ const dom = new Proxy(
           el.appendChild(child);
         }
         // 最后返回整个el
-        console.log(el);
         return el;
       };
     },
@@ -28,7 +28,7 @@ const el = dom.div(
   {},
   'Hello, my name is ',
   // 在循环中触发第二次代理
-  dom.a({ href: '//example.com' }, 'Mark'),
+  dom.a({ href: 'https://www.baidu.com' }, 'Mark'),
   '. I like:',
   dom.ul(
     {},
