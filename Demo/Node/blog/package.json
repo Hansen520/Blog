@@ -1,0 +1,25 @@
+{
+  "name": "blog-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/www.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testMysql": "node ./testMysql/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js",
+    "prd": "cross-env NODE_ENV=production nodemon ./bin/www.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "querystring": "^0.2.1",
+    "redis": "^4.2.0",
+    "xss": "^1.0.13"
+  }
+}
