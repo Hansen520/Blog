@@ -5,6 +5,8 @@
 const env = process.env.NODE_ENV;
 
 let MYSQL_CONF;
+let REDIS_CONF;
+
 // 配置
 if (env === "dev") {
   MYSQL_CONF = {
@@ -13,6 +15,13 @@ if (env === "dev") {
     password: "325600",
     port: "28002",
     database: "myBlob",
+  };
+
+  // redis
+  REDIS_CONF = {
+    port: "29002",
+    host: "118.195.176.186",
+    password: "325600",
   };
 }
 
@@ -24,8 +33,15 @@ if (env === "production") {
     port: "28002",
     database: "myBlob",
   };
+  // redis
+  REDIS_CONF = {
+    port: "29002",
+    host: "118.195.176.186",
+    password: "325600",
+  };
 }
 
 module.exports = {
-    MYSQL_CONF
-}
+  MYSQL_CONF,
+  REDIS_CONF
+};

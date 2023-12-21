@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "testMysql": "node ./testMysql/index.js",
+    "testMyRedis": "node ./testRedis/index.js",
     "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js",
     "prd": "cross-env NODE_ENV=production nodemon ./bin/www.js"
   },
@@ -17,6 +18,7 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "mysql": "^2.18.1",
     "querystring": "^0.2.1",
     "redis": "^4.2.0",
