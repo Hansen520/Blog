@@ -22,3 +22,4 @@ function genPassword(password) {
 module.exports = {
     genPassword,
 }
+// console.log(genPassword('123456'));

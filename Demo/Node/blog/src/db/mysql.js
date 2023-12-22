@@ -10,6 +10,7 @@ const con = mysql.createConnection(MYSQL_CONF);
 
 // 开始连接
 con.connect();
+console.log('mysql连接成功');
 
 // 统一执行sql的函数
 function exec(sql) {

@@ -3,7 +3,8 @@
  * @Description: description
  */
 const querystring = require("querystring");
-const { get, set } = require('./src/db/redis')
+const { get, set } = require('./src/db/redis');
+const { access } = require('./src/utils/log');
 const handleBlogRouter = require("./src/router/blog");
 const handleUserRouter = require("./src/router/user");
 
@@ -44,6 +45,10 @@ const getPostData = (req) => {
 }
 
 const serverHandle = (req, res) => {
+  // 记录access log
+  access(`${req.method} -- ${req.url} -- ${req.headers['user-agent']} -- ${Date.now()}`);
+
+
   // 设置返回格式 JSON
   res.setHeader("Content-type", "application/json");
 
@@ -62,7 +67,7 @@ const serverHandle = (req, res) => {
   // 解析cookie
   req.cookie = {};
   const cookieStr = req.headers.cookie;
-  cookieStr.split(";").forEach((item) => {
+  cookieStr && cookieStr.split(";").forEach((item) => {
     if (!item) return;
     const arr = item.split("=");
     const key = arr[0].trim();

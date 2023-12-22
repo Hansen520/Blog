@@ -3,6 +3,7 @@
  * @Description: controller
  */
 const { exec } = require("../db/mysql");
+const { xss } = require("xss");
 
 const getList = (author, keyword) => {
   let sql = `select * from blogs where 1=1`;
@@ -26,7 +27,9 @@ const getDetail = (id) => {
 
 const newBlog = (blogData = {}) => {
   let { title, content, createtime, author } = blogData;
-  let sql = `insert into blogs (title, content, createtime, author) values ('${title}', '${content}', '${createtime}', '${author}');`;
+  const _title = xss(title);
+  const _content = xss(content);
+  let sql = `insert into blogs (title, content, createtime, author) values ('${_title}', '${_content}', '${createtime}', '${author}');`;
   return exec(sql).then((insertData) => {
     return {
       id: insertData.insertId,

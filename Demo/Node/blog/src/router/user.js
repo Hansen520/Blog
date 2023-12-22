@@ -9,7 +9,7 @@ const { set } = require("../db/redis");
 const handleUserRouter = (req, res) => {
   const { method, path } = req;
   switch (method) {
-    case "GET":
+    case "POST":
       // 登录
       if (path === "/api/user/login") {
         const { username, password } = req.body;
@@ -21,7 +21,7 @@ const handleUserRouter = (req, res) => {
             req.session.username = data.username;
             req.session.realname = data.realname;
             set(req.sessionId, req.session);
-            return new SuccessModel("登录成功"); 
+            return new SuccessModel({data: data, msg: "登录成功"}); 
           }
           return new ErrorModel("登录失败");
         });
