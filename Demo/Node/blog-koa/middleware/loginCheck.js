@@ -2,12 +2,12 @@
  * @Date: 2023-12-22 16:17:50
  * @Description: description
  */
-const { ErrorModel } = require('../model');
+const { ErrorModel } = require('../model/resModel');
 
 module.exports = async (ctx, next) => {
     if (ctx.session.username) {
-        awaitnext();
+        await next();
         return;
     }
-    res.json(new ErrorModel('未登录'));
+    ctx.body = new ErrorModel('未登录');
 }

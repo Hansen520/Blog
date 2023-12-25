@@ -3,7 +3,7 @@
  * @Description: controller
  */
 const { exec } = require("../db/mysql");
-const { xss } = require("xss");
+const xss = require("xss");
 
 const getList = async (author, keyword) => {
   let sql = `select * from blogs where 1=1`;

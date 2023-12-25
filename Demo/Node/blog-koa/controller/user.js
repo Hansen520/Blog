@@ -1,3 +1,7 @@
+/*
+ * @Date: 2023-12-22 16:04:54
+ * @Description: description
+ */
 const { exec, escape } = require('../db/mysql');
 const { genPassword } = require('../utils/cryp');
 
@@ -12,6 +16,7 @@ const login = async (username, password) => {
         SELECT username, realname FROM users WHERE username=${username} AND password=${password};
     `;
     const rows = await exec(sql);
+    console.log(rows, 15);
     return rows[0];
 }
 
