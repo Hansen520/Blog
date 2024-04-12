@@ -1,0 +1,79 @@
+<!--
+ * @Date: 2024-02-05 10:41:51
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文字闪烁的效果</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .banner {
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            line-height: 400px;
+            text-align: center;
+            
+            font-size: 150px;
+            font-family: '微软雅黑';
+        }
+        span {
+            color: #fff;
+            animation: spread 1s ease-in-out infinite alternate;
+        }
+        @keyframes spread {
+            to {
+                color: #ff0266;
+                text-shadow: 20px 0 70 #ff0266;
+            }
+        }
+        span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        span:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        span:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        span:nth-child(6) {
+            animation-delay: 1s;
+        }
+        span:nth-child(7) {
+            animation-delay: 1.2s;
+        }
+        span:nth-child(8) {
+            animation-delay: 1.4s;
+        }
+        span:nth-child(9) {
+            animation-delay: 1.6s;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <span>B</span>
+      <span>E</span>
+      <span>A</span>
+      <span>U</span>
+      <span>T</span>
+      <span>I</span>
+      <span>F</span>
+      <span>U</span>
+      <span>L</span>
+    </div>
+  </body>
+</html>
