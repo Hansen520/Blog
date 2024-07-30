@@ -1,0 +1,56 @@
+<!--
+ * @Date: 2024-06-05 10:52:34
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Dashed Line Animation</title>
+<style>
+  .container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    background-image: linear-gradient(to right, black 70%, transparent 30%);
+    background-size: 10px 2px;
+    animation: moveLine 4s linear infinite;
+  }
+
+  @keyframes moveLine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="line"></div>
+</div>
+
+<script>
+  function updateLineWidth() {
+    const line = document.querySelector('.line');
+    const newWidth = Math.random() * 100 + '%';
+    line.style.width = newWidth;
+  }
+
+  // 每隔一段时间更新虚线的宽度
+  setInterval(updateLineWidth, 1000);
+</script>
+</body>
+</html>

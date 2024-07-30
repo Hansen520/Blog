@@ -1,0 +1,32 @@
+<!--
+ * @Date: 2024-07-30 11:18:02
+ * @Description: description
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="file" accept="image/*" onchange="loadFile(event)" />
+    <script src="./index.js"></script>
+    <script>
+      function loadFile(event) {
+        
+        const reader = new FileReader();
+        
+        reader.onload = async function () {
+          let compressedDataURL = await compress(reader.result, 90, "image/jpeg");
+          let compressedImageBlob = dataUrlToBlob(compressedDataURL);
+          console.log(event.target.files[0], compressedImageBlob, compressedDataURL, 24);
+          uploadFile("https://httpbin.org/post", compressedImageBlob);
+        };
+        
+        reader.readAsDataURL(event.target.files[0]);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!--
+ * @Date: 2024-07-30 13:41:49
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客户端生成 PDF 示例</title>
+  </head>
+  <body>
+    <h3>客户端生成 PDF 示例</h3>
+    <script src="https://fastly.jsdelivr.net/npm/jspdf@latest/dist/jspdf.min.js"></script>
+    <script>
+      const fileDownloadByRes = (
+        filename,
+        blobContent,
+        type = "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      ) => {
+        const blob = new Blob([blobContent], { type: `application/${type};charset=utf-8` });
+        // 获取heads中的filename文件名
+        const downloadElement = document.createElement("a");
+        // 创建下载的链接
+        const href = window.URL.createObjectURL(blob);
+        downloadElement.href = href;
+        // 下载后文件名
+        downloadElement.download = filename;
+        document.body.appendChild(downloadElement);
+        // 点击下载
+        downloadElement.click();
+        // 下载完成移除元素
+        document.body.removeChild(downloadElement);
+        // 释放掉blob对象
+        window.URL.revokeObjectURL(href);
+      };
+
+      // blob-------
+      (function generatePdf() {
+        const doc = new jsPDF();
+        doc.text("Hello Beijing!", 66, 88);
+        const blob = new Blob([doc.output()], { type: "application/pdf" });
+        blob.text().then((blobAsText) => {
+          console.log(blobAsText);
+          fileDownloadByRes('test.pdf', blobAsText, 'pdf');
+        });
+      })();
+    </script>
+  </body>
+</html>
