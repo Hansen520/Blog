@@ -1,0 +1,64 @@
+<!--
+ * @Date: 2024-09-02 10:44:17
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18</title>
+    <style>
+      #light-animation-container {
+        position: relative;
+        width: 100%;
+        height: 300px; /* 根据需要调整 */
+        background-color: #000; /* 黑色背景以便更好地展示光线效果 */
+      }
+
+      .light-effect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+
+      @keyframes fadeInOut {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes moveLight {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .light-effect {
+        animation: fadeInOut 2s infinite, moveLight 5s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="light-animation-container">
+      <img
+        src="https://ts3.cn.mm.bing.net/th?id=ODLS.b87914bb-2569-4e1b-97ec-18beb45a17f3&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+        class="light-effect"
+        alt="Light Effect"
+      />
+    </div>
+
+    <!-- <div class="animation-container">
+      <img src="https://ts3.cn.mm.bing.net/th?id=ODLS.b87914bb-2569-4e1b-97ec-18beb45a17f3&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" class="animated-image" alt="Animated PNG" />
+    </div> -->
+  </body>
+</html>

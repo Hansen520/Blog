@@ -1,0 +1,25 @@
+<!--
+ * @Date: 2024-12-09 11:14:26
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断页面是否未活跃页面</title>
+</head>
+<body>
+    <script>
+        document.addEventListener('visibilitychange', function() {
+            console.log(document.visibilityState, 15);
+            if (document.visibilityState === 'visible') {
+                console.log('页面处于活跃状态');
+            } else {
+                console.log('页面处于非活跃状态');
+            };
+        });
+
+    </script>
+</body>
+</html>

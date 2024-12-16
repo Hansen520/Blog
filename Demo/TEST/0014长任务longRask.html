@@ -1,0 +1,24 @@
+<!--
+ * @Date: 2024-12-09 14:11:46
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>performanceLongRask</title>
+</head>
+<body>
+    <script>
+        const perfObserver = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+                console.table('LongTask Detected:', entry);
+                console.table('Start Time:', entry.startTime, 'LongTask Duration:', entry.duration);
+            })
+        });
+
+        perfObserver.observe({ entryTypes: ["longtask"]});
+    </script>
+</body>
+</html>

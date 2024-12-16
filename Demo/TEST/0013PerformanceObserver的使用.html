@@ -1,0 +1,29 @@
+<!--
+ * @Date: 2024-12-09 14:11:46
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>performanceObject</title>
+</head>
+<body>
+    <script>
+        const perfObserver = new PerformanceObserver((entryList) => {
+            console.log(entryList);
+            for (const entry of entryList.getEntries()) {
+                if (entry.name === 'first-contentful-paint') {
+                    console.log('FCP: ', entry.startTime);
+                } else if (entry.name === 'largest-contentful-paint') {
+                    console.log('LCP: ', entry.startTime);
+                }
+            }
+        });
+
+        perfObserver.observe({ type: "paint", buffered: true });
+        console.log(1);
+    </script>
+</body>
+</html>

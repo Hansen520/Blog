@@ -1,0 +1,34 @@
+<!--
+ * @Date: 2024-12-09 15:57:27
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断用户设备</title>
+</head>
+<body>
+    <script>
+        function detectDevice() {
+            const userAgent = navigator.userAgent;
+
+            if (/mobile/i.test(userAgent)) {
+                return "Mobile";
+            }
+            if (/tablet/i.test(userAgent)) {
+                return "Tablet";
+            }
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS Device";
+            }
+            return "Desktop";
+        
+            
+        }
+        console.log(detectDevice());
+    </script>
+</body>
+</html>
