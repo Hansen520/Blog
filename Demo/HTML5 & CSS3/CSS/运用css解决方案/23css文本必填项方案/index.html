@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css必填项方案</title>
+    <style>
+      .box {
+        width: 300px;
+        margin: 100px auto;
+      }
+      .txt:focus {
+        background: #e7e7c3cc;
+      }
+      span {
+        width: 50px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+    }
+      .form-block {
+        transition: all 0.5s;
+        margin-bottom: 40px;
+      }
+      .form-block:focus-within {
+        background: #409eff30;
+      }
+      .label span:has(+input[abcdefg])::after {
+        content: "*";
+        color: #f40;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="form-block">
+        <label class="label"><span>账号</span><input abcdefg type="text" class="txt" /></label>
+      </div>
+      <div class="form-block">
+        <label class="label"><span>密码</span><input abcdefg type="password" class="txt" /></label>
+      </div>
+      <div class="form-block">
+        <label class="label"><span>邮箱</span><input type="text" class="txt" /></label>
+      </div>
+      <div>
+        <button class="btn">提交</button>
+      </div>
+    </div>
+  </body>
+</html>
