@@ -50,63 +50,34 @@
           const clickColor = getColor(x, y, imgData);
           const greenColor = [0, 255, 0, 255];
 
-          // function _changeColor(x, y) {
-          //   if (x < 0 || x >= cvs.width || y < 0 || y >= cvs.height) {
-          //     return;
-          //   }
-          //   const color = getColor(x, y, imgData);
-          //   if (diff(color, clickColor) > 100) {
-          //     return;
-          //   }
-          //   if (diff(color, greenColor) === 0) {
-          //     return;
-          //   }
-
-          //   const i = point2Index(x, y);
-          //   imgData.data.set([0, 255, 0, 255], i);
-
-          //   _changeColor(x + 1, y);
-          //   _changeColor(x - 1, y);
-          //   _changeColor(x, y + 1);
-          //   _changeColor(x, y - 1);
-          // }
-
-          // _changeColor(x, y, greenColor);
-
-          let _x = x;
-          let _y = y;
-          while (true) {
-            _x++;
-            
-            if (_x < 0 || _x >= cvs.width || y < 0 || y >= cvs.height) {
-              break;
+          function _changeColor(x, y) {
+            if (x < 0 || x >= cvs.width || y < 0 || y >= cvs.height) {
+              return;
             }
-            const color = getColor(_x, y, imgData)
-            if (diff(color, clickColor) > 50) {
-              
-              _x = x;
-              // _y++;
-
-              while(true) {
-                _y++;
-                const color = getColor(_x, _y, imgData);
-                if (diff(color, clickColor) > 50) {
-                  
-                  break;
-                }
-                const i = point2Index(_x, _y);
-                imgData.data.set([0, 255, 0, 255], i);
-              }
+            const color = getColor(x, y, imgData);
+            if (diff(color, clickColor) > 100) {
+              return;
             }
             if (diff(color, greenColor) === 0) {
-              break;
+              return;
             }
-            
-            
-            const i = point2Index(_x, y);
+
+            const i = point2Index(x, y);
             imgData.data.set([0, 255, 0, 255], i);
+
+            _changeColor(x + 1, y);
+            // _changeColor(x - 1, y);
+            _changeColor(x, y + 1);
+            // _changeColor(x, y - 1);
           }
 
+          _changeColor(x, y, greenColor);
+
+          
+         
+         
+
+         
           ctx.putImageData(imgData, 0, 0);
         } catch (error) {
           console.log(error);
