@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>001画图</title>
+  </head>
+  <body>
+    <canvas width="200" height="200" style="border: 1px solid #000"></canvas>
+    <script>
+      const cvs = document.querySelector("canvas");
+      const ctx = cvs.getContext("2d", {
+        willReadFrequently: true,
+      });
+      function init() {
+        const img = new Image();
+        img.src = "./game.png";
+        img.onload = () => {
+          cvs.width = img.width;
+          cvs.height = img.height;
+          ctx.drawImage(img, 0, 0);
+        };
+      }
+
+      init();
+
+      // 获取像素
+      function point2Index(x, y) {
+        return (y * cvs.width + x) * 4;
+      }
+
+      // 获取颜色值
+      function getColor(x, y, imgData) {
+        const i = point2Index(x, y);
+        return [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2], imgData.data[i + 3]];
+      }
+
+      cvs.addEventListener("click", (e) => {
+        const x = e.offsetX;
+        const y = e.offsetY;
+        console.log(x, y);
+        try {
+          const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
+          console.log(imgData);
+          const clickColor = getColor(x, y, imgData);
+          const greenColor = [0, 255, 0, 255];
+
+          function _changeColor(x, y) {
+            if (x < 0 || x >= cvs.width || y < 0 || y >= cvs.height) {
+              return;
+            }
+            const color = getColor(x, y, imgData);
+            if (diff(color, clickColor) > 100) {
+              return;
+            }
+            if (diff(color, greenColor) === 0) {
+              return;
+            }
+
+            const i = point2Index(x, y);
+            imgData.data.set([0, 255, 0, 255], i);
+
+            _changeColor(x + 1, y);
+            _changeColor(x - 1, y);
+            _changeColor(x, y + 1);
+            _changeColor(x, y - 1);
+          }
+
+          _changeColor(x, y, greenColor);
+          ctx.putImageData(imgData, 0, 0);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      function diff(color1, color2) {
+        return (
+          Math.abs(color1[0] - color2[0]) +
+          Math.abs(color1[1] - color2[1]) +
+          Math.abs(color1[2] - color2[2]) +
+          Math.abs(color1[3] - color2[3])
+        );
+      }
+    </script>
+  </body>
+</html>
