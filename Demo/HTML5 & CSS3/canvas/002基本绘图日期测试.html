@@ -1,0 +1,56 @@
+<!--
+ * @Date: 2025-02-25 16:48:33
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="position: fixed;left: 0;top: 0; background: #222;">
+    <div id="box" style="width: 20px; height: 20px; border-radius: 20px; background-color: rgb(222, 222, 222); position: absolute; left: 0; top: 0;"></div>
+    <script>
+        const oBox = document.getElementById('box');
+
+        const getRandom = (min, max) => {
+            return Math.floor(Math.random() * (max + 1 - min) + min);
+        };
+        let x = 0;
+        let y = 0;
+        let xSpeed = getRandom(0, 10);
+        let ySpeed = getRandom(0, 10);
+        function draw() {
+            let T = Date.now();
+            requestAnimationFrame(() => {
+                console.log(Date.now() - T)
+                x = x + xSpeed * (Date.now() - T) / 10; // 时间 * 速度 = 路程
+                y = y + ySpeed * (Date.now() - T) / 10;
+                if (x > window.innerWidth) {
+                    x  = window.innerWidth;
+                    xSpeed = -xSpeed;
+                } else if (x < 0) {
+                    x = 0;
+                    xSpeed = -xSpeed;
+                }
+                if (y > window.innerHeight) {
+                    y  = window.innerHeight;
+                    ySpeed = -ySpeed;
+                } else if (y < 0) {
+                    y = 0;
+                    ySpeed = -ySpeed;
+                }
+                oBox.style.left = `${x}px`;
+                oBox.style.top = `${y}px`;
+                draw();
+            });
+        }
+
+        draw();
+
+        
+    </script>
+    </script>
+</body>
+</html>
