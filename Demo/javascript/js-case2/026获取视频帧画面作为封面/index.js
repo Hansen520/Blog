@@ -14,14 +14,13 @@ const captureFrame = (videoFile, time = 0) => {
 
     vdo.oncanplay = () => {
       const cvs = document.createElement("canvas");
-      cvs.width = vdo.videoWidth;
-      cvs.height = vdo.videoHeight;
+      cvs.width = vdo.videoWidth / 2;
+      cvs.height = vdo.videoHeight / 2;
       const ctx = cvs.getContext("2d");
-      
+
       ctx.drawImage(vdo, 0, 0, cvs.width, cvs.height); // 获取视频帧的画面
       cvs.toBlob((blob) => {
         const url = URL.createObjectURL(blob);
-        
         resolve({
           url,
           blob,
@@ -33,15 +32,15 @@ const captureFrame = (videoFile, time = 0) => {
 
 inp.onchange = async (e) => {
   const file = e.target.files[0];
-  console.log(file)
-   const result = await captureFrame(file, 1);
-   console.log(result)
-   previewImage(result.url);
-//   for (let i = 0; i < 4; i++) {
-//     const result = await captureFrame(file, i * 1);
-//     console.log(result, i)
-//     previewImage(result.url);
-//   }
+  console.log(file);
+  const result = await captureFrame(file, 1);
+  console.log(result);
+  previewImage(result.url);
+  //   for (let i = 0; i < 4; i++) {
+  //     const result = await captureFrame(file, i * 1);
+  //     console.log(result, i)
+  //     previewImage(result.url);
+  //   }
 };
 
 const previewImage = (url) => {
