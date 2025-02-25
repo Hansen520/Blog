@@ -1,0 +1,45 @@
+<!--
+ * @Date: 2025-02-21 13:54:22
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数数字动画</title>
+</head>
+<body>
+    <label>0</label>
+    <script>
+        function animation(duration, from, to, onProgress) {
+            const dis = to - from;
+            const speed = dis / duration;
+            const startTime = Date.now();
+            let value = from;
+
+            function _run() {
+                const now = Date.now();
+                const time = now - startTime; // 运动过程中的时间
+                console.log(time.toString());
+                if (time >= duration) { // 在运动过程中的时间是否已经达到预设时间
+                    value = to;
+                    onProgress(value);
+                    return;
+                }
+                const d = time * speed; // 时间 X 速度 = 运动距离
+                value = from + d;
+                onProgress(value);
+                requestAnimationFrame(_run);
+            }
+
+            requestAnimationFrame(_run);
+        }
+
+        const label = document.querySelector('label');
+        animation(1000, 0, 100.88, (val) => {
+            label.textContent = val.toFixed(2);
+        })
+    </script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+<!--
+ * @Date: 2025-02-25 09:10:49
+ * @Description: description
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,9 +70,9 @@
             imgData.data.set([0, 255, 0, 255], i);
 
             _changeColor(x + 1, y);
-            // _changeColor(x - 1, y);
+            _changeColor(x - 1, y);
             _changeColor(x, y + 1);
-            // _changeColor(x, y - 1);
+            _changeColor(x, y - 1);
           }
 
           _changeColor(x, y, greenColor);

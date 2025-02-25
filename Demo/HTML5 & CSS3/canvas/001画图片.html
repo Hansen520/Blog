@@ -8,13 +8,13 @@
   <body>
     <canvas width="200" height="200" style="border: 1px solid #000"></canvas>
     <script>
-      const cvs = document.querySelector('canvas');
-      const ctx = cvs.getContext('2d', {
+      const cvs = document.querySelector("canvas");
+      const ctx = cvs.getContext("2d", {
         willReadFrequently: true,
       });
       function init() {
         const img = new Image();
-        img.src = './game.png';
+        img.src = "./game.png";
         img.onload = () => {
           cvs.width = img.width;
           cvs.height = img.height;
@@ -32,15 +32,10 @@
       // 获取颜色值
       function getColor(x, y, imgData) {
         const i = point2Index(x, y);
-        return [
-          imgData.data[i],
-          imgData.data[i + 1],
-          imgData.data[i + 2],
-          imgData.data[i + 3],
-        ];
+        return [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2], imgData.data[i + 3]];
       }
 
-      cvs.addEventListener('click', (e) => {
+      cvs.addEventListener("click", (e) => {
         const x = e.offsetX;
         const y = e.offsetY;
         console.log(x, y);
@@ -50,63 +45,35 @@
           const clickColor = getColor(x, y, imgData);
           const greenColor = [0, 255, 0, 255];
 
-          // function _changeColor(x, y) {
-          //   if (x < 0 || x >= cvs.width || y < 0 || y >= cvs.height) {
-          //     return;
-          //   }
-          //   const color = getColor(x, y, imgData);
-          //   if (diff(color, clickColor) > 100) {
-          //     return;
-          //   }
-          //   if (diff(color, greenColor) === 0) {
-          //     return;
-          //   }
+          function _changeColor(x, y) {
+            const stack = [];
+            stack.push({ x, y });
 
-          //   const i = point2Index(x, y);
-          //   imgData.data.set([0, 255, 0, 255], i);
+            while (stack.length > 0) {
+              const { x, y } = stack.pop();
 
-          //   _changeColor(x + 1, y);
-          //   _changeColor(x - 1, y);
-          //   _changeColor(x, y + 1);
-          //   _changeColor(x, y - 1);
-          // }
-
-          // _changeColor(x, y, greenColor);
-
-          let _x = x;
-          let _y = y;
-          while (true) {
-            _x++;
-            
-            if (_x < 0 || _x >= cvs.width || y < 0 || y >= cvs.height) {
-              break;
-            }
-            const color = getColor(_x, y, imgData)
-            if (diff(color, clickColor) > 50) {
-              
-              _x = x;
-              // _y++;
-
-              while(true) {
-                _y++;
-                const color = getColor(_x, _y, imgData);
-                if (diff(color, clickColor) > 50) {
-                  
-                  break;
-                }
-                const i = point2Index(_x, _y);
-                imgData.data.set([0, 255, 0, 255], i);
+              if (x < 0 || x >= cvs.width || y < 0 || y >= cvs.height) {
+                continue;
               }
-            }
-            if (diff(color, greenColor) === 0) {
-              break;
-            }
-            
-            
-            const i = point2Index(_x, y);
-            imgData.data.set([0, 255, 0, 255], i);
-          }
+              const color = getColor(x, y, imgData);
+              if (diff(color, clickColor) > 50) {
+                continue;
+              }
+              if (diff(color, greenColor) === 0) {
+                continue;
+              }
 
+              const i = point2Index(x, y);
+              imgData.data.set([0, 255, 0, 255], i);
+
+              // 上下左右四个方向上面的扩散，形成填充效果，这里使用栈来实现，解决了递归深度过深的问题
+              stack.push({ x: x + 1, y });
+              stack.push({ x: x - 1, y });
+              stack.push({ x, y: y + 1 });
+              stack.push({ x, y: y - 1 });
+            }
+          }
+          _changeColor(x, y);
           ctx.putImageData(imgData, 0, 0);
         } catch (error) {
           console.log(error);
