@@ -14,8 +14,8 @@ const captureFrame = (videoFile, time = 0) => {
 
     vdo.oncanplay = () => {
       const cvs = document.createElement("canvas");
-      cvs.width = vdo.videoWidth / 2;
-      cvs.height = vdo.videoHeight / 2;
+      cvs.width = vdo.videoWidth;
+      cvs.height = vdo.videoHeight;
       const ctx = cvs.getContext("2d");
 
       ctx.drawImage(vdo, 0, 0, cvs.width, cvs.height); // 获取视频帧的画面
