@@ -1,4 +1,4 @@
-
+// https://www.bilibili.com/video/BV1pY4y1J7na/?spm_id_from=333.337.search-card.all.click&vd_source=851eeb6a848d738da94a7e8acc7aa890
 // 这种挺好的，就是逆行推断，但是我们今天用一种自己比较好理解的方式
 // const package = (bagWeight, value, weight) => {
 //   const dp = new Array(bagWeight + 1).fill(0);
@@ -22,6 +22,7 @@ const package = (bagWeight, value, weight) => {
             }
         }
         result = next;
+        console.log(result);
     }
     return result[bagWeight];
 
