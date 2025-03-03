@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box1,
+      #box2 {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        color: #fff;
+
+        position: relative;
+      }
+      #box1 {
+        top: 500px;
+      }
+      #box2 {
+        top: 1500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">BOX1</div>
+    <div id="box2">BOX2</div>
+
+    <script>
+      const intersectionObserver = new IntersectionObserver(
+        function (entries) {
+          console.log('info:');
+          entries.forEach((item) => {
+            console.log(item.target, item.intersectionRatio, 34);
+          });
+        },
+        {
+          threshold: [0.5, 1],
+        }
+      );
+
+      intersectionObserver.observe(document.querySelector('#box1'));
+      intersectionObserver.observe(document.querySelector('#box2'));
+    </script>
+  </body>
+</html>
