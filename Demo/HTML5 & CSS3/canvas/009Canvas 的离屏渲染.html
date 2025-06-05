@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="mainCanvas"></canvas>
+    <script>
+      var mainCanvas = document.getElementById("mainCanvas");
+      var mainCtx = mainCanvas.getContext("2d");
+
+      // 创建离屏Canvas
+      var offscreenCanvas = document.createElement("canvas");
+      var offscreenCtx = offscreenCanvas.getContext("2d");
+
+      // 设置离屏Canvas的尺寸
+      offscreenCanvas.width = mainCanvas.width;
+      offscreenCanvas.height = mainCanvas.height;
+
+      // 在离屏Canvas上绘制图形
+      offscreenCtx.fillStyle = "blue";
+      offscreenCtx.fillRect(50, 50, 100, 100);
+
+      // 将离屏Canvas绘制到主Canvas上
+      mainCtx.drawImage(offscreenCanvas, 0, 0);
+    </script>
+  </body>
+</html>

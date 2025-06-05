@@ -1,0 +1,60 @@
+<!--
+ * @Date: 2025-06-05 16:11:22
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      function way1() {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // 在Canvas上绘制内容
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 将Canvas内容转换为图像数据URL
+        const dataURL = canvas.toDataURL();
+
+        // 创建一个新的Image元素
+        const img = new Image();
+        img.src = dataURL;
+
+        // 在新窗口中显示图像并打印
+        const printWindow = window.open("", "_blank");
+        printWindow.document.write('<img src="' + dataURL + '" onload="window.print();">');
+      }
+
+      function way2() {
+        const canvas = document.getElementById("myCanvas");
+        const context = canvas.getContext("2d");
+
+        // 在 canvas 上绘制图形
+        context.fillStyle = "blue";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 将 canvas 转换为 Blob
+        canvas.toBlob(
+          function (blob) {
+            // 在这里处理 Blob 对象
+            var img = new Image();
+            img.src = URL.createObjectURL(blob);
+            document.body.appendChild(img);
+          },
+          "image/jpeg",
+          0.95
+        );
+      }
+      window.onload = () => {
+        way2();
+      };
+    </script>
+  </body>
+</html>

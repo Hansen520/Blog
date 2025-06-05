@@ -1,0 +1,32 @@
+<!--
+ * @Date: 2025-06-05 10:17:34
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas width="200" height="200" id="myCanvas" style="border: 1px solid #000000"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const width = canvas.width;
+      const height = canvas.height;
+
+      const ctx = canvas.getContext("2d");
+
+      // 将原点移动到Canvas的中心点
+      ctx.translate(width / 2, height / 2);
+
+      // 反转Y轴方向
+      ctx.scale(1, -1);
+
+      // 在以中心点为原点的笛卡尔坐标系中绘制一个矩形
+      ctx.fillStyle = "red";
+      ctx.fillRect(-50, -50, 100, 100);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!--
+ * @Date: 2025-06-05 16:17:41
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const img = new Image();
+      img.src = "./example.webp";
+      img.onload = function () {
+        // 在图像加载完成后执行操作
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0, img.width, img.height);
+        document.body.appendChild(canvas);
+      };
+    </script>
+  </body>
+</html>

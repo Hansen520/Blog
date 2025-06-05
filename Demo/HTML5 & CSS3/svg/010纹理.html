@@ -1,0 +1,58 @@
+<!--
+ * @Date: 2025-06-04 15:41:08
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="coolEffect">
+        <feTurbulence baseFrequency="0.1" type="turbulence" numOctaves="1" seed="1100 " />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#coolEffect)" />
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="filter">
+        <feTurbulence baseFrequency="0.2" />
+        <feColorMatrix
+          values="0 0 0 9 -4
+                               0 0 0 9 -4
+                               0 0 0 9 -4
+                               0 0 0 0 1"
+        />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#filter)" />
+    </svg>
+
+    <!-- 图三效果  -->
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="filter2">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" />
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 0 1" />
+          <feFuncG type="discrete" tableValues="0 0 0 1 1" />
+          <feFuncB type="discrete" tableValues="0 1" />
+        </feComponentTransfer>
+        <feColorMatrix
+          values="1  0 0 0 0
+                              -1  1 0 0 0
+                              -1 -1 1 0 0
+                               0  0 0 0 1"
+        />
+        <feColorMatrix
+          values="-.08  .42  .09 0 .08
+                               -.17  .35 -.08 0 .17
+                               -.08  .15 -.04 0 .08
+                                0    0     0    0 1"
+        />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#filter2)" />
+    </svg>
+  </body>
+</html>

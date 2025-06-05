@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>004屏幕坐标系转为 Canvas 坐标系</title>
+  </head>
+  <body>
+    <canvas width="200" height="200" id="myCanvas" style="border: 1px solid #000000"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      function handleMouseMove(event) {
+        const screenX = event.clientX; // 鼠标事件的屏幕X坐标
+        const screenY = event.clientY; // 鼠标事件的屏幕Y坐标
+
+        const canvasRect = canvas.getBoundingClientRect(); // 获取Canvas元素在页面上的位置
+        const canvasX = screenX - canvasRect.left; // 相对于Canvas元素的X坐标
+        const canvasY = screenY - canvasRect.top; // 相对于Canvas元素的Y坐标
+        // 兼容移动端的高dpr设备
+        const scale = window.devicePixelRatio; // 获取Canvas的缩放比例
+        const canvasScaledX = canvasX / scale; // 考虑缩放后的Canvas X坐标
+        const canvasScaledY = canvasY / scale; // 考虑缩放后的Canvas Y坐标
+
+        console.log("Canvas坐标系 X:", canvasScaledX);
+        console.log("Canvas坐标系 Y:", canvasScaledY);
+      }
+
+      canvas.addEventListener("mousemove", handleMouseMove);
+    </script>
+  </body>
+</html>
