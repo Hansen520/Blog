@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="750" height="600"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const rows = 10;
+      const cols = 15;
+      const seatSize = 40;
+      const seatGap = 10;
+      const seat = [];
+
+      for (let row = 0; row < rows; row++) {
+        // 对，这种比push的要好
+        seat[row] = [];
+        for (let col = 0; col < cols; col++) {
+          seat[row][col] = {
+            x: col * (seatSize + seatGap),
+            y: row * (seatSize + seatGap),
+            status: Math.random() > 0.5 ? "available" : Math.random() > 0.5 ? "selected" : "unavailable",
+          };
+        }
+      }
+
+      function drawSeat() {
+        // 画座位
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const { x, y, isSold } = seat[row][col];
+            ctx.beginPath();
+            ctx.rect(x, y, seatSize, seatSize);
+            ctx.fillStyle = getSeatColor(seat[row][col].status);
+            ctx.fill();
+            ctx.stroke();
+          }
+        }
+
+        function getSeatColor(status) {
+          switch (status) {
+            case "available": // 未选
+              return "white";
+            case "selected": // 已选
+              return "blue";
+            case "unavailable": // 已售
+              return "red";
+            default:
+              return "grey"; // 其他情况
+          }
+        }
+      }
+      drawSeat();
+
+      // 添加交互
+      canvas.addEventListener("click", (event) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left; // 获取canvas范围内的作坐标
+        const y = event.clientY - rect.top;
+
+        seat.forEach((row) => {
+          row.forEach((seat) => {
+            if (x >= seat.x && x <= seat.x + seatSize && y >= seat.y && y <= seat.y + seatSize) {
+              if (seat.status === "available") {
+                seat.status = "selected";
+              } else if (seat.status === "selected") {
+                seat.status = "available";
+              }
+              drawSeat();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
