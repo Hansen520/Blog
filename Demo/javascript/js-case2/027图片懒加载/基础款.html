@@ -1,0 +1,129 @@
+<!--
+ * @Date: 2025-06-11 10:19:27
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>img lazy load</title>
+    <style>
+      .item-container {
+        border-top: 1px solid #ccc;
+        margin-bottom: 30px;
+      }
+      .item-container img {
+        width: 100%;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>img lazy load</h1>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=1" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=2" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=3" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=4" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=5" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=6" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=7" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=8" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=9" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=10" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=11" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=12" />
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+      // 写一个节流函数
+      function throttle(fn, delay) {
+        let timer;
+        return function () {
+          if (!timer) {
+            fn.apply(this, arguments);
+            flag = true;
+            // 定时器是宏任务在下一个点执行
+            setTimeout(() => (timer = false), delay);
+          }
+        };
+      }
+
+      function mapImagesAndTryLoad() {
+        const images = document.querySelectorAll("img[data-src]");
+        if (images.length === 0) return;
+
+        images.forEach((img) => {
+          const rect = img.getBoundingClientRect();
+          // rect.top 是距离上面的距离，然后当移入到视口内(window.innerHeight)时，加载图片
+          if (rect.top < window.innerHeight) {
+            console.log(rect.top, window.innerHeight, 66);
+            // console.info('loading img', img.dataset.src)
+            img.src = img.dataset.src;
+            img.removeAttribute("data-src"); // 移除 data-src 属性，为了下次执行时减少计算成本
+          }
+        });
+      }
+
+      window.addEventListener(
+        "scroll",
+        throttle(() => {
+          mapImagesAndTryLoad();
+        }, 100)
+      );
+
+      mapImagesAndTryLoad();
+    </script>
+  </body>
+</html>

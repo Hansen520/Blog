@@ -3,6 +3,7 @@ function debounce(fn, delay = 500) {
   // 给闭包使用
   let timer = null;
   return function () {
+    // 每次触发先清理下定时器
     if (timer) {
       clearTimeout(timer);
     }
