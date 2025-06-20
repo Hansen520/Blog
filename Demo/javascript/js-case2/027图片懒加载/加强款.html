@@ -1,0 +1,118 @@
+<!--
+ * @Date: 2025-06-11 10:19:27
+ * @Description: description
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>img lazy load</title>
+    <style>
+      .item-container {
+        border-top: 1px solid #ccc;
+        margin-bottom: 30px;
+      }
+      .item-container img {
+        width: 100%;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>img lazy load</h1>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=1" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=2" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=3" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=4" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=5" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=6" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=7" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=8" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=9" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=10" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=11" />
+    </div>
+
+    <div class="item-container">
+      <p>新闻标题</p>
+      <img src="./co2.svg" data-src="https://picsum.photos/300/200?random=12" />
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+      function mapImagesAndTryLoad() {
+        const images = document.querySelectorAll("img[data-src]");
+        if (images.length === 0) return;
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+              console.log(entry, 98);
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute("data-src");
+                img.removeAttribute("data-src");
+                observer.unobserve(img);
+              }
+            });
+          });
+          images.forEach(function (img) {
+            observer.observe(img);
+          });
+        } else {
+          images.forEach((img) => {
+            img.src = img.dataset.src;
+          });
+        }
+      }
+      mapImagesAndTryLoad();
+    </script>
+  </body>
+</html>
