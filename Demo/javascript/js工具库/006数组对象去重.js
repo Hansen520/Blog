@@ -15,7 +15,7 @@ const isObject = (val) => typeof val === 'object' && val !== null;
 
 function equal(val1, val2) {
     if (!isObject(val1) || !isObject(val2)) {
-        return Object.is(val1, val2);
+        return Object.is(val1, val2); // 判断两个值是否为相同值
     }
     const keys1 = Object.keys(val1);
     const keys2 = Object.keys(val2);
