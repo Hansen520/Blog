@@ -12,5 +12,5 @@ function bubbleSort(arr) {
     return arr;
 }
 
-const result = bubbleSort([1, 3, 2, 5, 4, 6, 7, 8, 9, 10]);
+const result = bubbleSort([1, 3, 2, 5, 4, 6, 7, 8, 10, 9]);
 console.log(result, 16);

@@ -10,10 +10,9 @@ const mergeSort = (arr) => {
 
 const merge = (left, right) => {
     const result = [];
-    while (left.length && right.length) { // 在必须有值的情况下
+    while (left.length && right.length) { // 在必须有值的情况下, 这个是明确是要的
         if (left[0] <= right[0]) {
             result.push(left.shift());
-
         } else {
             result.push(right.shift());
         }
