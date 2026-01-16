@@ -12,7 +12,7 @@
     "axios": "^0.26.0",
     "css-vars-ponyfill": "^2.4.7",
     "element3": "^0.0.40",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "pinia": "^2.0.14",
     "rollup-plugin-visualizer": "^5.6.0",
     "three": "^0.141.0",
